@@ -14,8 +14,8 @@
 .form-box{
     width: 380px;
     height: 480px;
-    position: relative;
-    left: 550px;
+    position: absolute;
+    right: 120px;
     margin: 6% auto;
     background: #fff;
     padding: 5px;
@@ -66,6 +66,7 @@
 .submit-btn{
     width: 85%;
     top: 30px;
+    position: relative;
     padding: 10px 20px;
     cursor: pointer;
     display: block;
@@ -77,4 +78,16 @@
 }
 #login{
     left: 50px;
+}
+#register{
+    left: 450px;
+}
+.adv-box{
+    width: 520px;
+    height: 480px;
+    position: absolute;
+    left: 120px;
+    margin: 6% auto;
+    background: #fff;
+    padding: 5px;
 }
