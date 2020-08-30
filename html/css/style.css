@@ -6,7 +6,7 @@
 .hero{
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(/img/banner.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0,0,0,0.4)),url(/img/banner.jpg);
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -17,10 +17,11 @@
     position: absolute;
     right: 120px;
     margin: 6% auto;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
     padding: 5px;
     overflow: hidden;
     border-radius: 30px;
+    opacity: 70%;
 }
 .button-box{
     width: 200px;
@@ -89,7 +90,7 @@
     position: absolute;
     left: 120px;
     margin: 6% auto;
-    background: #fff;
+    background:rgba(255, 255, 255, 0.8);
     padding: 5px;
     border-radius: 30px;
 }
