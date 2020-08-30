@@ -19,6 +19,7 @@
     margin: 6% auto;
     background: #fff;
     padding: 5px;
+    overflow: hidden;
 }
 .button-box{
     width: 200px;
