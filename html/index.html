@@ -21,9 +21,9 @@
                 <button type="button" class="toggle-btn" onclick="login()">Log In</button>
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
-            <form id="login" class="input-group" method="post" action="http://3.131.49.106/">
-                <input type="text" class="input-field" placeholder="User ID" required>
-                <input type="text" class="input-field" placeholder="Enter Password" required>
+            <form id="login" class="input-group" method="post" action="http://3.131.49.106:3000/">
+                <input name="uid" type="text" class="input-field" placeholder="User ID" required>
+                <input name="pwd" type="text" class="input-field" placeholder="Enter Password" required>
                 <button type="submit" class="submit-btn">Log in</button>
             </form>
             <form id="register" class="input-group">
@@ -35,7 +35,7 @@
         
         <div class="adv-box">
             <h1 class="title" style="color:white">
-                Design your personal Eportfolio HERE
+                Design your personal Eportfolio HERE.
             </h1>
         </div>
 
