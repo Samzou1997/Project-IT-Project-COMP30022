@@ -31,9 +31,9 @@ var server = http.createServer(function (req, res) {
         console.log("body:",body);
         // 设置响应头部信息及编码\<br><br>      res.writeHead(200, {'Content-Type': 'text/html; charset=utf8'});
         if(body.uid && body.pwd) { // 输出提交的数据
-          res.write("userID：" + body.uid);
+          res.write("userID: " + body.uid);
           res.write("<br>");
-          res.write("Password" + body.pwd);
+          res.write("Password: " + body.pwd);
       } else {  // 输出表单
           res.write(postHTML);
       }
