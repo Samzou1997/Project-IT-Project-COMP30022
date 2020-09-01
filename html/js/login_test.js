@@ -16,7 +16,6 @@ http.createServer(function (req, res) {
     var body = "";
  
     //请求链接
-    console.log("Server on");
     console.log(req.url);
  
     //每当接收到请求体数据，累加到post中
@@ -40,4 +39,6 @@ http.createServer(function (req, res) {
       }
       res.end();
   });
-}).listen(6767);
+}).listen(6767, function () {
+    console.log("Server on")
+});
