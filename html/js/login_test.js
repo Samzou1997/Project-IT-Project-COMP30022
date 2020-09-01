@@ -34,9 +34,10 @@ var server = http.createServer(function (req, res) {
           res.write("userID: " + body.uid);
           res.write("<br>");
           res.write("Password: " + body.pwd);
-      } else {  // 输出表单
+        } 
+        else {  // 输出表单
           res.write(postHTML);
-      }
+        }
       res.end();
   });
 }).listen(6767, function () {
