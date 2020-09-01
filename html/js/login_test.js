@@ -11,7 +11,7 @@ var postHTML =
     '</form>' +
     '</body></html>';
  
-http.createServer(function (req, res) {
+var server = http.createServer(function (req, res) {
     //暂存请求体信息
     var body = "";
  
