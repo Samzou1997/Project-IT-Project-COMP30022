@@ -45,8 +45,6 @@ var server = http.createServer(function (req, res) {
 
 server.on('request', function (request, response) {
     console.log('got request, path: ' + request.url)
-    response.setHeader('Content-Type', 'text/plain; charset=utf-8')
-    response.end('Login Test')
     // fs.readFile("."+request.url, 'utf-8', function (err, data) {
     //   var pathname = url.parse(request.url).pathname
     //   var ext = pathname.match(/(\.[^.]+|)$/)[0]
