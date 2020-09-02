@@ -11,6 +11,8 @@
 
     <!-- custome css file -->
     <link rel="stylesheet" href="./css/style.css">
+
+    <script type="text/ecmascript" src="/js/md5.js"></script>
     
 </head>
 <body>
@@ -23,8 +25,8 @@
             </div>
             <form id="login" class="input-group" method="post" action="http://3.131.49.106/Login">
                 <input name="uid" type="text" class="input-field" placeholder="User ID" required>
-                <input name="pwd" type="text" class="input-field" placeholder="Enter Password" required>
-                <button type="submit" class="submit-btn">Log in</button>
+                <input name="pwd" type="password" class="input-field" placeholder="Enter Password" required>
+                <button id="login-btn" type="submit" class="submit-btn">Log in</button>
             </form>
             <form id="register" class="input-group">
                 <input type="text" class="input-field" placeholder="User ID" required>
@@ -59,6 +61,13 @@
             y.style.left = "450px";
             z.style.left = "0px";
         }
+
+        $("#login-btn").click(
+        function () {
+            var pwd = $("#pwd").val()
+            var hash_pwd = hex_md5(pwd)
+            $("#pwd").val(hash_pwd)
+        })
     </script>
 
 </body>

@@ -36,7 +36,7 @@ var server = http.createServer(function (req, res) {
       }
   });
 }).listen(6767, function () {
-    console.log("Server on")
+    console.log("6767:Server on")
 });
 
 server.on('request', function (request, response) {
