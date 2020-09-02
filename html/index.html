@@ -24,8 +24,8 @@
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
             <form id="login" class="input-group" method="post" action="http://3.131.49.106/Login">
-                <input name="uid" type="text" class="input-field" placeholder="User ID" required>
-                <input name="pwd" type="password" class="input-field" placeholder="Enter Password" required>
+                <input name="uid" id="uid-input" type="text" class="input-field" placeholder="User ID" required>
+                <input name="pwd" id="pwd-input" type="password" class="input-field" placeholder="Enter Password" required>
                 <button id="login-btn" type="submit" class="submit-btn" onclick="md5()">Log in</button>
             </form>
             <form id="register" class="input-group">
@@ -64,9 +64,9 @@
 
         function md5() {
             //alert("test")
-            var pwd = document.getElementsByTagName('pwd').value
+            var pwd = document.getElementById('pwd-input').value
             var hash_pwd = hex_md5(pwd)
-            document.getElementsByTagName('pwd').value = "111111111"
+            document.getElementById('pwd-input').value = "111111111"
         }
     </script>
 
