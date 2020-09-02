@@ -99,10 +99,8 @@
 }
 .login-test{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    right:50%;
-    width: 400px;
-    border: 1px solid red;
+    width: auto;
+    margin-left:auto;
+    margin-right:auto;
     text-align:center
 }
