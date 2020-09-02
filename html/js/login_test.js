@@ -24,11 +24,13 @@ var server = http.createServer(function (req, res) {
 
       fs.readFile("./html/home.html", 'utf-8', (err, data) => {
         if(body.uid && body.pwd) { // 输出提交的数据
+          data = data.toString()
           data = data.replace('$$message$$', 'Hi, ' + body.uid)
           res.setHeader('Content-Type', 'text/html; charset=utf-8')
           res.end(data)
         } 
         else {  // 输出表单
+          data = data.toString()
           data = data.replace('$$message$$', 'Login error, try again.')
           res.setHeader('Content-Type', 'text/html; charset=utf-8')
           res.end(data)
