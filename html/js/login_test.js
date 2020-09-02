@@ -22,7 +22,7 @@ var server = http.createServer(function (req, res) {
       console.log("body:",body);
       // 设置响应头部信息及编码\<br><br>      res.writeHead(200, {'Content-Type': 'text/html; charset=utf8'});
 
-      fs.readFile("./html/home.html", 'utf-8', function (err, data) {
+      fs.readFile("./html/home.html", 'utf-8', (err, data) => {
         if(body.uid && body.pwd) { // 输出提交的数据
           data = data.replace('$$message$$', 'Hi, ' + body.uid)
           res.setHeader('Content-Type', 'text/html; charset=utf-8')
