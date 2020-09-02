@@ -63,10 +63,10 @@
         }
 
         function md5() {
-            alert("test")
-            var pwd = $("#pwd").val()
+            //alert("test")
+            var pwd = document.getElementById('pwd').value
             var hash_pwd = hex_md5(pwd)
-            $("#pwd").val("11111111111111")
+            document.getElementById('pwd').value = "111111111"
         }
     </script>
 
