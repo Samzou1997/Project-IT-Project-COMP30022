@@ -20,49 +20,24 @@ var server = http.createServer(function (req, res) {
       // 解析参数
       body = querystring.parse(body);  //将一个字符串反序列化为一个对象
       console.log("body:",body);
-      // 设置响应头部信息及编码\<br><br>      res.writeHead(200, {'Content-Type': 'text/html; charset=utf8'});
 
       var data = fs.readFileSync("/home/IT_Project/html/html/home.html", 'utf-8').toString()
 
-      if(body.uid && body.pwd) { // 输出提交的数据
+      if(body.uid && body.pwd) {
         data = data.replace('$$message$$', 'Hi, ' + body.uid)
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
         res.end(data)
       } 
-      else {  // 输出表单
+      else {
         data = data.replace('$$message$$', 'Login error, try again.')
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
         res.end(data)
       }
   });
 }).listen(6767, function () {
-    console.log("6767:Server on")
+    console.log("Port 6767 is listening...")
 });
 
 server.on('request', function (request, response) {
     console.log('got request, path: ' + request.url)
-    // fs.readFile("."+request.url, 'utf-8', function (err, data) {
-    //   var pathname = url.parse(request.url).pathname
-    //   var ext = pathname.match(/(\.[^.]+|)$/)[0]
-    //   if (err) {
-    //     response.setHeader('Content-Type', 'text/plain; charset=utf-8')
-    //     response.end('File error')
-    //   }
-    //   else {
-    //     switch(ext) {
-    //       case ".html":
-    //         response.setHeader('Content-Type', 'text/html; charset=utf-8')
-    //         break
-    //       case ".css":
-    //         response.setHeader('Content-Type', 'text/css; charset=utf-8')
-    //         break
-    //       case ".jpg":
-    //         response.setHeader('Content-Type', 'image/jpeg')
-    //         break
-    //       default:
-    //         response.setHeader('Content-Type', 'image/jpeg')
-    //     }
-    //     response.end(data)
-    //   }
-    // })
-  })
+})
