@@ -22,20 +22,18 @@ var server = http.createServer(function (req, res) {
       console.log("body:",body);
       // 设置响应头部信息及编码\<br><br>      res.writeHead(200, {'Content-Type': 'text/html; charset=utf8'});
 
-      fs.readFile("./html/home.html", 'utf-8', (err, data) => {
-        if(body.uid && body.pwd) { // 输出提交的数据
-          data = data.toString()
-          data = data.replace('$$message$$', 'Hi, ' + body.uid)
-          res.setHeader('Content-Type', 'text/html; charset=utf-8')
-          res.end(data)
-        } 
-        else {  // 输出表单
-          data = data.toString()
-          data = data.replace('$$message$$', 'Login error, try again.')
-          res.setHeader('Content-Type', 'text/html; charset=utf-8')
-          res.end(data)
-        }
-      })
+      var data = fs.readFileSync("./html/home.html", 'utf-8').toString()
+
+      if(body.uid && body.pwd) { // 输出提交的数据
+        data = data.replace('$$message$$', 'Hi, ' + body.uid)
+        res.setHeader('Content-Type', 'text/html; charset=utf-8')
+        res.end(data)
+      } 
+      else {  // 输出表单
+        data = data.replace('$$message$$', 'Login error, try again.')
+        res.setHeader('Content-Type', 'text/html; charset=utf-8')
+        res.end(data)
+      }
   });
 }).listen(6767, function () {
     console.log("Server on")
