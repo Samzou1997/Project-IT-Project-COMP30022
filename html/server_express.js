@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
 /* 接受请求并反馈数据渲染到界面*/
 app.post("/Login",function(req,res){
     console.log('got Login request, path: ' + req.url)
-    console.log('uid: ' + req.body.uid + ", pwd: " + req.body.pwd)
+    console.log('request body: { uid: ' + req.body.uid + ", pwd: " + req.body.pwd + " }")
 
     if(req.body.uid && req.body.pwd) {
         res.render("home.html", {
