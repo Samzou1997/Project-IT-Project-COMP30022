@@ -17,12 +17,12 @@ app.post("/Login",function(req,res){
     console.log('uid: ' + req.body.uid + ", pwd: " + req.body.pwd)
 
     if(req.body.uid && req.body.pwd) {
-        res.render(_dir + "/html/html/home.html", {
+        res.render("home.html", {
             message:"Hi, " + req.body.uid
         })
     }
     else {
-        res.render(_dir + "/html/html/home.html", {
+        res.render("home.html", {
             message:"Login error, try again :)"
         })
     }
