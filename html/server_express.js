@@ -22,7 +22,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({
     extended:true
 }));
-app.use(bodyParser.jason())
+app.use(bodyParser.json())
 
 /* 接受请求并反馈数据渲染到界面*/
 app.post("/Login",function(req,res){
