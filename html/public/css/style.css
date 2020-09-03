@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.hero{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0,0,0,0.4)),url(/img/banner.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+.form-box{
+    width: 380px;
+    height: 480px;
+    position: absolute;
+    right: 120px;
+    margin: 6% auto;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 30px;
+}
+.button-box{
+    width: 200px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+}
+.toggle-btn{
+    padding: 10px 20px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+#btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border-radius: 20px;
+    transition: .5s;
+}
+.input-group{
+    top: 180px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+.input-field{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none; 
+    background: transparent;
+}
+.submit-btn{
+    width: 85%;
+    top: 30px;
+    position: relative;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+#login{
+    left: 50px;
+}
+#register{
+    left: 450px;
+}
+.adv-box{
+    width: 750px;
+    height: 480px;
+    position: absolute;
+    left: 120px;
+    margin: 6% auto;
+    background:rgba(255, 255, 255, 0);
+    padding: 5px;
+    border-radius: 30px;
+}
+.title{
+    font-size: 100px;
+    font-variant: small-caps;
+}
+.home-title{
+    position: absolute;
+    width: auto;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    text-align:center
+}
