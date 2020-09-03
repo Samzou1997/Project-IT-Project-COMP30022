@@ -1,6 +1,6 @@
 var express =require("express");
 var bodyParser = require('body-parser');
-var xml2json=require('xml2json');
+var querystring = require('querystring');
 
 var app = express();
 
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 /* 接受请求并反馈数据渲染到界面*/
 app.post("/Login",function(req,res){
     req.rawBody = '';//添加接收变量
-    var json={};
+    var body={};
     req.setEncoding('utf8');
 
     req.on('data', function(chunk) { 
@@ -20,8 +20,9 @@ app.post("/Login",function(req,res){
     });
 
     req.on('end', function() {
-        json=xml2json.toJson(req.rawBody);
-        res.send(JSON.stringify(json));
+        body = querystring.parse(rawBody);
+        console.log("body:",body);
+        //res.send(JSON.stringify(json));
     }); 
 })
 
