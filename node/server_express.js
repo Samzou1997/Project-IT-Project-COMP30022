@@ -1,5 +1,6 @@
 var express =require("express");
 var bodyParser = require('body-parser');
+var xml2json=require('xml2json');
 
 var app = express();
 
@@ -9,10 +10,21 @@ app.use(bodyParser.urlencoded({
 /* 创建服务器 */
 
 /* 接受请求并反馈数据渲染到界面*/
-app.get("/",function(req,res){
-    res.send("我是响应给客户端的一个字符串，自从用来express之后我再也不用设置请求头的字符编码啦！~~~");
+app.post("/Login",function(req,res){
+    req.rawBody = '';//添加接收变量
+    var json={};
+    req.setEncoding('utf8');
+
+    req.on('data', function(chunk) { 
+        req.rawBody += chunk;
+    });
+
+    req.on('end', function() {
+        json=xml2json.toJson(req.rawBody);
+        res.send(JSON.stringify(json));
+    }); 
 })
 
-app.listen(3000,function(){
+app.listen(6767,function(){
     console.log("running....");
 })
