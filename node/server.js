@@ -21,7 +21,7 @@ var server = http.createServer(function (req, res) {
       body = querystring.parse(body);  //将一个字符串反序列化为一个对象
       console.log("body:",body);
 
-      var data = fs.readFileSync("/home/IT_Project/html/html/home.html", 'utf-8').toString()
+      var data = fs.readFileSync("../html/html/home.html", 'utf-8').toString()
 
       if(body.uid && body.pwd) {
         data = data.replace('$$message$$', 'Hi, ' + body.uid)
