@@ -11,9 +11,19 @@ app.use(bodyParser.urlencoded({
 
 /* 接受请求并反馈数据渲染到界面*/
 app.post("/Login",function(req,res){
-    console.log('got request, path: ' + req.url)
-    console.log('got request, body: ' + req.body)
-    res.send(req.body);
+    console.log('got Login request, path: ' + req.url)
+    console.log('uid: ' + req.body.uid + ", pwd: " + req.body.pwd)
+
+    if(body.uid && body.pwd) {
+        res.render("../html/html/home.html", {
+            message:"Hi, " + req.body.uid
+        })
+    }
+    else {
+        res.render("../html/html/home.html", {
+            message:"Login error, try again :)"
+        })
+    }
 })
 
 app.listen(3000,function(){
