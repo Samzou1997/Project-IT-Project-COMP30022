@@ -14,7 +14,7 @@ app.post("/Login",function(req,res){
     console.log('got Login request, path: ' + req.url)
     console.log('uid: ' + req.body.uid + ", pwd: " + req.body.pwd)
 
-    if(body.uid && body.pwd) {
+    if(req.body.uid && req.body.pwd) {
         res.render("../html/html/home.html", {
             message:"Hi, " + req.body.uid
         })
