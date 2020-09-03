@@ -26,6 +26,6 @@ app.post("/Login",function(req,res){
     }); 
 })
 
-app.listen(6767,function(){
+app.listen(3000,function(){
     console.log("running....");
 })
