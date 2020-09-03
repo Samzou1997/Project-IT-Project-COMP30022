@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
 app.post("/Login",function(req,res){
     console.log('got request, path: ' + req.url)
     req.rawBody = '';//添加接收变量
-    var body={};
+    var body;
     req.setEncoding('utf8');
 
     req.on('data', function(chunk) { 
@@ -23,7 +23,7 @@ app.post("/Login",function(req,res){
     req.on('end', function() {
         body = querystring.parse(rawBody);
         console.log("body:",body);
-        res.send(body);
+        res.send(body.uid.toString());
     }); 
 })
 
