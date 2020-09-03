@@ -1,7 +1,7 @@
 var express =require("express");
 var bodyParser = require('body-parser');
 var querystring = require('querystring');
-
+var _dir = "/home/IT_Project/"
 var app = express();
 
 app.use(bodyParser.urlencoded({
@@ -15,12 +15,12 @@ app.post("/Login",function(req,res){
     console.log('uid: ' + req.body.uid + ", pwd: " + req.body.pwd)
 
     if(req.body.uid && req.body.pwd) {
-        res.render("../html/html/home.html", {
+        res.render(_dir + "/html/html/home.html", {
             message:"Hi, " + req.body.uid
         })
     }
     else {
-        res.render("../html/html/home.html", {
+        res.render(_dir + "/html/html/home.html", {
             message:"Login error, try again :)"
         })
     }
