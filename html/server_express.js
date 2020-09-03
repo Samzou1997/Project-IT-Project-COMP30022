@@ -30,8 +30,9 @@ app.post("/Login",function(req,res){
     console.log('request body: { uid: ' + req.body.uid + ", pwd: " + req.body.pwd + " }")
 
     if(req.body.uid && req.body.pwd) {
-        res.render("test_home.html", {
-            username:"Hi, " + req.body.uid
+        res.render("home.html", {
+            username:"Hi, " + req.body.uid,
+            message: "Hello"
         })
     }
     else {
