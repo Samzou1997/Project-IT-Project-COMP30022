@@ -28,6 +28,12 @@ app.post("/Login",function(req,res){
     }
 })
 
+app.get("/Login", function(req, res){
+    res.render("home.html", {
+        message:"Login error, try again :)"
+    })
+})
+
 app.listen(3000,function(){
     console.log("running....");
 })
