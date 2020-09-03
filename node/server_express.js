@@ -22,10 +22,14 @@ app.post("/Login",function(req,res){
     req.on('end', function() {
         body = querystring.parse(rawBody);
         console.log("body:",body);
-        //res.send(JSON.stringify(json));
+        res.send(body);
     }); 
 })
 
 app.listen(3000,function(){
     console.log("running....");
+})
+
+app.on('request', function (request, response) {
+    console.log('got request, path: ' + request.url)
 })
