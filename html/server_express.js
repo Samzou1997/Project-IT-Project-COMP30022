@@ -18,7 +18,7 @@ app.post("/Login",function(req,res){
 
     if(req.body.uid && req.body.pwd) {
         res.render("home.html", {
-            message:"Hi, " + req.body.uid
+            message:"Hi, " + req.body.uid + ", Welcome to your personal E-Portifolio"
         })
     }
     else {
