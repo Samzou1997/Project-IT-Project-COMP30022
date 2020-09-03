@@ -2,12 +2,14 @@ var express =require("express");
 var bodyParser = require('body-parser');
 var querystring = require('querystring');
 var _dir = "/home/IT_Project"
+
 var app = express();
+
+app.engine("html",require("express-art-template"));
 
 app.use(bodyParser.urlencoded({
     extended:true
 }));
-/* 创建服务器 */
 
 /* 接受请求并反馈数据渲染到界面*/
 app.post("/Login",function(req,res){
@@ -15,12 +17,12 @@ app.post("/Login",function(req,res){
     console.log('uid: ' + req.body.uid + ", pwd: " + req.body.pwd)
 
     if(req.body.uid && req.body.pwd) {
-        res.render(_dir + "/htmla/htmlb/home.html", {
+        res.render(_dir + "/html/html/home.html", {
             message:"Hi, " + req.body.uid
         })
     }
     else {
-        res.render(_dir + "/htmla/htmlb/home.html", {
+        res.render(_dir + "/html/html/home.html", {
             message:"Login error, try again :)"
         })
     }
