@@ -41,6 +41,7 @@ const store = (req, res, next) => {
     phone: req.body.phone,
     birthDate: req.body.birthDate,
     gender: req.body.gender,
+    password: req.body.password,
   })
   user.save()
   .then(response => {
@@ -66,6 +67,7 @@ const update = (req, res, next) => {
     phone: req.body.phone,
     birthDate: req.body.birthDate,
     gender: req.body.gender,
+    password: req.body.password,
   }
 
   User.findByIdAndUpdate(userID, {$set: updatedData})

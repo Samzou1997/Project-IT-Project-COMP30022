@@ -20,6 +20,9 @@ const userSchema    = new Schema({
   gender: {
     type: String
   },
+  password: {
+    type: String
+  }
 },{timestamps: true})
 
 const User = mongoose.model('User', userSchema)
