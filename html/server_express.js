@@ -36,7 +36,7 @@ app.post("/Login",function(req,res){
     if(req.body.uid && req.body.pwd) {
         res.render("home.html", {
             username:"Hi, " + req.body.uid,
-            message: "Hello"
+            message: "Hello, welcome back"
         })
     }
     else {
@@ -62,8 +62,8 @@ app.post("/Register",function(req,res){
         user.save()
         .then(user => {
             res.render("home.html", {
-                username:"Hi, " + req.body.uid,
-                message: "Hello"
+                username:"Hi, " + req.body.lastName,
+                message: "Welcome To EPortfolio, start to edit your home page."
             })
         })
         .catch(error => {
