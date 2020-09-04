@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="hero">
-        <div class="form-box">
+        <div id="form-box" class="form-box">
             <div class="button-box">
                 <div id="btn"></div>
                 <button type="button" class="toggle-btn" onclick="login()">Log In</button>
@@ -52,16 +52,19 @@
         var x = document.getElementById("login");
         var y = document.getElementById("register");
         var z = document.getElementById("btn");
+        var f = document.getElementById("form-box");
 
         function register(){
             x.style.left = "-400px";
             y.style.left = "50px";
             z.style.left = "100px";
+            f.style.height = "500px"
         }
         function login(){
             x.style.left = "50px";
             y.style.left = "450px";
             z.style.left = "0px";
+            f.style.height = "400px"
         }
 
         function md5_login() {
