@@ -66,6 +66,7 @@ app.post("/Register",function(req,res){
             })
         })
         .catch(error => {
+            console.log(error)
             res.render("home.html", {
                 message:"Login error, try again :)"
             })
