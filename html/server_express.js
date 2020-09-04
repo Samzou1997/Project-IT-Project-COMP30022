@@ -62,7 +62,7 @@ app.post("/Register",function(req,res){
         user.save()
         .then(user => {
             res.render("home.html", {
-                username:"Hi, " + req.body.lastName,
+                username:"Hi, " + req.body.last_name,
                 message: "Welcome To EPortfolio, start to edit your home page."
             })
         })
