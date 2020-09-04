@@ -50,27 +50,35 @@ app.post("/Register",function(req,res){
     console.log('got Login request, path: ' + req.url)
 
     if(req.body.first_name && req.body.last_name && req.body.email && req.body.password) {
-        let user = new User({
-            firstName: req.body.first_name,
-            lastName: req.body.last_name,
-            email: req.body.email,
-            phone: req.body.phone,
-            birthDate: req.body.birthday,
-            gender: req.body.gender,
-            password: req.body.password,
-        })
-        user.save()
-        .then(user => {
-            res.render("home.html", {
-                username:"Hi, " + req.body.last_name,
-                message: "Welcome To EPortfolio, start to edit your home page."
-            })
-        })
-        .catch(error => {
-            console.log(error)
-            res.render("home.html", {
-                message:"Login error, try again :)"
-            })
+        
+        User.findOne({email: req.body.email}, function(err, doc) {
+            if (doc) {
+                res.render("index.html")
+            }
+            else {
+                let user = new User({
+                    firstName: req.body.first_name,
+                    lastName: req.body.last_name,
+                    email: req.body.email,
+                    phone: req.body.phone,
+                    birthDate: req.body.birthday,
+                    gender: req.body.gender,
+                    password: req.body.password,
+                })
+                user.save()
+                .then(user => {
+                    res.render("home.html", {
+                        username:"Hi, " + req.body.last_name,
+                        message: "Welcome To EPortfolio, start to edit your home page."
+                    })
+                })
+                .catch(error => {
+                    console.log(error)
+                    res.render("home.html", {
+                        message:"Login error, try again :)"
+                    })
+                })
+            }
         })
     }
     else {
