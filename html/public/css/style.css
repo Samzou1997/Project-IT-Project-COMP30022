@@ -120,3 +120,8 @@
     padding: 1.7rem;
     color: black;
 }
+.error_txt{
+    top: 30px;
+    position: relative;
+    color: red;
+}

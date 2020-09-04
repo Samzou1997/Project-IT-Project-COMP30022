@@ -11,15 +11,6 @@ const userSchema    = new Schema({
   email: {
     type: String
   },
-  phone: {
-    type: String
-  },
-  birthDate: {
-    type: String
-  },
-  gender: {
-    type: String
-  },
   password: {
     type: String
   }

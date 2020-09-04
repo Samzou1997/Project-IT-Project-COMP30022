@@ -60,9 +60,6 @@ app.post("/Register",function(req,res){
                     firstName: req.body.first_name,
                     lastName: req.body.last_name,
                     email: req.body.email,
-                    phone: req.body.phone,
-                    birthDate: req.body.birthday,
-                    gender: req.body.gender,
                     password: req.body.password,
                 })
                 user.save()
