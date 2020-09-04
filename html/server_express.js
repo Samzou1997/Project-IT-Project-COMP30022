@@ -3,10 +3,11 @@ var bodyParser      = require('body-parser');
 var querystring     = require('querystring');
 var mongoose        = require('mongoose');
 var morgan          = require('morgan');
+var MongoClient     = require("mongodb").MongoClient;
 
 //const UserRoute     = require('./routes/user')
 const User = require('./models/User')
-mongoose.connect('mongodb://testacc:qpzm123456@localhost:27017/GeekDB', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://testacc:qpzm123456@localhost:27017/GeekDB?authSource=admin', {useNewUrlParser: true, useUnifiedTopology: true})
 var db = mongoose.connection
 
 db.on('error', (err) => {
