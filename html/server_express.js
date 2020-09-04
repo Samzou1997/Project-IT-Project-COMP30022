@@ -3,7 +3,6 @@ var bodyParser      = require('body-parser');
 var querystring     = require('querystring');
 var mongoose        = require('mongoose');
 var morgan          = require('morgan');
-var MongoClient     = require("mongodb").MongoClient;
 
 //const UserRoute     = require('./routes/user')
 const User = require('./models/User')
