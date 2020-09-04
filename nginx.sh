@@ -1,1 +1,1 @@
-sudo nano /etc/nginx/sites-available/default
+sudo nano /etc/nginx/nginx.conf
