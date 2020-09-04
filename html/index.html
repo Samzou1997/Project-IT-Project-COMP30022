@@ -24,14 +24,19 @@
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
             <form id="login" class="input-group" method="post" action="http://3.131.49.106/Login">
-                <input name="uid" id="uid-input" type="text" class="input-field" placeholder="User ID" required>
-                <input name="pwd" id="pwd-input" type="password" class="input-field" placeholder="Enter Password" required>
+                <input name="uid" id="uid-input-login" type="text" class="input-field" placeholder="User ID" required>
+                <input name="pwd" id="pwd-input-login" type="password" class="input-field" placeholder="Enter Password" required>
                 <button id="login-btn" type="submit" class="submit-btn" onclick="md5()">Log in</button>
             </form>
-            <form id="register" class="input-group">
-                <input type="text" class="input-field" placeholder="User ID" required>
-                <input type="text" class="input-field" placeholder="Enter Password" required>
-                <button type="submit" class="submit-btn">Register</button>
+            <form id="register" class="input-group" method="post" action="http://3.131.49.106/Register">
+                <input name="first_name" id="" type="text" class="input-field" placeholder="First Name" required>
+                <input name="last_name" id="" type="text" class="input-field" placeholder="Last Name" required>
+                <input name="email" id="" type="text" class="input-field" placeholder="Email" required>
+                <input name="phone" id="" type="text" class="input-field" placeholder="Phone">
+                <input name="birthday" id="" type="text" class="input-field" placeholder="Birthday">
+                <input name="gender" id="" type="text" class="input-field" placeholder="Gender">
+                <input name="password" id="pwd-input-register" type="password" class="input-field" placeholder="Password" required>
+                <button id="register-btn" type="submit" class="submit-btn">Register</button>
             </form>
         </div>
         
@@ -62,11 +67,18 @@
             z.style.left = "0px";
         }
 
-        function md5() {
+        function md5_login() {
             //alert("test")
-            var pwd = document.getElementById('pwd-input').value
+            var pwd = document.getElementById('pwd-input-login').value
             var hash_pwd = hex_md5(pwd)
-            document.getElementById('pwd-input').value = hash_pwd
+            document.getElementById('pwd-input-login').value = hash_pwd
+        }
+
+        function md5_register() {
+            //alert("test")
+            var pwd = document.getElementById('pwd-input-register').value
+            var hash_pwd = hex_md5(pwd)
+            document.getElementById('pwd-input-register').value = hash_pwd
         }
     </script>
 

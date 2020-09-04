@@ -4,6 +4,8 @@ var querystring     = require('querystring');
 var mongoose        = require('mongoose');
 var morgan          = require('morgan');
 
+//const UserRoute     = require('./routes/user')
+const User = require('./models/User')
 mongoose.connect('mongodb://localhost:27017/GeekDB', {useNewUrlParser: true, useUnifiedTopology: true})
 var db = mongoose.connection
 
@@ -17,6 +19,7 @@ db.once('open', () => {
 
 var app = express();
 
+//app.use('/Login', UserRoute)
 app.engine("html",require("express-art-template"));
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({
@@ -33,6 +36,39 @@ app.post("/Login",function(req,res){
         res.render("home.html", {
             username:"Hi, " + req.body.uid,
             message: "Hello"
+        })
+    }
+    else {
+        res.render("home.html", {
+            message:"Login error, try again :)"
+        })
+    }
+})
+
+app.post("/Register",function(req,res){
+    console.log('got Login request, path: ' + req.url)
+
+    if(req.body.first_name && req.body.last_name && req.body.email && req.body.password) {
+        let user = new User({
+            firstName: req.body.first_name,
+            lastName: req.body.last_name,
+            email: req.body.email,
+            phone: req.body.phone,
+            birthDate: req.body.birthday,
+            gender: req.body.gender,
+            password: req.body.password,
+        })
+        user.save()
+        .then(user => {
+            res.render("home.html", {
+                username:"Hi, " + req.body.uid,
+                message: "Hello"
+            })
+        })
+        .catch(error => {
+            res.render("home.html", {
+                message:"Login error, try again :)"
+            })
         })
     }
     else {
