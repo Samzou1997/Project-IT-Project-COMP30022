@@ -77,11 +77,9 @@ app.post("/Register",function(req,res){
 })
 
 app.get("/Login", function(req, res){
-    res.render("index.html")
-})
-
-app.get("/Register", function(req, res){
-    res.render("index.html")
+    res.render("home.html", {
+        message:"Login error, try again :)"
+    })
 })
 
 app.listen(3000,function(){
