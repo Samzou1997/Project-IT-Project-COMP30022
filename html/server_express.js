@@ -72,9 +72,7 @@ app.post("/Register",function(req,res){
         })
     }
     else {
-        res.render("home.html", {
-            message:"Login error, try again :)"
-        })
+        res.render("index.html")
     }
 })
 
