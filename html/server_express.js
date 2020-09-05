@@ -86,9 +86,10 @@ app.post("/Login",function(req,res){
                     res.cookie('id', user_id, { maxAge: alive_time })
                     res.cookie('email', user_email, { maxAge: alive_time })
                     res.cookie('token', token, { maxAge: alive_time })
-                    res.render('home.html', {
-                        username: doc.lastName
-                    })
+                    res.location('/home')
+                    // res.render('home.html', {
+                    //     username: doc.lastName
+                    // })
                 }
                 else{
                     res.render("index.html", {
