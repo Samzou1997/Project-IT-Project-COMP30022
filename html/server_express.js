@@ -47,7 +47,7 @@ app.post("/Login",function(req,res){
                 console.log("token decode error")
             }
             console.log('decode: ' + decoded.email + ' ' + decoded.id)
-            if ((decoded.email === req_user_email) && (decoded.id === req_user_id)){
+            if ((decoded.user_email === req_user_email) && (decoded.user_id === req_user_id)){
                 res.render('home.html', {
                     username: doc.lastName
                 })
@@ -71,10 +71,10 @@ app.post("/Login",function(req,res){
             }
             if (doc) {
                 if (user_password === req.body.password){
-                    let token = jwt.sign({}, secret_key, {expiresIn: alive_time})
                     let user_email = doc.email
                     let user_id = doc._id
-        
+                    let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: alive_time})
+
                     res.cookie('id', user_id, { maxAge: alive_time })
                     res.cookie('email', user_email, { maxAge: alive_time })
                     res.cookie('token', token, { maxAge: alive_time })
