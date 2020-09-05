@@ -3,6 +3,7 @@ var bodyParser      = require('body-parser');
 var querystring     = require('querystring');
 var mongoose        = require('mongoose');
 var morgan          = require('morgan');
+const jwt = require('jsonwebtoken')
 
 //const UserRoute     = require('./routes/user')
 const User = require('./models/User')
@@ -32,17 +33,32 @@ app.post("/Login",function(req,res){
     console.log('got Login request, path: ' + req.url)
     console.log('request body: { uid: ' + req.body.uid + ", pwd: " + req.body.pwd + " }")
 
-    if(req.body.uid && req.body.pwd) {
-        res.render("home.html", {
-            username:"Hi, " + req.body.uid,
-            message: "Hello, welcome back"
-        })
-    }
-    else {
-        res.render("home.html", {
-            message:"Login error, try again :)"
-        })
-    }
+    let secret_key = "secret"
+    let expires = 60*60*1
+    User.findOne({email: req.body.email}, function(err, doc){
+        let user_password = doc.password
+       if (err) {}
+       if (doc) {
+           if (user_password === req.body.password){
+                let token = jwt.sign({}, secret_key, {expiresIn: expires})
+                let user_email = doc.email
+                let user_id = doc._id
+    
+                res.cookie('id', user_id, { maxAge: expires })
+                res.cookie('email', user_email, { maxAge: expires })
+                res.cookie('token', token, { maxAge: expires })
+                res.render('home.html', {
+                    username: doc.lastName
+                })
+           }
+       }
+       else {
+           res.render("index.html", {
+               login_error_message: "No user found.",
+               register_error_message: ""
+           })
+       }
+   })
 })
 
 app.post("/Register",function(req,res){
@@ -52,7 +68,10 @@ app.post("/Register",function(req,res){
         
         User.findOne({email: req.body.email}, function(err, doc) {
             if (doc) {
-                res.render("index.html")
+                res.render("index.html", {
+                    login_error_message: "",
+                    register_error_message: "Email already used."
+                })
             }
             else {
                 let user = new User({
@@ -78,7 +97,10 @@ app.post("/Register",function(req,res){
         })
     }
     else {
-        res.render("index.html")
+        res.render("index.html", {
+            login_error_message: "",
+            register_error_message: "Please enter all information."
+        })
     }
 })
 
