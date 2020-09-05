@@ -46,11 +46,17 @@ app.post("/Login",function(req,res){
             if (error) {
                 console.log("token decode error")
             }
-            console.log('decode: ' + decoded.email + ' ' + decoded.id)
+            console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
             if ((decoded.user_email === req_user_email) && (decoded.user_id === req_user_id)){
-                res.render('home.html', {
-                    username: doc.lastName
+                User.findOne({email: decoded.user_email}, function(err, doc){
+                    if (err) {
+                        console.log("db error")
+                    }
+                    res.render('home.html', {
+                        username: doc.lastName
+                    })
                 })
+                
             }
             else {
                 res.cookie('id', '', { maxAge: 0 })
@@ -157,8 +163,13 @@ app.get("/Login", function(req, res){
                 console.log("token decode error")
             }
             if ((decoded.email === req_user_email) && (decoded.id === req_user_id)){
-                res.render('home.html', {
-                    username: doc.lastName
+                User.findOne({email: decoded.user_email}, function(err, doc){
+                    if (err) {
+                        console.log("db error")
+                    }
+                    res.render('home.html', {
+                        username: doc.lastName
+                    })
                 })
             }
             else {
