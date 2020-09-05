@@ -72,9 +72,9 @@ app.post("/Login",function(req,res){
                     let user_email = doc.email
                     let user_id = doc._id
         
-                    res.cookie('id', user_id, { maxAge: alive_time, domain: 'http://3.131.49.106/' })
-                    res.cookie('email', user_email, { maxAge: alive_time, domain: 'http://3.131.49.106/' })
-                    res.cookie('token', token, { maxAge: alive_time, domain: 'http://3.131.49.106/' })
+                    res.cookie('id', user_id, { maxAge: alive_time })
+                    res.cookie('email', user_email, { maxAge: alive_time })
+                    res.cookie('token', token, { maxAge: alive_time })
                     res.render('home.html', {
                         username: doc.lastName
                     })
