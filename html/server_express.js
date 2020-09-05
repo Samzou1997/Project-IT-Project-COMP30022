@@ -4,6 +4,7 @@ var querystring     = require('querystring');
 var mongoose        = require('mongoose');
 var morgan          = require('morgan');
 const jwt = require('jsonwebtoken')
+var cookieParser = require('cookie-parser');
 
 //const UserRoute     = require('./routes/user')
 const User = require('./models/User')
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({
     extended:true
 }));
 app.use(bodyParser.json())
+app.use(cookieParser())
 
 /* 接受请求并反馈数据渲染到界面*/
 app.post("/Login",function(req,res){
@@ -34,7 +36,7 @@ app.post("/Login",function(req,res){
     console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
 
     let secret_key = "secret"
-    let alive_time = 60*60*1
+    let alive_time = 60*60*24
     
     if (req.cookies){
         let req_token = req.cookies.token
@@ -145,7 +147,7 @@ app.get("/Login", function(req, res){
     let secret_key = "secret"
     let expires = 60*60*1
 
-    if (req.cookies.email){
+    if (req.cookies["email"] != null){
         let req_token = req.cookies.token
         let req_user_id = req.cookies.id
         let req_user_email = req.cookies.email
