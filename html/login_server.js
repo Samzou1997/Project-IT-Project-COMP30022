@@ -37,7 +37,7 @@ app.post("/Login",function(req,res){
     console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
 
     let secret_key = "secret"
-    let alive_time = 60*60*24
+    let alive_time = 60*60*24*2
     
     // if there are cookies included in the request
     if (req.cookies["email"] != null){
