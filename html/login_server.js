@@ -59,7 +59,7 @@ app.post("/Login",function(req,res){
             }
             //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
             else {
-                res.location('http://3.131.49.106/home')
+                res.redirect('http://3.131.49.106/home')
                 // User.findOne({email: decoded.user_email}, function(err, doc){
                 //     if (err) {
                 //         console.log("db error")
@@ -86,7 +86,7 @@ app.post("/Login",function(req,res){
                     res.cookie('id', user_id, { maxAge: alive_time })
                     res.cookie('email', user_email, { maxAge: alive_time })
                     res.cookie('token', token, { maxAge: alive_time })
-                    res.location('http://3.131.49.106/home')
+                    res.redirect('http://3.131.49.106/home')
                     // res.render('home.html', {
                     //     username: doc.lastName
                     // })
