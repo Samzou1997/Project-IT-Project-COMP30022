@@ -34,7 +34,7 @@ app.post("/Login",function(req,res){
     console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
 
     let secret_key = "secret"
-    let expires = 60*60*1
+    let alive_time = 60*60*1
     
     if (req.cookies){
         let req_token = req.cookies.token
@@ -68,13 +68,13 @@ app.post("/Login",function(req,res){
             }
             if (doc) {
                 if (user_password === req.body.password){
-                    let token = jwt.sign({}, secret_key, {expiresIn: expires})
+                    let token = jwt.sign({}, secret_key, {expiresIn: alive_time})
                     let user_email = doc.email
                     let user_id = doc._id
         
-                    res.cookie('id', user_id, { maxAge: expires })
-                    res.cookie('email', user_email, { maxAge: expires })
-                    res.cookie('token', token, { maxAge: expires })
+                    res.cookie('id', user_id, { maxAge: alive_time, expires: 7})
+                    res.cookie('email', user_email, { maxAge: alive_time, expires: 7})
+                    res.cookie('token', token, { maxAge: alive_time, expires: 7})
                     res.render('home.html', {
                         username: doc.lastName
                     })
