@@ -37,7 +37,8 @@ app.post("/Login",function(req,res){
     console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
 
     let secret_key = "secret"
-    let alive_time = 3600000 //ms
+    let hour = 3600000
+    let alive_time = hour * 24 //a day
     
     // if there are cookies included in the request
     if (req.cookies["email"] != null){
@@ -81,7 +82,7 @@ app.post("/Login",function(req,res){
                 if (user_password === req.body.password){
                     let user_email = doc.email
                     let user_id = doc._id
-                    let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: 300})
+                    let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: 60})
 
                     res.cookie('id', user_id, { maxAge: alive_time })
                     res.cookie('email', user_email, { maxAge: alive_time })
