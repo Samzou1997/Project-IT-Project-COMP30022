@@ -46,6 +46,7 @@ app.post("/Login",function(req,res){
             if (error) {
                 console.log("token decode error")
             }
+            console.log('decode: ' + decoded.email + ' ' + decoded.id)
             if ((decoded.email === req_user_email) && (decoded.id === req_user_id)){
                 res.render('home.html', {
                     username: doc.lastName
