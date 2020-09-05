@@ -53,6 +53,12 @@ app.post("/Login",function(req,res){
                     username: doc.lastName
                 })
             }
+            else{
+                res.render("index.html", {
+                    login_error_message: "Incorrect password.",
+                    register_error_message: ""
+                })
+            }
         }
         else {
             res.render("index.html", {
