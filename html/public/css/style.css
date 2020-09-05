@@ -113,10 +113,6 @@
 }
 
 /* Start home.html header area */
-.main_menu .header_area{
-    background: rgba(0, 0, 0, 0.4)
-}
-
 .header_area .main_menu .navbar-brand{
     padding: 0 2rem 0 5rem;
 }
@@ -153,7 +149,7 @@
 .site-main .site-banner{
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0,0,0,0.4)),url(/html/public/img/background.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0,0,0,0.4)),url(/public/img/background.jpg);
     background-position: center;
     background-size: cover;
     position: absolute;
