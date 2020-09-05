@@ -45,61 +45,30 @@ app.post("/Login",function(req,res){
         let req_user_id = req.cookies['id']
         let req_user_email = req.cookies['email']
 
-        if (tokenVerifier.verifyToken(req_token, secret_key, req_user_email, req_user_id) === true){
-            User.findOne({email: req_user_email}, function(err, doc){
-                if (err) {
-                    console.log("db error")
-                }
-                res.render('home.html', {
-                    username: doc.lastName
+        //verify token
+        jwt.verify(req_token, secret_key, function(error, decoded){
+            if (error) {
+                console.log("token decode error")
+                res.cookie('id', '', { maxAge: 0 })
+                res.cookie('email', '', { maxAge: 0 })
+                res.cookie('token', '', { maxAge: 0 })
+                res.render('index.html', {
+                    login_error_message: "Login expired.",
+                    register_error_message: ""
                 })
-            })
-        }
-        else {
-            res.cookie('id', '', { maxAge: 0 })
-            res.cookie('email', '', { maxAge: 0 })
-            res.cookie('token', '', { maxAge: 0 })
-            res.render('index.html', {
-                login_error_message: "Login expired.",
-                register_error_message: ""
-            })
-        }
-        // verify token
-        // jwt.verify(req_token, secret_key, function(error, decoded){
-        //     if (error) {
-        //         console.log("token decode error")
-        //         res.cookie('id', '', { maxAge: 0 })
-        //         res.cookie('email', '', { maxAge: 0 })
-        //         res.cookie('token', '', { maxAge: 0 })
-        //         res.render('index.html', {
-        //             login_error_message: "Login expired.",
-        //             register_error_message: ""
-        //         })
-        //     }
-        //     //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
-        //     else {
-        //         if ((decoded.user_email === req_user_email) && (decoded.user_id === req_user_id)){
-        //             User.findOne({email: decoded.user_email}, function(err, doc){
-        //                 if (err) {
-        //                     console.log("db error")
-        //                 }
-        //                 res.render('home.html', {
-        //                     username: doc.lastName
-        //                 })
-        //             })
-                    
-        //         }
-        //         else {
-        //             res.cookie('id', '', { maxAge: 0 })
-        //             res.cookie('email', '', { maxAge: 0 })
-        //             res.cookie('token', '', { maxAge: 0 })
-        //             res.render('index.html', {
-        //                 login_error_message: "Login expired.",
-        //                 register_error_message: ""
-        //             })
-        //         }
-        //     }  
-        // })
+            }
+            //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
+            else {
+                User.findOne({email: decoded.user_email}, function(err, doc){
+                    if (err) {
+                        console.log("db error")
+                    }
+                    res.render('home.html', {
+                        username: doc.lastName
+                    })
+                })
+            }  
+        })
     }
     else {
         User.findOne({email: req.body.email}, function(err, doc){
@@ -162,26 +131,14 @@ app.get("/Login", function(req, res){
             }
             //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
             else {
-                if ((decoded.user_email === req_user_email) && (decoded.user_id === req_user_id)){
-                    User.findOne({email: decoded.user_email}, function(err, doc){
-                        if (err) {
-                            console.log("db error")
-                        }
-                        res.render('home.html', {
-                            username: doc.lastName
-                        })
+                User.findOne({email: decoded.user_email}, function(err, doc){
+                    if (err) {
+                        console.log("db error")
+                    }
+                    res.render('home.html', {
+                        username: doc.lastName
                     })
-                    
-                }
-                else {
-                    res.cookie('id', '', { maxAge: 0 })
-                    res.cookie('email', '', { maxAge: 0 })
-                    res.cookie('token', '', { maxAge: 0 })
-                    res.render('index.html', {
-                        login_error_message: "Login expired.",
-                        register_error_message: ""
-                    })
-                }
+                })
             }  
         })
     }
