@@ -35,38 +35,65 @@ app.post("/Login",function(req,res){
 
     let secret_key = "secret"
     let expires = 60*60*1
-    User.findOne({email: req.body.email}, function(err, doc){
-        let user_password = doc.password
-        if (err) {
-            console.log("db error")
-        }
-        if (doc) {
-            if (user_password === req.body.password){
-                let token = jwt.sign({}, secret_key, {expiresIn: expires})
-                let user_email = doc.email
-                let user_id = doc._id
-    
-                res.cookie('id', user_id, { maxAge: expires })
-                res.cookie('email', user_email, { maxAge: expires })
-                res.cookie('token', token, { maxAge: expires })
+    let req_token = req.cookies.token
+    let req_user_id = req.cookies.id
+    let req_user_email = req.cookies.email
+
+    if (req_token){
+        jwt.verify(req_token, secret_key, function(error, decoded){
+            if (error) {
+                console.log("token decode error")
+            }
+            if (decoded.email === req_user_email && decoded.id === req_user_id){
                 res.render('home.html', {
                     username: doc.lastName
                 })
             }
-            else{
-                res.render("index.html", {
-                    login_error_message: "Incorrect password.",
+            else {
+                res.cookie('id', '', { maxAge: 0 })
+                res.cookie('email', '', { maxAge: 0 })
+                res.cookie('token', '', { maxAge: 0 })
+                res.render('index.html', {
+                    login_error_message: "Login expired.",
                     register_error_message: ""
                 })
             }
-        }
-        else {
-            res.render("index.html", {
-                login_error_message: "No user found.",
-                register_error_message: ""
-            })
-        }
-    })
+        })
+    }
+    else {
+        User.findOne({email: req.body.email}, function(err, doc){
+            let user_password = doc.password
+            if (err) {
+                console.log("db error")
+            }
+            if (doc) {
+                if (user_password === req.body.password){
+                    let token = jwt.sign({}, secret_key, {expiresIn: expires})
+                    let user_email = doc.email
+                    let user_id = doc._id
+        
+                    res.cookie('id', user_id, { maxAge: expires })
+                    res.cookie('email', user_email, { maxAge: expires })
+                    res.cookie('token', token, { maxAge: expires })
+                    res.render('home.html', {
+                        username: doc.lastName
+                    })
+                }
+                else{
+                    res.render("index.html", {
+                        login_error_message: "Incorrect password.",
+                        register_error_message: ""
+                    })
+                }
+            }
+            else {
+                res.render("index.html", {
+                    login_error_message: "No user found.",
+                    register_error_message: ""
+                })
+            }
+        })
+    }
 })
 
 app.post("/Register",function(req,res){
