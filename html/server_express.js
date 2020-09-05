@@ -72,9 +72,9 @@ app.post("/Login",function(req,res){
                     let user_email = doc.email
                     let user_id = doc._id
         
-                    res.cookie('id', user_id, { maxAge: alive_time, expires: 7})
-                    res.cookie('email', user_email, { maxAge: alive_time, expires: 7})
-                    res.cookie('token', token, { maxAge: alive_time, expires: 7})
+                    res.cookie('id', user_id, {expires: 7})
+                    res.cookie('email', user_email, {expires: 7})
+                    res.cookie('token', token, {expires: 7})
                     res.render('home.html', {
                         username: doc.lastName
                     })
