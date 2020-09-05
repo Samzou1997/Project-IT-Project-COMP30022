@@ -39,9 +39,9 @@ app.post("/Login",function(req,res){
     let alive_time = 60*60*24
     
     if (req.cookies){
-        let req_token = req.cookies.token
-        let req_user_id = req.cookies.id
-        let req_user_email = req.cookies.email
+        let req_token = req.cookies['token']
+        let req_user_id = req.cookies['id']
+        let req_user_email = req.cookies['email']
         jwt.verify(req_token, secret_key, function(error, decoded){
             if (error) {
                 console.log("token decode error")
@@ -148,9 +148,9 @@ app.get("/Login", function(req, res){
     let expires = 60*60*1
 
     if (req.cookies["email"] != null){
-        let req_token = req.cookies.token
-        let req_user_id = req.cookies.id
-        let req_user_email = req.cookies.email
+        let req_token = req.cookies['token']
+        let req_user_id = req.cookies['id']
+        let req_user_email = req.cookies['email']
         jwt.verify(req_token, secret_key, function(error, decoded){
             if (error) {
                 console.log("token decode error")
