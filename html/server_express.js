@@ -31,15 +31,17 @@ app.use(bodyParser.json())
 /* 接受请求并反馈数据渲染到界面*/
 app.post("/Login",function(req,res){
     console.log('got Login request, path: ' + req.url)
-    console.log('request body: { uid: ' + req.body.uid + ", pwd: " + req.body.pwd + " }")
+    console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
 
     let secret_key = "secret"
     let expires = 60*60*1
     User.findOne({email: req.body.email}, function(err, doc){
         let user_password = doc.password
-       if (err) {}
-       if (doc) {
-           if (user_password === req.body.password){
+        if (err) {
+            console.log("db error")
+        }
+        if (doc) {
+            if (user_password === req.body.password){
                 let token = jwt.sign({}, secret_key, {expiresIn: expires})
                 let user_email = doc.email
                 let user_id = doc._id
@@ -50,15 +52,15 @@ app.post("/Login",function(req,res){
                 res.render('home.html', {
                     username: doc.lastName
                 })
-           }
-       }
-       else {
-           res.render("index.html", {
-               login_error_message: "No user found.",
-               register_error_message: ""
-           })
-       }
-   })
+            }
+        }
+        else {
+            res.render("index.html", {
+                login_error_message: "No user found.",
+                register_error_message: ""
+            })
+        }
+    })
 })
 
 app.post("/Register",function(req,res){
