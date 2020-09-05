@@ -38,27 +38,16 @@ app.post("/Login",function(req,res){
     let secret_key = "secret"
     let alive_time = 60*60*24
     
+    // if there are cookies included in the request
     if (req.cookies["email"] != null){
         let req_token = req.cookies['token']
         let req_user_id = req.cookies['id']
         let req_user_email = req.cookies['email']
+
+        // verify token
         jwt.verify(req_token, secret_key, function(error, decoded){
             if (error) {
                 console.log("token decode error")
-            }
-            console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
-            if ((decoded.user_email === req_user_email) && (decoded.user_id === req_user_id)){
-                User.findOne({email: decoded.user_email}, function(err, doc){
-                    if (err) {
-                        console.log("db error")
-                    }
-                    res.render('home.html', {
-                        username: doc.lastName
-                    })
-                })
-                
-            }
-            else {
                 res.cookie('id', '', { maxAge: 0 })
                 res.cookie('email', '', { maxAge: 0 })
                 res.cookie('token', '', { maxAge: 0 })
@@ -67,6 +56,29 @@ app.post("/Login",function(req,res){
                     register_error_message: ""
                 })
             }
+            //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
+            else {
+                if ((decoded.user_email === req_user_email) && (decoded.user_id === req_user_id)){
+                    User.findOne({email: decoded.user_email}, function(err, doc){
+                        if (err) {
+                            console.log("db error")
+                        }
+                        res.render('home.html', {
+                            username: doc.lastName
+                        })
+                    })
+                    
+                }
+                else {
+                    res.cookie('id', '', { maxAge: 0 })
+                    res.cookie('email', '', { maxAge: 0 })
+                    res.cookie('token', '', { maxAge: 0 })
+                    res.render('index.html', {
+                        login_error_message: "Login expired.",
+                        register_error_message: ""
+                    })
+                }
+            }  
         })
     }
     else {
@@ -158,21 +170,11 @@ app.get("/Login", function(req, res){
         let req_token = req.cookies['token']
         let req_user_id = req.cookies['id']
         let req_user_email = req.cookies['email']
+
+        // verify token
         jwt.verify(req_token, secret_key, function(error, decoded){
             if (error) {
                 console.log("token decode error")
-            }
-            if ((decoded.user_email === req_user_email) && (decoded.user_id === req_user_id)){
-                User.findOne({email: decoded.user_email}, function(err, doc){
-                    if (err) {
-                        console.log("db error")
-                    }
-                    res.render('home.html', {
-                        username: doc.lastName
-                    })
-                })
-            }
-            else {
                 res.cookie('id', '', { maxAge: 0 })
                 res.cookie('email', '', { maxAge: 0 })
                 res.cookie('token', '', { maxAge: 0 })
@@ -181,6 +183,29 @@ app.get("/Login", function(req, res){
                     register_error_message: ""
                 })
             }
+            //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
+            else {
+                if ((decoded.user_email === req_user_email) && (decoded.user_id === req_user_id)){
+                    User.findOne({email: decoded.user_email}, function(err, doc){
+                        if (err) {
+                            console.log("db error")
+                        }
+                        res.render('home.html', {
+                            username: doc.lastName
+                        })
+                    })
+                    
+                }
+                else {
+                    res.cookie('id', '', { maxAge: 0 })
+                    res.cookie('email', '', { maxAge: 0 })
+                    res.cookie('token', '', { maxAge: 0 })
+                    res.render('index.html', {
+                        login_error_message: "Login expired.",
+                        register_error_message: ""
+                    })
+                }
+            }  
         })
     }
     else{
