@@ -80,7 +80,7 @@ app.post("/Login",function(req,res){
                 if (user_password === req.body.password){
                     let user_email = doc.email
                     let user_id = doc._id
-                    let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: 20})
+                    let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: 120})
 
                     res.cookie('id', user_id, { maxAge: alive_time })
                     res.cookie('email', user_email, { maxAge: alive_time })

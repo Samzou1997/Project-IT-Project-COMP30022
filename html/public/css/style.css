@@ -6,7 +6,7 @@
 .hero{
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0,0,0,0.4)),url(/html/public/img/banner.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0,0,0,0.4)),url(/public/img/banner.jpg);
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -146,7 +146,7 @@
 /* Start banner area */
 
 .site-main .site-banner{
-    background: url(/html/public/img/mainarea.jpeg)no-repeat 0% 50%;
+    background: url(/public/img/mainarea.jpeg)no-repeat 0% 50%;
 }
 
 .site-main .site-banner .site-title h3 .site-buttons{
