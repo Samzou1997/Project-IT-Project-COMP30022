@@ -38,7 +38,7 @@ app.post("/Login",function(req,res){
     let secret_key = "secret"
     let alive_time = 60*60*24
     
-    if (req.cookies){
+    if (req.cookies["email"] != null){
         let req_token = req.cookies['token']
         let req_user_id = req.cookies['id']
         let req_user_email = req.cookies['email']
