@@ -59,14 +59,15 @@ app.post("/Login",function(req,res){
             }
             //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
             else {
-                User.findOne({email: decoded.user_email}, function(err, doc){
-                    if (err) {
-                        console.log("db error")
-                    }
-                    res.render('home.html', {
-                        username: doc.lastName
-                    })
-                })
+                res.redirect('http://3.131.49.106/home')
+                // User.findOne({email: decoded.user_email}, function(err, doc){
+                //     if (err) {
+                //         console.log("db error")
+                //     }
+                //     res.render('home.html', {
+                //         username: doc.lastName
+                //     })
+                // })
             }  
         })
     }
@@ -85,9 +86,10 @@ app.post("/Login",function(req,res){
                     res.cookie('id', user_id, { maxAge: alive_time })
                     res.cookie('email', user_email, { maxAge: alive_time })
                     res.cookie('token', token, { maxAge: alive_time })
-                    res.render('home.html', {
-                        username: doc.lastName
-                    })
+                    res.redirect('http://3.131.49.106/home')
+                    // res.render('home.html', {
+                    //     username: doc.lastName
+                    // })
                 }
                 else{
                     res.render("index.html", {
@@ -149,6 +151,6 @@ app.get("/Login", function(req, res){
     }
 })
 
-app.listen(3000,function(){
+app.listen(3002,function(){
     console.log("running....");
 })
