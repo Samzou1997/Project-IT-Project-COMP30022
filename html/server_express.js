@@ -145,7 +145,7 @@ app.get("/Login", function(req, res){
     let secret_key = "secret"
     let expires = 60*60*1
 
-    if (req.cookies.email){
+    if (req.cookies){
         let req_token = req.cookies.token
         let req_user_id = req.cookies.id
         let req_user_email = req.cookies.email
