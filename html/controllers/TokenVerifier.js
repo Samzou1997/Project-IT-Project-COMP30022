@@ -2,15 +2,22 @@ const jwt = require('jsonwebtoken')
 
 
 exports.verifyToken = function(token, key, email, id){
-  let decoded = jwt.verify(token, key)
-  if ((decoded.user_email === email) && (decoded.user_id === id)){
-    console.log('token vaild')
-    return true
+  let decoded = jwt.verify(token, key) || {}
+  if (decoded != {}) {
+    if ((decoded.user_email === email) && (decoded.user_id === id)){
+      console.log('token vaild')
+      return true
+    }
+    else {
+      console.log('token invaild')
+      return false
+    }
   }
   else {
     console.log('token invaild')
     return false
   }
+  
   
   // jwt.verify(token, key, function(error, decoded){
   //   if (error) {
