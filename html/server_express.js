@@ -79,7 +79,7 @@ app.post("/Login",function(req,res){
                 if (user_password === req.body.password){
                     let user_email = doc.email
                     let user_id = doc._id
-                    let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: alive_time})
+                    let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: 20})
 
                     res.cookie('id', user_id, { maxAge: alive_time })
                     res.cookie('email', user_email, { maxAge: alive_time })
@@ -162,7 +162,7 @@ app.get("/Login", function(req, res){
             if (error) {
                 console.log("token decode error")
             }
-            if ((decoded.email === req_user_email) && (decoded.id === req_user_id)){
+            if ((decoded.user_email === req_user_email) && (decoded.user_id === req_user_id)){
                 User.findOne({email: decoded.user_email}, function(err, doc){
                     if (err) {
                         console.log("db error")
