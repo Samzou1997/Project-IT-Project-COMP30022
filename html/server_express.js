@@ -35,11 +35,12 @@ app.post("/Login",function(req,res){
 
     let secret_key = "secret"
     let expires = 60*60*1
-    let req_user_id = req.cookies.id
-    let req_user_email = req.cookies.email
+    
 
     if (req.cookies){
         let req_token = req.cookies.token
+        let req_user_id = req.cookies.id
+        let req_user_email = req.cookies.email
         jwt.verify(req_token, secret_key, function(error, decoded){
             if (error) {
                 console.log("token decode error")
