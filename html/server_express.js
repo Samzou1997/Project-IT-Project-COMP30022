@@ -46,7 +46,7 @@ app.post("/Login",function(req,res){
             if (error) {
                 console.log("token decode error")
             }
-            if (decoded.email === req_user_email && decoded.id === req_user_id){
+            if ((decoded.email === req_user_email) && (decoded.id === req_user_id)){
                 res.render('home.html', {
                     username: doc.lastName
                 })
@@ -155,7 +155,7 @@ app.get("/Login", function(req, res){
             if (error) {
                 console.log("token decode error")
             }
-            if (decoded.email === req_user_email && decoded.id === req_user_id){
+            if ((decoded.email === req_user_email) && (decoded.id === req_user_id)){
                 res.render('home.html', {
                     username: doc.lastName
                 })
