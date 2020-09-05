@@ -141,9 +141,40 @@ app.post("/Register",function(req,res){
 })
 
 app.get("/Login", function(req, res){
-    res.render("home.html", {
-        message:"Login error, try again :)"
-    })
+    console.log('got Login request, path: ' + req.url)
+    console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
+    let secret_key = "secret"
+    let expires = 60*60*1
+
+    if (req.cookies){
+        let req_token = req.cookies.token
+        let req_user_id = req.cookies.id
+        let req_user_email = req.cookies.email
+        jwt.verify(req_token, secret_key, function(error, decoded){
+            if (error) {
+                console.log("token decode error")
+            }
+            if (decoded.email === req_user_email && decoded.id === req_user_id){
+                res.render('home.html', {
+                    username: doc.lastName
+                })
+            }
+            else {
+                res.cookie('id', '', { maxAge: 0 })
+                res.cookie('email', '', { maxAge: 0 })
+                res.cookie('token', '', { maxAge: 0 })
+                res.render('index.html', {
+                    login_error_message: "Login expired.",
+                    register_error_message: ""
+                })
+            }
+        })
+    }
+    else{
+        res.render("home.html", {
+            message:"Login error, try again :)"
+        })
+    }
 })
 
 app.listen(3000,function(){
