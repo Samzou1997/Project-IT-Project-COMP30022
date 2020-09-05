@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken')
 
 
-exports.verifyToken = function(token, email, id){
-  jwt.verify(token, secret_key, function(error, decoded){
+exports.verifyToken = function(token, key, email, id){
+  jwt.verify(token, key, function(error, decoded){
     if (error) {
         return false
     }
