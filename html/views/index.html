@@ -24,9 +24,10 @@
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
             <form id="login" class="input-group" method="post" action="http://3.131.49.106/Login">
-                <input name="uid" id="uid-input-login" type="text" class="input-field" placeholder="User ID" required>
-                <input name="pwd" id="pwd-input-login" type="password" class="input-field" placeholder="Enter Password" required>
+                <input name="email" id="uid-input-login" type="text" class="input-field" placeholder="Enter Email" required>
+                <input name="password" id="pwd-input-login" type="password" class="input-field" placeholder="Enter Password" required>
                 <button id="login-btn" type="submit" class="submit-btn" onclick="md5_login()">Log in</button>
+                <p class="error_txt">{{login_error_message}}</p>
             </form>
             <form id="register" class="input-group" method="post" action="http://3.131.49.106/Register">
                 <input name="email" id="" type="text" class="input-field" placeholder="Email" required>
@@ -34,7 +35,7 @@
                 <input name="last_name" id="" type="text" class="input-field" placeholder="Last Name" required>
                 <input name="password" id="pwd-input-register" type="password" class="input-field" placeholder="Password" required>
                 <button id="register-btn" type="submit" class="submit-btn" onclick="md5_register()">Register</button>
-                <p class="error_txt">Email already used.</p>
+                <p class="error_txt">{{register_error_message}}</p>
             </form>
         </div>
         

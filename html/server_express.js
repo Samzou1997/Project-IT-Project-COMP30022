@@ -3,6 +3,7 @@ var bodyParser      = require('body-parser');
 var querystring     = require('querystring');
 var mongoose        = require('mongoose');
 var morgan          = require('morgan');
+const jwt = require('jsonwebtoken')
 
 //const UserRoute     = require('./routes/user')
 const User = require('./models/User')
@@ -30,17 +31,68 @@ app.use(bodyParser.json())
 /* 接受请求并反馈数据渲染到界面*/
 app.post("/Login",function(req,res){
     console.log('got Login request, path: ' + req.url)
-    console.log('request body: { uid: ' + req.body.uid + ", pwd: " + req.body.pwd + " }")
+    console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
 
-    if(req.body.uid && req.body.pwd) {
-        res.render("home.html", {
-            username:"Hi, " + req.body.uid,
-            message: "Hello, welcome back"
+    let secret_key = "secret"
+    let expires = 60*60*1
+    
+
+    if (req.cookies){
+        let req_token = req.cookies.token
+        let req_user_id = req.cookies.id
+        let req_user_email = req.cookies.email
+        jwt.verify(req_token, secret_key, function(error, decoded){
+            if (error) {
+                console.log("token decode error")
+            }
+            if (decoded.email === req_user_email && decoded.id === req_user_id){
+                res.render('home.html', {
+                    username: doc.lastName
+                })
+            }
+            else {
+                res.cookie('id', '', { maxAge: 0 })
+                res.cookie('email', '', { maxAge: 0 })
+                res.cookie('token', '', { maxAge: 0 })
+                res.render('index.html', {
+                    login_error_message: "Login expired.",
+                    register_error_message: ""
+                })
+            }
         })
     }
     else {
-        res.render("home.html", {
-            message:"Login error, try again :)"
+        User.findOne({email: req.body.email}, function(err, doc){
+            let user_password = doc.password
+            if (err) {
+                console.log("db error")
+            }
+            if (doc) {
+                if (user_password === req.body.password){
+                    let token = jwt.sign({}, secret_key, {expiresIn: expires})
+                    let user_email = doc.email
+                    let user_id = doc._id
+        
+                    res.cookie('id', user_id, { maxAge: expires })
+                    res.cookie('email', user_email, { maxAge: expires })
+                    res.cookie('token', token, { maxAge: expires })
+                    res.render('home.html', {
+                        username: doc.lastName
+                    })
+                }
+                else{
+                    res.render("index.html", {
+                        login_error_message: "Incorrect password.",
+                        register_error_message: ""
+                    })
+                }
+            }
+            else {
+                res.render("index.html", {
+                    login_error_message: "No user found.",
+                    register_error_message: ""
+                })
+            }
         })
     }
 })
@@ -52,7 +104,10 @@ app.post("/Register",function(req,res){
         
         User.findOne({email: req.body.email}, function(err, doc) {
             if (doc) {
-                res.render("index.html")
+                res.render("index.html", {
+                    login_error_message: "",
+                    register_error_message: "Email already used."
+                })
             }
             else {
                 let user = new User({
@@ -78,7 +133,10 @@ app.post("/Register",function(req,res){
         })
     }
     else {
-        res.render("index.html")
+        res.render("index.html", {
+            login_error_message: "",
+            register_error_message: "Please enter all information."
+        })
     }
 })
 
