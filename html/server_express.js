@@ -46,7 +46,7 @@ app.post("/Login",function(req,res){
         let req_user_email = req.cookies['email']
 
         if (tokenVerifier.verifyToken(req_token, secret_key, req_user_email, req_user_id) === true){
-            User.findOne({email: decoded.user_email}, function(err, doc){
+            User.findOne({email: req_user_email}, function(err, doc){
                 if (err) {
                     console.log("db error")
                 }
