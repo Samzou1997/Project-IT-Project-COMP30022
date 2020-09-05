@@ -5,6 +5,7 @@ var mongoose        = require('mongoose');
 var morgan          = require('morgan');
 const jwt = require('jsonwebtoken')
 var cookieParser = require('cookie-parser');
+var tokenVerifier = require('./controllers/TokenVerifier')
 
 //const UserRoute     = require('./routes/user')
 const User = require('./models/User')
@@ -44,42 +45,61 @@ app.post("/Login",function(req,res){
         let req_user_id = req.cookies['id']
         let req_user_email = req.cookies['email']
 
-        // verify token
-        jwt.verify(req_token, secret_key, function(error, decoded){
-            if (error) {
-                console.log("token decode error")
-                res.cookie('id', '', { maxAge: 0 })
-                res.cookie('email', '', { maxAge: 0 })
-                res.cookie('token', '', { maxAge: 0 })
-                res.render('index.html', {
-                    login_error_message: "Login expired.",
-                    register_error_message: ""
+        if (tokenVerifier.verifyToken(req_token, req_user_email, req_user_id)){
+            User.findOne({email: decoded.user_email}, function(err, doc){
+                if (err) {
+                    console.log("db error")
+                }
+                res.render('home.html', {
+                    username: doc.lastName
                 })
-            }
-            //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
-            else {
-                if ((decoded.user_email === req_user_email) && (decoded.user_id === req_user_id)){
-                    User.findOne({email: decoded.user_email}, function(err, doc){
-                        if (err) {
-                            console.log("db error")
-                        }
-                        res.render('home.html', {
-                            username: doc.lastName
-                        })
-                    })
+            })
+        }
+        else {
+            res.cookie('id', '', { maxAge: 0 })
+            res.cookie('email', '', { maxAge: 0 })
+            res.cookie('token', '', { maxAge: 0 })
+            res.render('index.html', {
+                login_error_message: "Login expired.",
+                register_error_message: ""
+            })
+        }
+        // verify token
+        // jwt.verify(req_token, secret_key, function(error, decoded){
+        //     if (error) {
+        //         console.log("token decode error")
+        //         res.cookie('id', '', { maxAge: 0 })
+        //         res.cookie('email', '', { maxAge: 0 })
+        //         res.cookie('token', '', { maxAge: 0 })
+        //         res.render('index.html', {
+        //             login_error_message: "Login expired.",
+        //             register_error_message: ""
+        //         })
+        //     }
+        //     //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
+        //     else {
+        //         if ((decoded.user_email === req_user_email) && (decoded.user_id === req_user_id)){
+        //             User.findOne({email: decoded.user_email}, function(err, doc){
+        //                 if (err) {
+        //                     console.log("db error")
+        //                 }
+        //                 res.render('home.html', {
+        //                     username: doc.lastName
+        //                 })
+        //             })
                     
-                }
-                else {
-                    res.cookie('id', '', { maxAge: 0 })
-                    res.cookie('email', '', { maxAge: 0 })
-                    res.cookie('token', '', { maxAge: 0 })
-                    res.render('index.html', {
-                        login_error_message: "Login expired.",
-                        register_error_message: ""
-                    })
-                }
-            }  
-        })
+        //         }
+        //         else {
+        //             res.cookie('id', '', { maxAge: 0 })
+        //             res.cookie('email', '', { maxAge: 0 })
+        //             res.cookie('token', '', { maxAge: 0 })
+        //             res.render('index.html', {
+        //                 login_error_message: "Login expired.",
+        //                 register_error_message: ""
+        //             })
+        //         }
+        //     }  
+        // })
     }
     else {
         User.findOne({email: req.body.email}, function(err, doc){
@@ -91,7 +111,7 @@ app.post("/Login",function(req,res){
                 if (user_password === req.body.password){
                     let user_email = doc.email
                     let user_id = doc._id
-                    let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: 120})
+                    let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: 20})
 
                     res.cookie('id', user_id, { maxAge: alive_time })
                     res.cookie('email', user_email, { maxAge: alive_time })
@@ -113,49 +133,6 @@ app.post("/Login",function(req,res){
                     register_error_message: ""
                 })
             }
-        })
-    }
-})
-
-app.post("/Register",function(req,res){
-    console.log('got Login request, path: ' + req.url)
-
-    if(req.body.first_name && req.body.last_name && req.body.email && req.body.password) {
-        
-        User.findOne({email: req.body.email}, function(err, doc) {
-            if (doc) {
-                res.render("index.html", {
-                    login_error_message: "",
-                    register_error_message: "Email already used."
-                })
-            }
-            else {
-                let user = new User({
-                    firstName: req.body.first_name,
-                    lastName: req.body.last_name,
-                    email: req.body.email,
-                    password: req.body.password,
-                })
-                user.save()
-                .then(user => {
-                    res.render("home.html", {
-                        username:"Hi, " + req.body.last_name,
-                        message: "Welcome To EPortfolio, start to edit your home page."
-                    })
-                })
-                .catch(error => {
-                    console.log(error)
-                    res.render("home.html", {
-                        message:"Login error, try again :)"
-                    })
-                })
-            }
-        })
-    }
-    else {
-        res.render("index.html", {
-            login_error_message: "",
-            register_error_message: "Please enter all information."
         })
     }
 })
