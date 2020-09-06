@@ -16,15 +16,15 @@
 <body>
 
 
-  <!-- ==================================Start Header Area=========================================-->
-    <header class="header_area">
-        <div class="main_menu">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- ==================================Start Header Area=========================================-->
+<header class="header_area">
+  <div class="main_menu">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">{{username}}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item active">
                   <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -39,40 +39,30 @@
                   <a class="nav-link" href="#">Volunteer</a>
                 </li>
               </ul>
-            </div>
-          </nav>
-        </div>
-    </header>
-   <!-- ==================================End Header Area=========================================-->
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- ==================================End Header Area=========================================-->
   
 
-  <!-- ==================================Start Main Area=========================================-->
-
-   <main class="site-main">
-
-
-
-
-  <!-- ==================================Start Banner Area=========================================-->
-   <section class="site-banner">
-     <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-12 site-title">
-          <h3 class="title-text">Hey</h3>
-          <h1 class="title-text text-uppercase">I am {{username}}</h1>
-          <h2 class="title-text">{{message}}</h2>
-        </div>
-      </div>
-     </div>
-   </section>
-  <!-- ==================================End Banner Area=========================================-->
+<!-- ==================================Start Main Area=========================================-->
+<div class="main-area">
+  <div class="profile-box">
+    <!-- Write Name Here -->
+    <h1>Hi, {{username}}</h1>
+    <!-- Age and gender -->
+    <h5>Age: xx, Gender: xx</h5>
+    <!-- Welcome statement -->
+    <p>
+      {{message}}
+    </p>
+  </div>
+</div>
 
 
 
-
-
-  </main>
-  <!-- ==================================End Main Area=========================================-->
+<!-- ==================================End Main Area=========================================-->
     <script>
       
     </script>
