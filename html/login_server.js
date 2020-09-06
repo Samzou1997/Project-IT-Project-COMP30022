@@ -9,6 +9,10 @@ var tokenVerifier   = require('./controllers/TokenVerifier')
 //const UserRoute     = require('./routes/user')
 const User          = require('./models/User')
 
+const secret_key = "secret"
+const hour = 3600000
+const alive_time = hour * 24 //a day
+
 mongoose.connect('mongodb://testacc:qpzm123456@localhost:27017/GeekDB?authSource=admin', {useNewUrlParser: true, useUnifiedTopology: true})
 var db = mongoose.connection
 
@@ -35,10 +39,6 @@ app.use(cookieParser())
 app.post("/Login",function(req,res){
     console.log('got Login request, path: ' + req.url)
     console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
-
-    let secret_key = "secret"
-    let hour = 3600000
-    let alive_time = hour * 24 //a day
     
     // if there are cookies included in the request
     if (req.cookies["email"] != null){
@@ -136,8 +136,6 @@ app.post("/Login",function(req,res){
 app.get("/Login", function(req, res){
     console.log('got Login request, path: ' + req.url)
     console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
-    let secret_key = "secret"
-    let expires = 60*60*1
 
     if (req.cookies["email"] != null){
         let req_token = req.cookies['token']
@@ -158,20 +156,22 @@ app.get("/Login", function(req, res){
             }
             //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
             else {
-                User.findOne({email: decoded.user_email}, function(err, doc){
-                    if (err) {
-                        console.log("db error")
-                    }
-                    res.render('home.html', {
-                        username: doc.lastName
-                    })
-                })
+                res.redirect('http://3.131.49.106/home')
+                // User.findOne({email: decoded.user_email}, function(err, doc){
+                //     if (err) {
+                //         console.log("db error")
+                //     }
+                //     res.render('home.html', {
+                //         username: doc.lastName
+                //     })
+                // })
             }  
         })
     }
     else{
-        res.render("home.html", {
-            message:"Login error, try again :)"
+        res.render("index.html", {
+            login_error_message: "Login expired.",
+            register_error_message: ""
         })
     }
 })
