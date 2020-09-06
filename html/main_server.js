@@ -56,15 +56,14 @@ app.get("/home", function (req, res) {
           register_error_message: ""
         })
       }
-      //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
       else {
-        //res.location('/home')
         User.findOne({ email: decoded.user_email }, function (err, doc) {
           if (err) {
             console.log("db error")
           }
           res.render('home.html', {
-            username: doc.lastName
+            username: "Hi, " + doc.lastName,
+            message: "Welcome to E-portfolio."
           })
         })
       }

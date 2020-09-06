@@ -5,9 +5,12 @@ var mongoose        = require('mongoose');
 var morgan          = require('morgan');
 const jwt = require('jsonwebtoken')
 var cookieParser = require('cookie-parser');
-
-//const UserRoute     = require('./routes/user')
 const User = require('./models/User')
+
+const secret_key = "secret"
+const hour = 3600000
+const alive_time = hour * 24
+
 mongoose.connect('mongodb://testacc:qpzm123456@localhost:27017/GeekDB?authSource=admin', {useNewUrlParser: true, useUnifiedTopology: true})
 var db = mongoose.connection
 
@@ -26,7 +29,7 @@ app.engine("html",require("express-art-template"));
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({
     extended:true
-}));
+}))
 app.use(bodyParser.json())
 app.use(cookieParser())
 
@@ -53,10 +56,18 @@ app.post("/Register",function(req,res){
                 })
                 user.save()
                 .then(user => {
-                    res.render("home.html", {
-                        username:"Hi, " + req.body.last_name,
-                        message: "Welcome To EPortfolio, start to edit your home page."
-                    })
+                    let user_email = user.email
+                    let user_id = user._id
+                    let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: 60})
+
+                    res.cookie('id', user_id, { maxAge: alive_time })
+                    res.cookie('email', user_email, { maxAge: alive_time })
+                    res.cookie('token', token, { maxAge: alive_time })
+                    res.redirect('http://3.131.49.106/home')
+                    // res.render("home.html", {
+                    //     username:"Hi, " + req.body.last_name,
+                    //     message: "Welcome To EPortfolio, start to edit your home page."
+                    // })
                 })
                 .catch(error => {
                     console.log(error)
