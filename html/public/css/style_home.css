@@ -1,0 +1,99 @@
+/* import font url */
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&family=Montserrat:wght@500&display=swap');
+
+/* Start Global settings */
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #242528;
+}
+
+li, a, button{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+}
+/* End Global settings */
+
+
+/* Start home.html header area */
+.logo{
+    cursor: pointer;
+}
+
+.nav_links{
+    list-style: none;
+}
+
+.nav_links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a{
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover{
+    color: #0088a9;
+}
+.logout{
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.logout:hover{
+    background-color: rgba(0, 139, 169, 0.8);
+}
+/* End home.html header area */
+
+/* Start home.html main area */
+.main-area{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0,0,0,0.4)),url(/public/img/background.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.profile-box{
+    width: 25%;
+    background: rgba(0, 0, 0, .5);
+    margin: 0 auto;
+    margin-top: 5%;
+    text-align: center;
+    color: white;
+}
+
+.profile-box h1{
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.profile-box h5{
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.profile-box p{
+    font-size: 20px;
+    font-weight: 100;
+}
+
+/* End home.html main area */

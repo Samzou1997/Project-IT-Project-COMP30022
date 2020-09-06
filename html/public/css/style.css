@@ -3,6 +3,7 @@
     padding: 0;
 }
 
+/* Start index.html css */
 .hero{
     height: 100%;
     width: 100%;
@@ -112,69 +113,5 @@
     color: red;
 }
 
-/* Start home.html header area */
-.header_area .main_menu .navbar-brand{
-    padding: 0 2rem 0 5rem;
-}
+/* End home.html css */
 
-.header_area .main_menu .navbar{
-    padding: 1rem 20rem;
-}
-
-.header_area .main_menu .nav-item .nav-link{
-    font: normal 500 15px/2px;
-    text-transform: uppercase;
-    padding: 1.7rem;
-    color: black;
-}
-
-.header_area .main_menu .navbar-nav .active a{
-    background: linear-gradient(90deg, #4458dc 0%, #854fee 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.header_area .main_menu .navbar-nav a:hover{
-    background: linear-gradient(90deg, #4458dc 0%, #854fee 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-/* End header area */
-
-/* Start main area */
-.main-area{
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0,0,0,0.4)),url(/public/img/background.jpg);
-    background-position: center;
-    background-size: cover;
-    position: absolute;
-}
-
-.profile-box{
-    width: 25%;
-    background: rgba(0, 0, 0, .5);
-    margin: 0 auto;
-    margin-top: 5%;
-    text-align: center;
-    color: white;
-}
-
-.profile-box h1{
-    font-size: 40px;
-    font-weight: 500;
-}
-
-.profile-box h5{
-    font-size: 30px;
-    font-weight: 300;
-}
-
-.profile-box p{
-    font-size: 20px;
-    font-weight: 100;
-}
-
-/* End main area */
