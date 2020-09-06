@@ -49,16 +49,40 @@ app.post("/Login",function(req,res){
         //verify token
         jwt.verify(req_token, secret_key, function(error, decoded){
             if (error) {
-                console.log("token decode error")
-                res.cookie('id', '', { maxAge: 0 })
-                res.cookie('email', '', { maxAge: 0 })
-                res.cookie('token', '', { maxAge: 0 })
-                res.render('index.html', {
-                    login_error_message: "Login expired.",
-                    register_error_message: ""
+                User.findOne({email: req.body.email}, function(err, doc){
+                    let user_password = doc.password
+                    if (err) {
+                        console.log("db error")
+                    }
+                    if (doc) {
+                        if (user_password === req.body.password){
+                            let user_email = doc.email
+                            let user_id = doc._id
+                            let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: 60})
+        
+                            res.cookie('id', user_id, { maxAge: alive_time })
+                            res.cookie('email', user_email, { maxAge: alive_time })
+                            res.cookie('token', token, { maxAge: alive_time })
+                            res.redirect('http://3.131.49.106/home')
+                            // res.render('home.html', {
+                            //     username: doc.lastName
+                            // })
+                        }
+                        else{
+                            res.render("index.html", {
+                                login_error_message: "Incorrect password.",
+                                register_error_message: ""
+                            })
+                        }
+                    }
+                    else {
+                        res.render("index.html", {
+                            login_error_message: "No user found.",
+                            register_error_message: ""
+                        })
+                    }
                 })
             }
-            //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
             else {
                 res.redirect('http://3.131.49.106/home')
                 // User.findOne({email: decoded.user_email}, function(err, doc){
