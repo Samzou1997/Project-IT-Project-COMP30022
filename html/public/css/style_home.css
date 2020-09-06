@@ -7,7 +7,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #242528;
 }
 
 li, a, button{
@@ -23,6 +22,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%;
+    background-color: #242528;
 }
 /* End Global settings */
 
@@ -72,13 +72,14 @@ header{
     position: absolute;
 }
 
-.profile-box{
+.welcome-box{
     width: 25%;
-    background: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, 0.4);
     margin: 0 auto;
     margin-top: 5%;
     text-align: center;
     color: white;
+    background: transparent;
 }
 
 .profile-box h1{
