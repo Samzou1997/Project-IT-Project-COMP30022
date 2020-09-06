@@ -215,5 +215,5 @@ app.get("/Login", function(req, res){
 })
 
 app.listen(3002,function(){
-    console.log("running....");
+    console.log("port: 3002, running....");
 })

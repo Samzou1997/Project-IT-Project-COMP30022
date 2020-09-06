@@ -87,5 +87,5 @@ app.post("/Register",function(req,res){
 })
 
 app.listen(3001,function(){
-    console.log("running....");
+    console.log("port: 3001, running....");
 })
