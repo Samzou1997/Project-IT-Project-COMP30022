@@ -77,6 +77,13 @@ app.get("/home", function (req, res) {
   }
 })
 
+app.get("/logout", function(req,res){
+  res.cookie('id', '', { maxAge: 0 })
+  res.cookie('email', '', { maxAge: 0 })
+  res.cookie('token', '', { maxAge: 0 })
+  res.redirect('http://3.131.49.106/home')
+})
+
 app.listen(3000, function () {
   console.log("running....");
 })
