@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script type="text/ecmascript" src="./public/js/md5.js"></script>
     <title>Welcome to E-Portifolio</title>
 
     <link rel="stylesheet" href="/html/public/css/style_index.css">
 </head>
+
 <body>
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="" class="sign-in-form" method="POST" action="http://3.131.49.106/Login">
+                <form class="sign-in-form" method="POST" action="http://3.131.49.106/Login">
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" placeholder="Email">
+                        <input name="email" id="uid-input-login" type="text" placeholder="Email">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password">
+                        <input name="password" id="pwd-input-login" type="password" placeholder="Password">
                     </div>
-                    <input type="submit" value="Login" class="btn solid">
+                    <input type="submit" value="Login" class="btn solid" onclick="md5_login()">
                 </form>
 
-                <form action="" class="sign-up-form" method="POST" action="http://3.131.49.106/Register">
+                <form class="sign-up-form" method="POST" action="http://3.131.49.106/Register">
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="First Name">
+                        <input name="first_name" id="" type="text" placeholder="First Name">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Last Name">
+                        <input name="last_name" id="" type="text" placeholder="Last Name">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" placeholder="Email">
+                        <input name="email" id="" type="text" placeholder="Email">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password">
+                        <input name="password" id="pwd-input-register" type="password" placeholder="Password">
                     </div>
-                    <input type="submit" value="Register" class="btn solid">
+                    <input type="submit" value="Register" class="btn solid" onclick="md5_register()">
                 </form>
             </div>
         </div>
@@ -72,6 +75,29 @@
         </div>
     </div>
 
-    <script src="/html/public/js/app.js"></script>
+    <script src="/html/public/js/app.js">
+    </script>
+
+    <script type="text/javascript">
+        
+        function md5_login() {
+            //alert("test")
+            var pwd = document.getElementById('pwd-input-login').value
+            if (pwd != null && pwd != '' && pwd != undefined) {
+                var hash_pwd = hex_md5(pwd)
+                document.getElementById('pwd-input-login').value = hash_pwd
+            }
+        }
+
+        function md5_register() {
+            //alert("test")
+            var pwd = document.getElementById('pwd-input-register').value
+            if (pwd != null && pwd != '' && pwd != undefined) {
+                var hash_pwd = hex_md5(pwd)
+                document.getElementById('pwd-input-register').value = hash_pwd
+            }
+        }
+    </script>
 </body>
+
 </html>
