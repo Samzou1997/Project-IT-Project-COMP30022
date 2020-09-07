@@ -3,24 +3,17 @@ const Schema      = mongoose.Schema
 
 const userSchema    = new Schema({
   firstName: {
-    type: String,
-    required: true
+    type: String
   },
   lastName:  {
-    type: String,
-    required: true
+    type: String
   },
   email: {
-    type: String,
-    required: true
+    type: String
   },
   password: {
-    type: String,
-    required: true
+    type: String
   }
-  //avatar:{
-  //  type: String,
-  //  default: '/public/..'
 },{timestamps: true})
 
 const User = mongoose.model('User', userSchema)
