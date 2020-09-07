@@ -35,16 +35,14 @@ const login_post = (req, res, next) => {
         // })
       }
       else {
-        res.render("index.html", {
+        res.render("login_error.html", {
           login_error_message: "Incorrect password.",
-          register_error_message: ""
         })
       }
     }
     else {
-      res.render("index.html", {
+      res.render("login_error.html", {
         login_error_message: "No user found.",
-        register_error_message: ""
       })
     }
   })
@@ -66,9 +64,8 @@ const login_get = (req, res, next) => {
         res.cookie('id', '', { maxAge: 0 })
         res.cookie('email', '', { maxAge: 0 })
         res.cookie('token', '', { maxAge: 0 })
-        res.render('index.html', {
+        res.render('login_error.html', {
           login_error_message: "Login expired.",
-          register_error_message: ""
         })
       }
       //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
@@ -86,9 +83,8 @@ const login_get = (req, res, next) => {
     })
   }
   else {
-    res.render("index.html", {
+    res.render("login_error.html", {
       login_error_message: "Login expired.",
-      register_error_message: ""
     })
   }
 }

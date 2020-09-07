@@ -25,7 +25,6 @@ db.once('open', () => {
 
 var app = express();
 
-//app.use('/Login', UserRoute)
 app.engine("html",require("express-art-template"));
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({

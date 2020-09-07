@@ -5,7 +5,6 @@ var mongoose      = require('mongoose');
 var morgan        = require('morgan');
 const jwt         = require('jsonwebtoken')
 var cookieParser  = require('cookie-parser');
-//const UserRoute     = require('./routes/user')
 const User        = require('./models/User')
 const MainRouter  = require('./routes/MainRouter')
 
@@ -22,7 +21,6 @@ db.once('open', () => {
 
 var app = express();
 
-//app.use('/Login', UserRoute)
 app.engine("html", require("express-art-template"));
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({

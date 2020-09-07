@@ -15,8 +15,7 @@ const register_post = (req, res, next) => {
 
     User.findOne({ email: req.body.email }, function (err, doc) {
       if (doc) {
-        res.render("index.html", {
-          login_error_message: "",
+        res.render("register_error.html", {
           register_error_message: "Email already used."
         })
       }
@@ -37,10 +36,6 @@ const register_post = (req, res, next) => {
             res.cookie('email', user_email, { maxAge: alive_time })
             res.cookie('token', token, { maxAge: alive_time })
             res.redirect('http://3.131.49.106/home')
-            // res.render("home.html", {
-            //     username:"Hi, " + req.body.last_name,
-            //     message: "Welcome To EPortfolio, start to edit your home page."
-            // })
           })
           .catch(error => {
             console.log(error)
@@ -52,16 +47,14 @@ const register_post = (req, res, next) => {
     })
   }
   else {
-    res.render("index.html", {
-      login_error_message: "",
+    res.render("register_error.html", {
       register_error_message: "Please enter all information."
     })
   }
 }
 
 const register_get = (req, res, next) => {
-  res.render("index.html", {
-    login_error_message: "",
+  res.render("register_error.html", {
     register_error_message: "Please enter all information."
   })
 }
