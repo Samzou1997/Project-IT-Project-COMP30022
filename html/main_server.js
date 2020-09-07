@@ -1,14 +1,14 @@
-var express = require("express");
-var bodyParser = require('body-parser');
-var querystring = require('querystring');
-var mongoose = require('mongoose');
-var morgan = require('morgan');
-const jwt = require('jsonwebtoken')
-var cookieParser = require('cookie-parser');
+var express       = require("express");
+var bodyParser    = require('body-parser');
+var querystring   = require('querystring');
+var mongoose      = require('mongoose');
+var morgan        = require('morgan');
+const jwt         = require('jsonwebtoken')
+var cookieParser  = require('cookie-parser');
 var tokenVerifier = require('./controllers/TokenVerifier')
 //const UserRoute     = require('./routes/user')
-const User = require('./models/User')
-const MainRouter     = require('./routes/main')
+const User        = require('./models/User')
+const MainRouter  = require('./routes/main')
 
 mongoose.connect('mongodb://testacc:qpzm123456@localhost:27017/GeekDB?authSource=admin', { useNewUrlParser: true, useUnifiedTopology: true })
 var db = mongoose.connection
@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(cookieParser())
 
-app.use('/home', MainRouter)
+app.use('/home', require('./routes/main'))
 
 /* 接受请求并反馈数据渲染到界面*/
 // app.post("/home", function (req, res) { })
