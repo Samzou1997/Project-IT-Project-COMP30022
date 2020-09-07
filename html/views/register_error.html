@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animated Login Form</title>
+	<link rel="stylesheet" type="text/css" href="./public/css/style_logine.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script type="text/ecmascript" src="./public/js/md5.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<img class="wave" src="./public/img/wave.png">
+	<div class="container">
+		<div class="img">
+			<img src="./public/img/reg.svg">
+		</div>
+		<div class="login-content">
+			<form method="POST" action="http://3.131.49.106/Register">
+				<img src="./public/img/avatar.svg">
+				<h2 class="title">Sign up</h2>
+           		
+                <div class="input-div first">
+                    <div class="i"> 
+                         <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                         <h5>First Name</h5>
+                         <input type="text" class="input" required>
+                    </div>
+               </div>
+
+               <div class="input-div last">
+                 <div class="i"> 
+                     <i class="fas fa-user"></i>
+                 </div>
+                 <div class="div">
+                     <h5>Last Name</h5>
+                     <input type="text" class="input" required>
+                 </div>
+               </div>
+
+                <div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-envelope"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Email</h5>
+           		   		<input type="text" class="input" required>
+           		   </div>
+                </div>
+
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Password</h5>
+           		    	<input type="password" class="input" required>
+            	   </div>
+            	</div>
+                <input type="submit" class="btn" value="Register" onclick="md5_register()">
+                <p>{{register_error_message}}</p>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="./public/js/login_error.js"></script>
+
+    <script type="text/javascript">
+        
+        function md5_register() {
+            //alert("test")
+            var pwd = document.getElementById('pwd-input-register').value
+            if (pwd != null && pwd != '' && pwd != undefined) {
+                var hash_pwd = hex_md5(pwd)
+                document.getElementById('pwd-input-register').value = hash_pwd
+            }
+        }
+    </script>
+</body>
+</html>
