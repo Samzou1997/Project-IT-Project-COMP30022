@@ -11,7 +11,7 @@ const MainController   = require('../controllers/MainController')
 // router.post('/delete', UserController.destroy)
 
 router.post('/', MainController.home_post)
-router.get('/', require('../controllers/MainController').home_get)
+router.get('/', MainController.home_get)
 
 router.post('/logout', MainController.logout_post)
 router.get('/logout', MainController.logout_get)

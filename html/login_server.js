@@ -6,7 +6,7 @@ var morgan          = require('morgan');
 const jwt           = require('jsonwebtoken')
 var cookieParser    = require('cookie-parser');
 var tokenVerifier   = require('./controllers/TokenVerifier')
-const LoginRouter     = require('./routes/login')
+const LoginRouter     = require('./routes/LoginRouter')
 const User          = require('./models/User')
 
 const secret_key = "secret"

@@ -5,7 +5,7 @@ var mongoose        = require('mongoose');
 var morgan          = require('morgan');
 const jwt = require('jsonwebtoken')
 var cookieParser = require('cookie-parser');
-const RegisetRouter     = require('./routes/register')
+const RegisetRouter     = require('./routes/RegisterRouter')
 const User = require('./models/User')
 
 const secret_key = "secret"
