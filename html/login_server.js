@@ -44,13 +44,13 @@ app.post("/Login",function(req,res){
     res.cookie('email', '', { maxAge: 0 })
     res.cookie('token', '', { maxAge: 0 })
 
-    User.findOne({email: req.body.email}, function(err, doc){
-        let user_password = doc.password
+    User.findOne({email: req.body.email}, function(err, doc){ 
         if (err) {
             console.log("db error")
         }
         if (doc) {
-            if (user_password === req.body.password){
+            if (doc.password === req.body.password){
+                let user_password = doc.password
                 let user_email = doc.email
                 let user_id = doc._id
                 let token = jwt.sign({user_id, user_email}, secret_key, {expiresIn: 60})
@@ -215,5 +215,5 @@ app.get("/Login", function(req, res){
 })
 
 app.listen(3002,function(){
-    console.log("running....");
+    console.log("port: 3002, running....");
 })

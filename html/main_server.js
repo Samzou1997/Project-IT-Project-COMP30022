@@ -85,5 +85,5 @@ app.get("/logout", function(req,res){
 })
 
 app.listen(3000, function () {
-  console.log("running....");
+  console.log("port: 3000, running....");
 })
