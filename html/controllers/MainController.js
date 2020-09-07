@@ -24,9 +24,8 @@ const home_get = (req, res, next) => {
         res.cookie('id', '', { maxAge: 0 })
         res.cookie('email', '', { maxAge: 0 })
         res.cookie('token', '', { maxAge: 0 })
-        res.render('index.html', {
+        res.render('login_error.html', {
           login_error_message: "Login expired.",
-          register_error_message: ""
         })
       }
       else {
@@ -43,9 +42,8 @@ const home_get = (req, res, next) => {
     })
   }
   else {
-    res.render('index.html', {
+    res.render('login_error.html', {
       login_error_message: "Please login first.",
-      register_error_message: ""
     })
   }
 }
