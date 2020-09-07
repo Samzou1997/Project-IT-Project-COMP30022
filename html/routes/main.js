@@ -13,7 +13,7 @@ const MainController   = require('../controllers/MainController')
 router.post('/', MainController.home_post)
 router.get('/', MainController.home_get)
 
-router.post('/logout', MainController.home_post)
+router.post('/logout', MainController.logout_post)
 router.get('/logout', MainController.home_get)
 
 module.exports = router

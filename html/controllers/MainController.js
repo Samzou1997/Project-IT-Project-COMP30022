@@ -62,5 +62,5 @@ const logout_get = (req, res, next) => {
 }
 
 module.exports = {
-  home_post, home_get
+  home_post, home_get, logout_post, logout_get
 }
