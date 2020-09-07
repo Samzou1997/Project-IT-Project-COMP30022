@@ -14,6 +14,6 @@ router.post('/', MainController.home_post)
 router.get('/', MainController.home_get)
 
 router.post('/logout', MainController.logout_post)
-router.get('/logout', MainController.home_get)
+router.get('/logout', MainController.logout_get)
 
 module.exports = router
