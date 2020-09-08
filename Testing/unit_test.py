@@ -1,41 +1,25 @@
-from selenium import webdriver
+#coding: utf-8
 import unittest
-from selenium.webdriver.common.keys import Keys
-import time
-import HtmlTestRunner
-from loginPage import LoginPage
-from homePage import HomePage
 
+from selenium import webdriver
+from PageObject.login import *
+from ddt import ddt, data, unpack
 
-class UpRank(unittest.TestCase):
+@ddt
+class UnitTest(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        PATH = '/Users/zehongli/Documents/GitHub/Project-IT-Project-COMP30022/Testing/chromedriver'
-        cls.driver = webdriver.Chrome(PATH)
-        cls.driver.fullscreen_window()
-        cls.driver.implicitly_wait(10)
+    def setUp(self):
+        self.driver = webdriver.Chrome("/Users/apple/Downloads/chromedriver")
 
-    def test_login_automation(self):
-        driver = self.driver
-        driver.get('http://3.131.49.106/')
+    def tearDown(self):
+        self.sp.quit()
 
-        login = LoginPage(driver)
-        login.enter_username("873651425@qq.com")
-        login.enter_password('qpzm123456\n')
-
-        homepage = HomePage(driver)
-        homepage.click_logout()
-        # Testing valid email && valid password
-        #self.driver.find_element_by_name("email").send_keys('873651425@qq.com')
-        #self.driver.find_element_by_id("pwd-input-login").send_keys('qpzm123456\n')
-        #self.driver.find_element_by_link_text("Logout").click()
-
-    @classmethod 
-    def tearDownClass(cls):
-        cls.driver.close()
-        cls.driver.quit()
-        print("Test completed!")
+    @data(('http://3.131.49.106/', '634273197@qq.com', 'mamad74CAO'),
+          ('http://3.131.49.106/', '634273197@qq.com', 'mamad74CAO'))
+    @unpack
+    def test_1(self, url, uid, pwd):
+        self.sp = LoginPage(self.driver,url)
+        self.sp.login(uid, pwd)
 
 if __name__ == '__main__':
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='/Users/zehongli/Desktop/Testing/reports'))
+    unittest.main()
