@@ -11,8 +11,7 @@ class UpRank(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        #PATH = '/Users/zehongli/Documents/GitHub/Project-IT-Project-COMP30022/Testing/chromedriver'
-        PATH = '/Users/apple/Downloads/chromedriver'
+        PATH = '/Users/zehongli/Documents/GitHub/Project-IT-Project-COMP30022/Testing/chromedriver'
         cls.driver = webdriver.Chrome(PATH)
         cls.driver.fullscreen_window()
         cls.driver.implicitly_wait(10)
