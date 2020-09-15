@@ -11,12 +11,13 @@ class UpRank(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        #PATH = '/Users/zehongli/Documents/GitHub/Project-IT-Project-COMP30022/Testing/chromedriver'
         PATH = '/Users/zehongli/Documents/GitHub/Project-IT-Project-COMP30022/Testing/chromedriver'
         cls.driver = webdriver.Chrome(PATH)
         cls.driver.fullscreen_window()
         cls.driver.implicitly_wait(10)
 
-    def test_login_automation(self):
+    def test_login_logout_automation(self):
         driver = self.driver
         driver.get('http://3.131.49.106/')
 
@@ -38,4 +39,4 @@ class UpRank(unittest.TestCase):
         print("Test completed!")
 
 if __name__ == '__main__':
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='/Users/zehongli/Desktop/Testing/reports'))
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='/Users/zehongli/Documents/GitHub/Project-IT-Project-COMP30022/Testing/UnitTest_1/reports'))
