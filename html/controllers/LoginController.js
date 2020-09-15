@@ -70,7 +70,7 @@ const login_get = (req, res, next) => {
       }
       //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
       else {
-        res.redirect('http://54.206.15.44/home')
+        res.redirect('/home')
         // User.findOne({email: decoded.user_email}, function(err, doc){
         //     if (err) {
         //         console.log("db error")
