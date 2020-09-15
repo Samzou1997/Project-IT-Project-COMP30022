@@ -29,7 +29,7 @@ const login_post = (req, res, next) => {
         res.cookie('id', user_id, { maxAge: alive_time })
         res.cookie('email', user_email, { maxAge: alive_time })
         res.cookie('token', token, { maxAge: alive_time })
-        res.redirect('http://54.206.15.44/home')
+        res.redirect('/home')
         // res.render('home.html', {
         //     username: doc.lastName
         // })
