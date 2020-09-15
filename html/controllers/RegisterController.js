@@ -35,7 +35,7 @@ const register_post = (req, res, next) => {
             res.cookie('id', user_id, { maxAge: alive_time })
             res.cookie('email', user_email, { maxAge: alive_time })
             res.cookie('token', token, { maxAge: alive_time })
-            res.redirect('http://3.131.49.106/home')
+            res.redirect('http://54.206.15.44/home')
           })
           .catch(error => {
             console.log(error)

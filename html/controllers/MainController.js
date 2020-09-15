@@ -56,7 +56,7 @@ const logout_get = (req, res, next) => {
   res.cookie('id', '', { maxAge: 0 })
   res.cookie('email', '', { maxAge: 0 })
   res.cookie('token', '', { maxAge: 0 })
-  res.redirect('http://3.131.49.106/')
+  res.redirect('http://54.206.15.44/')
 }
 
 module.exports = {
