@@ -17,23 +17,23 @@ class UnitTest(unittest.TestCase):
         self.sp.quit()
 
     #login
-    @data(('http://3.131.49.106/', '634273197@qq.com', 'mamad74CAO'),
-          ('http://3.131.49.106/', '6@qq.com', 'mamad74CAO'),
-          ('http://3.131.49.106/', '634273197@qq.com', 'mamad74'))
+    @data(('http://54.206.15.44/', '634273197@qq.com', 'mamad74CAO'),
+          ('http://54.206.15.44/', '6@qq.com', 'mamad74CAO'),
+          ('http://54.206.15.44/', '634273197@qq.com', 'mamad74'))
     @unpack
     def test_1(self, url, uid, pwd):
         self.sp = LoginPage(self.driver,url)
         self.sp.login(uid, pwd)
 
     #logout
-    @data(('http://3.131.49.106/', '634273197@qq.com', 'mamad74CAO'))
+    @data(('http://54.206.15.44/', '634273197@qq.com', 'mamad74CAO'))
     @unpack
     def test_2(self, url, uid, pwd):
         self.sp = HomePage(self.driver,url)
         self.sp.logout(uid, pwd)
 
     #register
-    @data(('http://3.131.49.106/', '634273197@qq.com', 'mamad74CAO', 'Chang', 'Liu'))
+    @data(('http://54.206.15.44/', '634273197@qq.com', 'mamad74CAO', 'Chang', 'Liu'))
     @unpack
     def test_3(self, url, uid, pwd, first, last):
         self.sp = LoginPage(self.driver,url)
