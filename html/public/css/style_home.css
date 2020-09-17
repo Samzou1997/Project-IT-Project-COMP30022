@@ -105,7 +105,6 @@ header{
     min-height: 100%;
     height: auto;  
     width: auto; 
-    filter: blur(15px);
     z-index: -9999;
   }
 
