@@ -66,9 +66,9 @@ header{
 .main-area{
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0,0,0,0.4)),url(/public/img/background.jpg);
+    /*: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0,0,0,0.4)),url(/public/img/background.jpg);
     background-position: center;
-    background-size: cover;
+    background-size: cover;*/
     position: absolute;
 }
 
@@ -103,7 +103,7 @@ header{
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-    z-index: -1;
+    z-index: -9999;
   }
 
 /* End home.html main area */
