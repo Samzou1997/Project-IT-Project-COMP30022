@@ -116,6 +116,15 @@ form.sign-up-form{
     font-weight: 500;
 }
 
+a{
+    display: block;
+	text-align: right;
+	text-decoration: none;
+	color: #f0f0f0;
+	font-size: 0.9rem;
+	transition: .3s;
+}
+
 .btn{
     width: 150px;
     height: 49px;
