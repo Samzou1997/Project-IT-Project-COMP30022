@@ -3,44 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <title>Welcome To EPortfolio</title>
 
     <!-- custome css file -->
-    <link rel="stylesheet" href="./public/css/style_home.css">
+    <link rel="stylesheet" href="/public/css/style_home.css">
+    
     
 </head>
 <body>
-  <video autoplay loop id="myVideo">
-    <source src="/public/video/background.mp4" type="video/mp4">
-  </video>
 
 <!-- ==================================Start Header Area=========================================-->
-  <header>
-    <img class="logo" src="./public/img/logo.png" alt="logo">
-    <nav>
-      <ul class="nav_links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Learning</a></li>
-        <li><a href="#">Working</a></li>
-        <li><a href="#">Volunteer</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-    <a class="cta" href="/home/logout"><button class="logout">Log Out</button></a>
-  </header>
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo">Uprank</label>
+    <ul>
+      <li><a class="active" href="#">Home</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Learning</a></li>
+      <li><a href="#">Working</a></li>
+      <li><a href="#">Volunteer</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
 <!-- ==================================End Header Area=========================================-->
   
 
 <!-- ==================================Start Main Area=========================================-->
-  <div class="main-area">
-    <div class="welcome-box">
-      <!-- Write Name Here -->
-      <h1>{{username}}</h1>
-      <!-- Age and gender -->
-      <h1>{{message}}</h1>
-    </div>
-  </div>
-
+  <section>
+    <h1>Hi, {{Username}}</h1>
+    <h3>{{Message}}</h3>
+  </section>
 
 <!-- ==================================End Main Area=========================================-->
     <script>
