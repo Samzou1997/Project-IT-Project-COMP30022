@@ -17,6 +17,8 @@ body, input{
     min-height: 100vh;
     background-color:#fff;
     overflow: hidden;
+    background-image: url(../img/index_cover.jpg);
+    background-position: center;
 }
 
 .container:before{
@@ -112,6 +114,15 @@ form.sign-up-form{
 .input-field input:placeholder{
     color: #aaa;
     font-weight: 500;
+}
+
+a{
+    display: block;
+	text-align: right;
+	text-decoration: none;
+	color: #f0f0f0;
+	font-size: 0.9rem;
+	transition: .3s;
 }
 
 .btn{

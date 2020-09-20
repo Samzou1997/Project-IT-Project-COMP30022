@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <title>Welcome To EPortfolio</title>
 
     <!-- custome css file -->
-    <link rel="stylesheet" href="./public/css/style_home.css">
-    
+    <link rel="stylesheet" href="/public/css/style_home.css">
+
+
 </head>
 <body>
-
 
 <!-- ==================================Start Header Area=========================================-->
   <header>
@@ -27,23 +28,17 @@
     <a class="cta" href="/personal/logout"><button class="logout">Log Out</button></a>
   </header>
 <!-- ==================================End Header Area=========================================-->
-  
+
 
 <!-- ==================================Start Main Area=========================================-->
-  <div class="main-area">
-    <div class="welcome-box">
-      <!-- Write Name Here -->
-      <h1>{{username}}</h1>
-      <!-- Age and gender -->
-      <h1>{{message}}</h1>
-    </div>
-  </div>
-
-
+  <section>
+    <h1>{{username}}</h1>
+    <h3>{{message}}</h3>
+  </section>
 
 <!-- ==================================End Main Area=========================================-->
     <script>
-      
+
     </script>
 </body>
 </html>
