@@ -1,44 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <title>Welcome To EPortfolio</title>
 
-    <!-- custome css file -->
-    <link rel="stylesheet" href="/public/css/style_home.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <title>Welcome To EPortfolio</title>
+
+  <!-- custome css file -->
+  <link rel="stylesheet" href="/public/css/style_home.css">
 
 
 </head>
+
 <body>
 
-<!-- ==================================Start Header Area=========================================-->
+  <!-- ==================================Start Header Area=========================================-->
   <header>
-    <img class="logo" src="/public/img/logo.png" alt="logo">
     <nav>
-      <ul class="nav_links">
-        <li><a href="/personal/home">Home</a></li>
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <label class="logo">Uprank</label>
+      <ul>
+        <li><a class="active" href="/personal/home">Home</a></li>
+        <li><a href="/personal/profile">Profile</a></li>
         <li><a href="/personal/learning">Learning</a></li>
         <li><a href="/personal/working">Working</a></li>
         <li><a href="/personal/volunteer">Volunteer</a></li>
         <li><a href="/personal/contact">Contact</a></li>
       </ul>
     </nav>
-    <a class="cta" href="/personal/logout"><button class="logout">Log Out</button></a>
   </header>
-<!-- ==================================End Header Area=========================================-->
+  <!-- ==================================End Header Area=========================================-->
 
 
-<!-- ==================================Start Main Area=========================================-->
+  <!-- ==================================Start Main Area=========================================-->
   <section>
     <h1>{{username}}</h1>
     <h3>{{message}}</h3>
   </section>
 
-<!-- ==================================End Main Area=========================================-->
-    <script>
+  <!-- ==================================End Main Area=========================================-->
+  <script>
 
-    </script>
+  </script>
 </body>
+
 </html>
