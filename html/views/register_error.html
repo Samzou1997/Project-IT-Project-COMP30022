@@ -57,7 +57,17 @@
            		    	<h5>Password</h5>
            		    	<input name="password" id="pwd-input-register" type="password" class="input" required>
             	   </div>
-            	</div>
+                </div>
+                
+                <div class="input-div pass">
+                    <div class="i"> 
+                         <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                         <h5>Ensured Password</h5>
+                         <input name="password" id="pwd-input-register" type="password" class="input" required>
+                    </div>
+                </div>
                 <input type="submit" class="btn" value="Register" onclick="md5_register()">
                 <p>{{register_error_message}}</p>
             </form>
