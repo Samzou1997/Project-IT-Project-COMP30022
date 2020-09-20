@@ -29,7 +29,7 @@ const login_post = (req, res, next) => {
         res.cookie('id', user_id, { maxAge: alive_time })
         res.cookie('email', user_email, { maxAge: alive_time })
         res.cookie('token', token, { maxAge: alive_time })
-        res.redirect('/home')
+        res.redirect('/personal/home')
         // res.render('home.html', {
         //     username: doc.lastName
         // })
@@ -70,7 +70,7 @@ const login_get = (req, res, next) => {
       }
       //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
       else {
-        res.redirect('/home')
+        res.redirect('/personal/home')
         // User.findOne({email: decoded.user_email}, function(err, doc){
         //     if (err) {
         //         console.log("db error")

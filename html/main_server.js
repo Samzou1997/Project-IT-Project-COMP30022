@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(cookieParser())
 
-app.use('/home', MainRouter)
+app.use('/personal', MainRouter)
 
 /* 接受请求并反馈数据渲染到界面*/
 // app.post("/home", function (req, res) { })
