@@ -12,6 +12,9 @@ router.get('/home', MainController.home_get)
 router.post('/learning', MainController.home_post) // full path: /personal/learning
 router.get('/learning', MainController.home_get)
 
+router.post('/profile', MainController.home_post) // full path: /personal/learning
+router.get('/profile', MainController.home_get)
+
 router.post('/working', MainController.home_post) // full path: /personal/working
 router.get('/working', MainController.home_get)
 
