@@ -21,7 +21,9 @@ const userSchema    = new Schema({
   },
   details: {
     type: Schema.Types.Mixed,
-    default: {}
+    default: {
+      major: String
+    }
   }
 },{timestamps: true})
 
