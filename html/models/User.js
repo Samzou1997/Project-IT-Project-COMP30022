@@ -17,6 +17,13 @@ const userSchema    = new Schema({
   password: {
     type: String,
     required: true
+  },
+  detail: {
+    type: Schema.Types.Mixed,
+    default: {
+      gender: String,
+      dateBirth: Date
+    }
   }
   //avatar:{
   //  type: String,

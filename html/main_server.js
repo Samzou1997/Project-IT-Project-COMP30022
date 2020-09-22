@@ -7,7 +7,7 @@ const jwt         = require('jsonwebtoken')
 var cookieParser  = require('cookie-parser');
 const User        = require('./models/User')
 
-const MainRouter  = require('./routes/MainRouter')
+const PersonalRouter  = require('./routes/PersonalRouter')
 const LoginRouter     = require('./routes/LoginRouter')
 const RegisetRouter     = require('./routes/RegisterRouter')
 
@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(cookieParser())
 
-app.use('/personal', MainRouter)
+app.use('/personal', PersonalRouter)
 app.use('/Login', LoginRouter)
 app.use('/Register', RegisetRouter)
 

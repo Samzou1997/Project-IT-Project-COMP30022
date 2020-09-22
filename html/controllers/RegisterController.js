@@ -25,6 +25,9 @@ const register_post = (req, res, next) => {
           lastName: req.body.last_name,
           email: req.body.email,
           password: req.body.password,
+          detial: {
+            
+          }
         })
         user.save()
           .then(user => {
