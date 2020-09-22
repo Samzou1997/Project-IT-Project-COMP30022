@@ -31,12 +31,11 @@ const userSchema    = new Schema({
     address: {type: String, default: 'null'},
   },
   setting: {
-    $ref: String,
-    $id: Schema.Types.ObjectId,
-    $db: String,
+    $ref: {type: String, default: 'users_setting'},
+    $id: {type: Schema.Types.ObjectId, default: ObjectId("000")},
+    $db: {type: String, default: 'GeekDB'},
   }
 },{timestamps: true})
-
 // users collection example:
 var example = {
   "_id" : ObjectId("5f69ce5f5f8cd7751b793c81"),
