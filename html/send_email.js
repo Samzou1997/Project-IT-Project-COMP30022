@@ -6,7 +6,7 @@ var smtp = "smtp.gmail.com"
 var mailFrom = "team5eportifolio@gmail.com"
 var mailPwd = "Abc12345.."
 
-function emailTo(email,subject,text,html,callback) {
+function emailTo(email,subject,text,html) {
     //create sender
     var transporter = nodemailer.createTransport({
         host: smtp,
@@ -46,3 +46,9 @@ function emailTo(email,subject,text,html,callback) {
         print("send fail");
     }
 }
+
+var email = "yuxuekuangmo@gmail.com";
+var subject = "test";
+var text =undefined;
+var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='https://cn.pornhub.com/front/lost_password'>reset your password</a></p>";;
+emailTo(email, subject, text, html);
