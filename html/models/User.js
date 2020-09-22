@@ -21,8 +21,14 @@ const userSchema    = new Schema({
   detail: {
     type: Schema.Types.Mixed,
     default: {
-      gender: String,
-      dateBirth: Date
+      gender: {
+        type: String,
+        default: 'null'
+      },
+      dateBirth: {
+        type: String,
+        default: 'null'
+      }
     }
   }
   //avatar:{
