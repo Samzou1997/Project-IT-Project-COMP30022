@@ -32,7 +32,7 @@ const userSchema    = new Schema({
   },
   setting: {
     $ref: {type: String, default: 'users_setting'},
-    $id: {type: Schema.Types.ObjectId, default: ObjectId("000")},
+    $id: {type: Schema.Types.ObjectId},
     $db: {type: String, default: 'GeekDB'},
   }
 },{timestamps: true})
