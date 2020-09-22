@@ -36,6 +36,7 @@ const userSchema    = new Schema({
     $db: {type: String, default: 'GeekDB'},
   }
 },{timestamps: true})
+
 // users collection example:
 var example = {
   "_id" : ObjectId("5f69ce5f5f8cd7751b793c81"),

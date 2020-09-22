@@ -17,5 +17,5 @@ const userSettingSchema = new Schema({
   },
 })
 
-const UserSetting = mongoose.model('UserSetting', userSettingSchema)
+const UserSetting = mongoose.model('User_Setting', userSettingSchema)
 module.exports = UserSetting
