@@ -1,4 +1,4 @@
-var sender =  require('./send_email')
+var sender =  require('./send_email.js')
 var email = "yuxuekuangmo@gmail.com";
 var subject = "test";
 var text =undefined;
