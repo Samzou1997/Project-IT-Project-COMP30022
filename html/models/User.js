@@ -31,7 +31,7 @@ const userSchema    = new Schema({
     address: {type: String, default: 'null'},
   },
   setting: {
-    $ref: {type: String, default: 'users_setting'},
+    $ref: {type: String, default: 'user_settings'},
     $id: {type: Schema.Types.ObjectId},
     $db: {type: String, default: 'GeekDB'},
   }
