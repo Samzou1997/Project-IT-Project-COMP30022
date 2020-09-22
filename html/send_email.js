@@ -2,12 +2,12 @@
 var nodemailer = require("nodemailer");
 
 //the smtp service address and acount use for sending link
-//ec2-54-206-15-44.ap-southeast-2.compute.amazonaws.coms
 var smtp = "smtp.gmail.com"
 var mailFrom = "team5eportifolio@gmail.com"
 var mailPwd = "Abc12345.."
 
 function emailTo(email,subject,text,html,callback) {
+    //create sender
     var transporter = nodemailer.createTransport({
         host: smtp,
         auth: {
@@ -16,11 +16,14 @@ function emailTo(email,subject,text,html,callback) {
 
         }
     });
+    //parameter for sending email
     var mailOptions = {
         from: mailFrom,
         to: email,
         subject: subject,
     };
+
+    // read text contant 
     if(text != undefined)
     {
         mailOptions.text =text;
@@ -30,24 +33,16 @@ function emailTo(email,subject,text,html,callback) {
         mailOptions.html =html;
     }
 
-    var result = {
-        httpCode: 200,
-        message: 'success',
-    }
+    //start sending
     try {
         transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
-                result.httpCode = 500;
-                result.message = err;
-                callback(result);
+                print("send fail");
                 return;
             }
-            callback(result);
+            print("send sucess");
         });
-    } catch (err) {
-        result.httpCode = 500;
-        result.message = err;
-        callback(result);
+    }catch (err) {
+        print("send fail");
     }
-
 }
