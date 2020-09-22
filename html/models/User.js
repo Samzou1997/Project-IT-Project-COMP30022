@@ -19,7 +19,7 @@ const userSchema    = new Schema({
     type: String,
     required: true
   },
-  detail: {
+  details: {
     type: Schema.Types.Mixed,
     default: {}
   }
@@ -33,7 +33,7 @@ var example = {
   "lastName" : "xxx",
   "email" : "xxx@xxx.com",
   "password" : "e10adc3949ba59abbe56e057f20f883e",
-  "detail" : {
+  "details" : {
     "major" : "IT",
     "school" : "xxx",
     "degree" : "xxx",
