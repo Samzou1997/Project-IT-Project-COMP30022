@@ -2,6 +2,8 @@ const { ObjectId } = require('bson')
 const mongoose    = require('mongoose')
 const Schema      = mongoose.Schema
 
+var nowDate = Date.now()
+
 const userSchema    = new Schema({
   firstName: {
     type: String,
@@ -20,13 +22,13 @@ const userSchema    = new Schema({
     required: true
   },
   details: {
-    major: String,
-    school: String,
-    degree: String,
-    gender: String,
-    dateBirth: Date,
-    phone: String,
-    address: String,
+    major: {type: String, default: 'null'},
+    school: {type: String, default: 'null'},
+    degree: {type: String, default: 'null'},
+    gender: {type: String, default: 'null'},
+    dateBirth: {type: Date, default: nowDate},
+    phone: {type: String, default: 'null'},
+    address: {type: String, default: 'null'},
   },
   setting: {
     $ref: String,
