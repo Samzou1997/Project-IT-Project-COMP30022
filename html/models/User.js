@@ -20,10 +20,18 @@ const userSchema    = new Schema({
     required: true
   },
   details: {
-    type: Schema.Types.Mixed,
-    default: {
-      major: String
-    }
+    major: String,
+    school: String,
+    degree: String,
+    gender: String,
+    dateBirth: Date,
+    phone: String,
+    address: String,
+  },
+  setting: {
+    $ref: String,
+    $id: Schema.Types.ObjectId,
+    $db: String,
   }
 },{timestamps: true})
 
