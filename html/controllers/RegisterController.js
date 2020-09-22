@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const UserSetting = require('../models/UserSetting')
 const { response } = require('express')
 var cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
@@ -26,6 +27,24 @@ const register_post = (req, res, next) => {
           email: req.body.email,
           password: req.body.password,
         })
+        let userSetting = new UserSetting({
+          email: req.body.email,
+        })
+
+        userSetting.save().then(userSetting => {
+          let objectID = userSetting._id
+          user.setting.$id = objectID
+        }).catch(error => {
+          console.log(error)
+          res.render("register_error.html", {
+            message: "system error, try again :)"
+          })
+          return
+        })
+
+        
+
+
         user.save()
           .then(user => {
             let user_email = user.email
@@ -39,9 +58,10 @@ const register_post = (req, res, next) => {
           })
           .catch(error => {
             console.log(error)
-            res.render("home.html", {
-              message: "Login error, try again :)"
+            res.render("register_error.html", {
+              message: "system error, try again :)"
             })
+            return
           })
       }
     })
