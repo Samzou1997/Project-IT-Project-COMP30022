@@ -2,6 +2,7 @@
 var nodemailer = require("nodemailer");
 
 //the smtp service address and acount use for sending link
+//ec2-54-206-15-44.ap-southeast-2.compute.amazonaws.coms
 var smtp = "smtp.gmail.com"
 var mailFrom = "team5eportifolio@gmail.com"
 var mailPwd = "Abc12345.."
