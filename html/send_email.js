@@ -4,7 +4,7 @@ var nodemailer = require("nodemailer");
 //the smtp service address and acount use for sending link
 var smtp = "smtp.gmail.com"
 var mailFrom = "team5eportifolio@gmail.com"
-var mailPwd = "Abc12345.."
+var mailPwd = "tcptoteviestzgkn"
 
 function emailTo(email,subject,text,html) {
     //create sender
