@@ -26,6 +26,7 @@ const register_post = (req, res, next) => {
           email: req.body.email,
           password: req.body.password,
         })
+        user.details.major = 'null'
         user.save()
           .then(user => {
             let user_email = user.email
