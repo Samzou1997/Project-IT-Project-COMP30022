@@ -37,13 +37,13 @@ function emailTo(email,subject,text,html) {
     try {
         transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
-                print("send fail");
+                console.log("send fail");
                 return;
             }
-            print("send sucess");
+            console.log("send sucess");
         });
     }catch (err) {
-        print("send fail");
+        console.log("send fail");
     }
 }
 
