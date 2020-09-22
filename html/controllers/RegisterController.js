@@ -34,18 +34,8 @@ const register_post = (req, res, next) => {
         userSetting.save().then(userSetting => {
           let objectID = userSetting._id
           user.setting.$id = objectID
-        }).catch(error => {
-          console.log(error)
-          res.render("register_error.html", {
-            message: "system error, try again :)"
-          })
-          return
-        })
-
-        
-
-
-        user.save()
+          
+          user.save()
           .then(user => {
             let user_email = user.email
             let user_id = user._id
@@ -63,6 +53,14 @@ const register_post = (req, res, next) => {
             })
             return
           })
+
+        }).catch(error => {
+          console.log(error)
+          res.render("register_error.html", {
+            message: "system error, try again :)"
+          })
+          return
+        })
       }
     })
   }
