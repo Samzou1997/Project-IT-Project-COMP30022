@@ -39,8 +39,9 @@ const register_post = (req, res, next) => {
           email: req.body.email,
         })
 
-        var fiber = Fiber.current
+        
         Fiber(function () {
+          var fiber = Fiber.current
           userSetting.save().then(userSetting => {
             user.setting.$id = userSetting._id
             fiber.run()
@@ -51,8 +52,8 @@ const register_post = (req, res, next) => {
             })
             fiber.run()
           })
-        })
 
+        })
         Fiber.yield()
 
         userData.save().catch(error => {
