@@ -26,7 +26,7 @@ const emailTo = (req, res, next) => {
     });
     //parameter for sending email
     var mailOptions = {
-        from: mailFrom,
+        from: mailForm,
         to: email,
         subject: subject,
     };
@@ -45,13 +45,13 @@ const emailTo = (req, res, next) => {
     try {
         transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
-                console.log("send fail");
+                console.log("send fail to %s",email);
                 return;
             }
-            console.log("send sucess");
+            console.log("send sucess to %s", email);
         });
     }catch (err) {
-        console.log("send fail");
+        console.log("send fail to %s", email);
     }
 }
 
