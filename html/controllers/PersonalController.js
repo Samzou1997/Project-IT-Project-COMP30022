@@ -36,7 +36,7 @@ const home_get = (req, res, next) => {
           }
           res.render('home.html', {
             username: "Hi, " + doc.lastName,
-            message: "Welcome to E-portfolio."
+            message: "Welcome to E-portfolio.",
             school: doc.details.school,
             major: doc.details.major,
             gender: doc.details.gender,
