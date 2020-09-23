@@ -39,19 +39,18 @@ const register_post = (req, res, next) => {
           email: req.body.email,
         })
 
-        
-        Fiber(function () {
-          var fiber = Fiber.current
-          userSetting.save().then(userSetting => {
-            user.setting.$id = userSetting._id
-          }).catch(error => {
-            console.log(error)
-            res.render("register_error.html", {
-              message: "system error, try again :)"
-            })
+        var fiber = Fiber.current
+
+        userSetting.save().then(userSetting => {
+          user.setting.$id = userSetting._id
+          //fiber.run()
+        }).catch(error => {
+          console.log(error)
+          res.render("register_error.html", {
+            message: "system error, try again :)"
           })
-          fiber.run()
         })
+        fiber.run()
         Fiber.yield()
 
         userData.save().catch(error => {
@@ -62,7 +61,7 @@ const register_post = (req, res, next) => {
           return
         })
 
-
+        
 
 
         user.save().then(user => {
