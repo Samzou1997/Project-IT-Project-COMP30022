@@ -81,7 +81,7 @@ const home_edit_get = (req, res, next) => {
           if (err) {
             console.log("db error")
           }
-          res.render('/http_error/404.html')
+          res.render('404.html')
         })
       }
     })
