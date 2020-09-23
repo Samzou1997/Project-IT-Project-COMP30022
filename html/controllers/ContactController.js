@@ -8,11 +8,11 @@ const secret_key = config.token_setting.secret_key
 const token_expire_time = config.token_setting.expire_time
 const cookie_alive_time = config.cookie_setting.alive_time
 
-const home_post = (req, res, next) => {
+const contact_post = (req, res, next) => {
   
 }
 
-const home_get = (req, res, next) => {
+const contact_get = (req, res, next) => {
   if (req.cookies["email"] != null) {
     let req_token = req.cookies['token']
     let req_user_id = req.cookies['id']
@@ -34,10 +34,7 @@ const home_get = (req, res, next) => {
           if (err) {
             console.log("db error")
           }
-          res.render('home.html', {
-            username: "Hi, " + doc.lastName,
-            message: "Welcome to E-portfolio."
-          })
+          res.render('contact.html')
         })
       }
     })
@@ -49,17 +46,6 @@ const home_get = (req, res, next) => {
   }
 }
 
-const logout_post = (req, res, next) => {
-  
-}
-
-const logout_get = (req, res, next) => {
-  res.cookie('id', '', { maxAge: 0 })
-  res.cookie('email', '', { maxAge: 0 })
-  res.cookie('token', '', { maxAge: 0 })
-  res.redirect('/')
-}
-
 module.exports = {
-  home_post, home_get, logout_post, logout_get
+  contact_post, contact_get
 }
