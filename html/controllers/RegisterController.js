@@ -4,6 +4,7 @@ const UserData = require('../models/UserData')
 const { response } = require('express')
 var cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
+const Fiber = require('fibers')
 const config = require('../config/web_config.json')
 
 const secret_key = config.token_setting.secret_key
@@ -38,12 +39,27 @@ const register_post = (req, res, next) => {
           email: req.body.email,
         })
 
-        var doc = userSetting.save()
-        user.setting.$id = doc._id
+        //var fiber = Fiber.current
+        userSetting.save().then(userSetting => {
+          user.setting.$id = userSetting._id
+          //fiber.run()
+        }).catch(error => {
+          console.log(error)
+          res.render("register_error.html", {
+            message: "system error, try again :)"
+          })
+        })
+        //Fiber.yield()
 
-        var doc = userData.save()
-        user.data.$id = doc._id
+        userData.save().catch(error => {
+          console.log(error)
+          res.render("register_error.html", {
+            message: "system error, try again :)"
+          })
+          return
+        })
 
+        
 
 
         user.save().then(user => {
