@@ -66,6 +66,20 @@ a.active,a:hover{
     display: none;
 }
 
+button{
+    padding: 12px;
+    background-color: rgba(1, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-size: 18px;
+}
+
+button:hover{
+    background-color: rgba(1, 136, 169, 0.7);
+}
+
 #check{
     display: none;
 }
@@ -95,6 +109,7 @@ a.active,a:hover{
         left: -100%;
         text-align: center;
         transition: all .5s;
+        z-index: 2;
     }
 
     nav ul li{
@@ -125,14 +140,61 @@ section{
     height: calc(100vh - 80px);
 }
 
-h1{
-    text-align: center;
-    padding-top: 50px;
+.card-container{
+	width: 300px;
+	height: 430px;
+	background: #FFF;
+	border-radius: 6px;
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	box-shadow: 0px 1px 10px 1px #000;
+	overflow: hidden;
+    display: inline-block;
+    z-index: 1;
+}
+.upper-container{
+	height: 150px;
+	background: #7F00FF;
+}
+.image-container{
+	background: white;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	padding: 5px;
+	transform: translate(100px,100px);
+}
+.image-container img{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+.lower-container{
+	height: 280px;
+	background: #FFF;
+	padding: 20px;
+	padding-top: 40px;
+	text-align: center;
+}
+.lower-container h3, h4{
+	box-sizing: border-box;
+	line-height: .6;
+    font-weight: lighter;
+    padding: 10px;
+}
+.lower-container h4{
+	color: #7F00FF;
+	opacity: .6;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.lower-container p{
+	font-size: 16px;
+	color: gray;
+    padding-bottom: 4px;
 }
 
-h3{
-    text-align: center;
-    padding-top: 10px;
-}
 
 /* End home.html main area */

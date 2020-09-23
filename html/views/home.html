@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <title>Welcome To EPortfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <title>Welcome To EPortfolio</title>
 
-    <!-- custome css file -->
-    <link rel="stylesheet" href="/public/css/style_home.css">
-    
-    
+  <!-- custome css file -->
+  <link rel="stylesheet" href="/public/css/style_home.css">
+
+
 </head>
-<body>
 
+<body>
 <!-- ==================================Start Header Area=========================================-->
   <nav>
     <input type="checkbox" id="check">
@@ -22,11 +23,11 @@
     <label class="logo">Uprank</label>
     <ul>
       <li><a class="active" href="#">Home</a></li>
-      <li><a href="#">Profile</a></li>
       <li><a href="#">Learning</a></li>
       <li><a href="#">Working</a></li>
       <li><a href="#">Volunteer</a></li>
       <li><a href="#">Contact</a></li>
+      <a href="/personal/logout"><button class="logout">LOGOUT</button></a>
     </ul>
   </nav>
 <!-- ==================================End Header Area=========================================-->
@@ -34,13 +35,31 @@
 
 <!-- ==================================Start Main Area=========================================-->
   <section>
-    <h1>{{username}}</h1>
-    <h3>{{message}}</h3>
+    <div class="card-container">
+
+      <div class="upper-container">
+        <div class="image-container">
+          <a href="#"><img src="{{path}}" /></a>
+        </div>
+      </div>
+  
+      <div class="lower-container">
+        <div>
+          <p>School: {{school}}</p>
+          <p>Major: {{major}}</p>
+          <p>School: {{school}}</p>
+          <p>Gender: {{gender}}</p>
+          <p>Birthday: {{birthday}}</p>
+        </div>
+      </div>
+  
+    </div>
   </section>
 
-<!-- ==================================End Main Area=========================================-->
-    <script>
-      
-    </script>
+  <!-- ==================================End Main Area=========================================-->
+  <script>
+
+  </script>
 </body>
+
 </html>
