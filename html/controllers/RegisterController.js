@@ -48,7 +48,7 @@ const register_post = (req, res, next) => {
           res.render("register_error.html", {
             message: "system error, try again :)"
           })
-          return
+          fiber.run()
         })
         Fiber.yield()
 
