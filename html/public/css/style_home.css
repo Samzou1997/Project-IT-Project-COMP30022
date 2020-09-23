@@ -68,12 +68,13 @@ a.active,a:hover{
 
 button{
     padding: 12px;
-    background-color: rgba(1, 136, 169, 1);
+    background-color: rgb(221, 58, 58);
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
     font-size: 18px;
+    color: white;
 }
 
 button:hover{
