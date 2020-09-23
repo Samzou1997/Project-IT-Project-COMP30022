@@ -29,9 +29,15 @@ const userSchema    = new Schema({
     dateBirth: {type: Date, default: nowDate},
     phone: {type: String, default: 'null'},
     address: {type: String, default: 'null'},
+    introduction: {type: String, default: 'null'},
   },
   setting: {
     $ref: {type: String, default: 'user_settings'},
+    $id: {type: Schema.Types.ObjectId},
+    $db: {type: String, default: 'GeekDB'},
+  },
+  data: {
+    $ref: {type: String, default: 'user_datas'},
     $id: {type: Schema.Types.ObjectId},
     $db: {type: String, default: 'GeekDB'},
   }
@@ -55,7 +61,12 @@ var example = {
     "address" : "xxxx xxxx xxx",
   },
   "setting" : {
-    "$ref": "userSetting",
+    "$ref": "user_settings",
+    "$id": ObjectId("534009e4d852427820000002"),
+    "$db": "Geek",
+  },
+  "data" : {
+    "$ref": "user_datas",
     "$id": ObjectId("534009e4d852427820000002"),
     "$db": "Geek",
   }
