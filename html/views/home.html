@@ -15,6 +15,7 @@
 
 <body>
 
+<<<<<<< Updated upstream
   <!-- ==================================Start Header Area=========================================-->
   <header>
     <nav>
@@ -37,9 +38,46 @@
 
 
   <!-- ==================================Start Main Area=========================================-->
+<!-- ==================================Start Header Area=========================================-->
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo">Uprank</label>
+    <ul>
+      <li><a class="active" href="#">Home</a></li>
+      <li><a href="#">Learning</a></li>
+      <li><a href="#">Working</a></li>
+      <li><a href="#">Volunteer</a></li>
+      <li><a href="#">Contact</a></li>
+      <a href="/personal/logout"><button class="logout">LOGOUT</button></a>
+    </ul>
+  </nav>
+<!-- ==================================End Header Area=========================================-->
+  
+
+<!-- ==================================Start Main Area=========================================-->
   <section>
-    <h1>{{username}}</h1>
-    <h3>{{message}}</h3>
+    <div class="card-container">
+
+      <div class="upper-container">
+        <div class="image-container">
+          <a href="#"><img src="{{path}}" /></a>
+        </div>
+      </div>
+  
+      <div class="lower-container">
+        <div>
+          <p>School: {{school}}</p>
+          <p>Major: {{major}}</p>
+          <p>School: {{school}}</p>
+          <p>Gender: {{gender}}</p>
+          <p>Birthday: {{birthday}}</p>
+        </div>
+      </div>
+  
+    </div>
   </section>
 
   <!-- ==================================End Main Area=========================================-->
