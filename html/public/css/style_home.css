@@ -68,7 +68,7 @@ a.active,a:hover{
 
 button{
     padding: 12px;
-    background-color: rgb(221, 58, 58);
+    background-color: rgb(223, 90, 90);
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -78,7 +78,7 @@ button{
 }
 
 button:hover{
-    background-color: rgb(129, 20, 20);
+    background-color: rgb(223, 60, 60);
 }
 
 #check{
