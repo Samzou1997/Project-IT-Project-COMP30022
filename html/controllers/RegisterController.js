@@ -44,15 +44,13 @@ const register_post = (req, res, next) => {
           var fiber = Fiber.current
           userSetting.save().then(userSetting => {
             user.setting.$id = userSetting._id
-            fiber.run()
           }).catch(error => {
             console.log(error)
             res.render("register_error.html", {
               message: "system error, try again :)"
             })
-            fiber.run()
           })
-
+          fiber.run()
         })
         Fiber.yield()
 
