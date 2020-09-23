@@ -17,7 +17,7 @@ body, input{
     min-height: 100vh;
     background-color:#fff;
     overflow: hidden;
-    background-image: url(../img/index_cover.jpg);
+    background-image: url(../img/index_cover.jpg) no-repeat;
     background-position: center;
 }
 
