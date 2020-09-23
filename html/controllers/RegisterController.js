@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const UserSetting = require('../models/UserSetting')
+const UserData = require('../models/UserData')
 const { response } = require('express')
 var cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
@@ -28,33 +29,32 @@ const register_post = (req, res, next) => {
           email: req.body.email,
           password: req.body.password,
         })
+
         let userSetting = new UserSetting({
           email: req.body.email,
         })
 
-        userSetting.save().then(userSetting => {
-          let objectID = userSetting._id
-          user.setting.$id = objectID
-          
-          user.save()
-          .then(user => {
-            let user_email = user.email
-            let user_id = user._id
-            let token = jwt.sign({ user_id, user_email }, secret_key, { expiresIn: token_expire_time })
+        let userData = new UserData({
+          email: req.body.email,
+        })
 
-            res.cookie('id', user_id, { maxAge: cookie_alive_time })
-            res.cookie('email', user_email, { maxAge: cookie_alive_time })
-            res.cookie('token', token, { maxAge: cookie_alive_time })
-            res.redirect('/personal/home')
-          })
-          .catch(error => {
-            console.log(error)
-            res.render("register_error.html", {
-              message: "system error, try again :)"
-            })
-            return
-          })
+        var doc = userSetting.save()
+        user.setting.$id = doc._id
 
+        var doc = userData.save()
+        user.data.$id = doc._id
+
+
+
+        user.save().then(user => {
+          let user_email = user.email
+          let user_id = user._id
+          let token = jwt.sign({ user_id, user_email }, secret_key, { expiresIn: token_expire_time })
+
+          res.cookie('id', user_id, { maxAge: cookie_alive_time })
+          res.cookie('email', user_email, { maxAge: cookie_alive_time })
+          res.cookie('token', token, { maxAge: cookie_alive_time })
+          res.redirect('/personal/home')
         }).catch(error => {
           console.log(error)
           res.render("register_error.html", {
