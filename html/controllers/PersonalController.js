@@ -41,6 +41,7 @@ const home_get = (req, res, next) => {
             major: doc.details.major,
             gender: doc.details.gender,
             birthday: doc.details.dataBirth,
+            path: "http://54.206.15.44/public/img/logo.png"
             
           })
         })
