@@ -1,11 +1,13 @@
 const User = require('../models/User')
+const UserSetting = require('../models/UserSetting')
 const { response } = require('express')
 var cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
+const config = require('../config/web_config.json')
 
-const secret_key = "secret"
-const hour = 3600000
-const alive_time = hour * 24 //a day
+const secret_key = config.token_setting.secret_key
+const token_expire_time = config.token_setting.expire_time
+const cookie_alive_time = config.cookie_setting.alive_time
 
 const register_post = (req, res, next) => {
   console.log('got register request, path: ' + req.url)
@@ -26,23 +28,40 @@ const register_post = (req, res, next) => {
           email: req.body.email,
           password: req.body.password,
         })
-        user.save()
+        let userSetting = new UserSetting({
+          email: req.body.email,
+        })
+
+        userSetting.save().then(userSetting => {
+          let objectID = userSetting._id
+          user.setting.$id = objectID
+          
+          user.save()
           .then(user => {
             let user_email = user.email
             let user_id = user._id
-            let token = jwt.sign({ user_id, user_email }, secret_key, { expiresIn: 60 })
+            let token = jwt.sign({ user_id, user_email }, secret_key, { expiresIn: token_expire_time })
 
-            res.cookie('id', user_id, { maxAge: alive_time })
-            res.cookie('email', user_email, { maxAge: alive_time })
-            res.cookie('token', token, { maxAge: alive_time })
-            res.redirect('/home')
+            res.cookie('id', user_id, { maxAge: cookie_alive_time })
+            res.cookie('email', user_email, { maxAge: cookie_alive_time })
+            res.cookie('token', token, { maxAge: cookie_alive_time })
+            res.redirect('/personal/home')
           })
           .catch(error => {
             console.log(error)
-            res.render("home.html", {
-              message: "Login error, try again :)"
+            res.render("register_error.html", {
+              message: "system error, try again :)"
             })
+            return
           })
+
+        }).catch(error => {
+          console.log(error)
+          res.render("register_error.html", {
+            message: "system error, try again :)"
+          })
+          return
+        })
       }
     })
   }

@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\html",
+    "\\html\\controllers"
   ],
+  "SelectedNode": "\\html\\controllers\\RegisterController.js",
   "PreviewInSolutionExplorer": false
 }
