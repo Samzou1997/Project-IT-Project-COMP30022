@@ -1,8 +1,10 @@
 const User = require('../models/User')
 const UserSetting = require('../models/UserSetting')
+const UserData = require('../models/UserData')
 const { response } = require('express')
 var cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
+const Fiber = require('fibers')
 const config = require('../config/web_config.json')
 
 const secret_key = config.token_setting.secret_key
@@ -28,33 +30,49 @@ const register_post = (req, res, next) => {
           email: req.body.email,
           password: req.body.password,
         })
+
         let userSetting = new UserSetting({
           email: req.body.email,
         })
 
+        let userData = new UserData({
+          email: req.body.email,
+        })
+
+        var fiber = Fiber.current
+
         userSetting.save().then(userSetting => {
-          let objectID = userSetting._id
-          user.setting.$id = objectID
-          
-          user.save()
-          .then(user => {
-            let user_email = user.email
-            let user_id = user._id
-            let token = jwt.sign({ user_id, user_email }, secret_key, { expiresIn: token_expire_time })
-
-            res.cookie('id', user_id, { maxAge: cookie_alive_time })
-            res.cookie('email', user_email, { maxAge: cookie_alive_time })
-            res.cookie('token', token, { maxAge: cookie_alive_time })
-            res.redirect('/personal/home')
+          user.setting.$id = userSetting._id
+          //fiber.run()
+        }).catch(error => {
+          console.log(error)
+          res.render("register_error.html", {
+            message: "system error, try again :)"
           })
-          .catch(error => {
-            console.log(error)
-            res.render("register_error.html", {
-              message: "system error, try again :)"
-            })
-            return
-          })
+        })
+        fiber.run()
+        Fiber.yield()
 
+        userData.save().catch(error => {
+          console.log(error)
+          res.render("register_error.html", {
+            message: "system error, try again :)"
+          })
+          return
+        })
+
+        
+
+
+        user.save().then(user => {
+          let user_email = user.email
+          let user_id = user._id
+          let token = jwt.sign({ user_id, user_email }, secret_key, { expiresIn: token_expire_time })
+
+          res.cookie('id', user_id, { maxAge: cookie_alive_time })
+          res.cookie('email', user_email, { maxAge: cookie_alive_time })
+          res.cookie('token', token, { maxAge: cookie_alive_time })
+          res.redirect('/personal/home')
         }).catch(error => {
           console.log(error)
           res.render("register_error.html", {
