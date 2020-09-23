@@ -3,7 +3,7 @@
     "alive_time" : 86400000
   },
   "token_setting" : {
-    "expire_time" : 60,
+    "expire_time" : 3600,
     "secret_key" : "PHP is the best language :)"
   }
 }
