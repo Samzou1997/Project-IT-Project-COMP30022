@@ -20,7 +20,7 @@ const emailTo = (req, res, next) => {
     var transporter = nodemailer.createTransport({
         host: smtp,
         auth: {
-            user: mailFrom,
+            user: mailForm,
             pass: mailKey, 
         }
     });
