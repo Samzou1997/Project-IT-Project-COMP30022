@@ -1,11 +1,8 @@
 var express       = require("express");
 var bodyParser    = require('body-parser');
-var querystring   = require('querystring');
 var mongoose      = require('mongoose');
 var morgan        = require('morgan');
-const jwt         = require('jsonwebtoken')
 var cookieParser  = require('cookie-parser');
-const User        = require('./models/User')
 
 const PersonalRouter  = require('./routes/PersonalRouter')
 const LoginRouter     = require('./routes/LoginRouter')

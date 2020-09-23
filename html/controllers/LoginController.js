@@ -2,10 +2,11 @@ const User = require('../models/User')
 const { response } = require('express')
 var cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
+const config = require('../config/web_config.json')
 
-const secret_key = "secret"
-const hour = 3600000
-const alive_time = hour * 24 //a day
+const secret_key = config.token_setting.secret_key
+const token_expire_time = config.token_setting.expire_time
+const cookie_alive_time = config.cookie_setting.alive_time
 
 const login_post = (req, res, next) => {
   console.log('got Login request, path: ' + req.url)
@@ -24,11 +25,11 @@ const login_post = (req, res, next) => {
         let user_password = doc.password
         let user_email = doc.email
         let user_id = doc._id
-        let token = jwt.sign({ user_id, user_email }, secret_key, { expiresIn: 60 })
+        let token = jwt.sign({ user_id, user_email }, secret_key, { expiresIn: token_expire_time })
 
-        res.cookie('id', user_id, { maxAge: alive_time })
-        res.cookie('email', user_email, { maxAge: alive_time })
-        res.cookie('token', token, { maxAge: alive_time })
+        res.cookie('id', user_id, { maxAge: cookie_alive_time })
+        res.cookie('email', user_email, { maxAge: cookie_alive_time })
+        res.cookie('token', token, { maxAge: cookie_alive_time })
         res.redirect('/personal/home')
         // res.render('home.html', {
         //     username: doc.lastName

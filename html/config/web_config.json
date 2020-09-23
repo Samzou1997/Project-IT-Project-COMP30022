@@ -1,0 +1,9 @@
+{
+  "cookie_setting" : {
+    "alive_time" : 86400000 /* a day in ms */
+  },
+  "token_setting" : {
+    "expire_time" : 60, /* in seconds */
+    "secret_key" : "PHP is the best language :)"
+  }
+}
