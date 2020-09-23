@@ -5,6 +5,7 @@ const mailsender = require('../config/web_config.json');
 //the smtp service address and acount use for sending link
 const smtp = mailsender.email_info.smtp;
 const mailKey = mailsender.email_info.mailKey;
+const mailForm = mailsender.email_info.mailFrom;
 
 const resetpage = (req, res, next) => {
     res.render("Reset_pd.html")
@@ -20,8 +21,7 @@ const emailTo = (req, res, next) => {
         host: smtp,
         auth: {
             user: mailFrom,
-            pass: mailPwd 
-
+            pass: mailKey, 
         }
     });
     //parameter for sending email
