@@ -1,13 +1,21 @@
 //import nodemailer for setup smtp and send email
-var nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
+const mailsender = require('../config/web_config.json');
 
 //the smtp service address and acount use for sending link
-var smtp = "smtp.gmail.com"
-var mailFrom = "team5eportifolio@gmail.com"
-var mailPwd = "tcptoteviestzgkn"
+const smtp = mailsender.email_info.smtp;
+const mailKey = mailsender.email_info.mailKey;
 
-function emailTo(email,subject,text,html) {
-    //create sender
+const resetpage = (req, res, next) => {
+    res.render("Reset_pd.html")
+}
+
+const emailTo = (req, res, next) => {
+    //create sender email,subject,text,html
+    var email  = req.body.email;
+    var subject = "Reset your password for your account"
+    var text = undefined;
+    var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='https://cn.pornhub.com/front/lost_password'>reset your password</a></p>";
     var transporter = nodemailer.createTransport({
         host: smtp,
         auth: {
@@ -47,8 +55,12 @@ function emailTo(email,subject,text,html) {
     }
 }
 
-var email = "yuxuekuangmo@gmail.com";
+module.exports = {
+    emailTo
+}
+
+/*var email = "yuxuekuangmo@gmail.com";
 var subject = "test";
 var text =undefined;
 var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='https://cn.pornhub.com/front/lost_password'>reset your password</a></p>";;
-emailTo(email, subject, text, html);
+emailTo(email, subject, text, html);*/
