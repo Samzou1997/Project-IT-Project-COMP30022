@@ -16,7 +16,7 @@ const emailTo = (req, res, next) => {
     var email  = req.body.email;
     var subject = "Reset your password for your account"
     var text = undefined;
-    var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='https://cn.pornhub.com/front/lost_password'>reset your password</a></p>";
+    var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='https://accounts.unimelb.edu.au/pwdreset/pages/forgot.jsp'>reset your password</a></p>";
     var transporter = nodemailer.createTransport({
         host: smtp,
         auth: {
