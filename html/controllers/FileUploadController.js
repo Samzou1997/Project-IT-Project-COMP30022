@@ -35,7 +35,7 @@ const userSys_upload_post = (req, res, next) => {
             res.render('404.html')
           }
           else {
-            
+
             var fileName = 'profilePic.jpg'
             //var destDir = req.body.dir == undefined ? "default" : req.body.dir;
             var sourceFile = req.file.path
@@ -53,7 +53,7 @@ const userSys_upload_post = (req, res, next) => {
               if (exists) {
                 fs.rename(sourceFile, fileDestDir, function (error) {
                   if (error) {
-                    console.log('[file rename ERROR]')
+                    console.log('[file rename ERROR]: '  + error)
                     res.render('404.html')
                   }
                   else {
@@ -64,7 +64,7 @@ const userSys_upload_post = (req, res, next) => {
               else {
                 fs.mkdir(userDir, 0777, function (error) {
                   if (error) {
-                    console.log('[mkdir ERROR]')
+                    console.log('[mkdir ERROR]: ' + error)
                     res.render('404.html')
                   }
                   else {
@@ -75,7 +75,7 @@ const userSys_upload_post = (req, res, next) => {
                     fs.mkdir(userSysDir, 0777, function (error) {
                       fs.rename(sourceFile, fileDestDir, function (error) {
                         if (error) {
-                          console.log('[file rename ERROR]')
+                          console.log('[file rename ERROR]: ' + error)
                           res.render('404.html')
                         }
                         else {
