@@ -39,7 +39,7 @@ const userSys_upload_post = (req, res, next) => {
 
             var fileName = 'profilePic.jpg'
             //var destDir = req.body.dir == undefined ? "default" : req.body.dir;
-            var sourceFile = req.file.path
+            var sourceFile = req.file
             console.log(sourceFile)
             //var destPath = path.join(__dirname.replace("routes", ""), "uploads", destDir, fileName);
             var userDir = path.join(rootDir, "/file/userData", doc._id.toHexString()) // full path in server
