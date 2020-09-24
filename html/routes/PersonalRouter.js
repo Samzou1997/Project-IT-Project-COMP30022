@@ -49,7 +49,7 @@ router.get('/home/edit/picupload', upload.single('profilePic'), HomeController.h
 router.post('/learning', LearningController.learning_post) // full path: /personal/learning
 router.get('/learning', LearningController.learning_get)
 
-router.post('/learning/edit/fileupload', upload.single('uploadFile'), FileUploadController.userSys_upload_post) // full path: /personal/home/edit/submit
+router.post('/learning/edit/fileupload', upload.single('uploadFile'), FileUploadController.alphaSection_upload_post) // full path: /personal/home/edit/submit
 router.get('/learning/edit/fileupload', upload.single('uploadFile'), HomeController.home_edit_submit_get)
 
 // ======================================================================================================== //
