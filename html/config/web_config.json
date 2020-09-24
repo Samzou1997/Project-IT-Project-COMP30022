@@ -6,9 +6,12 @@
     "expire_time" : 3600,
     "secret_key" : "PHP is the best language :)"
   },
-  "email_info" :{
+  "email_info" : {
     "smtp" : "smtp.gmail.com",
     "mailFrom" : "team5eportifolio@gmail.com",
     "mailKey" : "tcptoteviestzgkn"
+  },
+  "fileSystem" : {
+    "root" : "/home/IT_Project/html"
   }
  }

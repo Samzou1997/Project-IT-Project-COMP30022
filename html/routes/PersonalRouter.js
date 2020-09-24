@@ -1,14 +1,28 @@
-const express   = require('express')
-const router    = express.Router()
+const express     = require('express')
+const router      = express.Router()
 const multer      = require('multer')
+const moment      = require('moment')
+const config      = require('../config/web_config.json')
 
-const HomeController        = require('../controllers/HomeController')
-const ContactController     = require('../controllers/ContactController')
-const LogoutController      = require('../controllers/LogoutController')
-const FileUploadController  = require('../controllers/FileUploadController')
-const LearningController    = require('../controllers/LearningController')
+const HomeController          = require('../controllers/HomeController')
+const ContactController       = require('../controllers/ContactController')
+const LogoutController        = require('../controllers/LogoutController')
+const FileUploadController    = require('../controllers/FileUploadController')
+const LearningController      = require('../controllers/LearningController')
 
-var upload = multer()
+var storageConfig = multer.diskStorage({
+
+  destination: function (req, file, cb) {
+    cb(null, path.join(config.fileSystem.root, "/file/temp"));
+  },
+
+  filename: function (req, file, cb) {
+    var date = new Date();
+    cb(null, moment().format("YYYYMMDDhhmmss") + file.originalname);
+  }
+})
+
+var upload = multer({storage : storageConfig})
 
 router.post('/', HomeController.home_post)
 router.get('/', HomeController.home_get)
