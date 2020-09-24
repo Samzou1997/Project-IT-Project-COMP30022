@@ -35,11 +35,15 @@ const Resetpd = (req, res, next) => {
                 if(doc.passwordRestToken ==  req.params.token){
                     console.log("Correct link");
                 }
+                else{
+                    console.log("token error");
+                    console.log(doc.passwordRestToken);
+                    console.log(req.params.token);
+                }
             }
           })
         }
       })
-    console.log(req.params.token);
 }
 
 const emailTo = (req, res, next) => {
