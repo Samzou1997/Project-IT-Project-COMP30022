@@ -5,6 +5,6 @@ const ResetController   = require('../controllers/ResetController');
 
 router.get('/', ResetController.resetpage);
 router.post('/Reset', ResetController.emailTo);
-router.get('/Resetting/:token', ResetController.Resetpd);
+//router.get('/Resetting/:token', ResetController.Resetpd);
 
 module.exports = router;

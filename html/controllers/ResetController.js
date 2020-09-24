@@ -15,7 +15,7 @@ const resetpage = (req, res, next) => {
     res.render("Reset_pd.html")
 }
 
-const Resetpd = (req, res, next) => {
+/*const Resetpd = (req, res, next) => {
     jwt.verify(req.params.token, secret_key, function (error, decoded) {
         if (error) {
             console.log("token decode error");
@@ -24,7 +24,8 @@ const Resetpd = (req, res, next) => {
             });
         }
         else {
-          UserData.findOne({ email: decoded.email}, function (err, doc) {
+            const newLocal = decoded.email;
+            UserData.findOne({ email: newLocal}, function (err, doc) {
             if (err) {
                 console.log("email error");
                 res.render('SendEmailComfirmation.html', {
@@ -32,6 +33,7 @@ const Resetpd = (req, res, next) => {
                 });
             }
             else {
+                console.log("token error");
                 if(doc.passwordRestToken ==  req.params.token){
                     console.log("Correct link");
                 }
@@ -44,7 +46,7 @@ const Resetpd = (req, res, next) => {
           })
         }
       })
-}
+}*/
 
 const emailTo = (req, res, next) => {
     UserData.findOne({ email: req.body.email }, function (err, doc) {
