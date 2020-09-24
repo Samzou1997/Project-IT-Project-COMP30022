@@ -40,7 +40,8 @@ const home_get = (req, res, next) => {
             school: doc.details.school,
             major: doc.details.major,
             gender: doc.details.gender,
-            birthday: doc.details.dataBirth,
+            birthday: doc.details.dataBirth.toLocaleString(),
+            intro: doc.details.introduction,
             path: "http://54.206.15.44/public/img/logo.png"
             
           })
