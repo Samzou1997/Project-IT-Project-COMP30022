@@ -33,7 +33,6 @@ const Resetpd = (req, res, next) => {
                 });
             }
             else {
-                console.log("token error");
                 if(doc.passwordRestToken ==  req.params.token){
                     console.log("Correct link");
                 }
