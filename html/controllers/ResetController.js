@@ -16,6 +16,29 @@ const resetpage = (req, res, next) => {
 }
 
 const Resetpd = (req, res, next) => {
+    jwt.verify(req.params.token, secret_key, function (error, decoded) {
+        if (error) {
+            console.log("token decode error");
+            res.render('SendEmailComfirmation.html', {
+                message: `Link expire`
+            });
+        }
+        else {
+          UserData.findOne({ email: decoded.email}, function (err, doc) {
+            if (err) {
+                console.log("email error");
+                res.render('SendEmailComfirmation.html', {
+                    message: `Link error`
+                });
+            }
+            else {
+                if(doc.passwordRestToken ==  req.params.token){
+                    console.log("Correct link");
+                }
+            }
+          })
+        }
+      })
     console.log(req.params.token);
 }
 
@@ -96,9 +119,3 @@ const emailTo = (req, res, next) => {
 module.exports = {
     emailTo,resetpage,Resetpd
 }
-
-/*var email = "yuxuekuangmo@gmail.com";
-var subject = "test";
-var text =undefined;
-var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='https://cn.pornhub.com/front/lost_password'>reset your password</a></p>";;
-emailTo(email, subject, text, html);*/
