@@ -39,8 +39,9 @@ const home_get = (req, res, next) => {
           else {
             homePaddingData.school = doc.details.school
             homePaddingData.major = doc.details.major
+            homePaddingData.degree = doc.details.degree
             homePaddingData.gender = doc.details.gender
-            homePaddingData.birthday = doc.details.dateBirth
+            homePaddingData.birthday = doc.details.dateBirth.toLocaleString()
             homePaddingData.intro = doc.details.introduction
 
             res.render('home.html', homePaddingData)
