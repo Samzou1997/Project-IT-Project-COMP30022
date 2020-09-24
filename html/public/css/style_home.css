@@ -198,3 +198,19 @@ section{
 
 
 /* End home.html main area */
+
+/* Start learning.html working.html volunteer.html main area */
+input[type="submit"]{
+    outline-style: none ;
+    border: 1px solid #ccc; 
+    border-radius: 3px;
+    padding: 14px 14px;
+    width: 120px;
+    font-size: 500;
+    
+}
+
+input[type="submit"]:hover{
+    background-color: indigo;
+}
+/* End learning.html working.html volunteer.html main area */
