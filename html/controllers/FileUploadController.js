@@ -303,7 +303,7 @@ const betaSection_upload_post = (req, res, next) => {
                       });
                     }
                     else {
-                      res.redirect('/personal/learning');
+                      res.redirect('/personal/working');
                     }
                   });
                 }
@@ -428,7 +428,7 @@ const charlieSection_upload_post = (req, res, next) => {
                       });
                     }
                     else {
-                      res.redirect('/personal/learning');
+                      res.redirect('/personal/volunteer');
                     }
                   });
                 }
