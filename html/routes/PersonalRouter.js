@@ -57,10 +57,16 @@ router.get('/learning/edit/fileupload', upload.single('uploadFile'), HomeControl
 router.post('/working', WorkingController.working_post) // full path: /personal/working
 router.get('/working', WorkingController.working_get)
 
+router.post('/working/edit/fileupload', upload.single('uploadFile'), FileUploadController.betaSection_upload_post) // full path: /personal/home/edit/submit
+router.get('/working/edit/fileupload', upload.single('uploadFile'), HomeController.home_edit_submit_get)
+
 // ======================================================================================================== //
 
 router.post('/volunteer', VolunteerController.volunteer_post) // full path: /personal/volunteer
 router.get('/volunteer', VolunteerController.volunteer_get)
+
+router.post('/volunteer/edit/fileupload', upload.single('uploadFile'), FileUploadController.charlieSection_upload_post) // full path: /personal/home/edit/submit
+router.get('/volunteer/edit/fileupload', upload.single('uploadFile'), HomeController.home_edit_submit_get)
 
 // ======================================================================================================== //
 
