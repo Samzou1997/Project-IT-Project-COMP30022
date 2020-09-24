@@ -14,15 +14,27 @@ const home_post = (req, res, next) => {
 }
 
 const home_get = (req, res, next) => {
-  homePaddingData.name = doc.firstName + " " + doc.lastName
-  homePaddingData.school = doc.details.school
-  homePaddingData.major = doc.details.major
-  homePaddingData.degree = doc.details.degree
-  homePaddingData.gender = doc.details.gender
-  homePaddingData.birthday = doc.details.dateBirth.toLocaleString()
-  homePaddingData.intro = doc.details.introduction
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      homePaddingData.name = doc.firstName + " " + doc.lastName
+      homePaddingData.school = doc.details.school
+      homePaddingData.major = doc.details.major
+      homePaddingData.degree = doc.details.degree
+      homePaddingData.gender = doc.details.gender
+      homePaddingData.birthday = doc.details.dateBirth.toLocaleString()
+      homePaddingData.intro = doc.details.introduction
 
-  res.render('home.html', homePaddingData)
+      res.render('home.html', homePaddingData)
+    }
+  })
 }
 
 const home_edit_post = (req, res, next) => {
