@@ -10,8 +10,9 @@ const ContactController       = require('../controllers/ContactController')
 const LogoutController        = require('../controllers/LogoutController')
 const FileUploadController    = require('../controllers/FileUploadController')
 const LearningController      = require('../controllers/LearningController')
-const WorkingController      = require('../controllers/WorkingController')
-const VolunteerController      = require('../controllers/VolunteerController')
+const WorkingController       = require('../controllers/WorkingController')
+const VolunteerController     = require('../controllers/VolunteerController')
+const ErrorRouter             = require('../controllers/ErrorController')
 
 var storageConfig = multer.diskStorage({
 
@@ -39,10 +40,10 @@ router.post('/home/edit', HomeController.home_edit_post) // full path: /personal
 router.get('/home/edit', HomeController.home_edit_get)
 
 router.post('/home/edit/infosubmit', HomeController.home_edit_submit_post) // full path: /personal/home/edit/submit
-router.get('/home/edit/infosubmit', HomeController.home_edit_submit_get)
+router.get('/home/edit/infosubmit', ErrorRouter.not_found_404)
 
 router.post('/home/edit/picupload', upload.single('profilePic'), FileUploadController.userSys_upload_post) // full path: /personal/home/edit/submit
-router.get('/home/edit/picupload', upload.single('profilePic'), HomeController.home_edit_submit_get)
+router.get('/home/edit/picupload', upload.single('profilePic'), ErrorRouter.not_found_404)
 
 // ======================================================================================================== //
 
@@ -50,7 +51,7 @@ router.post('/learning', LearningController.learning_post) // full path: /person
 router.get('/learning', LearningController.learning_get)
 
 router.post('/learning/edit/fileupload', upload.single('uploadFile'), FileUploadController.alphaSection_upload_post) // full path: /personal/home/edit/submit
-router.get('/learning/edit/fileupload', upload.single('uploadFile'), HomeController.home_edit_submit_get)
+router.get('/learning/edit/fileupload', upload.single('uploadFile'), ErrorRouter.not_found_404)
 
 // ======================================================================================================== //
 
@@ -58,7 +59,7 @@ router.post('/working', WorkingController.working_post) // full path: /personal/
 router.get('/working', WorkingController.working_get)
 
 router.post('/working/edit/fileupload', upload.single('uploadFile'), FileUploadController.betaSection_upload_post) // full path: /personal/home/edit/submit
-router.get('/working/edit/fileupload', upload.single('uploadFile'), HomeController.home_edit_submit_get)
+router.get('/working/edit/fileupload', upload.single('uploadFile'), ErrorRouter.not_found_404)
 
 // ======================================================================================================== //
 
@@ -66,7 +67,7 @@ router.post('/volunteer', VolunteerController.volunteer_post) // full path: /per
 router.get('/volunteer', VolunteerController.volunteer_get)
 
 router.post('/volunteer/edit/fileupload', upload.single('uploadFile'), FileUploadController.charlieSection_upload_post) // full path: /personal/home/edit/submit
-router.get('/volunteer/edit/fileupload', upload.single('uploadFile'), HomeController.home_edit_submit_get)
+router.get('/volunteer/edit/fileupload', upload.single('uploadFile'), ErrorRouter.not_found_404)
 
 // ======================================================================================================== //
 
