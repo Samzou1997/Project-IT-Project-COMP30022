@@ -94,7 +94,7 @@ const emailTo = (req, res, next) => {
 }
 
 module.exports = {
-    emailTo,resetpage
+    emailTo,resetpage,Resetpd
 }
 
 /*var email = "yuxuekuangmo@gmail.com";
