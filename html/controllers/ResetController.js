@@ -61,22 +61,30 @@ const emailTo = (req, res, next) => {
             try {
                 transporter.sendMail(mailOptions, function (err, info) {
                     if (err) {
-                        res.render(`<h1>send fail to ${email}<h1>`);
+                        res.render('SendEmailComfirmation.html', {
+                            message: `send fail to ${email}`
+                        });
                         console.log("send fail to %s",email);
                         return;
                     }
-                    res.render(`<h1>send sucess to ${email}<h1>`);
+                    res.render('SendEmailComfirmation.html', {
+                        message: `send sucess to ${email}`
+                    });
                     console.log("send sucess to %s", email);
                 });
             }catch (err) {
-                res.render(`<h1>send fail to ${email}<h1>`);
+                res.render('SendEmailComfirmation.html', {
+                    message: `send fail to ${email}`
+                });
                 console.log("send fail to %s", email);
             }
 
         }
         else {
-            res.render("<h1>Acount Not find</h1>");
-            console.log("Acount %s Not find", email);
+            res.render('SendEmailComfirmation.html', {
+                message: `Acount ${email} not found`
+            });
+            console.log("Acount %s Not found", email);
         }
     })
 }
