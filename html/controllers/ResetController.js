@@ -29,16 +29,10 @@ const emailTo = (req, res, next) => {
                 shareLabel: doc.shareLabel,
                 passwordRestToken: token
             }
-            UserData.findByIdAndUpdate(userid, {$set: updatedData})
-            .then(response => {
-                console.log(response);
-            })
-            .catch(error => {
-                console.log(error);
-            })
+            UserData.findByIdAndUpdate(userid, {$set: updatedData});
             var subject = "Reset your password for your account"
             var text = undefined;
-            var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='http://54.206.15.44/Forgot/Resetting/"+token+">reset your password</a></p>";
+            var html = "<p>To reset password</p><p>click the link below：</p><p><a href='http://54.206.15.44/Forgot/Resetting/"+token+">reset your password</a></p><p>The link will exprie in one hour!</p>";
             var transporter = nodemailer.createTransport({
                 host: smtp,
                 auth: {
@@ -67,17 +61,21 @@ const emailTo = (req, res, next) => {
             try {
                 transporter.sendMail(mailOptions, function (err, info) {
                     if (err) {
+                        res.render("<h1>send fail to " + email);
                         console.log("send fail to %s",email);
                         return;
                     }
+                    res.render("<h1>send sucess to " + email);
                     console.log("send sucess to %s", email);
                 });
             }catch (err) {
+                res.render("<h1>send fail to " + email);
                 console.log("send fail to %s", email);
             }
 
         }
         else {
+            res.render("<h1>Acount " + email + " Not find</h1>");
             console.log("Acount %s Not find", email);
         }
     })
