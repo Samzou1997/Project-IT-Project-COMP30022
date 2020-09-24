@@ -10,6 +10,7 @@ const fs              = require('fs')
 const secret_key = config.token_setting.secret_key
 const token_expire_time = config.token_setting.expire_time
 const cookie_alive_time = config.cookie_setting.alive_time
+const rootDir = '/home/IT_Project/html'
 
 const userSys_upload_post = (req, res, next) => {
   if (req.cookies["email"] != null) {
@@ -40,7 +41,7 @@ const userSys_upload_post = (req, res, next) => {
             //var destDir = req.body.dir == undefined ? "default" : req.body.dir;
             var sourceFile = req.file.path
             //var destPath = path.join(__dirname.replace("routes", ""), "uploads", destDir, fileName);
-            var userDir = path.join(__dirname, "/file/userData", doc._id.toHexString()) // full path in server
+            var userDir = path.join(rootDir, "/file/userData", doc._id.toHexString()) // full path in server
             var userSysDir = path.join(userDir, '/userSys')
             var userUploadDir = path.join(userDir, '/userUpload')
             var docInsertDir = path.join(userUploadDir, '/docInsert')
