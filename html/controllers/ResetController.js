@@ -123,5 +123,5 @@ const emailTo = (req, res, next) => {
 }
 
 module.exports = {
-    emailTo,resetpage,Resetpd
+    emailTo,resetpage,//Resetpd
 }
