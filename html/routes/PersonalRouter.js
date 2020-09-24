@@ -10,6 +10,8 @@ const ContactController       = require('../controllers/ContactController')
 const LogoutController        = require('../controllers/LogoutController')
 const FileUploadController    = require('../controllers/FileUploadController')
 const LearningController      = require('../controllers/LearningController')
+const WorkingController      = require('../controllers/WorkingController')
+const VolunteerController      = require('../controllers/VolunteerController')
 
 var storageConfig = multer.diskStorage({
 
@@ -47,20 +49,18 @@ router.get('/home/edit/picupload', upload.single('profilePic'), HomeController.h
 router.post('/learning', LearningController.learning_post) // full path: /personal/learning
 router.get('/learning', LearningController.learning_get)
 
-// ======================================================================================================== //
-
-router.post('/profile', HomeController.home_post) // full path: /personal/learning
-router.get('/profile', HomeController.home_get)
+router.post('/learning/edit/fileupload', upload.single('uploadFile'), FileUploadController.userSys_upload_post) // full path: /personal/home/edit/submit
+router.get('/learning/edit/fileupload', upload.single('uploadFile'), HomeController.home_edit_submit_get)
 
 // ======================================================================================================== //
 
-router.post('/working', HomeController.home_post) // full path: /personal/working
-router.get('/working', HomeController.home_get)
+router.post('/working', WorkingController.working_post) // full path: /personal/working
+router.get('/working', WorkingController.working_get)
 
 // ======================================================================================================== //
 
-router.post('/volunteer', HomeController.home_post) // full path: /personal/volunteer
-router.get('/volunteer', HomeController.home_get)
+router.post('/volunteer', VolunteerController.volunteer_post) // full path: /personal/volunteer
+router.get('/volunteer', VolunteerController.volunteer_get)
 
 // ======================================================================================================== //
 
