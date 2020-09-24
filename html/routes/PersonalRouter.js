@@ -2,9 +2,11 @@ const express   = require('express')
 const router    = express.Router()
 const multer      = require('multer')
 
-const HomeController      = require('../controllers/HomeController')
-const ContactController   = require('../controllers/ContactController')
-const LogoutController    = require('../controllers/LogoutController')
+const HomeController        = require('../controllers/HomeController')
+const ContactController     = require('../controllers/ContactController')
+const LogoutController      = require('../controllers/LogoutController')
+const FileUploadController  = require('../controllers/FileUploadController')
+const LearningController    = require('../controllers/LearningController')
 
 var upload = multer()
 
@@ -22,13 +24,13 @@ router.get('/home/edit', HomeController.home_edit_get)
 router.post('/home/edit/infosubmit', HomeController.home_edit_submit_post) // full path: /personal/home/edit/submit
 router.get('/home/edit/infosubmit', HomeController.home_edit_submit_get)
 
-router.post('/home/edit/picupload', upload.single('profilePic'), HomeController.home_edit_submit_post) // full path: /personal/home/edit/submit
+router.post('/home/edit/picupload', upload.single('profilePic'), FileUploadController.userSys_upload_post) // full path: /personal/home/edit/submit
 router.get('/home/edit/picupload', upload.single('profilePic'), HomeController.home_edit_submit_get)
 
 // ======================================================================================================== //
 
-router.post('/learning', HomeController.home_post) // full path: /personal/learning
-router.get('/learning', HomeController.home_get)
+router.post('/learning', LearningController.learning_post) // full path: /personal/learning
+router.get('/learning', LearningController.learning_get)
 
 // ======================================================================================================== //
 

@@ -3,6 +3,7 @@ const { response }    = require('express')
 var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
+const { fstat } = require('fs')
 
 const secret_key = config.token_setting.secret_key
 const token_expire_time = config.token_setting.expire_time
@@ -32,14 +33,58 @@ const userSys_upload_post = (req, res, next) => {
             res.render('404.html')
           }
           else {
-            homePaddingData.name = doc.firstName + " " + doc.lastName
-            homePaddingData.school = doc.details.school
-            homePaddingData.major = doc.details.major
-            homePaddingData.degree = doc.details.degree
-            homePaddingData.gender = doc.details.gender
-            homePaddingData.birthday = doc.details.dateBirth.toLocaleString()
-            homePaddingData.intro = doc.details.introduction
+            var fileName = 'profilePic.jpg'
+            //var destDir = req.body.dir == undefined ? "default" : req.body.dir;
+            var sourceFile = req.file.path
+            //var destPath = path.join(__dirname.replace("routes", ""), "uploads", destDir, fileName);
+            var userDir = path.join(__dirname, "/file/userData", doc._id) // full path in server
+            var userSysDir = path.join(userDir, '/userSys')
+            var userUploadDir = path.join(userDir, '/userUpload')
+            var docInsertDir = path.join(userUploadDir, '/docInsert')
+            var customizeFileDir = path.join(userUploadDir, '/customizeFile')
 
+            var fileDestDir = path.join(userSysDir, fileName)
+            //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
+            //fileurl = fileurl.replace(/\\/g, "/");
+            fs.exists(userDir, function (exists) {
+              if (exists) {
+                fs.rename(sourceFile, fileDestDir, function (error) {
+                  if (error) {
+                    console.log('[file rename ERROR]')
+                    res.render('404.html')
+                  }
+                  else {
+                    res.redirect('/personal/home')
+                  }
+                })
+              }
+              else {
+                fs.mkdir(userDir, 0777, function (error) {
+                  if (error) {
+                    console.log('[mkdir ERROR]')
+                    res.render('404.html')
+                  }
+                  else {
+                    fs.mkdir(userUploadDir, 0777, function (error) {
+                      fs.mkdir(docInsertDir, 0777, function (error) {})
+                      fs.mkdir(customizeFileDir, 0777, function (error) {})
+                    })
+                    fs.mkdir(userSysDir, 0777, function (error) {
+                      fs.rename(sourceFile, fileDestDir, function (error) {
+                        if (error) {
+                          console.log('[file rename ERROR]')
+                          res.render('404.html')
+                        }
+                        else {
+                          res.redirect('/personal/home')
+                        }
+                      })
+                    })
+                  }
+                })
+              }
+            })
+ 
             res.render('home.html', homePaddingData)
           }
         })
@@ -51,4 +96,8 @@ const userSys_upload_post = (req, res, next) => {
       login_error_message: "Please login first.",
     })
   }
+}
+
+module.exports = {
+  userSys_upload_post
 }
