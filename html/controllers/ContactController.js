@@ -34,7 +34,9 @@ const contact_get = (req, res, next) => {
           if (err) {
             console.log("db error")
           }
-          res.render('contact.html')
+          else {
+            res.render('contact.html')
+          }
         })
       }
     })

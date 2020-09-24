@@ -1,16 +1,15 @@
-const User = require('../models/User');
-const { response } = require('express');
-var cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
-const config = require('../config/web_config.json');
-const { fstat } = require('fs');
-const path = require('path');
-const fs = require('fs');
+const User            = require('../models/User');
+const { response }    = require('express');
+var cookieParser      = require('cookie-parser');
+const jwt             = require('jsonwebtoken');
+const config          = require('../config/web_config.json');
+const path            = require('path');
+const fs              = require('fs');
 
-const secret_key = config.token_setting.secret_key;
-const token_expire_time = config.token_setting.expire_time;
-const cookie_alive_time = config.cookie_setting.alive_time;
-const rootDir = config.fileSystem.root;
+const secret_key          = config.token_setting.secret_key;
+const token_expire_time   = config.token_setting.expire_time;
+const cookie_alive_time   = config.cookie_setting.alive_time;
+const rootDir             = config.fileSystem.root;
 
 // System reserved file, example: profile picture
 const userSys_upload_post = (req, res, next) => {

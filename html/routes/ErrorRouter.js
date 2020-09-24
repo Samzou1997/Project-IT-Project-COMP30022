@@ -1,9 +1,9 @@
 const express   = require('express')
 const router    = express.Router()
 
-const RegisterController   = require('../controllers/RegisterController')
+const ErrorRouter   = require('../controllers/ErrorController')
 
-router.post('/', RegisterController.register_post)
-router.get('/', RegisterController.register_get)
+router.post('/404', ErrorRouter.not_found_404)
+router.get('/404', ErrorRouter.not_found_404)
 
 module.exports = router
