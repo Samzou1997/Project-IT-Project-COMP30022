@@ -37,12 +37,10 @@ const home_get = (req, res, next) => {
             res.render('404.html')
           }
           else {
-            let dateBirth = doc.details.dataBirth
-
             homePaddingData.school = doc.details.school
             homePaddingData.major = doc.details.major
             homePaddingData.gender = doc.details.gender
-            homePaddingData.birthday = dateBirth.toLocaleString()
+            homePaddingData.birthday = doc.details.dataBirth
             homePaddingData.intro = doc.details.introduction
 
             res.render('home.html', homePaddingData)
