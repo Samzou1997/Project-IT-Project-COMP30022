@@ -3,6 +3,7 @@ const router      = express.Router()
 const multer      = require('multer')
 const moment      = require('moment')
 const config      = require('../config/web_config.json')
+const path        = require('path')
 
 const HomeController          = require('../controllers/HomeController')
 const ContactController       = require('../controllers/ContactController')
