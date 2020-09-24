@@ -23,7 +23,7 @@ router.post('/home/edit/infosubmit', HomeController.home_edit_submit_post) // fu
 router.get('/home/edit/infosubmit', HomeController.home_edit_submit_get)
 
 router.post('/home/edit/picupload', upload.single('profilePic'), HomeController.home_edit_submit_post) // full path: /personal/home/edit/submit
-router.get('/home/edit/picupload', HomeController.home_edit_submit_get)
+router.get('/home/edit/picupload', upload.single('profilePic'), HomeController.home_edit_submit_get)
 
 // ======================================================================================================== //
 
