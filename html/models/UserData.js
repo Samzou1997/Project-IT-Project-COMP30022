@@ -1,5 +1,6 @@
 const { ObjectId } = require('bson')
 const mongoose    = require('mongoose')
+mongoose.set('useFindAndModify', false);
 const Schema      = mongoose.Schema
 
 const userDataSchema = new Schema({
@@ -8,6 +9,10 @@ const userDataSchema = new Schema({
     required: true
   },
   shareLabel: {
+    type: String,
+    default: 'null'
+  },
+  passwordRestToken: {
     type: String,
     default: 'null'
   },

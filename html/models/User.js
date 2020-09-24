@@ -1,7 +1,7 @@
 const { ObjectId } = require('bson')
 const mongoose    = require('mongoose')
 const Schema      = mongoose.Schema
-
+mongoose.set('useFindAndModify', false);
 var nowDate = Date.now()
 
 const userSchema    = new Schema({
@@ -46,7 +46,6 @@ const userSchema    = new Schema({
 // users collection example:
 var example = {
   "_id" : ObjectId("5f69ce5f5f8cd7751b793c81"),
-  
   "firstName" : "xxx",
   "lastName" : "xxx",
   "email" : "xxx@xxx.com",

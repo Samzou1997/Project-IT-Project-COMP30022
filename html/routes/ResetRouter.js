@@ -1,9 +1,10 @@
-const express   = require('express')
-const router    = express.Router()
+const express   = require('express');
+const router    = express.Router();
 
-const SendController   = require('../controllers/ResetController')
+const ResetController   = require('../controllers/ResetController');
 
-router.get('/', ResetController.resetpage)
-router.post('/reset', ResetController.emailTo)
+router.get('/', ResetController.resetpage);
+router.post('/Reset', ResetController.emailTo);
+//router.get('/Resetting', ResetController.Resetpd);
 
-module.exports = router
+module.exports = router;

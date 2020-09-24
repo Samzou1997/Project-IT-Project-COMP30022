@@ -1,11 +1,12 @@
-const User = require('../models/User')
-const UserSetting = require('../models/UserSetting')
-const UserData = require('../models/UserData')
-const { response } = require('express')
-var cookieParser = require('cookie-parser')
-const jwt = require('jsonwebtoken')
-const Fiber = require('fibers')
-const config = require('../config/web_config.json')
+const User            = require('../models/User')
+const UserSetting     = require('../models/UserSetting')
+const UserData        = require('../models/UserData')
+const { response }    = require('express')
+var cookieParser      = require('cookie-parser')
+const jwt             = require('jsonwebtoken')
+//const Fiber         = require('fibers')
+const async           = require("async")
+const config          = require('../config/web_config.json')
 
 const secret_key = config.token_setting.secret_key
 const token_expire_time = config.token_setting.expire_time
@@ -39,44 +40,54 @@ const register_post = (req, res, next) => {
           email: req.body.email,
         })
 
-        //var fiber = Fiber.current
-        userSetting.save().then(userSetting => {
-          user.setting.$id = userSetting._id
-          //fiber.run()
-        }).catch(error => {
-          console.log(error)
-          res.render("register_error.html", {
-            message: "system error, try again :)"
+
+        userSettingSaveFunc = function (callback) {
+          userSetting.save().then(userSetting => {
+            user.setting.$id = userSetting._id
+            callback(null, 'userSettingSaveFunc')
+          }).catch(error => {
+            console.log(error)
+            res.render("register_error.html", {
+              message: "system error, try again :)"
+            })
+            callback(null, 'userSettingSaveFunc')
           })
-        })
-        //Fiber.yield()
+        }
 
-        userData.save().catch(error => {
-          console.log(error)
-          res.render("register_error.html", {
-            message: "system error, try again :)"
+        userDataSaveFunc = function (callback) {
+          userData.save().then(userData => {
+            user.data.$id = userData._id
+            callback(null, 'userDataSaveFunc')
+          }).catch(error => {
+            console.log(error)
+            res.render("register_error.html", {
+              message: "system error, try again :)"
+            })
+            callback(null, 'userDataSaveFunc')
           })
-          return
-        })
+        }
 
-        
+        userSaveFunc = function (callback) {
+          user.save().then(user => {
+            let user_email = user.email
+            let user_id = user._id
+            let token = jwt.sign({ user_id, user_email }, secret_key, { expiresIn: token_expire_time })
 
-
-        user.save().then(user => {
-          let user_email = user.email
-          let user_id = user._id
-          let token = jwt.sign({ user_id, user_email }, secret_key, { expiresIn: token_expire_time })
-
-          res.cookie('id', user_id, { maxAge: cookie_alive_time })
-          res.cookie('email', user_email, { maxAge: cookie_alive_time })
-          res.cookie('token', token, { maxAge: cookie_alive_time })
-          res.redirect('/personal/home')
-        }).catch(error => {
-          console.log(error)
-          res.render("register_error.html", {
-            message: "system error, try again :)"
+            res.cookie('id', user_id, { maxAge: cookie_alive_time })
+            res.cookie('email', user_email, { maxAge: cookie_alive_time })
+            res.cookie('token', token, { maxAge: cookie_alive_time })
+            res.redirect('/personal/home')
+            callback(null, 'userSaveFunc')
+          }).catch(error => {
+            console.log(error)
+            res.render("register_error.html", {
+              message: "system error, try again :)"
+            })
+            callback(null, 'userSaveFunc')
           })
-          return
+        }
+        async.series([userSettingSaveFunc, userDataSaveFunc, userSaveFunc], function(error, result){
+          //console.log(result)
         })
       }
     })
