@@ -10,7 +10,7 @@ const token_expire_time = config.token_setting.expire_time
 const cookie_alive_time = config.cookie_setting.alive_time
 
 const home_post = (req, res, next) => {
-  
+  res.render('404.html')
 }
 
 const home_get = (req, res, next) => {
@@ -97,11 +97,11 @@ const home_edit_get = (req, res, next) => {
 }
 
 const home_edit_submit_post = (req, res, next) => {
-  
+  res.render('404.html')
 }
 
 const home_edit_submit_get = (req, res, next) => {
-  
+  res.render('404.html')
 }
 
 module.exports = {
