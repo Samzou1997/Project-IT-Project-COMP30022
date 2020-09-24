@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <title>Welcome To EPortfolio</title>
+
+  <!-- custome css file -->
+  <link rel="stylesheet" href="/public/css/style_home.css">
+
+
+</head>
+<!-- ==================================Start Header Area=========================================-->
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo">Uprank</label>
+    <ul>
+      <li><a href="/personal/home">Home</a></li>
+      <li><a href="/personal/learning">Learning</a></li>
+      <li><a class="active" href="/personal/working">Working</a></li>
+      <li><a href="/personal/volunteer">Volunteer</a></li>
+      <li><a href="/personal/contact">Contact</a></li>
+      <a href="/personal/logout"><button class="logout">LOGOUT</button></a>
+    </ul>
+  </nav>
+<!-- ==================================End Header Area=========================================-->
+  
+
+<!-- ==================================Start Main Area=========================================-->
+  <section>
+    <form action="/personal/working/edit/fileupload" enctype="multipart/form-data" method="post">
+      <input type="file" id="upload" name = "uploadFile" hidden="hidden" />
+      <button type="button" id="custom-button">CHOOSE A FILE</button>
+      <span id="custom-text">No file Chosen</span> </br>
+      <input type="submit" value="Upload">
+    </form>
+  </section>
+
+  <!-- ==================================End Main Area=========================================-->
+  <script type="text/javascript">
+    const realFileBtn = document.getElementById("upload");
+    const customBtn = document.getElementById("custom-button");
+    const customTxt = document.getElementById("custom-text");
+
+    customBtn.addEventListener("click", function(){
+      realFileBtn.click();
+    })
+
+    realFileBtn.addEventListener("change",function(){
+      if(realFileBtn.value){
+        customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+      } else {
+        customTxt.innerHTML = "No File Chosen";
+      }
+    })
+  </script>
+</body>
+
+</html>
