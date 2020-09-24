@@ -15,7 +15,7 @@ const resetpage = (req, res, next) => {
     res.render("Reset_pd.html")
 }
 
-/*const Resetpd = (req, res, next) => {
+const Resetpd = (req, res, next) => {
     jwt.verify(req.params.token, secret_key, function (error, decoded) {
         if (error) {
             console.log("token decode error");
@@ -46,7 +46,7 @@ const resetpage = (req, res, next) => {
           })
         }
       })
-}*/
+}
 
 const emailTo = (req, res, next) => {
     UserData.findOne({ email: req.body.email }, function (err, doc) {
@@ -65,10 +65,10 @@ const emailTo = (req, res, next) => {
             UserData.findByIdAndUpdate(userid, {$set: updatedData})
             .then(response => {
                 console.log(response)
-              })
-              .catch(error => {
+            })
+            .catch(error => {
                 console.log(error)
-              })
+            })
             var subject = "Reset your password for your account"
             var text = undefined;
             var html = `<p>To reset password</p><p>click the link below：</p><p><a href='http://54.206.15.44/Forgot/Resetting/${token}'>reset your password</a></p><p>The link will exprie in one hour!</p>`;
@@ -129,5 +129,5 @@ const emailTo = (req, res, next) => {
 }
 
 module.exports = {
-    emailTo,resetpage,//Resetpd
+    emailTo,resetpage,Resetpd
 }
