@@ -34,7 +34,11 @@ const home_get = (req, res, next) => {
         User.findOne({ email: decoded.user_email }, function (err, doc) {
           if (err) {
             console.log("db error")
-            res.render('404.html')
+            res.render('error.html', {
+              title: 'System Error',
+              errorCode: 'System Error',
+              errorMessage: err
+            });
           }
           else {
             homePaddingData.name = doc.firstName + " " + doc.lastName
@@ -84,7 +88,9 @@ const home_edit_get = (req, res, next) => {
           if (err) {
             console.log("db error")
           }
-          res.render('404.html')
+          else {
+            res.render('404.html')
+          }
         })
       }
     })

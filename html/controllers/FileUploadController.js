@@ -139,12 +139,16 @@ const alphaSection_upload_post = (req, res, next) => {
         User.findOne({ email: decoded.user_email }, function (err, doc) {
           if (err) {
             console.log("db error");
-            res.render('404.html');
+            res.render('error.html', {
+              title: 'System Error',
+              errorCode: 'System Error',
+              errorMessage: err
+            });
           }
           else {
 
             if (req.file != null) {
-              var fileName = req.file.filename;
+              var fileName = req.file.originalname;
               //var destDir = req.body.dir == undefined ? "default" : req.body.dir;
               var sourceFile = req.file.path;
               //console.log(sourceFile)
@@ -166,7 +170,11 @@ const alphaSection_upload_post = (req, res, next) => {
                   fs.rename(sourceFile, fileDestDir, function (error) {
                     if (error) {
                       console.log('[file rename ERROR]: ' + error);
-                      res.render('404.html');
+                      res.render('error.html', {
+                        title: 'System Error',
+                        errorCode: 'System Error',
+                        errorMessage: '[file rename ERROR]: ' + error
+                      });
                     }
                     else {
                       res.redirect('/personal/learning');
@@ -177,7 +185,11 @@ const alphaSection_upload_post = (req, res, next) => {
                   fs.mkdir(userDir, 0777, function (error) {
                     if (error) {
                       console.log('[mkdir ERROR]: ' + error);
-                      res.render('404.html');
+                      res.render('error.html', {
+                        title: 'System Error',
+                        errorCode: 'System Error',
+                        errorMessage: '[mkdir ERROR]: ' + error
+                      });
                     }
                     else {
                       fs.mkdir(userUploadDir, 0777, function (error) {
@@ -187,7 +199,11 @@ const alphaSection_upload_post = (req, res, next) => {
                             fs.rename(sourceFile, fileDestDir, function (error) {
                               if (error) {
                                 console.log('[file rename ERROR]: ' + error);
-                                res.render('404.html');
+                                res.render('error.html', {
+                                  title: 'System Error',
+                                  errorCode: 'System Error',
+                                  errorMessage: '[file rename ERROR]: ' + error
+                                });
                               }
                               else {
                                 res.redirect('/personal/learning');
@@ -205,7 +221,11 @@ const alphaSection_upload_post = (req, res, next) => {
               })
             }
             else {
-              res.render('404.html');
+              res.render('error.html', {
+                title: 'System Error',
+                errorCode: 'System Error',
+                errorMessage: 'Upload file not found.'
+              });
             }
 
 
