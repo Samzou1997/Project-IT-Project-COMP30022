@@ -37,6 +37,7 @@ const home_get = (req, res, next) => {
             res.render('404.html')
           }
           else {
+            homePaddingData.name = doc.firstName + " " + doc.lastName
             homePaddingData.school = doc.details.school
             homePaddingData.major = doc.details.major
             homePaddingData.degree = doc.details.degree
