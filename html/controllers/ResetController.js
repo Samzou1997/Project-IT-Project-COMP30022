@@ -25,6 +25,8 @@ const emailTo = (req, res, next) => {
             let userid = doc._id
             let token = jwt.sign({email}, secret_key, { expiresIn: token_expire_time });
             let updatedData = {
+                email: doc.email,
+                shareLabel: doc.shareLabel,
                 passwordRestToken: token
             }
             UserData.findByIdAndUpdate(userid, {$set: updatedData})
