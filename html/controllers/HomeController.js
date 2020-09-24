@@ -3,6 +3,7 @@ const { response }  = require('express')
 var cookieParser    = require('cookie-parser')
 const jwt           = require('jsonwebtoken')
 const config        = require('../config/web_config.json')
+var homePaddingData   = require('../views/data_padding/home_data.json')
 
 const secret_key = config.token_setting.secret_key
 const token_expire_time = config.token_setting.expire_time
@@ -33,18 +34,19 @@ const home_get = (req, res, next) => {
         User.findOne({ email: decoded.user_email }, function (err, doc) {
           if (err) {
             console.log("db error")
+            res.render('404.html')
           }
-          res.render('home.html', {
-            username: "Hi, " + doc.lastName,
-            message: "Welcome to E-portfolio.",
-            school: doc.details.school,
-            major: doc.details.major,
-            gender: doc.details.gender,
-            birthday: doc.details.dataBirth,
-            intro: doc.details.introduction,
-            path: "http://54.206.15.44/public/img/logo.png"
-            
-          })
+          else {
+            let dateBirth = doc.details.dataBirth
+
+            homePaddingData.school = doc.details.school
+            homePaddingData.major = doc.details.major
+            homePaddingData.gender = doc.details.gender
+            homePaddingData.birthday = dateBirth.toLocaleString()
+            homePaddingData.intro = doc.details.introduction
+
+            res.render('home.html', homePaddingData)
+          }
         })
       }
     })
