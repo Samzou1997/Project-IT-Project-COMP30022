@@ -35,6 +35,7 @@ const userSys_upload_post = (req, res, next) => {
             res.render('404.html')
           }
           else {
+            
             var fileName = 'profilePic.jpg'
             //var destDir = req.body.dir == undefined ? "default" : req.body.dir;
             var sourceFile = req.file.path
@@ -86,8 +87,8 @@ const userSys_upload_post = (req, res, next) => {
                 })
               }
             })
- 
-            res.render('home.html', homePaddingData)
+
+
           }
         })
       }
