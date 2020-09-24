@@ -15,6 +15,10 @@ const resetpage = (req, res, next) => {
     res.render("Reset_pd.html")
 }
 
+const Resetpd = (req, res, next) => {
+    console.log(req.params.token);
+}
+
 const emailTo = (req, res, next) => {
     UserData.findOne({ email: req.body.email }, function (err, doc) {
         if (err) {
