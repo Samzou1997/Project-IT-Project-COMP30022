@@ -13,6 +13,7 @@ const LearningController      = require('../controllers/LearningController')
 const WorkingController       = require('../controllers/WorkingController')
 const VolunteerController     = require('../controllers/VolunteerController')
 const ErrorRouter             = require('../controllers/ErrorController')
+const VerifyController        = require('../controllers/VerifyController')
 
 var storageConfig = multer.diskStorage({
 
@@ -34,7 +35,7 @@ router.get('/', HomeController.home_get)
 // ======================================================================================================== //
 
 router.post('/home', HomeController.home_post) // full path: /personal/home
-router.get('/home', HomeController.home_get)
+router.get('/home', VerifyController.verify_login, HomeController.home_get)
 
 router.post('/home/edit', HomeController.home_edit_post) // full path: /personal/home/edit
 router.get('/home/edit', HomeController.home_edit_get)
