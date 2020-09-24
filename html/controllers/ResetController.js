@@ -1,6 +1,7 @@
 //import nodemailer for setup smtp and send email
 const nodemailer = require("nodemailer");
 const mailsender = require('../config/web_config.json');
+const User = require('../models/User')
 
 //the smtp service address and acount use for sending link
 const smtp = mailsender.email_info.smtp;
@@ -12,47 +13,57 @@ const resetpage = (req, res, next) => {
 }
 
 const emailTo = (req, res, next) => {
-    //create sender email,subject,text,html
-    var email  = req.body.email;
-    var subject = "Reset your password for your account"
-    var text = undefined;
-    var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='https://accounts.unimelb.edu.au/pwdreset/pages/forgot.jsp'>reset your password</a></p>";
-    var transporter = nodemailer.createTransport({
-        host: smtp,
-        auth: {
-            user: mailForm,
-            pass: mailKey, 
+    User.findOne({ email: req.body.email }, function (err, doc) {
+        if (err) {
+          console.log("db error")
         }
-    });
-    //parameter for sending email
-    var mailOptions = {
-        from: mailForm,
-        to: email,
-        subject: subject,
-    };
-
-    // read text contant 
-    if(text != undefined)
-    {
-        mailOptions.text =text;
-    }
-    if(html != undefined)
-    {
-        mailOptions.html =html;
-    }
-
-    //start sending
-    try {
-        transporter.sendMail(mailOptions, function (err, info) {
-            if (err) {
-                console.log("send fail to %s",email);
-                return;
+        if (doc) {
+            var email  = req.body.email;
+            var subject = "Reset your password for your account"
+            var text = undefined;
+            var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='https://accounts.unimelb.edu.au/pwdreset/pages/forgot.jsp'>reset your password</a></p>";
+            var transporter = nodemailer.createTransport({
+                host: smtp,
+                auth: {
+                    user: mailForm,
+                    pass: mailKey, 
+                }
+            });
+            //parameter for sending email
+            var mailOptions = {
+                from: mailForm,
+                to: email,
+                subject: subject,
+            };
+        
+            // read text contant 
+            if(text != undefined)
+            {
+                mailOptions.text =text;
             }
-            console.log("send sucess to %s", email);
-        });
-    }catch (err) {
-        console.log("send fail to %s", email);
-    }
+            if(html != undefined)
+            {
+                mailOptions.html =html;
+            }
+        
+            //start sending
+            try {
+                transporter.sendMail(mailOptions, function (err, info) {
+                    if (err) {
+                        console.log("send fail to %s",email);
+                        return;
+                    }
+                    console.log("send sucess to %s", email);
+                });
+            }catch (err) {
+                console.log("send fail to %s", email);
+            }
+
+        }
+        else {
+            console.log("Acount %s Not find", email);
+        }
+    })
 }
 
 module.exports = {
