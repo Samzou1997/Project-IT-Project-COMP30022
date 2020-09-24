@@ -40,7 +40,7 @@ const home_get = (req, res, next) => {
             homePaddingData.school = doc.details.school
             homePaddingData.major = doc.details.major
             homePaddingData.gender = doc.details.gender
-            homePaddingData.birthday = doc.details.dataBirth
+            homePaddingData.birthday = doc.details.dateBirth
             homePaddingData.intro = doc.details.introduction
 
             res.render('home.html', homePaddingData)
