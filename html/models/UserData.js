@@ -1,5 +1,6 @@
 const { ObjectId } = require('bson')
 const mongoose    = require('mongoose')
+mongoose.set('useFindAndModify', false);
 const Schema      = mongoose.Schema
 
 const userDataSchema = new Schema({
