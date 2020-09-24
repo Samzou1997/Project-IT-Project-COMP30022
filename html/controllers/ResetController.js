@@ -1,7 +1,8 @@
 //import nodemailer for setup smtp and send email
 const nodemailer = require("nodemailer");
 const mailsender = require('../config/web_config.json');
-const User = require('../models/User')
+const UserData = require('../models/UserData');
+const jwt = require('jsonwebtoken');
 
 //the smtp service address and acount use for sending link
 const smtp = mailsender.email_info.smtp;
@@ -13,15 +14,21 @@ const resetpage = (req, res, next) => {
 }
 
 const emailTo = (req, res, next) => {
-    User.findOne({ email: req.body.email }, function (err, doc) {
+    UserData.findOne({ email: req.body.email }, function (err, doc) {
         if (err) {
           console.log("db error")
         }
         if (doc) {
             var email  = req.body.email;
+            let userid = doc._id
+            let token = jwt.sign({email}, secret_key, { expiresIn: token_expire_time });
+            let updatedData = {
+                passwordRestToken: token
+            }
+            User.findByIdAndUpdate(userid, {$set: updatedData});
             var subject = "Reset your password for your account"
             var text = undefined;
-            var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='https://accounts.unimelb.edu.au/pwdreset/pages/forgot.jsp'>reset your password</a></p>";
+            var html = `<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='http://54.206.15.44/Forgot/Resetting/${token}>reset your password</a></p>`;
             var transporter = nodemailer.createTransport({
                 host: smtp,
                 auth: {
