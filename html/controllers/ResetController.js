@@ -27,7 +27,7 @@ const emailTo = (req, res, next) => {
             let updatedData = {
                 passwordRestToken: token
             }
-            User.findByIdAndUpdate(userid, {$set: updatedData});
+            UserData.findByIdAndUpdate(userid, {$set: updatedData});
             var subject = "Reset your password for your account"
             var text = undefined;
             var html = `<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='http://54.206.15.44/Forgot/Resetting/${token}>reset your password</a></p>`;
