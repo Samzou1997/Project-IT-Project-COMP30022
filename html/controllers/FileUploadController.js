@@ -5,6 +5,7 @@ const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
 const { fstat }       = require('fs')
 const path            = require('path')
+const fs              = require('fs')
 
 const secret_key = config.token_setting.secret_key
 const token_expire_time = config.token_setting.expire_time
