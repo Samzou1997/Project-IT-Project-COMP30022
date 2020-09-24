@@ -3,7 +3,8 @@ const { response }    = require('express')
 var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
-const { fstat } = require('fs')
+const { fstat }       = require('fs')
+const path            = require('path')
 
 const secret_key = config.token_setting.secret_key
 const token_expire_time = config.token_setting.expire_time
