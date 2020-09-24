@@ -38,13 +38,13 @@ const userSys_upload_post = (req, res, next) => {
             //var destDir = req.body.dir == undefined ? "default" : req.body.dir;
             var sourceFile = req.file.path
             //var destPath = path.join(__dirname.replace("routes", ""), "uploads", destDir, fileName);
-            var userDir = path.join(__dirname, "/file/userData", doc._id) // full path in server
-            var userSysDir = path.join(userDir.toString(), '/userSys')
-            var userUploadDir = path.join(userDir.toString(), '/userUpload')
-            var docInsertDir = path.join(userUploadDir.toString(), '/docInsert')
-            var customizeFileDir = path.join(userUploadDir.toString(), '/customizeFile')
+            var userDir = path.join(__dirname, "/file/userData", doc._id.toHexString()) // full path in server
+            var userSysDir = path.join(userDir, '/userSys')
+            var userUploadDir = path.join(userDir, '/userUpload')
+            var docInsertDir = path.join(userUploadDir, '/docInsert')
+            var customizeFileDir = path.join(userUploadDir, '/customizeFile')
 
-            var fileDestDir = path.join(userSysDir.toString(), fileName)
+            var fileDestDir = path.join(userSysDir, fileName)
             //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
             //fileurl = fileurl.replace(/\\/g, "/");
             fs.exists(userDir, function (exists) {
