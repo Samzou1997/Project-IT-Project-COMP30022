@@ -8,8 +8,8 @@ const jwt = require('jsonwebtoken');
 const smtp = mailsender.email_info.smtp;
 const mailKey = mailsender.email_info.mailKey;
 const mailForm = mailsender.email_info.mailFrom;
-const secret_key = config.token_setting.secret_key
-const token_expire_time = config.token_setting.expire_time
+const secret_key = mailsender.token_setting.secret_key
+const token_expire_time = mailsender.token_setting.expire_time
 
 const resetpage = (req, res, next) => {
     res.render("Reset_pd.html")
