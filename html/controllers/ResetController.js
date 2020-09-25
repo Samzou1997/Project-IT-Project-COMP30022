@@ -115,7 +115,9 @@ const Resetpd = (req, res, next) => {
             }
             else {
                 if(doc.passwordRestToken ==  req.params.token){
-                    
+                    res.render("Resetting_pd.html",{
+                        token: req.params.token
+                    })
                 }
                 else{
                     console.log("token error");
