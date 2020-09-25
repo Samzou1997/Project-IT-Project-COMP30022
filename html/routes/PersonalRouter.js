@@ -62,6 +62,8 @@ router.get('/working', VerifyController.verify_login, WorkingController.working_
 router.post('/working/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileUploadController.betaSection_upload_post) // full path: /personal/home/edit/submit
 router.get('/working/edit/fileupload', ErrorRouter.not_found_404)
 
+router.get('/working/edit/article', VerifyController.verify_login, WorkingController.working_article_edit_get)
+
 // ======================================================================================================== //
 
 //router.post('/volunteer', VolunteerController.volunteer_post) // full path: /personal/volunteer
