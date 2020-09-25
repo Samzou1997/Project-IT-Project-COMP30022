@@ -76,72 +76,34 @@ const userSys_upload_post = (req, res, next) => {
     else {
 
       if (req.file != null) {
-        var fileName = 'profilePic.jpg';
-        //var destDir = req.body.dir == undefined ? "default" : req.body.dir;
-        var sourceFile = req.file.path;
-        //console.log(sourceFile)
-        //var destPath = path.join(__dirname.replace("routes", ""), "uploads", destDir, fileName);
-        var userDir = path.join(rootDir, "/file/userData", doc._id.toHexString()); // full path in server
-        var userSysDir = path.join(userDir, '/userSys');
-        var userUploadDir = path.join(userDir, '/userUpload');
-        var docInsertDir = path.join(userUploadDir, '/docInsert');
-        var customizeFileDir = path.join(userUploadDir, '/customizeFile');
-        var alphaSectionDir = path.join(customizeFileDir, '/alphagSection');
-        var betaSectionDir = path.join(customizeFileDir, '/betagSection');
-        var charlieSectionDir = path.join(customizeFileDir, '/charlieSection');
+        getToUserDir(doc._id, function () {
+          var fileName = req.file.originalname;
+          var sourceFile = req.file.path;
 
-        var fileDestDir = path.join(userSysDir, fileName);
-        //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
-        //fileurl = fileurl.replace(/\\/g, "/");
-        fs.exists(userDir, function (exists) {
-          if (exists) {
-            fs.rename(sourceFile, fileDestDir, function (err) {
-              if (error) {
-                console.log('[file rename ERROR]: ' + err);
-                res.render('error.html', {
-                  title: 'System Error',
-                  errorCode: 'System Error',
-                  errorMessage: err
-                });
-              }
-              else {
-                res.redirect('/personal/home');
-              }
-            });
-          }
-          else {
-            fs.mkdir(userDir, 0777, function (error) {
-              if (error) {
-                console.log('[mkdir ERROR]: ' + error);
-                res.render('404.html');
-              }
-              else {
-                fs.mkdir(userUploadDir, 0777, function (error) {
-                  fs.mkdir(docInsertDir, 0777, function (error) { });
-                  fs.mkdir(customizeFileDir, 0777, function (error) {
-                    fs.mkdir(alphaSectionDir, 0777, function (error) { });
-                    fs.mkdir(betaSectionDir, 0777, function (error) { });
-                    fs.mkdir(charlieSectionDir, 0777, function (error) { });
-                  });
-                });
-                fs.mkdir(userSysDir, 0777, function (error) {
-                  fs.rename(sourceFile, fileDestDir, function (error) {
-                    if (error) {
-                      console.log('[file rename ERROR]: ' + error);
-                      res.render('404.html');
-                    }
-                    else {
-                      res.redirect('/personal/home');
-                    }
-                  })
-                })
-              }
-            })
-          }
+          var fileDestDir = path.join(userSysDir, fileName);
+          //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
+          //fileurl = fileurl.replace(/\\/g, "/");
+          fs.rename(sourceFile, fileDestDir, function (error) {
+            if (error) {
+              console.log('[file rename ERROR]: ' + error);
+              res.render('error.html', {
+                title: 'System Error',
+                errorCode: 'System Error',
+                errorMessage: '[file rename ERROR]: ' + error
+              });
+            }
+            else {
+              next();
+            }
+          });
         })
       }
       else {
-        res.render('404.html');
+        res.render('error.html', {
+          title: 'System Error',
+          errorCode: 'System Error',
+          errorMessage: 'Upload file not found.'
+        });
       }
     }
   })
@@ -178,7 +140,7 @@ const alphaSection_upload_post = (req, res, next) => {
               });
             }
             else {
-              res.redirect('/personal/learning');
+              next();
             }
           });
         })
@@ -305,76 +267,26 @@ const betaSection_upload_post = (req, res, next) => {
     else {
 
       if (req.file != null) {
-        var fileName = req.file.originalname;
-        //var destDir = req.body.dir == undefined ? "default" : req.body.dir;
-        var sourceFile = req.file.path;
-        //console.log(sourceFile)
-        //var destPath = path.join(__dirname.replace("routes", ""), "uploads", destDir, fileName);
-        var userDir = path.join(rootDir, "/file/userData", doc._id.toHexString()); // full path in server
-        var userSysDir = path.join(userDir, '/userSys');
-        var userUploadDir = path.join(userDir, '/userUpload');
-        var docInsertDir = path.join(userUploadDir, '/docInsert');
-        var customizeFileDir = path.join(userUploadDir, '/customizeFile');
-        var alphaSectionDir = path.join(customizeFileDir, '/alphagSection');
-        var betaSectionDir = path.join(customizeFileDir, '/betagSection');
-        var charlieSectionDir = path.join(customizeFileDir, '/charlieSection');
+        getToUserDir(doc._id, function () {
+          var fileName = req.file.originalname;
+          var sourceFile = req.file.path;
 
-        var fileDestDir = path.join(betaSectionDir, fileName);
-        //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
-        //fileurl = fileurl.replace(/\\/g, "/");
-        fs.exists(userDir, function (exists) {
-          if (exists) {
-            fs.rename(sourceFile, fileDestDir, function (error) {
-              if (error) {
-                console.log('[file rename ERROR]: ' + error);
-                res.render('error.html', {
-                  title: 'System Error',
-                  errorCode: 'System Error',
-                  errorMessage: '[file rename ERROR]: ' + error
-                });
-              }
-              else {
-                res.redirect('/personal/working');
-              }
-            });
-          }
-          else {
-            fs.mkdir(userDir, 0777, function (error) {
-              if (error) {
-                console.log('[mkdir ERROR]: ' + error);
-                res.render('error.html', {
-                  title: 'System Error',
-                  errorCode: 'System Error',
-                  errorMessage: '[mkdir ERROR]: ' + error
-                });
-              }
-              else {
-                fs.mkdir(userUploadDir, 0777, function (error) {
-                  fs.mkdir(docInsertDir, 0777, function (error) { });
-                  fs.mkdir(customizeFileDir, 0777, function (error) {
-                    fs.mkdir(alphaSectionDir, 0777, function (error) { });
-                    fs.mkdir(betaSectionDir, 0777, function (error) {
-                      fs.rename(sourceFile, fileDestDir, function (error) {
-                        if (error) {
-                          console.log('[file rename ERROR]: ' + error);
-                          res.render('error.html', {
-                            title: 'System Error',
-                            errorCode: 'System Error',
-                            errorMessage: '[file rename ERROR]: ' + error
-                          });
-                        }
-                        else {
-                          res.redirect('/personal/learning');
-                        }
-                      });
-                    });
-                    fs.mkdir(charlieSectionDir, 0777, function (error) { });
-                  });
-                });
-                fs.mkdir(userSysDir, 0777, function (error) { })
-              }
-            })
-          }
+          var fileDestDir = path.join(betaSectionDir, fileName);
+          //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
+          //fileurl = fileurl.replace(/\\/g, "/");
+          fs.rename(sourceFile, fileDestDir, function (error) {
+            if (error) {
+              console.log('[file rename ERROR]: ' + error);
+              res.render('error.html', {
+                title: 'System Error',
+                errorCode: 'System Error',
+                errorMessage: '[file rename ERROR]: ' + error
+              });
+            }
+            else {
+              next();
+            }
+          });
         })
       }
       else {
@@ -402,76 +314,26 @@ const charlieSection_upload_post = (req, res, next) => {
     else {
 
       if (req.file != null) {
-        var fileName = req.file.originalname;
-        //var destDir = req.body.dir == undefined ? "default" : req.body.dir;
-        var sourceFile = req.file.path;
-        //console.log(sourceFile)
-        //var destPath = path.join(__dirname.replace("routes", ""), "uploads", destDir, fileName);
-        var userDir = path.join(rootDir, "/file/userData", doc._id.toHexString()); // full path in server
-        var userSysDir = path.join(userDir, '/userSys');
-        var userUploadDir = path.join(userDir, '/userUpload');
-        var docInsertDir = path.join(userUploadDir, '/docInsert');
-        var customizeFileDir = path.join(userUploadDir, '/customizeFile');
-        var alphaSectionDir = path.join(customizeFileDir, '/alphagSection');
-        var betaSectionDir = path.join(customizeFileDir, '/betagSection');
-        var charlieSectionDir = path.join(customizeFileDir, '/charlieSection');
+        getToUserDir(doc._id, function () {
+          var fileName = req.file.originalname;
+          var sourceFile = req.file.path;
 
-        var fileDestDir = path.join(charlieSectionDir, fileName);
-        //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
-        //fileurl = fileurl.replace(/\\/g, "/");
-        fs.exists(userDir, function (exists) {
-          if (exists) {
-            fs.rename(sourceFile, fileDestDir, function (error) {
-              if (error) {
-                console.log('[file rename ERROR]: ' + error);
-                res.render('error.html', {
-                  title: 'System Error',
-                  errorCode: 'System Error',
-                  errorMessage: '[file rename ERROR]: ' + error
-                });
-              }
-              else {
-                res.redirect('/personal/volunteer');
-              }
-            });
-          }
-          else {
-            fs.mkdir(userDir, 0777, function (error) {
-              if (error) {
-                console.log('[mkdir ERROR]: ' + error);
-                res.render('error.html', {
-                  title: 'System Error',
-                  errorCode: 'System Error',
-                  errorMessage: '[mkdir ERROR]: ' + error
-                });
-              }
-              else {
-                fs.mkdir(userUploadDir, 0777, function (error) {
-                  fs.mkdir(docInsertDir, 0777, function (error) { });
-                  fs.mkdir(customizeFileDir, 0777, function (error) {
-                    fs.mkdir(alphaSectionDir, 0777, function (error) { });
-                    fs.mkdir(betaSectionDir, 0777, function (error) { });
-                    fs.mkdir(charlieSectionDir, 0777, function (error) {
-                      fs.rename(sourceFile, fileDestDir, function (error) {
-                        if (error) {
-                          console.log('[file rename ERROR]: ' + error);
-                          res.render('error.html', {
-                            title: 'System Error',
-                            errorCode: 'System Error',
-                            errorMessage: '[file rename ERROR]: ' + error
-                          });
-                        }
-                        else {
-                          res.redirect('/personal/learning');
-                        }
-                      });
-                    });
-                  });
-                });
-                fs.mkdir(userSysDir, 0777, function (error) { })
-              }
-            })
-          }
+          var fileDestDir = path.join(charlieSectionDir, fileName);
+          //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
+          //fileurl = fileurl.replace(/\\/g, "/");
+          fs.rename(sourceFile, fileDestDir, function (error) {
+            if (error) {
+              console.log('[file rename ERROR]: ' + error);
+              res.render('error.html', {
+                title: 'System Error',
+                errorCode: 'System Error',
+                errorMessage: '[file rename ERROR]: ' + error
+              });
+            }
+            else {
+              next();
+            }
+          });
         })
       }
       else {

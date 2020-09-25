@@ -43,7 +43,7 @@ router.get('/home/edit', VerifyController.verify_login, HomeController.home_edit
 router.post('/home/edit/infosubmit', VerifyController.verify_login, HomeController.home_edit_submit_post) // full path: /personal/home/edit/submit
 router.get('/home/edit/infosubmit', ErrorRouter.not_found_404)
 
-router.post('/home/edit/picupload', upload.single('profilePic'), VerifyController.verify_login, FileUploadController.userSys_upload_post) // full path: /personal/home/edit/submit
+router.post('/home/edit/picupload', upload.single('profilePic'), VerifyController.verify_login, FileUploadController.userSys_upload_post, HomeController.home_get) // full path: /personal/home/edit/submit
 router.get('/home/edit/picupload', ErrorRouter.not_found_404)
 
 // ======================================================================================================== //
@@ -51,7 +51,7 @@ router.get('/home/edit/picupload', ErrorRouter.not_found_404)
 //router.post('/learning', LearningController.learning_post) // full path: /personal/learning
 router.get('/learning', VerifyController.verify_login, LearningController.learning_get)
 
-router.post('/learning/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileUploadController.alphaSection_upload_post) // full path: /personal/home/edit/submit
+router.post('/learning/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileUploadController.alphaSection_upload_post, LearningController.learning_get) // full path: /personal/home/edit/submit
 router.get('/learning/edit/fileupload', ErrorRouter.not_found_404)
 
 // ======================================================================================================== //
@@ -59,7 +59,7 @@ router.get('/learning/edit/fileupload', ErrorRouter.not_found_404)
 //router.post('/working', WorkingController.working_post) // full path: /personal/working
 router.get('/working', VerifyController.verify_login, WorkingController.working_get)
 
-router.post('/working/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileUploadController.betaSection_upload_post) // full path: /personal/home/edit/submit
+router.post('/working/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileUploadController.betaSection_upload_post, WorkingController.working_get) // full path: /personal/home/edit/submit
 router.get('/working/edit/fileupload', ErrorRouter.not_found_404)
 
 router.get('/working/edit/article', VerifyController.verify_login, WorkingController.working_article_edit_get)
@@ -69,7 +69,7 @@ router.get('/working/edit/article', VerifyController.verify_login, WorkingContro
 //router.post('/volunteer', VolunteerController.volunteer_post) // full path: /personal/volunteer
 router.get('/volunteer', VerifyController.verify_login, VolunteerController.volunteer_get)
 
-router.post('/volunteer/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileUploadController.charlieSection_upload_post) // full path: /personal/home/edit/submit
+router.post('/volunteer/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileUploadController.charlieSection_upload_post, VolunteerController.volunteer_get) // full path: /personal/home/edit/submit
 router.get('/volunteer/edit/fileupload', ErrorRouter.not_found_404)
 
 // ======================================================================================================== //
