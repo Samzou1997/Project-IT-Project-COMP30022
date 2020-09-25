@@ -147,7 +147,7 @@ const ResettingPD = (req, res, next) => {
                 });
             }
             else {
-                if(doc.passwordRestToken ==  req.params.token){
+                if(doc.passwordRestToken ==  req.body.token){
                     User.findOne({ email: decoded.email}, function (err, doc){
                         let userid = doc._id;
                         let updatedData = {
