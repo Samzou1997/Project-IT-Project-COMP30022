@@ -13,39 +13,19 @@ const contact_post = (req, res, next) => {
 }
 
 const contact_get = (req, res, next) => {
-  if (req.cookies["email"] != null) {
-    let req_token = req.cookies['token']
-    let req_user_id = req.cookies['id']
-    let req_user_email = req.cookies['email']
-
-    //verify token
-    jwt.verify(req_token, secret_key, function (error, decoded) {
-      if (error) {
-        console.log("token decode error")
-        res.cookie('id', '', { maxAge: 0 })
-        res.cookie('email', '', { maxAge: 0 })
-        res.cookie('token', '', { maxAge: 0 })
-        res.render('login_error.html', {
-          login_error_message: "Login expired.",
-        })
-      }
-      else {
-        User.findOne({ email: decoded.user_email }, function (err, doc) {
-          if (err) {
-            console.log("db error")
-          }
-          else {
-            res.render('contact.html')
-          }
-        })
-      }
-    })
-  }
-  else {
-    res.render('login_error.html', {
-      login_error_message: "Please login first.",
-    })
-  }
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      res.render('contact.html')
+    }
+  })
 }
 
 module.exports = {

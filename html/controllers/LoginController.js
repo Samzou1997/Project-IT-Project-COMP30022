@@ -50,44 +50,7 @@ const login_post = (req, res, next) => {
 }
 
 const login_get = (req, res, next) => {
-  console.log('got Login request, path: ' + req.url)
-  console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
-
-  if (req.cookies["email"] != null) {
-    let req_token = req.cookies['token']
-    let req_user_id = req.cookies['id']
-    let req_user_email = req.cookies['email']
-
-    // verify token
-    jwt.verify(req_token, secret_key, function (error, decoded) {
-      if (error) {
-        console.log("token decode error")
-        res.cookie('id', '', { maxAge: 0 })
-        res.cookie('email', '', { maxAge: 0 })
-        res.cookie('token', '', { maxAge: 0 })
-        res.render('login_error.html', {
-          login_error_message: "Login expired.",
-        })
-      }
-      //console.log('decode: ' + decoded.user_email + ' ' + decoded.user_id)
-      else {
-        res.redirect('/personal/home')
-        // User.findOne({email: decoded.user_email}, function(err, doc){
-        //     if (err) {
-        //         console.log("db error")
-        //     }
-        //     res.render('home.html', {
-        //         username: doc.lastName
-        //     })
-        // })
-      }
-    })
-  }
-  else {
-    res.render("login_error.html", {
-      login_error_message: "Login expired.",
-    })
-  }
+  
 }
 
 module.exports = {
