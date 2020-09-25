@@ -120,6 +120,9 @@ const Resetpd = (req, res, next) => {
                     })
                 }
                 else{
+                    res.render('SendEmailComfirmation.html', {
+                        message: `token is unvalid!!`
+                    });
                     console.log("token error");
                     console.log(doc.passwordRestToken);
                     console.log(req.params.token);
