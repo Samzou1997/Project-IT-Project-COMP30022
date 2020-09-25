@@ -140,38 +140,50 @@ const ResettingPD = (req, res, next) => {
         }
         else {
             UserData.findOne({ email: decoded.email}, function (err, doc) {
-            if (err) {
-                console.log("email error");
-                res.render('SendEmailComfirmation.html', {
-                    message: `Link error`
-                });
-            }
-            else {
-                if(doc.passwordRestToken ==  req.body.token){
-                    User.findOne({ email: decoded.email}, function (err, doc){
-                        let userid = doc._id;
-                        let updatedData = {
-                            password: req.body.password
-                        }
-                        User.findByIdAndUpdate(userid, {$set: updatedData})
-                        .then(response => {
-                            res.render('SendEmailComfirmation.html', {
-                                message: `password changed`
-                            });
-                            console.log(response)
-                        })
-                        .catch(error => {
-                            console.log(error)
-                        })
-                    })
-                } 
-                else{
-                    console.log("token error");
-                    console.log(doc.passwordRestToken);
-                    console.log(req.params.token);
+                let dataid = doc._id;
+                if (err) {
+                    console.log("email error");
+                    res.render('SendEmailComfirmation.html', {
+                        message: `Link error`
+                    });
                 }
-            }
-          })
+                else {
+                    if(doc.passwordRestToken ==  req.body.token){
+                        User.findOne({ email: decoded.email}, function (err, doc){
+                            let userid = doc._id;
+                            let updatedData = {
+                                password: req.body.password
+                            }
+                            User.findByIdAndUpdate(userid, {$set: updatedData})
+                            .then(response => {
+                                res.render('SendEmailComfirmation.html', {
+                                    message: `password changed`
+                                });
+                                let updateduData = {
+                                    passwordRestToken: ""
+                                }
+                                UserData.findByIdAndUpdate(dataid, {$set: updateduData})
+                                .then(response => {
+                                    console.log(response)
+                                })
+                                .catch(error => {
+                                    console.log(error)
+                                })
+                                console.log(response)
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            })
+                        })
+                    } 
+                    else{
+                        console.log("token error");
+                        console.log(doc.passwordRestToken);
+                        console.log(req.params.token);
+                    }
+                }
+
+            })
         }
       })
 }
