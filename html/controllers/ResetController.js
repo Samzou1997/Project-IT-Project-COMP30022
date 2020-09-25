@@ -32,11 +32,11 @@ const emailTo = (req, res, next) => {
             }
             UserData.findByIdAndUpdate(userid, {$set: updatedData})
             .then(response => {
-                console.log(response)
             })
             .catch(error => {
                 console.log(error)
             })
+            //reset email layout
             var subject = "Reset your password for your account"
             var text = undefined;
             var html = `<p>To reset password</p><p>click the link below：</p><p><a href='http://54.206.15.44/Forgot/Resetting/${token}'>reset your password</a></p><p>The link will exprie in one hour!</p>`;
@@ -77,7 +77,6 @@ const emailTo = (req, res, next) => {
                     res.render('SendEmailComfirmation.html', {
                         message: `send sucess to ${email}`
                     });
-                    console.log("send sucess to %s", email);
                 });
             }catch (err) {
                 res.render('SendEmailComfirmation.html', {
@@ -96,6 +95,7 @@ const emailTo = (req, res, next) => {
     })
 }
 
+//first verify token valid and create reset website with token
 const Resetpd = (req, res, next) => {
     jwt.verify(req.params.token, secret_key, function (error, decoded) {
         if (error) {
@@ -115,6 +115,7 @@ const Resetpd = (req, res, next) => {
             }
             else {
                 if(doc.passwordRestToken ==  req.params.token){
+                    //return reset page with token
                     res.render("Resetting_pd.html",{
                         token: req.params.token
                     })
@@ -124,8 +125,6 @@ const Resetpd = (req, res, next) => {
                         message: `token is unvalid!!`
                     });
                     console.log("token error");
-                    console.log(doc.passwordRestToken);
-                    console.log(req.params.token);
                 }
             }
           })
@@ -133,6 +132,7 @@ const Resetpd = (req, res, next) => {
       })
 }
 
+//verify again and update password also delete token if update sucess
 const ResettingPD = (req, res, next) => {
     jwt.verify(req.body.token, secret_key, function (error, decoded) {
         if (error) {
@@ -167,12 +167,10 @@ const ResettingPD = (req, res, next) => {
                                 }
                                 UserData.findByIdAndUpdate(dataid, {$set: updateduData})
                                 .then(response => {
-                                    console.log(response)
                                 })
                                 .catch(error => {
                                     console.log(error)
                                 })
-                                console.log(response)
                             })
                             .catch(error => {
                                 console.log(error)
@@ -180,9 +178,10 @@ const ResettingPD = (req, res, next) => {
                         })
                     } 
                     else{
+                        res.render('SendEmailComfirmation.html', {
+                            message: `token is unvalid!!`
+                        });
                         console.log("token error");
-                        console.log(doc.passwordRestToken);
-                        console.log(req.params.token);
                     }
                 }
 
