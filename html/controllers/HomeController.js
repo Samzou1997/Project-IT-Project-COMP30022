@@ -1,13 +1,13 @@
-const User = require('../models/User')
-const { response } = require('express')
-var cookieParser = require('cookie-parser')
-const jwt = require('jsonwebtoken')
-const config = require('../config/web_config.json')
-var homePaddingData = require('../views/data_padding/home_data.json')
+const User            = require('../models/User')
+const { response }    = require('express')
+var cookieParser      = require('cookie-parser')
+const jwt             = require('jsonwebtoken')
+const config          = require('../config/web_config.json')
+var homePaddingData   = require('../views/data_padding/home_data.json')
 
-const secret_key = config.token_setting.secret_key
-const token_expire_time = config.token_setting.expire_time
-const cookie_alive_time = config.cookie_setting.alive_time
+const secret_key          = config.token_setting.secret_key
+const token_expire_time   = config.token_setting.expire_time
+const cookie_alive_time   = config.cookie_setting.alive_time
 
 const home_post = (req, res, next) => {
   res.render('404.html')
