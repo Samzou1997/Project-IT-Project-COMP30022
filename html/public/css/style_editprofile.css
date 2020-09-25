@@ -1,0 +1,239 @@
+/* import font url */
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
+
+/* Start Global settings */
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.header_nav{
+    background-color: #0082e6;
+    height: 80px;
+    width: 100%;
+}
+/* End Global settings */
+
+
+/* Start home.html header area */
+label.logo{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: 700;
+}
+
+.header_nav ul{
+    float: right;
+    margin-right: 20px;
+}
+
+.header_nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+.header_nav ul li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+a.active,a:hover{
+    background: #1b9bff;
+    transition: .5s;
+}
+
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+button{
+    padding: 12px;
+    background-color: rgb(223, 90, 90);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-size: 16px;
+    color: white;
+}
+
+button:hover{
+    background-color: rgb(223, 60, 60);
+}
+
+#check{
+    display: none;
+}
+
+@media (max-width: 952px){
+    label.logol{
+        font-size: 30px;
+        padding-left: 50px;
+    }
+
+    .header_nav ul li a{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 858px){
+    .checkbtn{
+        display: block;
+    }
+    
+    ul{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #2c3e50;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+        z-index: 2;
+    }
+
+    .header_nav ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+
+    .header_nav ul li a{
+        font-size: 20px;
+    }
+
+    a:hover, a.active{
+        background: none;
+        color: #0082e6;
+    }
+
+    #check:checked ~ ul{
+        left: 0;
+    }
+}
+/* End home.html header area */
+
+/* Start profile_edit.html main area */
+section{
+    background: url(/public/img/background.jpg) no-repeat;
+    background-size: cover;
+    height: calc(100vh - 80px);
+    overflow-x: hidden;
+}
+
+.container{
+    background: #fff;
+    width: 540px;
+    height: 450px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 10%;
+    box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
+}
+
+.leftbox{
+    float: left;
+    top: -5%;
+    left: 5%;
+    position: absolute;
+    width: 15%;
+    height: 110%;
+    background: #0082e6;
+    box-shadow: 3px 3px 10px rgba(119, 119, 119, .5);
+    border: .1em solid #fff;
+}
+
+.box_nav a{
+    list-style: none;
+    padding: 35px;
+    color: #fff;
+    font-size: 1.1em;
+    display: block;
+    transition: all .3s ease-in-out;
+}
+
+.box_nav a:hover{
+    color: aqua;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.box_nav a:first-child{
+    margin-top: 7px;
+}
+
+.box_nav a.active{
+    color: aqua;
+}
+
+.rightbox{
+    width: 60%;
+    margin-left: 27%;
+    /* padding-top: 5px; */
+}
+
+.tabShow{
+    transition: all .5s ease-in;
+    width: 80%;
+    position: absolute;
+}
+
+h1{
+    color:aqua;
+    font-size: 1.2rem;
+    margin-top: 40px;
+    margin-bottom: 35px;
+}
+
+h2{
+    color: #777;
+    text-transform: uppercase;
+    font-size: 8px;
+    letter-spacing: 1px;
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+.input{
+    border: 0;
+    border-bottom: 1px solid #3fb6a8;
+    width: 80%;
+    font-size: .7em;
+    padding: 7px 0;
+    color: #070707;
+    outline: none;
+}
+
+.btn{
+    text-transform: uppercase;
+    font-size: 15px;
+    border: 0;
+    color: #fff;
+    background: #0082e6;
+    padding: 7px 15px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    margin-top: 15px;
+}
+/* End profile_edit.html */

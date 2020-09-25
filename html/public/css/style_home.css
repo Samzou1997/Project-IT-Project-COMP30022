@@ -134,7 +134,7 @@ button:hover{
 }
 /* End home.html header area */
 
-/* Start home.html main area */
+/* Start working.html main area */
 section{
     background: url(/public/img/background.jpg) no-repeat;
     background-size: cover;
@@ -214,6 +214,33 @@ input[type="submit"]{
 input[type="submit"]:hover{
     background-color: indigo;
 }
+
+
+.a-f-container{
+    width: 600px;
+    height: 600px;
+}
+
+.article-container{
+    width: 300px;
+    height: 400px;
+    background-color: #242424;
+    padding: 10px;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: inline-block;
+}
+
+.file-container{
+    width: 100px;
+    height: 400px;
+    background: #242424;
+    padding: 10px;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: relative;
+    display: inline-block;
+}
 /* End learning.html working.html volunteer.html main area */
 
 
@@ -269,3 +296,4 @@ a:hover,contact_button:hover{
     opacity:0.6;
 }
 /* End contact.html main area */
+
