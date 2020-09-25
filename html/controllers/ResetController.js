@@ -2,6 +2,7 @@
 const nodemailer = require("nodemailer");
 const mailsender = require('../config/web_config.json');
 const UserData = require('../models/UserData');
+const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 //the smtp service address and acount use for sending link
@@ -12,39 +13,7 @@ const secret_key = mailsender.token_setting.secret_key
 const token_expire_time = mailsender.token_setting.expire_time
 
 const resetpage = (req, res, next) => {
-    res.render("Reset_pd.html")
-}
-
-const Resetpd = (req, res, next) => {
-    jwt.verify(req.params.token, secret_key, function (error, decoded) {
-        if (error) {
-            console.log("token decode error");
-            res.render('SendEmailComfirmation.html', {
-                message: `Link expire`
-            });
-        }
-        else {
-            const newLocal = decoded.email;
-            UserData.findOne({ email: newLocal}, function (err, doc) {
-            if (err) {
-                console.log("email error");
-                res.render('SendEmailComfirmation.html', {
-                    message: `Link error`
-                });
-            }
-            else {
-                if(doc.passwordRestToken ==  req.params.token){
-                    console.log("Correct link");
-                }
-                else{
-                    console.log("token error");
-                    console.log(doc.passwordRestToken);
-                    console.log(req.params.token);
-                }
-            }
-          })
-        }
-      })
+    res.render("Reset_pd.html");
 }
 
 const emailTo = (req, res, next) => {
@@ -127,6 +96,83 @@ const emailTo = (req, res, next) => {
     })
 }
 
+const Resetpd = (req, res, next) => {
+    jwt.verify(req.params.token, secret_key, function (error, decoded) {
+        if (error) {
+            console.log("token decode error");
+            res.render('SendEmailComfirmation.html', {
+                message: `Link expire`
+            });
+        }
+        else {
+            const newLocal = decoded.email;
+            UserData.findOne({ email: newLocal}, function (err, doc) {
+            if (err) {
+                console.log("email error");
+                res.render('SendEmailComfirmation.html', {
+                    message: `Link error`
+                });
+            }
+            else {
+                if(doc.passwordRestToken ==  req.params.token){
+                    
+                }
+                else{
+                    console.log("token error");
+                    console.log(doc.passwordRestToken);
+                    console.log(req.params.token);
+                }
+            }
+          })
+        }
+      })
+}
+
+const ResettingPD = (req, res, next) => {
+    jwt.verify(req.body.token, secret_key, function (error, decoded) {
+        if (error) {
+            console.log("token decode error");
+            res.render('SendEmailComfirmation.html', {
+                message: `Link expire`
+            });
+        }
+        else {
+            UserData.findOne({ email: decoded.email}, function (err, doc) {
+            if (err) {
+                console.log("email error");
+                res.render('SendEmailComfirmation.html', {
+                    message: `Link error`
+                });
+            }
+            else {
+                if(doc.passwordRestToken ==  req.params.token){
+                    User.findOne({ email: decoded.email}, function (err, doc){
+                        let userid = doc._id;
+                        let updatedData = {
+                            password: req.body.password
+                        }
+                        User.findByIdAndUpdate(userid, {$set: updatedData})
+                        .then(response => {
+                            console.log(response)
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+                    })
+                } 
+                else{
+                    console.log("token error");
+                    console.log(doc.passwordRestToken);
+                    console.log(req.params.token);
+                }
+            }
+          })
+        }
+      })
+}
+
+
+
 module.exports = {
-    emailTo,resetpage,Resetpd
+    emailTo,resetpage,Resetpd,ResettingPD
 }
