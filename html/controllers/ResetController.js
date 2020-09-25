@@ -2,6 +2,7 @@
 const nodemailer = require("nodemailer");
 const mailsender = require('../config/web_config.json');
 const UserData = require('../models/UserData');
+const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 //the smtp service address and acount use for sending link
@@ -12,7 +13,7 @@ const secret_key = mailsender.token_setting.secret_key
 const token_expire_time = mailsender.token_setting.expire_time
 
 const resetpage = (req, res, next) => {
-    res.render("Reset_pd.html")
+    res.render("Reset_pd.html");
 }
 
 const emailTo = (req, res, next) => {
@@ -31,14 +32,14 @@ const emailTo = (req, res, next) => {
             }
             UserData.findByIdAndUpdate(userid, {$set: updatedData})
             .then(response => {
-                console.log(response);
+                console.log(response)
             })
             .catch(error => {
-                console.log(error);
+                console.log(error)
             })
             var subject = "Reset your password for your account"
             var text = undefined;
-            var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='http://54.206.15.44/Forgot/Resetting/"+token+">reset your password</a></p>";
+            var html = `<p>To reset password</p><p>click the link below：</p><p><a href='http://54.206.15.44/Forgot/Resetting/${token}'>reset your password</a></p><p>The link will exprie in one hour!</p>`;
             var transporter = nodemailer.createTransport({
                 host: smtp,
                 auth: {
@@ -67,28 +68,111 @@ const emailTo = (req, res, next) => {
             try {
                 transporter.sendMail(mailOptions, function (err, info) {
                     if (err) {
+                        res.render('SendEmailComfirmation.html', {
+                            message: `send fail to ${email}`
+                        });
                         console.log("send fail to %s",email);
                         return;
                     }
+                    res.render('SendEmailComfirmation.html', {
+                        message: `send sucess to ${email}`
+                    });
                     console.log("send sucess to %s", email);
                 });
             }catch (err) {
+                res.render('SendEmailComfirmation.html', {
+                    message: `send fail to ${email}`
+                });
                 console.log("send fail to %s", email);
             }
 
         }
         else {
-            console.log("Acount %s Not find", email);
+            res.render('SendEmailComfirmation.html', {
+                message: `Acount ${email} not found`
+            });
+            console.log("Acount %s Not found", email);
         }
     })
 }
 
-module.exports = {
-    emailTo,resetpage
+const Resetpd = (req, res, next) => {
+    jwt.verify(req.params.token, secret_key, function (error, decoded) {
+        if (error) {
+            console.log("token decode error");
+            res.render('SendEmailComfirmation.html', {
+                message: `Link expire`
+            });
+        }
+        else {
+            const newLocal = decoded.email;
+            UserData.findOne({ email: newLocal}, function (err, doc) {
+            if (err) {
+                console.log("email error");
+                res.render('SendEmailComfirmation.html', {
+                    message: `Link error`
+                });
+            }
+            else {
+                if(doc.passwordRestToken ==  req.params.token){
+                    
+                }
+                else{
+                    console.log("token error");
+                    console.log(doc.passwordRestToken);
+                    console.log(req.params.token);
+                }
+            }
+          })
+        }
+      })
 }
 
-/*var email = "yuxuekuangmo@gmail.com";
-var subject = "test";
-var text =undefined;
-var html = "<p>test</p><p>To reset password</p><p>click the link below：</p><p><a href='https://cn.pornhub.com/front/lost_password'>reset your password</a></p>";;
-emailTo(email, subject, text, html);*/
+const ResettingPD = (req, res, next) => {
+    jwt.verify(req.body.token, secret_key, function (error, decoded) {
+        if (error) {
+            console.log("token decode error");
+            res.render('SendEmailComfirmation.html', {
+                message: `Link expire`
+            });
+        }
+        else {
+            UserData.findOne({ email: decoded.email}, function (err, doc) {
+            if (err) {
+                console.log("email error");
+                res.render('SendEmailComfirmation.html', {
+                    message: `Link error`
+                });
+            }
+            else {
+                if(doc.passwordRestToken ==  req.params.token){
+                    User.findOne({ email: decoded.email}, function (err, doc){
+                        let userid = doc._id;
+                        let updatedData = {
+                            password: req.body.password
+                        }
+                        User.findByIdAndUpdate(userid, {$set: updatedData})
+                        .then(response => {
+                            console.log(response)
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+                    })
+                } 
+                else{
+                    console.log("token error");
+                    console.log(doc.passwordRestToken);
+                    console.log(req.params.token);
+                }
+            }
+          })
+        }
+      })
+}
+
+
+
+module.exports = {
+    emailTo,resetpage,Resetpd,ResettingPD
+}
