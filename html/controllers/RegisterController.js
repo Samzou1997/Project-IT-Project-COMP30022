@@ -1,12 +1,12 @@
-const User = require('../models/User')
-const UserSetting = require('../models/UserSetting')
-const UserData = require('../models/UserData')
-const { response } = require('express')
-var cookieParser = require('cookie-parser')
-const jwt = require('jsonwebtoken')
-//const Fiber = require('fibers')
-const async = require("async")
-const config = require('../config/web_config.json')
+const User            = require('../models/User')
+const UserSetting     = require('../models/UserSetting')
+const UserData        = require('../models/UserData')
+const { response }    = require('express')
+var cookieParser      = require('cookie-parser')
+const jwt             = require('jsonwebtoken')
+//const Fiber         = require('fibers')
+const async           = require("async")
+const config          = require('../config/web_config.json')
 
 const secret_key = config.token_setting.secret_key
 const token_expire_time = config.token_setting.expire_time
@@ -87,7 +87,7 @@ const register_post = (req, res, next) => {
           })
         }
         async.series([userSettingSaveFunc, userDataSaveFunc, userSaveFunc], function(error, result){
-          console.log(result)
+          //console.log(result)
         })
       }
     })

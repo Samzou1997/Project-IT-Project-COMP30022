@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script type="text/ecmascript" src="/public/js/md5.js"></script>
+    <title>Reset Password</title>
+
+    <link rel="stylesheet" href="/public/css/style_index.css">
+</head>
+<body>
+    <form class="sign-in-form" method="POST" action="/Forgot/ResettingPD">
+        <h2 class="title">Reset Password</h2>
+        <div class="input-field">
+	        <i class="fas fa-envelope"></i>
+                <input name="password" id="password-input-reset" type="password" placeholder="Password" required>
+                <input name="token" id="" type="hidden" placeholder="Token" value="{{token}}" readonly = "true" required>
+        </div>
+        <input type="submit" value="Reset" onclick="md5_login()">
+    </form>
+    <script type="text/javascript">
+        
+        function md5_login() {
+            //alert("test")
+            var pwd = document.getElementById('password-input-reset').value
+            if (pwd != null && pwd != '' && pwd != undefined) {
+                var hash_pwd = hex_md5(pwd)
+                document.getElementById('password-input-reset').value = hash_pwd
+            }
+        }
+    </script>
+<body>
+
