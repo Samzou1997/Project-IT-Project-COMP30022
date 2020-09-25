@@ -1,4 +1,6 @@
 {
+  "domain" : "http://54.206.15.44",
+
   "cookie_setting" : {
     "alive_time" : 86400000
   },
@@ -14,4 +16,4 @@
   "fileSystem" : {
     "root" : "/home/IT_Project/html"
   }
- }
+}
