@@ -28,6 +28,22 @@ const working_get = (req, res, next) => {
   })
 }
 
+const working_article_edit_get = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      res.render('edit_article.html')
+    }
+  })
+}
+
 module.exports = {
-  working_post, working_get
+  working_post, working_get, working_article_edit_get
 }
