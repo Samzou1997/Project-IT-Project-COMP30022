@@ -34,9 +34,14 @@ function mkUserDir(userID, callback) {
   userUploadDir = path.join(userDir, '/userUpload');
   docInsertDir = path.join(userUploadDir, '/docInsert');
   customizeFileDir = path.join(userUploadDir, '/customizeFile');
+
   alphaSectionDir = path.join(customizeFileDir, '/alphagSection');
   betaSectionDir = path.join(customizeFileDir, '/betagSection');
   charlieSectionDir = path.join(customizeFileDir, '/charlieSection');
+
+  alphaSectionReserverdDir = path.join(alphaSectionDir, '/reserved');
+  betaSectionReserverdDir = path.join(betaSectionDir, '/reserved');
+  charlieSectionReserverdDir = path.join(charlieSectionDir, '/reserved');
 
   var defaultProfilePic_dir = path.join(defaultResourcesDir, defaultProfilePic_fileName);
   var defaultDoc_dir = path.join(defaultResourcesDir, defaultDoc_fileName);
@@ -64,17 +69,23 @@ function mkUserDir(userID, callback) {
             fs.mkdir(docInsertDir, 0777, function (error) { });
             fs.mkdir(customizeFileDir, 0777, function (error) {
               fs.mkdir(alphaSectionDir, 0777, function (error) {
-                let fileDestDir = path.join(alphaSectionDir, sysReservedDoc_fileName);
-                fs.copyFile(defaultDoc_dir, fileDestDir, function (error) { });
+                fs.mkdir(alphaSectionReserverdDir, 0777, function (error) {
+                  let fileDestDir = path.join(alphaSectionReserverdDir, sysReservedDoc_fileName);
+                  fs.copyFile(defaultDoc_dir, fileDestDir, function (error) { });
+                }); 
               });
               fs.mkdir(betaSectionDir, 0777, function (error) {
-                let fileDestDir = path.join(betaSectionDir, sysReservedDoc_fileName);
-                fs.copyFile(defaultDoc_dir, fileDestDir, function (error) { });
+                fs.mkdir(betaSectionReserverdDir, 0777, function (error) {
+                  let fileDestDir = path.join(betaSectionReserverdDir, sysReservedDoc_fileName);
+                  fs.copyFile(defaultDoc_dir, fileDestDir, function (error) { });
+                });
               });
               fs.mkdir(charlieSectionDir, 0777, function (error) {
-                let fileDestDir = path.join(charlieSectionDir, sysReservedDoc_fileName);
-                fs.copyFile(defaultDoc_dir, fileDestDir, function (error) {
-                  callback();
+                fs.mkdir(charlieSectionReserverdDir, 0777, function (error) {
+                  let fileDestDir = path.join(charlieSectionReserverdDir, sysReservedDoc_fileName);
+                  fs.copyFile(defaultDoc_dir, fileDestDir, function (error) {
+                    callback();
+                  });
                 });
               });
             });
