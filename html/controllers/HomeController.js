@@ -36,7 +36,7 @@ const home_get = (req, res, next) => {
       homePaddingData.gender = doc.details.gender
       homePaddingData.birthday = doc.details.dateBirth.toLocaleString()
       homePaddingData.intro = doc.details.introduction
-      homePaddingData.path = FileSystemController.getFileUrl(fileDir);
+      homePaddingData.profile_pic_path = FileSystemController.getFileUrl(fileDir);
 
       res.render('home.html', homePaddingData)
     }
