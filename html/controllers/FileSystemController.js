@@ -40,14 +40,14 @@ function getFileUrls(dir){
   var files = fs.readdirSync(dir);
 
   files.forEach(function (item, index) {
-    var stat = fs.statSync(dir + item);
+    var stat = fs.statSync(path.join(dir, item));
 
     if (stat.isDirectory()){
     }
     else {
       var fileObj = {};
       fileObj.fileName = item;
-      fileObj.url = getFileUrl(dir + item);
+      fileObj.url = getFileUrl(path.join(dir, item));
       fileUrls.push(fileObj);
     }
   });
