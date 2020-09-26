@@ -58,22 +58,22 @@ function mkUserDir(userID, callback) {
         else {
           fs.mkdir(userSysDir, 0777, function (error) {
             let fileDestDir = path.join(userSysDir, sysResveredProfilePic_fileName);
-            fs.rename(defaultProfilePic_dir, fileDestDir, function (error) { });
+            fs.copyFile(defaultProfilePic_dir, fileDestDir, function (error) { });
           });
           fs.mkdir(userUploadDir, 0777, function (error) {
             fs.mkdir(docInsertDir, 0777, function (error) { });
             fs.mkdir(customizeFileDir, 0777, function (error) {
               fs.mkdir(alphaSectionDir, 0777, function (error) {
                 let fileDestDir = path.join(alphaSectionDir, sysReservedDoc_fileName);
-                fs.rename(defaultDoc_dir, fileDestDir, function (error) { });
+                fs.copyFile(defaultDoc_dir, fileDestDir, function (error) { });
               });
               fs.mkdir(betaSectionDir, 0777, function (error) {
                 let fileDestDir = path.join(betaSectionDir, sysReservedDoc_fileName);
-                fs.rename(defaultDoc_dir, fileDestDir, function (error) { });
+                fs.copyFile(defaultDoc_dir, fileDestDir, function (error) { });
               });
               fs.mkdir(charlieSectionDir, 0777, function (error) {
                 let fileDestDir = path.join(charlieSectionDir, sysReservedDoc_fileName);
-                fs.rename(defaultDoc_dir, fileDestDir, function (error) {
+                fs.copyFile(defaultDoc_dir, fileDestDir, function (error) {
                   callback();
                 });
               });
