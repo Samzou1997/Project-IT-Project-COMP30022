@@ -104,13 +104,13 @@
             <button class="btn">Update</button>
           </div>
         </form>
-        
+
         <div class="setting tabShow">
           <h1>Setting</h1>
           <h2>Password</h2>
           <input type="password" class="input" value="{{password}}">
           <form action="/personal/home/edit/picupload" enctype="multipart/form-data" method="POST">
-            <input type="file" id="upload" name = "uploadFile" accept="image/png,image/jpeg" hidden="hidden" />
+            <input type="file" id="upload" name = "profilePic" accept="image/png,image/jpeg" hidden="hidden" />
             <img src="{{userphoto}}" id="userphoto">
             <button type="submit" class="btn">Update</button>
           </form>
