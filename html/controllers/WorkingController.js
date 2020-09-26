@@ -4,6 +4,7 @@ var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
 const FileSystemController    = require('../controllers/FileSystemController')
+const HTMLController          = require('../controllers/HTMLContentController')
 
 const secret_key            = config.token_setting.secret_key
 const token_expire_time     = config.token_setting.expire_time
@@ -29,10 +30,13 @@ const working_get = (req, res, next) => {
       var userCustomizeFileDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/betagSection`;
 
       var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
+      var fileListHTML = HTMLController.generateFileListContent(fileList);
 
       console.log(fileList);
 
-      res.render('working.html')
+      res.render('working.html', {
+        file : fileListHTML
+      })
     }
   })
 }
