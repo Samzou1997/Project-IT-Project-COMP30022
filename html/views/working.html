@@ -33,32 +33,29 @@
 
 <!-- ==================================Start Main Area=========================================-->
   <section class="bodysection">
-    <div class="a-f-container">
-      <div class="article-container">
-        <div class="ac-header">
-          <h1>Article</h1>
-          <button id="writebtn"><a href="/personal/working/edit/article"></a><i class="fas fa-edit"></i> Write</a></button>
-        </div>
-        <p>{{articlecontent}}</p>
-      </div>
-
-      <div class="file-container">
-        <h1>Files</h1>
-        <div class="view-file">
-          <ul class="files">
-            {{files}}
-          </ul>
-        </div>
-        <div class="uploadbtn">
-          <form action="/personal/working/edit/fileupload" enctype="multipart/form-data" method="post">
-            <input type="file" id="real-file" name = "uploadFile" hidden="hidden">
-            <button type="button" id="custom-button">CHOOSE A FILE</button>
-            <span id="custom-text">No file chosen</span>
-            <input type="submit" value="Upload" class="btn">
-          </form>
-        </div>
-      </div>
+    <div class="article_header">
+      <h1>Article</h1>
+      <a href="/personal/working/edit/article"><button id="writebtn">Edit</button></a>
     </div>
+
+    <div class="file_header">
+      <h1>Files</h1>
+      <form action="/personal/working/edit/fileupload" enctype="multipart/form-data" method="post">
+         <input type="file" id="real-file" name="uploadFile" hidden="hidden">
+         <button type="button" id="custom-button">Choose a file</button>
+         <span id="custom-text">No File Chosen</span>
+         <input type="submit" value="Upload" class="btn">
+      </form>
+    </div>
+
+    <div class="article_content">
+      {{article}}
+    </div>
+
+    <div class="file_content">
+      {{file}}
+    </div>
+      
   </section>
 
   <!-- ==================================End Main Area=========================================-->
@@ -67,9 +64,9 @@
     const customBtn = document.getElementById("custom-button");
     const customTxt = document.getElementById("custom-text");
 
-    customBtn.addEventListener("click", function(){
+    customBtn.addEventListener("click",function(){
       realFileBtn.click();
-    });
+    })
 
     realFileBtn.addEventListener("change",function(){
       if(realFileBtn.value){
