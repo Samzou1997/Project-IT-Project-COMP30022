@@ -143,45 +143,71 @@ section{
     height: calc(100vh - 80px);
 }
 
-input[type="submit"]{
-    outline-style: none ;
-    border: 1px solid #ccc; 
-    border-radius: 3px;
-    padding: 14px 14px;
-    width: 120px;
-    font-size: 500;
-    
+#writebtn{
+    padding: 10px;
+    color: white;
+    background-color: #0082e6;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-input[type="submit"]:hover{
-    background-color: indigo;
+#custom-button{
+    padding: 10px;
+    color: white;
+    background-color: #0082e6;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-
-.a-f-container{
-    width: 600px;
-    height: 600px;
+#custom-button:hover{
+    background-color: #1b9bff;
 }
+
+#custom-text{
+    margin-left: 10px;
+    font-family: sans-serif;
+    color: #aaa;
+}
+
+.btn{
+    padding: 10px;
+    color: white;
+    background-color: #0082e6;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer; 
+}
+
+.btn:hover{
+    background-color: #1b9bff;
+}
+
 
 .article-container{
-    width: 300px;
+    width: 700px;
     height: 400px;
-    background-color: #242424;
+    background-color: #fff;
     padding: 10px;
-    overflow: hidden;
-    overflow-y: scroll;
     display: inline-block;
+    border-radius: 12px;
+}
+
+.ac-header{
+    display: flex;
 }
 
 .file-container{
-    width: 100px;
+    width: 600px;
     height: 400px;
-    background: #242424;
+    background: #fff;
     padding: 10px;
-    overflow: hidden;
-    overflow-y: scroll;
-    position: relative;
     display: inline-block;
+    border-radius: 12px;
+    text-align: center;
 }
+
+
 /* End learning.html working.html volunteer.html main area */
 
