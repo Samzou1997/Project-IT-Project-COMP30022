@@ -39,7 +39,7 @@ function getFileUrls(dir){
   var fileUrls = [];
   var files = fs.readdirSync(dir);
 
-  files.forEach(function (item, index) {
+  for (var item in files) {
     var stat = fs.statSync(path.join(dir, item));
 
     if (stat.isDirectory()){
@@ -50,7 +50,7 @@ function getFileUrls(dir){
       fileObj.url = getFileUrl(path.join(dir, item));
       fileUrls.push(fileObj);
     }
-  });
+  }
   return fileUrls;
 }
 
