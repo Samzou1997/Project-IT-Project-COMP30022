@@ -8,7 +8,7 @@
   <title>Welcome To EPortfolio</title>
 
   <!-- custome css file -->
-  <link rel="stylesheet" href="/public/css/style_home.css">
+  <link rel="stylesheet" href="/public/css/style_lwv.css">
 
 
 </head>
@@ -36,9 +36,24 @@
     <form action="/personal/working/edit/fileupload" enctype="multipart/form-data" method="post">
       <input type="file" id="upload" name = "uploadFile" hidden="hidden" />
       <button type="button" id="custom-button">CHOOSE A FILE</button>
-      <span id="custom-text">No file Chosen</span> </br>
       <input type="submit" value="Upload">
+      <a href=""><p>Writting</p></a>
     </form>
+
+    
+    <div class="a-f-container">
+      <div class="article-container">
+        <h1>{{articlename}}</h1>
+        <p>{{articlecontent}}</p>
+      </div>
+
+      <div class="file-container">
+        <div class="view-file">
+          <p class="file-title">{{filename}}</p>
+          <div class="view-btn">View More</div>
+        </div>
+      </div>
+    </div>
     <a href="/personal/working/edit/article"><p>Writting</p></a>
   </section>
 
@@ -46,18 +61,9 @@
   <script type="text/javascript">
     const realFileBtn = document.getElementById("upload");
     const customBtn = document.getElementById("custom-button");
-    const customTxt = document.getElementById("custom-text");
 
     customBtn.addEventListener("click", function(){
       realFileBtn.click();
-    })
-
-    realFileBtn.addEventListener("change",function(){
-      if(realFileBtn.value){
-        customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-      } else {
-        customTxt.innerHTML = "No File Chosen";
-      }
     })
   </script>
 </body>

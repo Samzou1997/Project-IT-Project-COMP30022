@@ -134,7 +134,7 @@ button:hover{
 }
 /* End home.html header area */
 
-/* Start home.html main area */
+/* Start working.html main area */
 section{
     background: url(/public/img/background.jpg) no-repeat;
     background-size: cover;
@@ -214,4 +214,86 @@ input[type="submit"]{
 input[type="submit"]:hover{
     background-color: indigo;
 }
+
+
+.a-f-container{
+    width: 600px;
+    height: 600px;
+}
+
+.article-container{
+    width: 300px;
+    height: 400px;
+    background-color: #242424;
+    padding: 10px;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: inline-block;
+}
+
+.file-container{
+    width: 100px;
+    height: 400px;
+    background: #242424;
+    padding: 10px;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: relative;
+    display: inline-block;
+}
 /* End learning.html working.html volunteer.html main area */
+
+
+/* Start contact.html main area */
+.column{
+    width:100%;
+    float:left;
+    padding:10px 10px;
+}
+.row::after{
+    content:"";
+    display:table;
+    clear:both;
+}
+@media screen and(max-width:600px){
+    .column{
+        width:100%;
+        display:block;
+        margin-bottom: 20px;
+    }
+}
+.card{
+    box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.2);
+    max-width:300px;
+    margin:auto;
+    background-color:white;
+    text-align:center;
+    border-radius:40px;
+    padding-bottom:30px;
+}
+.title{
+    color:grey;
+    font-size:18px;
+}
+contact_button{
+    border:none;
+    padding:8px;
+    display:inline-block;
+    color:white;
+    background-color: black;
+    cursor:pointer;
+    width:70%;
+    border-radius:20px;
+    font-size:18px;
+    text-align:center;
+}
+a{
+    text-decoration: none;
+    font-size: 22px;
+    color:black;
+}
+a:hover,contact_button:hover{
+    opacity:0.6;
+}
+/* End contact.html main area */
+
