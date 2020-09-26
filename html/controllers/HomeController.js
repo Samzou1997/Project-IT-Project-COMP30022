@@ -58,7 +58,7 @@ const home_edit_get = (req, res, next) => {
       });
     }
     else {
-      res.render('404.html')
+      res.render('profile_edit.html')
     }
   })
 }
