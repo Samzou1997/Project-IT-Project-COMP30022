@@ -7,10 +7,11 @@ const jwt             = require('jsonwebtoken')
 //const Fiber         = require('fibers')
 const async           = require("async")
 const config          = require('../config/web_config.json')
+const FileSystemController    = require('../controllers/FileSystemController')
 
-const secret_key = config.token_setting.secret_key
-const token_expire_time = config.token_setting.expire_time
-const cookie_alive_time = config.cookie_setting.alive_time
+const secret_key            = config.token_setting.secret_key
+const token_expire_time     = config.token_setting.expire_time
+const cookie_alive_time     = config.cookie_setting.alive_time
 
 const register_post = (req, res, next) => {
   console.log('got register request, path: ' + req.url)
@@ -39,7 +40,6 @@ const register_post = (req, res, next) => {
         let userData = new UserData({
           email: req.body.email,
         })
-
 
         userSettingSaveFunc = function (callback) {
           userSetting.save().then(userSetting => {
@@ -71,6 +71,8 @@ const register_post = (req, res, next) => {
           user.save().then(user => {
             let user_email = user.email
             let user_id = user._id
+
+            FileSystemController.mkUserDir(user_id, function(){});
             let token = jwt.sign({ user_id, user_email }, secret_key, { expiresIn: token_expire_time })
 
             res.cookie('id', user_id, { maxAge: cookie_alive_time })
