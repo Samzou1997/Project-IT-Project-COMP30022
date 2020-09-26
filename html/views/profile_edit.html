@@ -34,7 +34,7 @@
 
 <!-- ==================================Start Main Area=========================================-->
   <section>
-    <form method="POST" action="/personal/home/edit/infosubmit">
+    
     <div class="container">
       <div class="leftbox">
         <nav class="box_nav">
@@ -55,54 +55,56 @@
           </a>
         </nav>
       </div>
-
+      
       <div class="rightbox">
-        <div class="profile tabShow">
-          <h1>Personal Info</h1>
-          <h2>First Name</h2>
-          <input type="text" class="input" value="{{firstname}}">
-          <h2>Last Name</h2>
-          <input type="text" class="input" value="{{lastname}}">
-          <h2>Date of Birth</h2>
-          <input type="text" class="input" value="{{dateofbirth}}">
-          <h2>Gender</h2>
-          <input type="text" class="input" value="{{gender}}">
-          <button class="btn">Update</button>
-        </div>
-
-        <div class="learning tabShow">
-          <h1>Education Info</h1>
-          <h2>Graduated School</h2>
-          <input type="text" class="input" value="{{graduatedschool}}">
-          <h2>Major</h2>
-          <input type="text" class="input" value="{{major}}">
-          <button class="btn">Update</button>
-        </div>
-
-        <div class="working tabShow">
-          <h1>Working Info</h1>
-          <h2>Company</h2>
-          <input type="text" class="input" value="{{company}}">
-          <h2>Title</h2>
-          <input type="text" class="input" value="{{title}}">
-          <h2>Started From</h2>
-          <input type="text" class="input" value="{{startedfrom}}">
-          <button class="btn">Update</button>
-        </div>
-
-        <div class="volunteer tabShow">
-          <h1>Volunteer Info</h1>
-          <h2>First Name</h2>
-          <input type="text" class="input" value="{{firstname}}">
-          <h2>Last Name</h2>
-          <input type="text" class="input" value="{{lastname}}">
-          <h2>Date of Birth</h2>
-          <input type="text" class="input" value="{{dateofbirth}}">
-          <h2>Gender</h2>
-          <input type="text" class="input" value="{{gender}}">
-          <button class="btn">Update</button>
-        </div>
-
+        <form method="POST" action="/personal/home/edit/infosubmit">
+          <div class="profile tabShow">
+            <h1>Personal Info</h1>
+            <h2>First Name</h2>
+            <input type="text" class="input" value="{{firstname}}">
+            <h2>Last Name</h2>
+            <input type="text" class="input" value="{{lastname}}">
+            <h2>Date of Birth</h2>
+            <input type="text" class="input" value="{{dateofbirth}}">
+            <h2>Gender</h2>
+            <input type="text" class="input" value="{{gender}}">
+            <button class="btn">Update</button>
+          </div>
+  
+          <div class="learning tabShow">
+            <h1>Education Info</h1>
+            <h2>Graduated School</h2>
+            <input type="text" class="input" value="{{graduatedschool}}">
+            <h2>Major</h2>
+            <input type="text" class="input" value="{{major}}">
+            <button class="btn">Update</button>
+          </div>
+  
+          <div class="working tabShow">
+            <h1>Working Info</h1>
+            <h2>Company</h2>
+            <input type="text" class="input" value="{{company}}">
+            <h2>Title</h2>
+            <input type="text" class="input" value="{{title}}">
+            <h2>Started From</h2>
+            <input type="text" class="input" value="{{startedfrom}}">
+            <button class="btn">Update</button>
+          </div>
+  
+          <div class="volunteer tabShow">
+            <h1>Volunteer Info</h1>
+            <h2>First Name</h2>
+            <input type="text" class="input" value="{{firstname}}">
+            <h2>Last Name</h2>
+            <input type="text" class="input" value="{{lastname}}">
+            <h2>Date of Birth</h2>
+            <input type="text" class="input" value="{{dateofbirth}}">
+            <h2>Gender</h2>
+            <input type="text" class="input" value="{{gender}}">
+            <button class="btn">Update</button>
+          </div>
+        </form>
+        
         <div class="setting tabShow">
           <h1>Setting</h1>
           <h2>Password</h2>
@@ -115,7 +117,6 @@
         </div>
       </div>
     </div>
-    </form>
   </section>
 
   <!-- ==================================End Main Area=========================================-->
