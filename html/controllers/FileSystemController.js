@@ -10,6 +10,12 @@ const secret_key = config.token_setting.secret_key;
 const token_expire_time = config.token_setting.expire_time;
 const cookie_alive_time = config.cookie_setting.alive_time;
 const rootDir = config.fileSystem.root;
+const defaultResourcesDir = config.fileSystem.defaultResourcesDir;
+
+const defaultProfilePic_fileName = 'default_profile_picture.png';
+const defaultDoc_fileName = 'default_doc.html';
+const sysResveredProfilePic_fileName = 'profile_pic_sys_reserved.png';
+const sysReservedDoc_fileName = 'doc_sys_reserved.html';
 
 var userDir; // full path in server
 var userSysDir;
@@ -20,7 +26,9 @@ var alphaSectionDir;
 var betaSectionDir;
 var charlieSectionDir;
 
-function getToUserDir(userID, callback) {
+
+
+function mkUserDir(userID, callback) {
   userDir = path.join(rootDir, "/file/userData", userID.toHexString()); // full path in server
   userSysDir = path.join(userDir, '/userSys');
   userUploadDir = path.join(userDir, '/userUpload');
@@ -29,6 +37,9 @@ function getToUserDir(userID, callback) {
   alphaSectionDir = path.join(customizeFileDir, '/alphagSection');
   betaSectionDir = path.join(customizeFileDir, '/betagSection');
   charlieSectionDir = path.join(customizeFileDir, '/charlieSection');
+
+  var defaultProfilePic_dir = path.join(defaultResourcesDir, defaultProfilePic_fileName);
+  var defaultDoc_dir = path.join(defaultResourcesDir, defaultDoc_fileName);
 
   fs.exists(userDir, function (exists) {
     if (exists) {
@@ -45,18 +56,55 @@ function getToUserDir(userID, callback) {
           });
         }
         else {
-          fs.mkdir(userSysDir, 0777, function (error) { })
+          fs.mkdir(userSysDir, 0777, function (error) {
+            let fileDestDir = path.join(userSysDir, sysResveredProfilePic_fileName);
+            fs.rename(defaultProfilePic_dir, fileDestDir, function (error) { });
+          });
           fs.mkdir(userUploadDir, 0777, function (error) {
             fs.mkdir(docInsertDir, 0777, function (error) { });
             fs.mkdir(customizeFileDir, 0777, function (error) {
-              fs.mkdir(alphaSectionDir, 0777, function (error) { });
-              fs.mkdir(betaSectionDir, 0777, function (error) { });
+              fs.mkdir(alphaSectionDir, 0777, function (error) {
+                let fileDestDir = path.join(alphaSectionDir, sysResveredProfilePic_fileName);
+                fs.rename(defaultDoc_dir, fileDestDir, function (error) { });
+              });
+              fs.mkdir(betaSectionDir, 0777, function (error) {
+                let fileDestDir = path.join(betaSectionDir, sysResveredProfilePic_fileName);
+                fs.rename(defaultDoc_dir, fileDestDir, function (error) { });
+              });
               fs.mkdir(charlieSectionDir, 0777, function (error) {
-                callback();
+                let fileDestDir = path.join(charlieSectionDir, sysResveredProfilePic_fileName);
+                fs.rename(defaultDoc_dir, fileDestDir, function (error) {
+                  callback();
+                });
               });
             });
           });
         }
+      });
+    }
+  });
+}
+
+function getToUserDir(userID, callback) {
+  userDir = path.join(rootDir, "/file/userData", userID.toHexString()); // full path in server
+  userSysDir = path.join(userDir, '/userSys');
+  userUploadDir = path.join(userDir, '/userUpload');
+  docInsertDir = path.join(userUploadDir, '/docInsert');
+  customizeFileDir = path.join(userUploadDir, '/customizeFile');
+  alphaSectionDir = path.join(customizeFileDir, '/alphagSection');
+  betaSectionDir = path.join(customizeFileDir, '/betagSection');
+  charlieSectionDir = path.join(customizeFileDir, '/charlieSection');
+
+  fs.exists(userDir, function (exists) {
+    if (exists) {
+      callback();
+    }
+    else {
+      console.log('[directoy ERROR]: user dir lost');
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: '[directoy ERROR]: user dir lost'
       });
     }
   })
@@ -96,7 +144,7 @@ const userSys_upload_post = (req, res, next) => {
               next();
             }
           });
-        })
+        });
       }
       else {
         res.render('error.html', {
@@ -144,103 +192,6 @@ const alphaSection_upload_post = (req, res, next) => {
             }
           });
         })
-      }
-      else {
-        res.render('error.html', {
-          title: 'System Error',
-          errorCode: 'System Error',
-          errorMessage: 'Upload file not found.'
-        });
-      }
-    }
-  })
-}
-
-const alphaSection_upload_post_reserved = (req, res, next) => {
-  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
-    if (err) {
-      console.log("db error");
-      res.render('error.html', {
-        title: 'System Error',
-        errorCode: 'System Error',
-        errorMessage: err
-      });
-    }
-    else {
-
-      if (req.file != null) {
-        var fileName = req.file.originalname;
-        //var destDir = req.body.dir == undefined ? "default" : req.body.dir;
-        var sourceFile = req.file.path;
-        //console.log(sourceFile)
-        //var destPath = path.join(__dirname.replace("routes", ""), "uploads", destDir, fileName);
-        var userDir = path.join(rootDir, "/file/userData", doc._id.toHexString()); // full path in server
-        var userSysDir = path.join(userDir, '/userSys');
-        var userUploadDir = path.join(userDir, '/userUpload');
-        var docInsertDir = path.join(userUploadDir, '/docInsert');
-        var customizeFileDir = path.join(userUploadDir, '/customizeFile');
-        var alphaSectionDir = path.join(customizeFileDir, '/alphagSection');
-        var betaSectionDir = path.join(customizeFileDir, '/betagSection');
-        var charlieSectionDir = path.join(customizeFileDir, '/charlieSection');
-
-        var fileDestDir = path.join(alphaSectionDir, fileName);
-        //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
-        //fileurl = fileurl.replace(/\\/g, "/");
-        fs.exists(userDir, function (exists) {
-          if (exists) {
-            fs.rename(sourceFile, fileDestDir, function (error) {
-              if (error) {
-                console.log('[file rename ERROR]: ' + error);
-                res.render('error.html', {
-                  title: 'System Error',
-                  errorCode: 'System Error',
-                  errorMessage: '[file rename ERROR]: ' + error
-                });
-              }
-              else {
-                res.redirect('/personal/learning');
-              }
-            });
-          }
-          else {
-            fs.mkdir(userDir, 0777, function (error) {
-              if (error) {
-                console.log('[mkdir ERROR]: ' + error);
-                res.render('error.html', {
-                  title: 'System Error',
-                  errorCode: 'System Error',
-                  errorMessage: '[mkdir ERROR]: ' + error
-                });
-              }
-              else {
-                fs.mkdir(userUploadDir, 0777, function (error) {
-                  fs.mkdir(docInsertDir, 0777, function (error) { });
-                  fs.mkdir(customizeFileDir, 0777, function (error) {
-                    fs.mkdir(alphaSectionDir, 0777, function (error) {
-                      fs.rename(sourceFile, fileDestDir, function (error) {
-                        if (error) {
-                          console.log('[file rename ERROR]: ' + error);
-                          res.render('error.html', {
-                            title: 'System Error',
-                            errorCode: 'System Error',
-                            errorMessage: '[file rename ERROR]: ' + error
-                          });
-                        }
-                        else {
-                          res.redirect('/personal/learning');
-                        }
-                      })
-                    });
-                    fs.mkdir(betaSectionDir, 0777, function (error) { });
-                    fs.mkdir(charlieSectionDir, 0777, function (error) { });
-                  });
-                });
-                fs.mkdir(userSysDir, 0777, function (error) { })
-              }
-            })
-          }
-        })
-
       }
       else {
         res.render('error.html', {
@@ -348,5 +299,5 @@ const charlieSection_upload_post = (req, res, next) => {
 }
 
 module.exports = {
-  userSys_upload_post, alphaSection_upload_post, betaSection_upload_post, charlieSection_upload_post
+  userSys_upload_post, alphaSection_upload_post, betaSection_upload_post, charlieSection_upload_post, mkUserDir
 }
