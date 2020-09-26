@@ -64,7 +64,7 @@ const home_edit_get = (req, res, next) => {
 }
 
 const home_edit_submit_post = (req, res, next) => {
-  User.findOneAndUpdate({ email: req.cookies["email"] }, {firstName: req.body.first_name, lastName: req.body.last_name, email: req.body.email, password: req.body.password}, function(err){
+  User.findOneAndUpdate({ email: req.cookies["email"] }, {firstName: req.body.first_name, lastName: req.body.last_name, email: req.body.email, password: req.body.password}, function(err, doc){
     if (err) {
       console.log("db error")
       res.render('error.html', {
