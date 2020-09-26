@@ -1,0 +1,30 @@
+{
+  "userSys" : {
+    "fileUrl_list" : []
+  },
+  "userUpload" : {
+    "docInsert" : {
+      "fileUrl_list" : []
+    },
+    "customizeFile" : {
+      "alphagSection" : {
+        "reserved" : {
+          "fileUrl_list" : []
+        },
+        "fileUrl_list" : []
+      },
+      "betagSection" : {
+        "reserved" : {
+          "fileUrl_list" : []
+        },
+        "fileUrl_list" : []
+      },
+      "charlieSection" : {
+        "reserved" : {
+          "fileUrl_list" : []
+        },
+        "fileUrl_list" : []
+      }
+    }
+  }
+}

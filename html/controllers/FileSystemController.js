@@ -11,6 +11,7 @@ const token_expire_time = config.token_setting.expire_time;
 const cookie_alive_time = config.cookie_setting.alive_time;
 const rootDir = config.fileSystem.root;
 const defaultResourcesDir = config.fileSystem.defaultResourcesDir;
+const domain = config.domain;
 
 const defaultProfilePic_fileName = 'default_profile_picture.png';
 const defaultDoc_fileName = 'default_doc.html';
@@ -28,6 +29,11 @@ var charlieSectionDir;
 var alphaSectionReserverdDir;
 var betaSectionReserverdDir;
 var charlieSectionReserverdDir;
+
+function getFileUrl(fileDir){
+  fileUrl = domain + fileDir.substr(fileDir.indexOf("/file"))
+  return fileUrl;
+}
 
 
 function mkUserDir(userID, callback) {
@@ -56,11 +62,11 @@ function mkUserDir(userID, callback) {
       fs.mkdir(userDir, 0777, function (error) {
         if (error) {
           console.log('[mkdir ERROR]: ' + error);
-          res.render('error.html', {
-            title: 'System Error',
-            errorCode: 'System Error',
-            errorMessage: '[mkdir ERROR]: ' + error
-          });
+          // res.render('error.html', {
+          //   title: 'System Error',
+          //   errorCode: 'System Error',
+          //   errorMessage: '[mkdir ERROR]: ' + error
+          // });
         }
         else {
           fs.mkdir(userSysDir, 0777, function (error) {
@@ -256,7 +262,12 @@ const betaSection_upload_post = (req, res, next) => {
               next();
             }
           });
-        })
+        });
+        res.render('error.html', {
+          title: 'System Error',
+          errorCode: 'System Error',
+          errorMessage: '[directoy ERROR]: user dir lost'
+        });
       }
       else {
         res.render('error.html', {
@@ -303,7 +314,12 @@ const charlieSection_upload_post = (req, res, next) => {
               next();
             }
           });
-        })
+        });
+        res.render('error.html', {
+          title: 'System Error',
+          errorCode: 'System Error',
+          errorMessage: '[directoy ERROR]: user dir lost'
+        });
       }
       else {
         res.render('error.html', {
@@ -317,5 +333,5 @@ const charlieSection_upload_post = (req, res, next) => {
 }
 
 module.exports = {
-  userSys_upload_post, alphaSection_upload_post, betaSection_upload_post, charlieSection_upload_post, mkUserDir
+  userSys_upload_post, alphaSection_upload_post, betaSection_upload_post, charlieSection_upload_post, mkUserDir, getFileUrl
 }
