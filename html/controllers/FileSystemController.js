@@ -37,7 +37,7 @@ function getFileUrl(fileDir){
 
 function getFileUrls(dir){
   var fileUrls = [];
-  var files = fs.readdir(dir);
+  var files = fs.readdirSync(dir);
 
   files.forEach(function (item, index) {
     var stat = fs.statSync(dir + item);
