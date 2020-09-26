@@ -9,7 +9,7 @@
 
   <!-- custome css file -->
   <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/html/public/css/style_editprofile.css">
+  <link rel="stylesheet" href="/public/css/style_editprofile.css">
 
 
 </head>
@@ -106,6 +106,10 @@
           <h1>Setting</h1>
           <h2>Password</h2>
           <input type="password" class="input" value="{{password}}">
+          <form action="" enctype="multipart/form-data" method="POST">
+            <input type="file" id="upload" name = "uploadFile" accept="image/png,image/jpeg" hidden="hidden" />
+            <img src="{{userphoto}}" id="userphoto">
+          </form>
           <button class="btn">Update</button>
         </div>
       </div>
@@ -114,7 +118,7 @@
 
   <!-- ==================================End Main Area=========================================-->
   
-  <script src="/html/public/js/jquery.js"></script>
+  <script src="/public/js/jquery.js"></script>
   <script>
     const tabBtn = document.querySelectorAll(".tab");
     const tab = document.querySelectorAll(".tabShow");
@@ -130,6 +134,14 @@
   <script>
     $(".tab").click(function(){
       $(this).addClass("active").siblings().removeClass("active");
+    })
+  </script>
+  <script>
+    const realFileBtn = document.getElementById("upload");
+    const photoBtn = document.getElementById("userphoto");
+
+    photoBtn.addEventListener("click", function(){
+      realFileBtn.click();
     })
   </script>
 </body>

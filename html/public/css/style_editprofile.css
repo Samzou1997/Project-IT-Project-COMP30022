@@ -136,7 +136,7 @@ button:hover{
 
 /* Start profile_edit.html main area */
 section{
-    background: url(/public/img/background.jpg) no-repeat;
+    background: url(/img/background.jpg) no-repeat;
     background-size: cover;
     height: calc(100vh - 80px);
     overflow-x: hidden;
@@ -223,6 +223,14 @@ h2{
     padding: 7px 0;
     color: #070707;
     outline: none;
+}
+
+#userphoto{
+	width: 80px;
+	height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 .btn{
