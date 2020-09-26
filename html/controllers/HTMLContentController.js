@@ -1,11 +1,11 @@
 function generateFileListContent(fileList) {
   var htmlContent = '';
-  for (var element in fileList) {
+  fileList.array.forEach(element => {
     var url = element.url;
     var filename = element.fileName;
     var htmlTemp = `< a href="${url}"><li>${filename}</li></ a></br>`;
     htmlContent = htmlContent + htmlTemp;
-  }
+  });
   return htmlContent
 }
 
