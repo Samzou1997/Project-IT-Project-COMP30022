@@ -144,7 +144,7 @@ const userSys_upload_post = (req, res, next) => {
 
       if (req.file != null) {
         getToUserDir(doc._id, res, function () {
-          var fileName = req.file.originalname;
+          var fileName = 'profile_pic_sys_reserved.png';
           var sourceFile = req.file.path;
 
           var fileDestDir = path.join(userSysDir, fileName);
