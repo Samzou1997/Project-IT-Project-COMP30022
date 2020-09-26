@@ -30,12 +30,12 @@ const working_get = (req, res, next) => {
       var userCustomizeFileDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/betagSection`;
 
       var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
-      var fileListHTML = HTMLController.generateFileListContent(fileList);
+      //var fileListHTML = HTMLController.generateFileListContent(fileList);
 
       console.log(fileList);
 
       res.render('working.html', {
-        file : fileListHTML
+        filelist : fileList
       })
     }
   })
