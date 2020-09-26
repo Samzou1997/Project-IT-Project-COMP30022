@@ -3,6 +3,7 @@ var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var morgan        = require('morgan');
 var cookieParser  = require('cookie-parser');
+var ejs           = require('ejs');
 
 const PersonalRouter  = require('./routes/PersonalRouter')
 const LoginRouter     = require('./routes/LoginRouter')
@@ -24,6 +25,9 @@ db.once('open', () => {
 var app = express();
 
 app.engine("html", require("express-art-template"));
+app.engine('html', ejs.__express);
+app.set('view engine', 'html');
+
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({
   extended: true

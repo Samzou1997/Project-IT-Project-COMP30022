@@ -54,7 +54,9 @@
     </div>
 
     <div class="file_content">
-      {{file}}
+      {{each filelist as file index}}
+        <a href="#"><li>{{file.fileName}}</li></a></br>
+      {{/each}}
     </div>
       
   </section>
