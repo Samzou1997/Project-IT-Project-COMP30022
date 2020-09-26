@@ -104,7 +104,7 @@ function mkUserDir(userID, callback) {
   });
 }
 
-function getToUserDir(userID, callback) {
+function getToUserDir(userID, res, callback) {
   userDir = path.join(rootDir, "/file/userData", userID.toHexString()); // full path in server
   userSysDir = path.join(userDir, '/userSys');
   userUploadDir = path.join(userDir, '/userUpload');
@@ -120,6 +120,11 @@ function getToUserDir(userID, callback) {
     }
     else {
       console.log('[directoy ERROR]: user dir lost');
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: '[directoy ERROR]: user dir lost'
+      });
     }
   })
 }
@@ -138,7 +143,7 @@ const userSys_upload_post = (req, res, next) => {
     else {
 
       if (req.file != null) {
-        getToUserDir(doc._id, function () {
+        getToUserDir(doc._id, res, function () {
           var fileName = req.file.originalname;
           var sourceFile = req.file.path;
 
@@ -158,11 +163,6 @@ const userSys_upload_post = (req, res, next) => {
               next();
             }
           });
-        });
-        res.render('error.html', {
-          title: 'System Error',
-          errorCode: 'System Error',
-          errorMessage: '[directoy ERROR]: user dir lost'
         });
       }
       else {
@@ -190,7 +190,7 @@ const alphaSection_upload_post = (req, res, next) => {
     else {
 
       if (req.file != null) {
-        getToUserDir(doc._id, function () {
+        getToUserDir(doc._id, res, function () {
           var fileName = req.file.originalname;
           var sourceFile = req.file.path;
 
@@ -210,11 +210,6 @@ const alphaSection_upload_post = (req, res, next) => {
               next();
             }
           });
-        });
-        res.render('error.html', {
-          title: 'System Error',
-          errorCode: 'System Error',
-          errorMessage: '[directoy ERROR]: user dir lost'
         });
       }
       else {
@@ -242,7 +237,7 @@ const betaSection_upload_post = (req, res, next) => {
     else {
 
       if (req.file != null) {
-        getToUserDir(doc._id, function () {
+        getToUserDir(doc._id, res, function () {
           var fileName = req.file.originalname;
           var sourceFile = req.file.path;
 
@@ -262,11 +257,6 @@ const betaSection_upload_post = (req, res, next) => {
               next();
             }
           });
-        });
-        res.render('error.html', {
-          title: 'System Error',
-          errorCode: 'System Error',
-          errorMessage: '[directoy ERROR]: user dir lost'
         });
       }
       else {
@@ -294,7 +284,7 @@ const charlieSection_upload_post = (req, res, next) => {
     else {
 
       if (req.file != null) {
-        getToUserDir(doc._id, function () {
+        getToUserDir(doc._id, res, function () {
           var fileName = req.file.originalname;
           var sourceFile = req.file.path;
 
@@ -314,11 +304,6 @@ const charlieSection_upload_post = (req, res, next) => {
               next();
             }
           });
-        });
-        res.render('error.html', {
-          title: 'System Error',
-          errorCode: 'System Error',
-          errorMessage: '[directoy ERROR]: user dir lost'
         });
       }
       else {

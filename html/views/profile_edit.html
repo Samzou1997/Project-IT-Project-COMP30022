@@ -34,7 +34,7 @@
 
 <!-- ==================================Start Main Area=========================================-->
   <section>
-    <form>
+    <form method="POST" action="/personal/home/edit/infosubmit">
     <div class="container">
       <div class="leftbox">
         <nav class="box_nav">
@@ -110,8 +110,8 @@
           <form action="/personal/home/edit/picupload" enctype="multipart/form-data" method="POST">
             <input type="file" id="upload" name = "uploadFile" accept="image/png,image/jpeg" hidden="hidden" />
             <img src="{{userphoto}}" id="userphoto">
+            <button type="submit" class="btn">Update</button>
           </form>
-          <button class="btn">Update</button>
         </div>
       </div>
     </div>
