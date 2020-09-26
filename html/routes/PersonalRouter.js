@@ -51,7 +51,7 @@ router.get('/home/edit/picupload', ErrorRouter.not_found_404)
 //router.post('/learning', LearningController.learning_post) // full path: /personal/learning
 router.get('/learning', VerifyController.verify_login, LearningController.learning_get)
 
-router.post('/learning/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileSystemController.alphaSection_upload_post, function(req, res, next){ res.redirect("/personal/learing"); }) // full path: /personal/home/edit/submit
+router.post('/learning/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileSystemController.alphaSection_upload_post, function(req, res, next){ res.redirect("/personal/learning"); }) // full path: /personal/home/edit/submit
 router.get('/learning/edit/fileupload', ErrorRouter.not_found_404)
 
 // ======================================================================================================== //
