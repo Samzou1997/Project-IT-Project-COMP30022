@@ -25,7 +25,9 @@ var customizeFileDir;
 var alphaSectionDir;
 var betaSectionDir;
 var charlieSectionDir;
-
+var alphaSectionReserverdDir;
+var betaSectionReserverdDir;
+var charlieSectionReserverdDir;
 
 
 function mkUserDir(userID, callback) {
@@ -112,11 +114,6 @@ function getToUserDir(userID, callback) {
     }
     else {
       console.log('[directoy ERROR]: user dir lost');
-      res.render('error.html', {
-        title: 'System Error',
-        errorCode: 'System Error',
-        errorMessage: '[directoy ERROR]: user dir lost'
-      });
     }
   })
 }
@@ -155,6 +152,11 @@ const userSys_upload_post = (req, res, next) => {
               next();
             }
           });
+        });
+        res.render('error.html', {
+          title: 'System Error',
+          errorCode: 'System Error',
+          errorMessage: '[directoy ERROR]: user dir lost'
         });
       }
       else {
@@ -202,7 +204,12 @@ const alphaSection_upload_post = (req, res, next) => {
               next();
             }
           });
-        })
+        });
+        res.render('error.html', {
+          title: 'System Error',
+          errorCode: 'System Error',
+          errorMessage: '[directoy ERROR]: user dir lost'
+        });
       }
       else {
         res.render('error.html', {
