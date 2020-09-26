@@ -64,15 +64,15 @@ function mkUserDir(userID, callback) {
             fs.mkdir(docInsertDir, 0777, function (error) { });
             fs.mkdir(customizeFileDir, 0777, function (error) {
               fs.mkdir(alphaSectionDir, 0777, function (error) {
-                let fileDestDir = path.join(alphaSectionDir, sysResveredProfilePic_fileName);
+                let fileDestDir = path.join(alphaSectionDir, sysReservedDoc_fileName);
                 fs.rename(defaultDoc_dir, fileDestDir, function (error) { });
               });
               fs.mkdir(betaSectionDir, 0777, function (error) {
-                let fileDestDir = path.join(betaSectionDir, sysResveredProfilePic_fileName);
+                let fileDestDir = path.join(betaSectionDir, sysReservedDoc_fileName);
                 fs.rename(defaultDoc_dir, fileDestDir, function (error) { });
               });
               fs.mkdir(charlieSectionDir, 0777, function (error) {
-                let fileDestDir = path.join(charlieSectionDir, sysResveredProfilePic_fileName);
+                let fileDestDir = path.join(charlieSectionDir, sysReservedDoc_fileName);
                 fs.rename(defaultDoc_dir, fileDestDir, function (error) {
                   callback();
                 });
