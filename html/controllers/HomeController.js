@@ -27,7 +27,7 @@ const home_get = (req, res, next) => {
     }
     else {
       var userID_str = doc._id.toHexString();
-      var fileDir = `/home/IT_Project/html/file/userData/ ${userID_str} /userSys/profile_pic_sys_reserved.png`;
+      var fileDir = `/home/IT_Project/html/file/userData/${userID_str}/userSys/profile_pic_sys_reserved.png`;
 
       homePaddingData.name = doc.firstName + " " + doc.lastName
       homePaddingData.school = doc.details.school
