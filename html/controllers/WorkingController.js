@@ -3,7 +3,7 @@ const { response }    = require('express')
 var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
-const FileReader      = require('./ReadFile')
+const FileSystemController    = require('../controllers/FileSystemController')
 
 const secret_key            = config.token_setting.secret_key
 const token_expire_time     = config.token_setting.expire_time
@@ -25,6 +25,13 @@ const working_get = (req, res, next) => {
       });
     }
     else {
+      var userID_str = doc._id.toHexString();
+      var userCustomizeFileDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/betagSection`;
+
+      var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
+
+      console.log(fileList);
+
       res.render('working.html')
     }
   })

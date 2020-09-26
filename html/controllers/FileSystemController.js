@@ -35,6 +35,25 @@ function getFileUrl(fileDir){
   return fileUrl;
 }
 
+function getFileUrls(dir){
+  var fileUrls = [];
+  var files = fs.readdir(dir);
+
+  files.forEach(function (item, index) {
+    var stat = fs.statSync(dir + item);
+
+    if (stat.isDirectory()){
+    }
+    else {
+      var fileObj = {};
+      fileObj.fileName = item;
+      fileObj.url = getFileUrl(dir + item);
+      fileUrls.push(fileObj);
+    }
+  });
+  return fileUrls;
+}
+
 
 function mkUserDir(userID, callback) {
   userDir = path.join(rootDir, "/file/userData", userID.toHexString()); // full path in server
@@ -318,5 +337,11 @@ const charlieSection_upload_post = (req, res, next) => {
 }
 
 module.exports = {
-  userSys_upload_post, alphaSection_upload_post, betaSection_upload_post, charlieSection_upload_post, mkUserDir, getFileUrl
+  userSys_upload_post, 
+  alphaSection_upload_post, 
+  betaSection_upload_post, 
+  charlieSection_upload_post, 
+  mkUserDir, 
+  getFileUrl, 
+  getFileUrls
 }
