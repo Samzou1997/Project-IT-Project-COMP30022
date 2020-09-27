@@ -4,6 +4,7 @@ var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
 var homePaddingData   = require('../views/data_padding/home_data.json')
+var profileEditPaddingData   = require('../views/data_padding/profile_edit.json')
 const FileSystemController    = require('../controllers/FileSystemController')
 
 const secret_key          = config.token_setting.secret_key
@@ -58,6 +59,18 @@ const home_edit_get = (req, res, next) => {
       });
     }
     else {
+      profileEditPaddingData.firstname = doc.firstName
+      profileEditPaddingData.lastname = doc.lastName
+      profileEditPaddingData.dateofbirth = doc.details.dateBirth.toLocaleString()
+      profileEditPaddingData.gender = doc.details.gender
+      profileEditPaddingData.graduatedschool = doc.details.school
+      profileEditPaddingData.major = doc.details.major
+      profileEditPaddingData.company = doc.details.company
+      profileEditPaddingData.title = doc.details.title
+      profileEditPaddingData.startedfrom = doc.details.startedfrom
+      profileEditPaddingData.place = doc.details.place
+      //profileEditPaddingData.profile_pic_path = 
+
       res.render('profile_edit.html')
     }
   })
