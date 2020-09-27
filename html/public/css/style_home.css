@@ -139,7 +139,7 @@ button:hover{
 /* Start working.html main area */
 <<<<<<< Updated upstream
 section{
-    background: url(/public/img/background.jpg) no-repeat;
+    background: #fff;
     background-size: cover;
     height: calc(100vh - 80px);
 =======
