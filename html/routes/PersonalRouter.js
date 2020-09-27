@@ -12,7 +12,7 @@ const FileSystemController    = require('../controllers/FileSystemController')
 const LearningController      = require('../controllers/LearningController')
 const WorkingController       = require('../controllers/WorkingController')
 const VolunteerController     = require('../controllers/VolunteerController')
-const ErrorRouter             = require('../controllers/ErrorController')
+const ErrorController         = require('../controllers/ErrorController')
 const VerifyController        = require('../controllers/VerifyController')
 
 var storageConfig = multer.diskStorage({
@@ -41,10 +41,10 @@ router.get('/home', VerifyController.verify_login, HomeController.home_get)
 router.get('/home/edit', VerifyController.verify_login, HomeController.home_edit_get)
 
 router.post('/home/edit/infosubmit', VerifyController.verify_login, HomeController.home_edit_submit_post) // full path: /personal/home/edit/submit
-router.get('/home/edit/infosubmit', ErrorRouter.not_found_404)
+router.get('/home/edit/infosubmit', ErrorController.not_found_404)
 
 router.post('/home/edit/picupload', upload.single('profilePic'), VerifyController.verify_login, FileSystemController.userSys_upload_post, function(req, res, next){ res.redirect("/personal/home"); }) // full path: /personal/home/edit/submit
-router.get('/home/edit/picupload', ErrorRouter.not_found_404)
+router.get('/home/edit/picupload', ErrorController.not_found_404)
 
 // ======================================================================================================== //
 
@@ -52,7 +52,7 @@ router.get('/home/edit/picupload', ErrorRouter.not_found_404)
 router.get('/learning', VerifyController.verify_login, LearningController.learning_get)
 
 router.post('/learning/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileSystemController.alphaSection_upload_post, function(req, res, next){ res.redirect("/personal/learning"); }) // full path: /personal/home/edit/submit
-router.get('/learning/edit/fileupload', ErrorRouter.not_found_404)
+router.get('/learning/edit/fileupload', ErrorController.not_found_404)
 
 // ======================================================================================================== //
 
@@ -60,7 +60,7 @@ router.get('/learning/edit/fileupload', ErrorRouter.not_found_404)
 router.get('/working', VerifyController.verify_login, WorkingController.working_get)
 
 router.post('/working/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileSystemController.betaSection_upload_post, function(req, res, next){ res.redirect("/personal/working"); }) // full path: /personal/home/edit/submit
-router.get('/working/edit/fileupload', ErrorRouter.not_found_404)
+router.get('/working/edit/fileupload', ErrorController.not_found_404)
 
 router.get('/working/edit/article', VerifyController.verify_login, WorkingController.working_article_edit_get)
 
@@ -70,7 +70,7 @@ router.get('/working/edit/article', VerifyController.verify_login, WorkingContro
 router.get('/volunteer', VerifyController.verify_login, VolunteerController.volunteer_get)
 
 router.post('/volunteer/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileSystemController.charlieSection_upload_post, function(req, res, next){ res.redirect("/personal/volunteer"); }) // full path: /personal/home/edit/submit
-router.get('/volunteer/edit/fileupload', ErrorRouter.not_found_404)
+router.get('/volunteer/edit/fileupload', ErrorController.not_found_404)
 
 // ======================================================================================================== //
 
