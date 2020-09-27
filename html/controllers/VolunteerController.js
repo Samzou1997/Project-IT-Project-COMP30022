@@ -50,7 +50,12 @@ const volunteer_article_edit_get = (req, res, next) => {
       });
     }
     else {
-      res.render('edit_article.html')
+      var userID_str = doc._id.toHexString();
+      var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/charlieSection/reserved/doc_sys_reserved.html`;
+
+      res.render('edit_article.html', {
+        article : articleDir
+      })
     }
   })
 }
