@@ -21,7 +21,7 @@ nav{
     width: 100%;
     top: 0;
     position: fixed;
-    z-index: 2;
+    z-index: 1;
 }
 /* End Global settings */
 
@@ -137,18 +137,11 @@ button:hover{
 /* End home.html header area */
 
 /* Start working.html main area */
-<<<<<<< Updated upstream
-section{
-    background: url(/public/img/background.jpg) no-repeat;
-    background-size: cover;
-    height: calc(100vh - 80px);
-=======
 .wrapper-flex{
     margin-top: 150px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
->>>>>>> Stashed changes
 }
 
 .card-container{
