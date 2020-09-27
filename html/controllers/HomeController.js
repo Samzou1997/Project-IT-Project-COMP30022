@@ -77,7 +77,7 @@ const home_edit_get = (req, res, next) => {
 }
 
 const home_edit_submit_post = (req, res, next) => {
-  UserData.findOne({ email: req.cookies["email"] }, function (err, doc) {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
     if (err) {
       console.log("db error")
       res.render('error.html', {
@@ -90,7 +90,11 @@ const home_edit_submit_post = (req, res, next) => {
       let userid = doc._id
       if (Date.parse(req.body.dataofbirth) == NaN){
         console.log("data type error")
-        res.render('error.html')
+        res.render('error.html', {
+          title: 'System Error',
+          errorCode: 'System Error',
+          errorMessage: 'Wrong input type'
+        });
       }else{
         let updatedData = {
           firstname : req.body.firstname,
@@ -105,14 +109,18 @@ const home_edit_submit_post = (req, res, next) => {
           place : req.body.place,
         }
         
-        UserData.findByIdAndUpdate(userid, {$set: updatedData})
+        User.findByIdAndUpdate(userid, {$set: updatedData})
         .then(response => {
+          res.redirect("/personal/home");
         })
         .catch(error => {
           console.log(error)
+          res.render('error.html', {
+            title: 'System Error',
+            errorCode: 'System Error',
+            errorMessage: error
+          });
         })
-        
-        res.redirect("/personal/home");
       }                  
     }  
   })
