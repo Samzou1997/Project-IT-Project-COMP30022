@@ -31,8 +31,6 @@ const volunteer_get = (req, res, next) => {
 
       var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
 
-      console.log(fileList);
-
       res.render('volunteer.html', {
         filelist : fileList,
         article : articleDir
