@@ -12,6 +12,8 @@
 
 
 </head>
+
+<body>
 <!-- ==================================Start Header Area=========================================-->
   <nav>
     <input type="checkbox" id="check">
@@ -32,36 +34,55 @@
   
 
 <!-- ==================================Start Main Area=========================================-->
-  <section>
-    <form action="/personal/learning/edit/fileupload" enctype="multipart/form-data" method="post">
-      <input type="file" id="upload" name = "uploadFile" hidden="hidden" required/>
-      <button type="button" id="custom-button">CHOOSE A FILE</button>
-      <span id="custom-text">No file Chosen</span> </br>
-      <input type="submit" value="Upload">
+
+<section class="bodysection">
+  <div class="article_header">
+    <h1>Article</h1>
+    <a href="/personal/working/edit/article"><button id="writebtn">Edit</button></a>
+  </div>
+
+  <div class="file_header">
+    <form action="/personal/working/edit/fileupload" enctype="multipart/form-data" method="post">
+      <input type="file" id="real-file" name="uploadFile" hidden="hidden">
+      <button type="button" id="custom-button">Choose a file</button>
+      <span id="custom-text">No File Chosen</span>
+      <input type="submit" value="Upload" class="btn">
     </form>
+  </div>
 
-      
-  </section>
 
-  <!-- ==================================End Main Area=========================================-->
-  <script type="text/javascript">
-    const realFileBtn = document.getElementById("upload");
-    const customBtn = document.getElementById("custom-button");
-    const customTxt = document.getElementById("custom-text");
+  <div class="article_content">
+    {{article}}
+  </div>
 
-    customBtn.addEventListener("click", function(){
-      realFileBtn.click();
-    })
+  <div class="file_content">
+    {{each filelist as file index}}
+      <a href="{{file.url}}"><li>{{file.fileName}}</li></a></br>
+    {{/each}}
+  </div>
+    
+</section>
 
-    realFileBtn.addEventListener("change",function(){
-      if(realFileBtn.value){
-        customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-      } else {
-        customTxt.innerHTML = "No File Chosen";
-      }
-    })
+<!-- ==================================End Main Area=========================================-->
+<script type="text/javascript">
+  const realFileBtn = document.getElementById("real-file");
+  const customBtn = document.getElementById("custom-button");
+  const customTxt = document.getElementById("custom-text");
 
-  </script>
+  customBtn.addEventListener("click",function(){
+    realFileBtn.click();
+  })
+
+  realFileBtn.addEventListener("change",function(){
+    if(realFileBtn.value){
+      customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } else{
+      customTxt.innerHTML = "No file chosen";
+    }
+    
+  });
+
+</script>
 </body>
 
 </html>
