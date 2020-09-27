@@ -69,6 +69,7 @@ const home_edit_get = (req, res, next) => {
       profileEditPaddingData.title = doc.details.title
       profileEditPaddingData.startedfrom = doc.details.startedfrom
       profileEditPaddingData.place = doc.details.place
+      profileEditPaddingData.intro = doc.details.introduction
       //profileEditPaddingData.profile_pic_path = 
 
       res.render('profile_edit.html',profileEditPaddingData)
@@ -98,17 +99,18 @@ const home_edit_submit_post = (req, res, next) => {
       }
       else{
         let updatedData = {
-          firstname : req.body.firstname,
-          lastname : req.body.lastname,
+          firstName : req.body.firstname,
+          lastName : req.body.lastname,
           details : {
             dateofbirth : new Date(Date.parse(req.body.dataofbirth)),
             gender : req.body.gender,
-            graduatedschool : req.body.graduatedschool,
+            school : req.body.graduatedschool,
             major : req.body.major,
             company : req.body.company,
             title : req.body.title,
             startedfrom : req.body.startedfrom,
             place : req.body.place,
+            introduction : req.body.intro,
           }
         }
         
