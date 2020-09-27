@@ -36,7 +36,7 @@ const working_get = (req, res, next) => {
         filelist : fileList
       })
     }
-  })
+  });
 }
 
 const working_article_edit_get = (req, res, next) => {
