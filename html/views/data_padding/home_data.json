@@ -1,8 +1,27 @@
 {
+<<<<<<< Updated upstream
   "name": "Null",
   "school": "Null",
   "major": "Null",
   "degree": "Null",
   "intro": "Null",
   "path": "http://54.206.15.44/public/img/logo.png"
+=======
+  "firstname": "Null",
+  "lastname": "Null",
+  "dateofbirth":"Null",
+  "gender":"Null",
+
+  "graduatedschool": "Null",
+  "major": "Null",
+
+  "company": "Null",
+  "title": "Null",
+  "startedfrom":"Null",
+
+  "place":"Null",
+
+  "password": "Null",
+  "profile_pic_path": "http://54.206.15.44/public/img/logo.png"
+>>>>>>> Stashed changes
 }
