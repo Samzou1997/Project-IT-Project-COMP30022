@@ -13,7 +13,6 @@ const cookie_alive_time   = config.cookie_setting.alive_time
 const userDataDir         = "/home/IT_Project/html/file/userData/";
 
 var userID_str;
-var profilePicDir         = `/home/IT_Project/html/file/userData/${userID_str}/userSys/profile_pic_sys_reserved.png`;
 
 const home_post = (req, res, next) => {
   res.render('404.html')
@@ -31,6 +30,7 @@ const home_get = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
+      var profilePicDir = `/home/IT_Project/html/file/userData/${userID_str}/userSys/profile_pic_sys_reserved.png`;
 
       homePaddingData.name = doc.firstName + " " + doc.lastName
       homePaddingData.school = doc.details.school
@@ -62,7 +62,8 @@ const home_edit_get = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
-      
+      var profilePicDir = `/home/IT_Project/html/file/userData/${userID_str}/userSys/profile_pic_sys_reserved.png`;
+
       profileEditPaddingData.firstname = doc.firstName
       profileEditPaddingData.lastname = doc.lastName
       profileEditPaddingData.dateofbirth = doc.details.dateBirth.toLocaleString()
