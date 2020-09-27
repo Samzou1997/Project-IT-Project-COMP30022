@@ -1,8 +1,19 @@
 {
-  "name": "Null",
-  "school": "Null",
+  // personal info
+  "firstname": "Null",
+  "lastname": "Null",
+  "dateofbirth":"Null",
+  "gender":"Null",
+  // education
+  "graduatedschool": "Null",
   "major": "Null",
-  "degree": "Null",
-  "intro": "Null",
+  // working
+  "company": "Null",
+  "title": "Null",
+  "startedfrom":"Null",
+  // volunteer
+  "place":"Null",
+  // setting
+  "password": "Null",
   "profile_pic_path": "http://54.206.15.44/public/img/logo.png"
 }

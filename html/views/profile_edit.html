@@ -93,14 +93,8 @@
   
           <div class="volunteer tabShow">
             <h1>Volunteer Info</h1>
-            <h2>First Name</h2>
-            <input type="text" class="input" value="{{firstname}}">
-            <h2>Last Name</h2>
-            <input type="text" class="input" value="{{lastname}}">
-            <h2>Date of Birth</h2>
-            <input type="text" class="input" value="{{dateofbirth}}">
-            <h2>Gender</h2>
-            <input type="text" class="input" value="{{gender}}">
+            <h2>Place</h2>
+            <input type="text" class="input" value="{{place}}">
             <button class="btn">Update</button>
           </div>
         </form>
@@ -111,7 +105,7 @@
           <input type="password" class="input" value="{{password}}">
           <form action="/personal/home/edit/picupload" enctype="multipart/form-data" method="POST">
             <input type="file" id="upload" name = "profilePic" accept="image/png,image/jpeg" hidden="hidden" />
-            <img src="{{userphoto}}" id="userphoto">
+            <img src="{{profile_pic_path}}" id="userphoto">
             <button type="submit" class="btn">Update</button>
           </form>
         </div>
