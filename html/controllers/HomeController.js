@@ -71,13 +71,13 @@ const home_edit_get = (req, res, next) => {
       profileEditPaddingData.place = doc.details.place
       //profileEditPaddingData.profile_pic_path = 
 
-      res.render('profile_edit.html')
+      res.render('profile_edit.html',profileEditPaddingData)
     }
   })
 }
 
 const home_edit_submit_post = (req, res, next) => {
-  User.findOneAndUpdate({ email: req.cookies["email"] }, {firstName: req.body.first_name, lastName: req.body.last_name}, function(err, doc){
+  UserData.findOne({ email: req.cookies["email"] }, function (err, doc) {
     if (err) {
       console.log("db error")
       res.render('error.html', {
@@ -86,10 +86,36 @@ const home_edit_submit_post = (req, res, next) => {
         errorMessage: err
       });
     }
-    else {
-      res.redirect("/personal/home");
-    }
-  })  
+    if (doc) {
+      let userid = doc._id
+      if (Date.parse(req.body.dataofbirth) == NaN){
+        console.log("data type error")
+        res.render('error.html')
+      }else{
+        let updatedData = {
+          firstname : req.body.firstname,
+          lastname : req.body.lastname,
+          dateofbirth : new Date(Date.parse(req.body.dataofbirth)),
+          gender : req.body.gender,
+          graduatedschool : req.body.graduatedschool,
+          major : req.body.major,
+          company : req.body.company,
+          title : req.body.title,
+          startedfrom : req.body.startedfrom,
+          place : req.body.place,
+        }
+        
+        UserData.findByIdAndUpdate(userid, {$set: updatedData})
+        .then(response => {
+        })
+        .catch(error => {
+          console.log(error)
+        })
+        
+        res.redirect("/personal/home");
+      }                  
+    }  
+  })
 }
 
 const home_edit_submit_get = (req, res, next) => {
