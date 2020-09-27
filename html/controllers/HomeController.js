@@ -70,6 +70,7 @@ const home_edit_get = (req, res, next) => {
       profileEditPaddingData.startedfrom = doc.details.startedfrom
       profileEditPaddingData.place = doc.details.place
       profileEditPaddingData.intro = doc.details.introduction
+      profileEditPaddingData.degree = doc.details.degree
       //profileEditPaddingData.profile_pic_path = 
 
       res.render('profile_edit.html',profileEditPaddingData)
@@ -106,6 +107,7 @@ const home_edit_submit_post = (req, res, next) => {
             gender : req.body.gender,
             school : req.body.graduatedschool,
             major : req.body.major,
+            degree : req.body.degree,
             company : req.body.company,
             title : req.body.title,
             startedfrom : req.body.startedfrom,
