@@ -1,0 +1,19 @@
+{
+  "firstname": "Null",
+  "lastname": "Null",
+  "dateofbirth":"Null",
+  "gender":"Null",
+  "intro":"Null",
+  
+  "graduatedschool": "Null",
+  "major": "Null",
+  "degree" : "Null",
+  
+  "company": "Null",
+  "title": "Null",
+  "startedfrom":"Null",
+  
+  "place":"Null",
+  
+  "profile_pic_path": "http://54.206.15.44/public/img/logo.png"
+}

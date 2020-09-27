@@ -1,5 +1,6 @@
 /* import font url */
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap');
 
 /* Start Global settings */
 
@@ -141,37 +142,60 @@ button:hover{
 
 /* Start learning.html working.html volunteer.html main area */
 section{
-    background: url(/public/img/background.jpg) no-repeat;
+    background: #fff;
     background-size: cover;
     height: calc(100vh - 80px);
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: .2fr 1.8fr .2fr;
+    grid-template-areas: 
+    "articleheader articleheader filecontent"
+    "articlecontent articlecontent filecontent"
+    "articlecontent articlecontent fileheader";
+    gap: 4px;
 }
 
-#writebtn{
-    padding: 10px;
+section button{
     color: white;
     background-color: #0082e6;
     border: 1px solid #000;
     border-radius: 5px;
     cursor: pointer;
+    float: right;
 }
 
-#custom-button{
-    padding: 10px;
-    color: white;
-    background-color: #0082e6;
-    border: 1px solid #000;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#custom-button:hover{
+section button:hover{
     background-color: #1b9bff;
 }
 
-#custom-text{
-    margin-left: 10px;
-    font-family: sans-serif;
-    color: #aaa;
+
+.article_header{
+    grid-area: articleheader;
+    background: #acaeaf;
+}
+
+.article_header h1{
+    font-weight: 500;
+    font-size: 30px;
+    float: left;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+}
+
+.file_header{
+    grid-area: fileheader;
+    background: #acaeaf;
+}
+
+
+.file_header button{
+    float: left;
+}
+
+section .file_header span{
+    float: left;
+    padding: 10px;
 }
 
 .btn{
@@ -180,37 +204,39 @@ section{
     background-color: #0082e6;
     border: 1px solid #000;
     border-radius: 5px;
-    cursor: pointer; 
+    cursor: pointer;
+    float: right;
 }
 
 .btn:hover{
     background-color: #1b9bff;
 }
 
-
-.article-container{
-    width: 700px;
-    height: 400px;
-    background-color: #fff;
-    padding: 10px;
-    display: inline-block;
-    border-radius: 12px;
+.article_content{
+    grid-area: articlecontent;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    background: #acaeaf;
 }
 
-.ac-header{
-    display: flex;
+.file_content{
+    grid-area: filecontent;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    background: #acaeaf;
 }
 
-.file-container{
-    width: 600px;
-    height: 400px;
-    background: #fff;
-    padding: 10px;
-    display: inline-block;
-    border-radius: 12px;
-    text-align: center;
+@media (max-width: 858px){
+    section{
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.4fr 1.8fr 1.8fr 0.4fr;
+        grid-template-areas: 
+        "articleheader"
+        "articlecontent"
+        "filecontent"
+        "fileheader";
+    }
 }
-
 
 /* End learning.html working.html volunteer.html main area */
 

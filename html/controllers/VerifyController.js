@@ -37,7 +37,14 @@ const verify_login = (req, res, next) => {
             });
           }
           else {
-            next();
+            if (doc) {
+              next();
+            }
+            else {
+              res.render("login_error.html", {
+                login_error_message: "No user found.",
+              })
+            }
           }
         })
       }
