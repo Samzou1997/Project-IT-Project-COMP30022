@@ -19,6 +19,9 @@ nav{
     background-color: #0082e6;
     height: 80px;
     width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 2;
 }
 /* End Global settings */
 
@@ -110,7 +113,6 @@ button:hover{
         left: -100%;
         text-align: center;
         transition: all .5s;
-        z-index: 2;
     }
 
     nav ul li{
@@ -135,29 +137,34 @@ button:hover{
 /* End home.html header area */
 
 /* Start working.html main area */
+<<<<<<< Updated upstream
 section{
     background: url(/public/img/background.jpg) no-repeat;
     background-size: cover;
     height: calc(100vh - 80px);
+=======
+.wrapper-flex{
+    margin-top: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+>>>>>>> Stashed changes
 }
 
 .card-container{
-	width: 300px;
-	height: 430px;
-	background: #FFF;
-	border-radius: 6px;
-	position: absolute;
-	top: 60%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	box-shadow: 0px 1px 10px 1px #000;
-	overflow: hidden;
-    display: inline-block;
-    z-index: 1;
+    overflow: hidden;
+    background-color: #FFF;
+    text-align: center;
+    border-radius: 1rem;
+    position: relative;
+    width: 300px;
+    margin-bottom: .5rem;
+    margin-left: .5rem;
 }
+
 .upper-container{
 	height: 150px;
-	background: #607D8B;
+    background: #607D8B;
 }
 .image-container{
 	background: white;
@@ -169,79 +176,26 @@ section{
 }
 .image-container img{
 	width: 80px;
-	height: 80px;
 	border-radius: 50%;
 }
 .lower-container{
+    background: white;
 	height: 280px;
-	background: #FFF;
 	padding: 20px;
 	padding-top: 40px;
-	text-align: center;
+    text-align: center;
 }
-.lower-container h3, h4{
-	box-sizing: border-box;
-	line-height: .6;
-    font-weight: lighter;
-    padding: 10px;
-}
-.lower-container h4{
-	color: #7F00FF;
-	opacity: .6;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
+
+
 .lower-container p{
 	font-size: 16px;
 	color: gray;
-    padding-bottom: 4px;
+    padding-bottom: 10px;
 }
 
 
 /* End home.html main area */
 
-/* Start learning.html working.html volunteer.html main area */
-input[type="submit"]{
-    outline-style: none ;
-    border: 1px solid #ccc; 
-    border-radius: 3px;
-    padding: 14px 14px;
-    width: 120px;
-    font-size: 500;
-    
-}
-
-input[type="submit"]:hover{
-    background-color: indigo;
-}
-
-
-.a-f-container{
-    width: 600px;
-    height: 600px;
-}
-
-.article-container{
-    width: 300px;
-    height: 400px;
-    background-color: #242424;
-    padding: 10px;
-    overflow: hidden;
-    overflow-y: scroll;
-    display: inline-block;
-}
-
-.file-container{
-    width: 100px;
-    height: 400px;
-    background: #242424;
-    padding: 10px;
-    overflow: hidden;
-    overflow-y: scroll;
-    position: relative;
-    display: inline-block;
-}
-/* End learning.html working.html volunteer.html main area */
 
 
 /* Start contact.html main area */
