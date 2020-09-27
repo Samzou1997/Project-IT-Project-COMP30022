@@ -1,5 +1,6 @@
 /* import font url */
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap');
 
 /* Start Global settings */
 
@@ -138,16 +139,18 @@ button:hover{
 
 /* Start learning.html working.html volunteer.html main area */
 section{
-    background: url(/public/img/background.jpg) no-repeat;
+    background: #fff;
     background-size: cover;
     height: calc(100vh - 80px);
     width: 100vw;
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    grid-template-rows: 50px 1fr 1fr 100px;
-    gap: 10px;
-    padding: 10px;
-    box-sizing: border-box;
+    grid-template-rows: .2fr 1.8fr .2fr;
+    grid-template-areas: 
+    "articleheader articleheader filecontent"
+    "articlecontent articlecontent filecontent"
+    "articlecontent articlecontent fileheader";
+    gap: 4px;
 }
 
 section button{
@@ -165,24 +168,30 @@ section button:hover{
 
 
 .article_header{
-    grid-column-start: 1;
-    grid-column-end: 3;
+    grid-area: articleheader;
+    background: #acaeaf;
 }
 
 .article_header h1{
     font-weight: 500;
     font-size: 30px;
     float: left;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
 }
 
-.file_header h1{
-    font-weight: 500;
-    font-size: 30px;
+.file_header{
+    grid-area: fileheader;
+    background: #acaeaf;
+}
+
+
+.file_header button{
     float: left;
 }
 
 section .file_header span{
-    float: right;
+    float: left;
     padding: 10px;
 }
 
@@ -192,7 +201,8 @@ section .file_header span{
     background-color: #0082e6;
     border: 1px solid #000;
     border-radius: 5px;
-    cursor: pointer; 
+    cursor: pointer;
+    float: right;
 }
 
 .btn:hover{
@@ -200,17 +210,29 @@ section .file_header span{
 }
 
 .article_content{
-    grid-row-start: 2;
-    grid-row-end: 4;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    overflow-y: scroll;
+    grid-area: articlecontent;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    background: #acaeaf;
 }
 
 .file_content{
-    grid-row-start: 2;
-    grid-row-end: 4;
-    overflow-y: scroll;
+    grid-area: filecontent;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    background: #acaeaf;
+}
+
+@media (max-width: 858px){
+    section{
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.4fr 1.8fr 1.8fr 0.4fr;
+        grid-template-areas: 
+        "articleheader"
+        "articlecontent"
+        "filecontent"
+        "fileheader";
+    }
 }
 
 /* End learning.html working.html volunteer.html main area */
