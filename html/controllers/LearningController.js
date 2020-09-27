@@ -32,7 +32,7 @@ const learning_get = (req, res, next) => {
 
       console.log(fileList);
 
-      res.render('working.html', {
+      res.render('learning.html', {
         filelist : fileList
       });
     }
