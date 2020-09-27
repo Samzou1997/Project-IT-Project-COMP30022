@@ -27,7 +27,7 @@ const learning_get = (req, res, next) => {
     else {
       var userID_str = doc._id.toHexString();
       var userCustomizeFileDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/alphagSection`;
-      var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/alphagSection/reserved/doc_sys_reserved.html`,
+      var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/alphagSection/reserved/doc_sys_reserved.html`;
 
       var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
 
