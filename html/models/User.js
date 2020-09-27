@@ -30,12 +30,10 @@ const userSchema    = new Schema({
     phone: {type: String, default: 'null'},
     address: {type: String, default: 'null'},
     introduction: {type: String, default: 'null'},
-
     company: {type: String, default: 'null'},
     title: {type: String, default: 'null'},
     startedfrom:{type: String, default: 'null'},  
     place:{type: String, default: 'null'},
-
   },
   setting: {
     $ref: {type: String, default: 'user_settings'},

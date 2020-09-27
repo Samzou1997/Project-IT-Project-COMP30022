@@ -71,13 +71,13 @@ const home_edit_get = (req, res, next) => {
       profileEditPaddingData.place = doc.details.place
       //profileEditPaddingData.profile_pic_path = 
 
-      res.render('profile_edit.html')
+      res.render('profile_edit.html',profileEditPaddingData)
     }
   })
 }
 
 const home_edit_submit_post = (req, res, next) => {
-  User.findOneAndUpdate({ email: req.cookies["email"] }, {firstName: req.body.first_name, lastName: req.body.last_name}, function(err, doc){
+  UserData.findOne({ email: req.cookies["email"] }, function (err, doc) {
     if (err) {
       console.log("db error")
       res.render('error.html', {
@@ -86,18 +86,34 @@ const home_edit_submit_post = (req, res, next) => {
         errorMessage: err
       });
     }
-    else {
-      homePaddingData.name = doc.firstName + " " + doc.lastName
-      homePaddingData.school = doc.details.school
-      homePaddingData.major = doc.details.major
-      homePaddingData.degree = doc.details.degree
-      homePaddingData.gender = doc.details.gender
-      homePaddingData.birthday = doc.details.dateBirth.toLocaleString()
-      homePaddingData.intro = doc.details.introduction
-
-      res.render('home.html', homePaddingData)
-    }
-  })  
+    if (doc) {
+      let userid = doc._id
+      let updatedData = {
+        firstname : req.body.firstName,
+        lastname : doc.lastName,
+        dateofbirth : doc.details.dateBirth.toLocaleString(),
+        gender : doc.details.gender,
+        graduatedschool : doc.details.school,
+        major : doc.details.major,
+        company : doc.details.company,
+        title : doc.details.title,
+        startedfrom : doc.details.startedfrom,
+        place : doc.details.place,
+      }
+      
+      UserData.findByIdAndUpdate(userid, {$set: updatedData})
+      .then(response => {
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      
+      res.redirect("/personal/home");
+      
+        
+      
+    }  
+  })
 }
 
 const home_edit_submit_get = (req, res, next) => {
