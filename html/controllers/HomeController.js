@@ -12,6 +12,9 @@ const token_expire_time   = config.token_setting.expire_time
 const cookie_alive_time   = config.cookie_setting.alive_time
 const userDataDir         = "/home/IT_Project/html/file/userData/";
 
+var userID_str;
+var profilePicDir         = `/home/IT_Project/html/file/userData/${userID_str}/userSys/profile_pic_sys_reserved.png`;
+
 const home_post = (req, res, next) => {
   res.render('404.html')
 }
@@ -27,8 +30,7 @@ const home_get = (req, res, next) => {
       });
     }
     else {
-      var userID_str = doc._id.toHexString();
-      var fileDir = `/home/IT_Project/html/file/userData/${userID_str}/userSys/profile_pic_sys_reserved.png`;
+      userID_str = doc._id.toHexString();
 
       homePaddingData.name = doc.firstName + " " + doc.lastName
       homePaddingData.school = doc.details.school
@@ -37,7 +39,7 @@ const home_get = (req, res, next) => {
       homePaddingData.gender = doc.details.gender
       homePaddingData.birthday = doc.details.dateBirth.toLocaleString()
       homePaddingData.intro = doc.details.introduction
-      homePaddingData.profile_pic_path = FileSystemController.getFileUrl(fileDir);
+      homePaddingData.profile_pic_path = FileSystemController.getFileUrl(profilePicDir);
 
       res.render('home.html', homePaddingData)
     }
@@ -59,6 +61,8 @@ const home_edit_get = (req, res, next) => {
       });
     }
     else {
+      userID_str = doc._id.toHexString();
+      
       profileEditPaddingData.firstname = doc.firstName
       profileEditPaddingData.lastname = doc.lastName
       profileEditPaddingData.dateofbirth = doc.details.dateBirth.toLocaleString()
@@ -71,7 +75,7 @@ const home_edit_get = (req, res, next) => {
       profileEditPaddingData.place = doc.details.place
       profileEditPaddingData.intro = doc.details.introduction
       profileEditPaddingData.degree = doc.details.degree
-      //profileEditPaddingData.profile_pic_path = 
+      profileEditPaddingData.profile_pic_path = FileSystemController.getFileUrl(profilePicDir);
 
       res.render('profile_edit.html',profileEditPaddingData)
     }
