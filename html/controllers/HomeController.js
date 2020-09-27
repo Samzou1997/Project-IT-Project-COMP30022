@@ -95,7 +95,8 @@ const home_edit_submit_post = (req, res, next) => {
           errorCode: 'System Error',
           errorMessage: 'Wrong input type'
         });
-      }else{
+      }
+      else{
         let updatedData = {
           firstname : req.body.firstname,
           lastname : req.body.lastname,
@@ -111,6 +112,7 @@ const home_edit_submit_post = (req, res, next) => {
         
         User.findByIdAndUpdate(userid, {$set: updatedData})
         .then(response => {
+          console.log(response)
           res.redirect("/personal/home");
         })
         .catch(error => {
