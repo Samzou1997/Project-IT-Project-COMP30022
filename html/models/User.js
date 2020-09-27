@@ -30,6 +30,7 @@ const userSchema    = new Schema({
     phone: {type: String, default: 'null'},
     address: {type: String, default: 'null'},
     introduction: {type: String, default: 'null'},
+    
   },
   setting: {
     $ref: {type: String, default: 'user_settings'},

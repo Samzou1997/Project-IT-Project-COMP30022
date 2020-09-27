@@ -40,7 +40,7 @@ router.get('/home', VerifyController.verify_login, HomeController.home_get)
 //router.post('/home/edit', HomeController.home_edit_post) // full path: /personal/home/edit
 router.get('/home/edit', VerifyController.verify_login, HomeController.home_edit_get)
 
-router.post('/home/edit/infosubmit', VerifyController.verify_login, function(req, res, next){ res.redirect("/personal/home"); }) // full path: /personal/home/edit/submit
+router.post('/home/edit/infosubmit', VerifyController.verify_login, HomeController.home_edit_submit_post) // full path: /personal/home/edit/submit
 router.get('/home/edit/infosubmit', ErrorRouter.not_found_404)
 
 router.post('/home/edit/picupload', upload.single('profilePic'), VerifyController.verify_login, FileSystemController.userSys_upload_post, function(req, res, next){ res.redirect("/personal/home"); }) // full path: /personal/home/edit/submit

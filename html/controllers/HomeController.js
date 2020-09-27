@@ -74,15 +74,7 @@ const home_edit_submit_post = (req, res, next) => {
       });
     }
     else {
-      homePaddingData.name = doc.firstName + " " + doc.lastName
-      homePaddingData.school = doc.details.school
-      homePaddingData.major = doc.details.major
-      homePaddingData.degree = doc.details.degree
-      homePaddingData.gender = doc.details.gender
-      homePaddingData.birthday = doc.details.dateBirth.toLocaleString()
-      homePaddingData.intro = doc.details.introduction
-
-      res.render('home.html', homePaddingData)
+      res.redirect("/personal/home");
     }
   })  
 }
