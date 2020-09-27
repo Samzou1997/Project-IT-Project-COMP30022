@@ -100,14 +100,16 @@ const home_edit_submit_post = (req, res, next) => {
         let updatedData = {
           firstname : req.body.firstname,
           lastname : req.body.lastname,
-          dateofbirth : new Date(Date.parse(req.body.dataofbirth)),
-          gender : req.body.gender,
-          graduatedschool : req.body.graduatedschool,
-          major : req.body.major,
-          company : req.body.company,
-          title : req.body.title,
-          startedfrom : req.body.startedfrom,
-          place : req.body.place,
+          details : {
+            dateofbirth : new Date(Date.parse(req.body.dataofbirth)),
+            gender : req.body.gender,
+            graduatedschool : req.body.graduatedschool,
+            major : req.body.major,
+            company : req.body.company,
+            title : req.body.title,
+            startedfrom : req.body.startedfrom,
+            place : req.body.place,
+          }
         }
         
         User.findByIdAndUpdate(userid, {$set: updatedData})
