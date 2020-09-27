@@ -54,6 +54,8 @@ router.get('/learning', VerifyController.verify_login, LearningController.learni
 router.post('/learning/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileSystemController.alphaSection_upload_post, function(req, res, next){ res.redirect("/personal/learning"); }) // full path: /personal/home/edit/submit
 router.get('/learning/edit/fileupload', ErrorController.not_found_404)
 
+router.get('/learning/edit/article', VerifyController.verify_login, LearningController.learning_article_edit_get)
+
 // ======================================================================================================== //
 
 //router.post('/working', WorkingController.working_post) // full path: /personal/working
@@ -71,6 +73,8 @@ router.get('/volunteer', VerifyController.verify_login, VolunteerController.volu
 
 router.post('/volunteer/edit/fileupload', upload.single('uploadFile'), VerifyController.verify_login, FileSystemController.charlieSection_upload_post, function(req, res, next){ res.redirect("/personal/volunteer"); }) // full path: /personal/home/edit/submit
 router.get('/volunteer/edit/fileupload', ErrorController.not_found_404)
+
+router.get('/volunteer/edit/article', VerifyController.verify_login, VolunteerController.volunteer_article_edit_get)
 
 // ======================================================================================================== //
 
