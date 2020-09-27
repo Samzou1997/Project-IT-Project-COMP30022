@@ -89,16 +89,16 @@ const home_edit_submit_post = (req, res, next) => {
     if (doc) {
       let userid = doc._id
       let updatedData = {
-        firstname : req.body.firstName,
-        lastname : doc.lastName,
-        dateofbirth : doc.details.dateBirth.toLocaleString(),
-        gender : doc.details.gender,
-        graduatedschool : doc.details.school,
-        major : doc.details.major,
-        company : doc.details.company,
-        title : doc.details.title,
-        startedfrom : doc.details.startedfrom,
-        place : doc.details.place,
+        firstname : req.body.firstname,
+        lastname : req.body.lastname,
+        dateofbirth : req.body.dataofbirth.toLocaleString(),
+        gender : req.body.gender,
+        graduatedschool : req.body.graduatedschool,
+        major : req.body.major,
+        company : req.body.company,
+        title : req.body.title,
+        startedfrom : req.body.startedfrom,
+        place : req.body.place,
       }
       
       UserData.findByIdAndUpdate(userid, {$set: updatedData})

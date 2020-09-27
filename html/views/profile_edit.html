@@ -61,40 +61,40 @@
           <div class="profile tabShow">
             <h1>Personal Info</h1>
             <h2>First Name</h2>
-            <input type="text" class="input" value="{{firstname}}">
+            <input type="text" class="input" name="firstname" value="{{firstname}}">
             <h2>Last Name</h2>
-            <input type="text" class="input" value="{{lastname}}">
+            <input type="text" class="input" name="lastname" value="{{lastname}}">
             <h2>Date of Birth</h2>
-            <input type="text" class="input" value="{{dateofbirth}}">
+            <input type="text" class="input" name="dateofbirth" value="{{dateofbirth}}">
             <h2>Gender</h2>
-            <input type="text" class="input" value="{{gender}}">
+            <input type="text" class="input" name="gender" value="{{gender}}">
             <button class="btn">Update</button>
           </div>
   
           <div class="learning tabShow">
             <h1>Education Info</h1>
             <h2>Graduated School</h2>
-            <input type="text" class="input" value="{{graduatedschool}}">
+            <input type="text" class="input" name="graduatedschool" value="{{graduatedschool}}">
             <h2>Major</h2>
-            <input type="text" class="input" value="{{major}}">
+            <input type="text" class="input" name="major" value="{{major}}">
             <button class="btn">Update</button>
           </div>
   
           <div class="working tabShow">
             <h1>Working Info</h1>
             <h2>Company</h2>
-            <input type="text" class="input" value="{{company}}">
+            <input type="text" class="input" name="company" value="{{company}}">
             <h2>Title</h2>
-            <input type="text" class="input" value="{{title}}">
+            <input type="text" class="input" name="title" value="{{title}}">
             <h2>Started From</h2>
-            <input type="text" class="input" value="{{startedfrom}}">
+            <input type="text" class="input" name="startedfrom" value="{{startedfrom}}">
             <button class="btn">Update</button>
           </div>
   
           <div class="volunteer tabShow">
             <h1>Volunteer Info</h1>
             <h2>Place</h2>
-            <input type="text" class="input" value="{{place}}">
+            <input type="text" class="input" name="place" value="{{place}}">
             <button class="btn">Update</button>
           </div>
         </form>
@@ -102,7 +102,6 @@
         <div class="setting tabShow">
           <h1>Setting</h1>
           <h2>Password</h2>
-          <input type="password" class="input" value="{{password}}">
           <form action="/personal/home/edit/picupload" enctype="multipart/form-data" method="POST">
             <input type="file" id="upload" name = "profilePic" accept="image/png,image/jpeg" hidden="hidden" />
             <img src="{{profile_pic_path}}" id="userphoto">
