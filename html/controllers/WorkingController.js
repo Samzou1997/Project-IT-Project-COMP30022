@@ -27,13 +27,15 @@ const working_get = (req, res, next) => {
     else {
       var userID_str = doc._id.toHexString();
       var userCustomizeFileDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/betagSection`;
+      var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/betagSection/reserved/doc_sys_reserved.html`;
 
       var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
 
       console.log(fileList);
 
       res.render('working.html', {
-        filelist : fileList
+        filelist : fileList,
+        article : articleDir
       })
     }
   });
