@@ -32,7 +32,8 @@ const home_get = (req, res, next) => {
       userID_str = doc._id.toHexString();
       var profilePicDir = `/home/IT_Project/html/file/userData/${userID_str}/userSys/profile_pic_sys_reserved.png`;
 
-      homePaddingData.name = doc.firstName + " " + doc.lastName
+      homePaddingData.firstname = doc.firstName
+      homePaddingData.firstname = doc.lastName
       homePaddingData.school = doc.details.school
       homePaddingData.major = doc.details.major
       homePaddingData.degree = doc.details.degree
@@ -40,6 +41,9 @@ const home_get = (req, res, next) => {
       homePaddingData.birthday = doc.details.dateBirth.toLocaleString()
       homePaddingData.intro = doc.details.introduction
       homePaddingData.profile_pic_path = FileSystemController.getFileUrl(profilePicDir);
+      homePaddingData.company = doc.details.company
+      homePaddingData.startedfrom = doc.details.startedfrom
+      homePaddingData.title = doc.details.title
 
       res.render('home.html', homePaddingData)
     }
