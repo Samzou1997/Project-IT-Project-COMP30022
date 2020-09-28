@@ -56,6 +56,9 @@ router.get('/learning/edit/fileupload', ErrorController.not_found_404)
 
 router.get('/learning/edit/article', VerifyController.verify_login, LearningController.learning_article_edit_get)
 
+router.post('/learning/edit/article/submit', VerifyController.verify_login, LearningController.learning_article_edit_get)
+router.get('/learning/edit/article/submit', ErrorController.not_found_404)
+
 // ======================================================================================================== //
 
 //router.post('/working', WorkingController.working_post) // full path: /personal/working

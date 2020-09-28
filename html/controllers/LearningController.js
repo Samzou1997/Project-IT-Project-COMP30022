@@ -54,12 +54,34 @@ const learning_article_edit_get = (req, res, next) => {
       var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/alphagSection/reserved/doc_sys_reserved.html`;
       
       res.render('edit_article.html', {
-        article : articleDir
+        article : articleDir,
+        section : 'learning'
       })
     }
   })
 }
 
+const learning_article_submit_post = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      var userID_str = doc._id.toHexString();
+      var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/alphagSection/reserved/doc_sys_reserved.html`;
+
+      console.log(req.body.content);
+
+      res.redirect('/personal/learning');
+    }
+  })
+}
+
 module.exports = {
-  learning_post, learning_get, learning_article_edit_get
+  learning_post, learning_get, learning_article_edit_get, learning_article_submit_post
 }
