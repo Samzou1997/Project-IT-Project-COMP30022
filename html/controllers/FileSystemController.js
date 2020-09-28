@@ -54,6 +54,17 @@ function getFileUrls(dir){
   return fileUrls;
 }
 
+function saveFile(fileDir, content, callback){
+  fs.writeFile(fileDir, content, function(error){
+    if (error) {
+      callback(error);
+    }
+    else{
+      callback();
+    }
+  });
+}
+
 
 function mkUserDir(userID, callback) {
   userDir = path.join(rootDir, "/file/userData", userID.toHexString()); // full path in server
@@ -343,5 +354,6 @@ module.exports = {
   charlieSection_upload_post, 
   mkUserDir, 
   getFileUrl, 
-  getFileUrls
+  getFileUrls,
+  saveFile
 }

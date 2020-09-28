@@ -75,9 +75,18 @@ const learning_article_submit_post = (req, res, next) => {
       var userID_str = doc._id.toHexString();
       var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/alphagSection/reserved/doc_sys_reserved.html`;
 
-      console.log(req.body.content);
-
-      res.redirect('/personal/learning');
+      FileSystemController.saveFile(articleDir, req.body.content, function(error){
+        if (error) {
+          res.render('error.html', {
+            title: 'System Error',
+            errorCode: 'Save Error',
+            errorMessage: error
+          });
+        }
+        else {
+          res.redirect('/personal/learning');
+        }
+      })
     }
   })
 }
