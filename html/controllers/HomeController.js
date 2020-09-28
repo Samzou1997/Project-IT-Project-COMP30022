@@ -33,12 +33,12 @@ const home_get = (req, res, next) => {
       var profilePicDir = `/home/IT_Project/html/file/userData/${userID_str}/userSys/profile_pic_sys_reserved.png`;
 
       homePaddingData.firstname = doc.firstName
-      homePaddingData.firstname = doc.lastName
+      homePaddingData.lastname = doc.lastName
       homePaddingData.school = doc.details.school
       homePaddingData.major = doc.details.major
       homePaddingData.degree = doc.details.degree
       homePaddingData.gender = doc.details.gender
-      homePaddingData.birthday = doc.details.dateBirth.toLocaleString()
+      homePaddingData.dateofbirth = doc.details.dateBirth.toLocaleString()
       homePaddingData.intro = doc.details.introduction
       homePaddingData.profile_pic_path = FileSystemController.getFileUrl(profilePicDir);
       homePaddingData.company = doc.details.company
