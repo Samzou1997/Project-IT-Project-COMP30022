@@ -54,12 +54,43 @@ const working_article_edit_get = (req, res, next) => {
       var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/betagSection/reserved/doc_sys_reserved.html`;
 
       res.render('edit_article.html', {
-        article : articleDir
+        article : articleDir,
+        section : 'working'
+      })
+    }
+  })
+}
+
+const working_article_submit_post = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      var userID_str = doc._id.toHexString();
+      var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/betagSection/reserved/doc_sys_reserved.html`;
+
+      FileSystemController.saveFile(articleDir, req.body.content, function(error){
+        if (error) {
+          res.render('error.html', {
+            title: 'System Error',
+            errorCode: 'Save Error',
+            errorMessage: error
+          });
+        }
+        else {
+          res.redirect('/personal/working');
+        }
       })
     }
   })
 }
 
 module.exports = {
-  working_post, working_get, working_article_edit_get
+  working_post, working_get, working_article_edit_get, working_article_submit_post
 }
