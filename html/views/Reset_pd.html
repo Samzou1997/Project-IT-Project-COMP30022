@@ -2,16 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <title>Reset Password</title>
+
+    <link rel="stylesheet" href="/public/css/style_resetpd.css">
 </head>
 <body>
-    <form class="sign-in-form" method="POST" action="/Forgot/Reset">
-        <h2 class="title">Reset Password</h2>
-        <div class="input-field">
-	        <i class="fas fa-envelope"></i>
- 	        <input name="email" id="uid-input-login" type="text" placeholder="Email" required>
+    <div class="container">
+        <div class="resetpd_container">
+            <form class="sign-in-form" method="POST" action="/Forgot/Reset">
+                <h2 class="title">Reset Password</h2>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input name="email" id="uid-input-login" type="text" placeholder="Email" required>
+                </div>
+                <input type="submit" value="Reset">
+                <p>Back To <a href="">Login</a></p>
+            </form>
         </div>
-        <input type="submit" value="Reset">
-    </form>
+    </div>
 <body>
 
