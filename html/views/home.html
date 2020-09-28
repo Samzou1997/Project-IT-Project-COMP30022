@@ -34,10 +34,10 @@
   
 
 <!-- ==================================Start Main Area=========================================-->
-  <section>
-    <div class="card-container">
+  <div class="wrapper-flex">
+    <div class="card-container"> 
 
-      <div class="upper-container">
+     <div class="upper-container">
         <div class="image-container">
           <a href="/personal/home/edit"><img src="{{profile_pic_path}}" /></a>
         </div>
@@ -45,16 +45,52 @@
   
       <div class="lower-container">
         <div>
-          <p>Name: {{name}}</p>
-          <p>Major: {{major}}</p>
-          <p>School: {{school}}</p>
-          <p>Degree: {{degree}}</p>
+          <p>First Name: {{firstname}}</p>
+          <p>Last Name: {{lastname}}</p>
+          <p>Date of Birth: {{dateofbirth}}</p>
+          <p>Gender: {{gender}}</p>
           <p>Intro: {{intro}}</p>
         </div>
       </div>
   
     </div>
-  </section>
+
+    <div class="card-container"> 
+
+      <div class="upper-container">
+         <div class="image-container">
+           <a href="/personal/home/edit"><img src="{{profile_pic_path}}" /></a>
+         </div>
+       </div>
+   
+       <div class="lower-container">
+         <div>
+           <p>Graduated School: {{graduatedschool}}</p>
+           <p>Major: {{major}}</p>
+           <p>Degree: {{degree}}</p>
+         </div>
+       </div>
+   
+     </div>
+
+     <div class="card-container"> 
+
+      <div class="upper-container">
+         <div class="image-container">
+           <a href="/personal/home/edit"><img src="{{profile_pic_path}}" /></a>
+         </div>
+       </div>
+   
+       <div class="lower-container">
+         <div>
+           <p>Company: {{company}}</p>
+           <p>Title: {{title}}</p>
+           <p>Started From: {{startedfrom}}</p>
+         </div>
+       </div>
+   
+     </div>
+  </div>
 
   <!-- ==================================End Main Area=========================================-->
   <script>

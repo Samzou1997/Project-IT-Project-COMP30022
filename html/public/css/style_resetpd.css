@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.container{
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 1rem;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.resetpd_container{
+    width: 300px;
+    height: 230px;
+    text-align: center;
+    border: #000000 solid .1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f7f7f7;
+}
+
+.container h2{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#uid-input-login{
+    width: 220px;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+#uid-input-login:focus{
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px 0 dodgerblue;
+}
+
+input[type=submit]{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: dodgerblue;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-size: 16px;
+    color: white;
+}

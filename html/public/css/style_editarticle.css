@@ -111,7 +111,6 @@ button:hover{
         left: -100%;
         text-align: center;
         transition: all .5s;
-        z-index: 2;
     }
 
     nav ul li{
