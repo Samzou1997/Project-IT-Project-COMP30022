@@ -55,7 +55,7 @@ const volunteer_article_edit_get = (req, res, next) => {
 
       res.render('edit_article.html', {
         article : articleDir,
-        section : 'working'
+        section : 'volunteer'
       })
     }
   })
