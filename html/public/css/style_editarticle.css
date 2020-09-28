@@ -20,9 +20,6 @@ nav{
     background-color: #0082e6;
     height: 80px;
     width: 100%;
-    top:0;
-    position: fixed;
-    z-index: 1;
 }
 /* End Global settings */
 
