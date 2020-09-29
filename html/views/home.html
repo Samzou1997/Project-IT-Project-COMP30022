@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <title>Welcome To EPortfolio</title>
-
+  <script src = "jquery.min.js"></script>
+  <script src = "clipboard.min.js"></script>
   <!-- custome css file -->
   <link rel="stylesheet" href="/public/css/style_home.css">
 
@@ -27,13 +28,8 @@
       <li><a href="/personal/working">Working</a></li>
       <li><a href="/personal/volunteer">Volunteer</a></li>
       <li><a href="/personal/contact">Contact</a></li>
-      <a href="/personal/logout"><button class="logout">LOGOUT</button></a>
-      <script language="javascript" type="text/javascript"> 
-          document.write("<input onclick=\"javascript:copyInBoard(url);\" name=\"urlText\" id=\"urlText\" style=\"width:400px;height:18px;\" value=\"");  
-          document.write(location.href);  
-          document.write("\" size=\"28\" />");  
-          var url = location.href;    
-      </script>
+      <a href="/personal/logout"><button class="logout">LOGOUT</button></a> 
+      <button class = "btn1" data-clipboard-text=location.href></button>    
       <input name="Input" value="Share Link" type="button" class="btn" onclick="javascript:copyInBoard(url);"/> 
     </ul>
   </nav>
@@ -101,10 +97,6 @@
 
   <!-- ==================================End Main Area=========================================-->
   <script>
-      function copyInBoard(sharelink) {   
-          window.clipboardData.setData("text",sharelink);  
-          alert("Share link is copy to clip Board");   
-      } 
   </script>
 </body>
 
