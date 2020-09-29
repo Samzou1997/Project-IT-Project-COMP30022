@@ -1,0 +1,8 @@
+{
+    "school":"{{school}}",
+    "major":"{{major}}",
+    "degree":"{{degree}}",
+    "extraclass":"{{extraclass}}",
+    "start":"{{startedfrom}}",
+    "end":"{{end}}"
+}
