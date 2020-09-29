@@ -14,6 +14,7 @@ const WorkingController       = require('../controllers/WorkingController')
 const VolunteerController     = require('../controllers/VolunteerController')
 const ErrorController         = require('../controllers/ErrorController')
 const VerifyController        = require('../controllers/VerifyController')
+const FileSectionController   = require('../controllers/FileSecrtionController')
 
 var storageConfig = multer.diskStorage({
 
@@ -88,6 +89,13 @@ router.get('/volunteer/edit/article', VerifyController.verify_login, VolunteerCo
 
 router.post('/volunteer/edit/article/submit', VerifyController.verify_login, VolunteerController.volunteer_article_submit_post)
 router.get('/volunteer/edit/article/submit', ErrorController.not_found_404)
+
+// ======================================================================================================== //
+
+router.get('/file', VerifyController.verify_login, FileSectionController.file_section_get)
+
+router.post('/file/upload', VerifyController.verify_login, FileSectionController.file_upload_post)
+router.get('/file/upload', ErrorController.not_found_404)
 
 // ======================================================================================================== //
 
