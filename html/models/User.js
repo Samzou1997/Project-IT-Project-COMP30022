@@ -21,6 +21,11 @@ const userSchema    = new Schema({
     type: String,
     required: true
   },
+  education: [{
+    school: {type: String},
+    degree: {type: String},
+    major: {type: String},
+  }],
   details: {
     major: {type: String, default: 'null'},
     school: {type: String, default: 'null'},

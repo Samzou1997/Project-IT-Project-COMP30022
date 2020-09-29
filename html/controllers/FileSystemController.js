@@ -30,19 +30,19 @@ var alphaSectionReserverdDir;
 var betaSectionReserverdDir;
 var charlieSectionReserverdDir;
 
-function getFileUrl(fileDir){
+function getFileUrl(fileDir) {
   fileUrl = domain + fileDir.substr(fileDir.indexOf("/file"))
   return fileUrl;
 }
 
-function getFileUrls(dir){
+function getFileUrls(dir) {
   var fileUrls = [];
   var files = fs.readdirSync(dir);
 
   files.forEach(function (item, index) {
     var stat = fs.statSync(path.join(dir, item));
 
-    if (stat.isDirectory()){
+    if (stat.isDirectory()) {
     }
     else {
       var fileObj = {};
@@ -54,12 +54,12 @@ function getFileUrls(dir){
   return fileUrls;
 }
 
-function saveFile(fileDir, content, callback){
-  fs.writeFile(fileDir, content, function(error){
+function saveFile(fileDir, content, callback) {
+  fs.writeFile(fileDir, content, function (error) {
     if (error) {
       callback(error);
     }
-    else{
+    else {
       callback();
     }
   });
@@ -100,8 +100,10 @@ function mkUserDir(userID, callback) {
         }
         else {
           fs.mkdir(userSysDir, 0777, function (error) {
-            let fileDestDir = path.join(userSysDir, sysResveredProfilePic_fileName);
-            fs.copyFile(defaultProfilePic_dir, fileDestDir, function (error) { });
+            let profilePicDestDir = path.join(userSysDir, sysResveredProfilePic_fileName);
+            let docFileDestDir = path.join(userSysDir, sysReservedDoc_fileName);
+            fs.copyFile(defaultProfilePic_dir, profilePicDestDir, function (error) { });
+            fs.copyFile(defaultDoc_dir, docFileDestDir, function (error) { });
           });
           fs.mkdir(userUploadDir, 0777, function (error) {
             fs.mkdir(docInsertDir, 0777, function (error) { });
@@ -110,7 +112,7 @@ function mkUserDir(userID, callback) {
                 fs.mkdir(alphaSectionReserverdDir, 0777, function (error) {
                   let fileDestDir = path.join(alphaSectionReserverdDir, sysReservedDoc_fileName);
                   fs.copyFile(defaultDoc_dir, fileDestDir, function (error) { });
-                }); 
+                });
               });
               fs.mkdir(betaSectionDir, 0777, function (error) {
                 fs.mkdir(betaSectionReserverdDir, 0777, function (error) {
@@ -134,7 +136,7 @@ function mkUserDir(userID, callback) {
   });
 }
 
-function getToUserDir(userID, res, callback) {
+function getToUserDir(userID, callback) {
   userDir = path.join(rootDir, "/file/userData", userID.toHexString()); // full path in server
   userSysDir = path.join(userDir, '/userSys');
   userUploadDir = path.join(userDir, '/userUpload');
@@ -150,10 +152,8 @@ function getToUserDir(userID, res, callback) {
     }
     else {
       console.log('[directoy ERROR]: user dir lost');
-      res.render('error.html', {
-        title: 'System Error',
-        errorCode: 'System Error',
-        errorMessage: '[directoy ERROR]: user dir lost'
+      mkUserDir(userID, function(){
+        callback();
       });
     }
   })
@@ -173,7 +173,7 @@ const userSys_upload_post = (req, res, next) => {
     else {
 
       if (req.file != null) {
-        getToUserDir(doc._id, res, function () {
+        getToUserDir(doc._id, function () {
           var fileName = 'profile_pic_sys_reserved.png';
           var sourceFile = req.file.path;
 
@@ -220,7 +220,7 @@ const alphaSection_upload_post = (req, res, next) => {
     else {
 
       if (req.file != null) {
-        getToUserDir(doc._id, res, function () {
+        getToUserDir(doc._id, function () {
           var fileName = req.file.originalname;
           var sourceFile = req.file.path;
 
@@ -267,7 +267,7 @@ const betaSection_upload_post = (req, res, next) => {
     else {
 
       if (req.file != null) {
-        getToUserDir(doc._id, res, function () {
+        getToUserDir(doc._id, function () {
           var fileName = req.file.originalname;
           var sourceFile = req.file.path;
 
@@ -314,7 +314,7 @@ const charlieSection_upload_post = (req, res, next) => {
     else {
 
       if (req.file != null) {
-        getToUserDir(doc._id, res, function () {
+        getToUserDir(doc._id, function () {
           var fileName = req.file.originalname;
           var sourceFile = req.file.path;
 
@@ -347,13 +347,34 @@ const charlieSection_upload_post = (req, res, next) => {
   })
 }
 
+function upload_file(file, userID, callback) {
+  getToUserDir(userID, function () {
+    var fileName = file.originalname;
+    var sourceFile = file.path;
+
+    var fileDestDir = path.join(customizeFileDir, fileName);
+    //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
+    //fileurl = fileurl.replace(/\\/g, "/");
+    fs.rename(sourceFile, fileDestDir, function (error) {
+      if (error) {
+        console.log('[file upload ERROR]: ' + error);
+        callback(error);
+      }
+      else {
+        callback();
+      }
+    });
+  });
+}
+
 module.exports = {
-  userSys_upload_post, 
-  alphaSection_upload_post, 
-  betaSection_upload_post, 
-  charlieSection_upload_post, 
-  mkUserDir, 
-  getFileUrl, 
+  userSys_upload_post,
+  alphaSection_upload_post,
+  betaSection_upload_post,
+  charlieSection_upload_post,
+  mkUserDir,
+  getFileUrl,
   getFileUrls,
-  saveFile
+  saveFile,
+  upload_file
 }
