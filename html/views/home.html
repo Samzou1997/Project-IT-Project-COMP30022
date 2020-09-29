@@ -29,8 +29,7 @@
       <li><a href="/personal/volunteer">Volunteer</a></li>
       <li><a href="/personal/contact">Contact</a></li>
       <a href="/personal/logout"><button class="logout">LOGOUT</button></a> 
-      <input id="ShareLink" type="text" value= window.location.href>
-      <button class="btn" data-clipboard-action="copy" data-clipboard-target="#ShareLink">ShareLink</button>
+      <button class="btn">ShareLink</button>
     </ul>
   </nav>
 <!-- ==================================End Header Area=========================================-->
@@ -98,7 +97,12 @@
   <!-- ==================================End Main Area=========================================-->
   <script src="/public/js/clipboard.min.js"></script>
     <script>
-    var clipboard = new ClipboardJS('.btn');
+    var clipboard = new ClipboardJS('.btn',{
+        text: function() {
+            var url = location.href;
+            return url;
+        }
+    });
 
     clipboard.on('success', function(e) {
         alert("ShareLink copy to your clipboard");   
