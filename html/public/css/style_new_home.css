@@ -35,6 +35,15 @@ body{
     margin-bottom: 50px;
 }
 
+.wrapper .sidebar i{
+    margin-right: 10px;
+}
+
+.wrapper .sidebar i,
+.wrapper .sidebar p{
+    display: inline;
+}
+
 .wrapper .sidebar ul li{
     padding: 15px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -60,12 +69,91 @@ body{
 .wrapper .sidebar ul li:hover a{
     color: #A6A6A4;
 }
+
+.wrapper .sidebar .user{
+    width: 200px;
+    position: fixed;
+    left: 0;
+    bottom: 50px;
+    text-align: center;
+}
 /* End sidebar */
 
 /* Main content */
 .wrapper .main-content{
     width: 100%;
+    height: 100vh;
     margin-left: 200px;
+    display: grid;
+    grid-template-rows: repeat(4,1fr);
+    grid-template-areas: 
+    "title"
+    "content";
+}
+
+.wrapper .main-content .title_container{
+    grid-area: title;
+    text-align: center;
+    padding: 50px;
+    font-size: 30px;
+    /* border: .3px solid #9d65c9; */
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .main-content .title_container .title{
+    box-shadow: -10px 10px 6px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper .main-content .content_container{
+    padding-top: 40px;
+    text-align: center;
+    font-size: 18px;
+    grid-row-start: 2;
+    grid-row-end: 5;
+}
+
+.wrapper .main-content .content_container .content{
+    box-shadow: -10px 10px 6px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper .main-content .write_btn{
+    position: fixed;
+    right: 30px;
+    bottom: 40px;
 }
 /* End main content */
 
+
+
+
+
+/* responsive design */
+
+@media (max-width: 858px){
+    .wrapper .sidebar{
+        width: 50px;
+    }
+
+    .wrapper .sidebar h2{
+        display: none;
+    }
+
+    .wrapper .sidebar p{
+        display: none;
+    }
+
+    .wrapper .sidebar .user{
+        width: 50px;
+    }
+
+    .wrapper .sidebar .user h3{
+        display: none;
+    }
+
+    .wrapper .main-content{
+        margin-left: 50px;
+    }
+}
+/* End responsive design */
