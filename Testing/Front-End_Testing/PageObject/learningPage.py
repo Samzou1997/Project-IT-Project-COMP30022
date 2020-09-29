@@ -9,6 +9,7 @@ class LearningPage(BasePage):
     learning_class = (By.CSS_SELECTOR, '[href = "/personal/learning"]')
     edit_btn = (By.ID, "writebtn")
     edit_area = (By.CSS_SELECTOR, '[role="textbox"]')
+    submit_btn = (By.ID, "submitbtn")
 
     def click_learning(self):
         self.locate_element(*self.learning_class).click()
@@ -18,6 +19,9 @@ class LearningPage(BasePage):
     
     def type(self, text):
         self.locate_element(*self.edit_area).send_keys(text)
+
+    def submit(self):
+        self.locate_element(*self.submit_btn).click()
     
     def testing_learning(self, uid, pwd, txt):
         self.open()
@@ -33,6 +37,9 @@ class LearningPage(BasePage):
         self.type(txt)
 
         sleep(2)
+        self.submit()
+
+        sleep(3)
         self.tmp.logout()
         
 

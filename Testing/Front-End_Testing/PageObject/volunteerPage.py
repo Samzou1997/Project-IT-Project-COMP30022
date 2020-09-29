@@ -9,6 +9,7 @@ class VolunteerPage(BasePage):
     volunteer_class = (By.CSS_SELECTOR, '[href = "/personal/volunteer"]')
     edit_btn = (By.ID, "writebtn")
     edit_area = (By.CSS_SELECTOR, '[role="textbox"]')
+    submit_btn = (By.ID, "submitbtn")
 
     def click_volunteer(self):
         self.locate_element(*self.volunteer_class).click()
@@ -19,6 +20,9 @@ class VolunteerPage(BasePage):
     def type(self, text):
         self.locate_element(*self.edit_area).send_keys(text)
     
+    def submit(self):
+        self.locate_element(*self.submit_btn).click()
+
     def testing_volunteer(self, uid, pwd, txt):
         self.open()
         self.tmp = LoginPage(self.driver, 'http://54.206.15.44/personal/volunteer')
@@ -34,4 +38,7 @@ class VolunteerPage(BasePage):
         self.type(txt)
 
         sleep(2)
+        self.submit()
+
+        sleep(3)
         self.tmp.logout()

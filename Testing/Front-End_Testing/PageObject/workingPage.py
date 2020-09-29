@@ -9,6 +9,7 @@ class WorkingPage(BasePage):
     working_class = (By.CSS_SELECTOR, '[href = "/personal/working"]')
     edit_btn = (By.ID, "writebtn")
     edit_area = (By.CSS_SELECTOR, '[role="textbox"]')
+    submit_btn = (By.ID, "submitbtn")
 
     def click_working(self):
         self.locate_element(*self.working_class).click()
@@ -18,6 +19,9 @@ class WorkingPage(BasePage):
     
     def type(self, text):
         self.locate_element(*self.edit_area).send_keys(text)
+
+    def submit(self):
+        self.locate_element(*self.submit_btn).click()
     
     def testing_working(self, uid, pwd, txt):
         self.open()
@@ -34,4 +38,7 @@ class WorkingPage(BasePage):
         self.type(txt)
 
         sleep(2)
+        self.submit()
+
+        sleep(3)
         self.tmp.logout()
