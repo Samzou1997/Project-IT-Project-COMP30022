@@ -152,7 +152,7 @@ function getToUserDir(userID, callback) {
     }
     else {
       console.log('[directoy ERROR]: user dir lost');
-      mkUserDir(userID, function(){
+      mkUserDir(userID, function () {
         callback();
       });
     }
@@ -367,6 +367,21 @@ function upload_file(file, userID, callback) {
   });
 }
 
+function deleteFile(fileName, userID, callback) {
+  getToUserDir(userID, function () {
+    var fileDestDir = path.join(customizeFileDir, fileName);
+    fs.unlink(fileDestDir, function (error) {
+      if (error) {
+        console.log('[file delete ERROR]: ' + error);
+        callback(error);
+      }
+      else {
+        callback();
+      }
+    });
+  });
+}
+
 module.exports = {
   userSys_upload_post,
   alphaSection_upload_post,
@@ -376,5 +391,6 @@ module.exports = {
   getFileUrl,
   getFileUrls,
   saveFile,
-  upload_file
+  upload_file,
+  deleteFile
 }
