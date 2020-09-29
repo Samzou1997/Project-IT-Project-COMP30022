@@ -96,9 +96,9 @@
   </div>
 
   <!-- ==================================End Main Area=========================================-->
-  <script src="/public/js/clipboard.min.js"></script>
+  <script src="/node_modules/clipboard/dist/clipboard.min.js"></script>
     <script>
-    var clipboard = new Clipboard('.btn');
+    var clipboard = new ClipboardJS('.btn');
 
     clipboard.on('success', function(e) {
         console.log(e);
