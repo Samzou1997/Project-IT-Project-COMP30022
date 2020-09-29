@@ -101,10 +101,12 @@
     var clipboard = new ClipboardJS('.btn');
 
     clipboard.on('success', function(e) {
+        alert("ShareLink copy to your clipboard");   
         console.log(e);
     });
 
     clipboard.on('error', function(e) {
+        alert("ShareLink copy failed");   
         console.log(e);
     });
     </script>
