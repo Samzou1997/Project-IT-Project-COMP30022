@@ -29,7 +29,8 @@
       <li><a href="/personal/volunteer">Volunteer</a></li>
       <li><a href="/personal/contact">Contact</a></li>
       <a href="/personal/logout"><button class="logout">LOGOUT</button></a> 
-      <button class = "btn1" data-clipboard-text=location.href>sharelink</button>    
+      <input id="ShareLink" type="text" value=location.href>
+      <button class="btn" data-clipboard-action="copy" data-clipboard-target="#ShareLink">ShareLink</button>
     </ul>
   </nav>
 <!-- ==================================End Header Area=========================================-->
@@ -95,11 +96,19 @@
   </div>
 
   <!-- ==================================End Main Area=========================================-->
-  <script>
-      $(function(){
-          new Clipboard('.btn1')
-      })
-  </script>
+  <script src="../dist/clipboard.min.js"></script>
+
+    <script>
+    var clipboard = new Clipboard('.btn');
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    </script>
 </body>
 
 </html>
