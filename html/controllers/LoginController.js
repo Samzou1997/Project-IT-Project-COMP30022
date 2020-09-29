@@ -9,8 +9,9 @@ const token_expire_time   = config.token_setting.expire_time
 const cookie_alive_time   = config.cookie_setting.alive_time
 
 const login_post = (req, res, next) => {
-  console.log('got Login request, path: ' + req.url)
-  console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
+  console.log('===============================================================');
+  console.log('got Login request')
+  console.log('request body: { email: ' + req.body.email + " }")
 
   res.cookie('id', '', { maxAge: 0 })
   res.cookie('email', '', { maxAge: 0 })

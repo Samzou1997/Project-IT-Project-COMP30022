@@ -14,10 +14,11 @@ const token_expire_time     = config.token_setting.expire_time
 const cookie_alive_time     = config.cookie_setting.alive_time
 
 const register_post = (req, res, next) => {
-  console.log('got register request, path: ' + req.url)
-  console.log('request body: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
-
+  
   if (req.body.first_name && req.body.last_name && req.body.email && req.body.password) {
+    console.log('===============================================================');
+    console.log('Welcome our new user!')
+    console.log('New user: { email: ' + req.body.email + ", pwd: " + req.body.password + " }")
 
     User.findOne({ email: req.body.email }, function (err, doc) {
       if (doc) {
