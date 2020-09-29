@@ -11,6 +11,10 @@ const cookie_alive_time   = config.cookie_setting.alive_time
 
 const verify_login = (req, res, next) => {
   if (req.cookies["email"] != null) {
+    console.log('===============================================================');
+    console.log('User request: [' + req.cookies["email"] + ']');
+    console.log('Request path: [' + req.path + ']');
+
     let req_token = req.cookies['token']
     let req_user_id = req.cookies['id']
     let req_user_email = req.cookies['email']

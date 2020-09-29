@@ -26,6 +26,16 @@ const userSchema    = new Schema({
     degree: {type: String},
     major: {type: String},
   }],
+  work: [{
+    school: {type: String},
+    degree: {type: String},
+    major: {type: String},
+  }],
+  volunteer: [{
+    school: {type: String},
+    degree: {type: String},
+    major: {type: String},
+  }],
   details: {
     major: {type: String, default: 'null'},
     school: {type: String, default: 'null'},
