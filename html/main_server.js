@@ -39,6 +39,7 @@ app.use('/personal', PersonalRouter)
 app.use('/Login', LoginRouter)
 app.use('/Register', RegisetRouter)
 app.use('/Forgot', ResetRouter)
+app.use('/Share', ShareRounter)
 app.use('/Error', ErrorRouter)
 
 app.listen(3000, function () {
