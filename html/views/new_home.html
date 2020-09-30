@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{title}}</title>
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="/html/public/css/fontawesome/css/all.css">
 
     <!-- custom style.css -->
-    <link rel="stylesheet" href="/html/public/css/style_new_home.css">
+    <link rel="stylesheet" href="/public/css/style_new_home.css">
 
     <!-- fontawesome -->
     <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
@@ -21,12 +21,15 @@
         <div class="sidebar">
             <h2>Uprank</h2>
             <ul>
-                <li><a class="active" href="#"><i class="fas fa-home"></i><p>Dashboard</p></a></li>
-                <li><a href="#"><i class="fas fa-file"></i><p>Files</p></a></li>
-                <li><a href="#"><i class="fas fa-school"></i><p>Education</p></a></li>
-                <li><a href="#"><i class="fas fa-briefcase"></i><p>Employment</p></a></li>
-                <li><a href="#"><i class="fas fa-hands-helping"></i><p>Volunteer</p></a></li>
-                <li><a href="#"><i class="fas fa-cog"></i><p>Settings</p></a></li>
+
+                <li><a class="active" href="#"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-edit"></i>Edit aricle</a></li>
+                <li><a href="/personal/file"><i class="fas fa-file"></i>Manage Files</a></li>
+                <li><a href="/personal/education"><i class="fas fa-school"></i>Education</a></li>
+                <li><a href="/personal/employment"><i class="fas fa-briefcase"></i>Employment</a></li>
+                <li><a href="/personal/volunteer"><i class="fas fa-hands-helping"></i>Volunteer</a></li>
+                <li><a href="/personal/setting"><i class="fas fa-cog"></i>Settings</a></li>
+
             </ul>
             <div class="user">
                 <i class="fas fa-user-circle fa-2x"></i>
@@ -35,6 +38,7 @@
         </div>
 
         <div class="main-content">
+
             <div class="title_container">
                 <div class="title">
                     <h1>{{title}}</h1>

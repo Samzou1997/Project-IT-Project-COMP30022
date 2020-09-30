@@ -25,16 +25,20 @@ const userSchema    = new Schema({
     school: {type: String},
     degree: {type: String},
     major: {type: String},
+    extraclass: {type: String},
+    startDate: {type: String},
+    endDate: {type: String}
   }],
-  work: [{
-    school: {type: String},
-    degree: {type: String},
-    major: {type: String},
+  employment: [{
+    company: {type: String},
+    title: {type: String},
+    startDate: {type: String},
+    endDate: {type: String}
   }],
   volunteer: [{
-    school: {type: String},
-    degree: {type: String},
-    major: {type: String},
+    place: {type: String},
+    workingHours: {type: String},
+    workIntro: {type: String},
   }],
   details: {
     major: {type: String, default: 'null'},

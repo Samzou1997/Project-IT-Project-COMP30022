@@ -1,20 +1,25 @@
 {
-  "domain" : "http://54.206.15.44",
+  "domain": "http://54.206.15.44",
+  "cookie_setting": {
+    "alive_time": 86400000
+  },
+  "token_setting": {
+    "expire_time": 3600,
+    "secret_key": "PHP is the best language :)"
+  },
+  "email_info": {
+    "smtp": "smtp.gmail.com",
+    "mailFrom": "team5eportifolio@gmail.com",
+    "mailKey": "tcptoteviestzgkn"
+  },
+  "fileSystem": {
+    "root": "/home/IT_Project/html",
+    "defaultResourcesDir": "/home/IT_Project/html/public/default",
 
-  "cookie_setting" : {
-    "alive_time" : 86400000
-  },
-  "token_setting" : {
-    "expire_time" : 3600,
-    "secret_key" : "PHP is the best language :)"
-  },
-  "email_info" : {
-    "smtp" : "smtp.gmail.com",
-    "mailFrom" : "team5eportifolio@gmail.com",
-    "mailKey" : "tcptoteviestzgkn"
-  },
-  "fileSystem" : {
-    "root" : "/home/IT_Project/html",
-    "defaultResourcesDir" : "/home/IT_Project/html/public/default"
+    "userDataDir" : "/home/IT_Project/html/file/userData",
+    
+    "dashboard_document": "/userSys/doc_sys_reserved.html",
+    "profile_pic": "/userSys/profile_pic_sys_reserved.png",
+    "userCustomizeFileDir": "/userUpload/customizeFile"
   }
 }
