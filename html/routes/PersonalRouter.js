@@ -16,6 +16,9 @@ const ErrorController         = require('../controllers/ErrorController')
 const VerifyController        = require('../controllers/VerifyController')
 const FileSectionController   = require('../controllers/FileSecrtionController')
 const DashboardController     = require('../controllers/DashboardController')
+const EducationController     = require('../controllers/EducationController')
+const EmploymentController    = require('../controllers/EmploymentController')
+const SettingController       = require('../controllers/SettingController')
 
 var storageConfig = multer.diskStorage({
 
@@ -48,12 +51,6 @@ router.get('/home/edit/infosubmit', ErrorController.not_found_404)
 router.post('/home/edit/picupload', upload.single('profilePic'), 
             VerifyController.verify_login, FileSystemController.userSys_upload_post, function(req, res, next){ res.redirect("/personal/home"); })
 router.get('/home/edit/picupload', ErrorController.not_found_404)
-
-// ======================================================================================================== //
-
-//router.post('/home', HomeController.home_post) // full path: /personal/home
-router.get('/dashboard', VerifyController.verify_login, DashboardController.dashboard_get)
-
 
 // ======================================================================================================== //
 
@@ -99,6 +96,11 @@ router.get('/volunteer/edit/article/submit', ErrorController.not_found_404)
 
 // ======================================================================================================== //
 
+//router.post('/home', HomeController.home_post) // full path: /personal/home
+router.get('/dashboard', VerifyController.verify_login, DashboardController.dashboard_get)
+
+// ======================================================================================================== //
+
 router.get('/file', VerifyController.verify_login, FileSectionController.file_section_get)
 
 router.post('/file/upload', VerifyController.verify_login, FileSectionController.file_upload_post)
@@ -106,6 +108,21 @@ router.get('/file/upload', ErrorController.not_found_404)
 
 router.post('/file/delete', VerifyController.verify_login, FileSectionController.file_delete_post)
 router.get('/file/delete', ErrorController.not_found_404)
+
+// ======================================================================================================== //
+
+//router.post('/home', HomeController.home_post) // full path: /personal/home
+router.get('/education', VerifyController.verify_login, EducationController.education_get)
+
+// ======================================================================================================== //
+
+//router.post('/home', HomeController.home_post) // full path: /personal/home
+router.get('/employment', VerifyController.verify_login, EmploymentController.employment_get)
+
+// ======================================================================================================== //
+
+//router.post('/home', HomeController.home_post) // full path: /personal/home
+router.get('/setting', VerifyController.verify_login, SettingController.setting_get)
 
 
 // ======================================================================================================== //
