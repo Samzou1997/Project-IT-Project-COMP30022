@@ -1,5 +1,6 @@
 {
     "title": "tile",
     "content":"content",
-    "lastname":"default"
+    "lastname":"default",
+    "profile_pic_path":"/home/IT_Project/html/public/default/default_profile_picture.png"
 }
