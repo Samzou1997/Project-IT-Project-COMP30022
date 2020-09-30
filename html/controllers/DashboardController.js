@@ -27,6 +27,7 @@ const dashboard_get = (req, res, next) => {
 
       dashboardPaddingData.content = documentDir
       dashboardPaddingData.lastname = doc.lastName
+      dashboardPaddingData.profile_pic_path = profilePicDir
       
 
       res.render('dashboard.html', dashboardPaddingData)
