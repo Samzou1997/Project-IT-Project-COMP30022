@@ -1,8 +1,8 @@
 const express   = require('express');
 const router    = express.Router();
 
-const ShareController   = require('../controllers/ShareController');
+//const ShareController   = require('../controllers/ShareController');
 
-router.get('/:email', ShareController.ShareHome);
+//router.get('/:email', ShareController.ShareHome);
 
 module.exports = router;
