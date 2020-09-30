@@ -29,7 +29,7 @@ const education_get = (req, res, next) => {
     else {
       userID_str = doc._id.toHexString();
       
-      res.render('404.html')
+      res.render('education.html')
     }
   })
 }
