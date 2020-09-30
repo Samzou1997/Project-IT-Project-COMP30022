@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/public/css/fontawesome/css/all.css">
 
     <!-- custom style.css -->
-    <link rel="stylesheet" href="/public/css/style_education.css">
+    <link rel="stylesheet" href="/public/css/style_edits.css">
 
     <!-- fontawesome -->
     <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
@@ -45,18 +45,30 @@
             </div>
 
             <div class="forms_container">
-                <div class="tables">
-                    test
-                </div>
-                <div class="content">
-                    <div class="header">
-                        <h2>Education</h2>
-                        <label for="click" class="fas fa-times"></label>
+                <form class="edit-forms" method="POST" action="">
+                    <h2 class="title">Education</h2>
+                    <div class="input-field">
+                        <i class="fas fa-school"></i>
+                        <input name="school_name" id="" type="text" placeholder="School" required>
                     </div>
-                </div>
-            </div>
-            <div class="buttons_container">
-                <a href="#"><button>Edit your education forms</button></a>
+                    <div class="input-field">
+                        <i class="fas fa-mosque"></i>
+                        <input name="Major" id="" type="text" placeholder="Major" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fab fa-dyalog"></i>
+                        <input name="Degree" id="degree" type="text" placeholder="Degree" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-clock"></i>
+                        <input name="Started" id="started" type="text" placeholder="Started From" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="far fa-clock"></i>
+                        <input name="End" id="end" type="text" placeholder="End at" required>
+                    </div>
+                    <input type="submit" value="Submit" class="btn solid">
+                </form>
             </div>
         </div>
     </div>
