@@ -122,49 +122,8 @@ body{
     align-items: center;
 }
 
-.wrapper .main-content .forms_container .modal{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-40%,-50%) scale(0);
-    transition: 200ms ease-in-out;
-    border: 1px solid black;
-    z-index: 10;
-    width: 500px;
-    max-width: 80%;
-    background: #fff;
-}
-
-.wrapper .main-content .forms_container .modal.active{
-    transform: translate(-40%,-50%) scale(1);
-}
-
-.wrapper .main-content .forms_container .modal .modal-header{
-    padding: 10px 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid black;
-    font-size: 1.25rem;
-    font-weight: bold;
-}
-
-.wrapper .main-content .forms_container .modal .modal-header .close-button{
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 1.25rem;
-    font-weight: bold;
-
-}
-
-.wrapper .main-content .forms_container .form .form-body{
-    padding: 10px 10px;
-}
 
 .wrapper .main-content .buttons_container{
-    height: 80px;
     text-align: center;
     font-size: 18px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
