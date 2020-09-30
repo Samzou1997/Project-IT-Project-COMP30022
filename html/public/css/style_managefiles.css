@@ -78,11 +78,11 @@ body{
     height: 100vh;
     margin-left: 200px;
     display: grid;
-    grid-template-rows: 0.4fr 1fr 3fr;
+    grid-template-rows: 0.4fr 3fr 0.6fr;
     grid-template-areas: 
     "nav"
-    "title"
-    "content";
+    "files"
+    "buttons";
 }
 
 .wrapper .main-content .navbar{
@@ -109,40 +109,76 @@ body{
 }
 
 
-.wrapper .main-content .title_container{
-    grid-area: title;
+.wrapper .main-content .files_container{
+    grid-area: files;
     text-align: center;
     padding: 50px;
     font-size: 30px;
-    /* border: .3px solid #9d65c9; */
-    border-radius: 12px;
-    justify-content: center;
-    align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     border-top: 1px solid rgba(225, 225, 225, 0.05);
+    /* border: .3px solid #9d65c9; */
+    /* border-radius: 12px; */
+    justify-content: center;
+    align-items: center;
 }
 
-.wrapper .main-content .title_container .title{
-    box-shadow: -10px 10px 6px rgba(0, 0, 0, 0.3);
-}
 
-.wrapper .main-content .content_container{
-    padding-top: 40px;
+
+.wrapper .main-content .buttons_container{
+    height: 80px;
     text-align: center;
     font-size: 18px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     border-top: 1px solid rgba(225, 225, 225, 0.05);
 }
 
-.wrapper .main-content .content_container .content{
-    box-shadow: -10px 10px 6px rgba(0, 0, 0, 0.3);
+.wrapper .main-content .buttons_container button{
+    width: 150px;
+    height: 49px;
+    border: none;
+    outline: none;
+    border-radius: 49px;
+    cursor: pointer;
+    background-color: #5995fd;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 10px;
+    transition: .5s;
+    float: left; 
 }
 
-.wrapper .main-content .write_btn{
-    position: fixed;
-    right: 30px;
-    bottom: 40px;
+.wrapper .main-content .buttons_container button:hover{
+    background-color: #4d84e2;
 }
+
+.wrapper .main-content .buttons_container span{
+    float: left;
+    position: relative;
+    top: 30px;
+}
+
+.wrapper .main-content .buttons_container .btn{
+    width: 150px;
+    height: 49px;
+    border: none;
+    outline: none;
+    border-radius: 49px;
+    cursor: pointer;
+    background-color: #5995fd;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 10px;
+    transition: .5s;
+    float: right;
+}
+
+.wrapper .main-content .buttons_container .btn:hover{
+    background-color: #4d84e2;
+}
+
+
 /* End main content */
 
 
@@ -167,6 +203,23 @@ body{
 
     .wrapper .main-content .navbar{
         height: 40px;
+    }
+
+    .wrapper .main-content .buttons_container button{
+        width: 80px;
+        font-weight: 300;
+        font-size: 5px;
+    }
+
+    .wrapper .main-content .buttons_container span{
+        font-weight: 300;
+        font-size: 14px;
+    }
+
+    .wrapper .main-content .buttons_container .btn{
+        width: 80px;
+        font-weight: 300;
+        font-size: 5px;
     }
 }
 /* End responsive design */
