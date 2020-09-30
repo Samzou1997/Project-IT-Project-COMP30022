@@ -103,7 +103,7 @@ router.get('/dashboard', VerifyController.verify_login, DashboardController.dash
 
 router.get('/file', VerifyController.verify_login, FileSectionController.file_section_get)
 
-router.post('/file/upload', VerifyController.verify_login, FileSectionController.file_upload_post)
+router.post('/file/upload', upload.single('uploadFile'), VerifyController.verify_login, FileSectionController.file_upload_post)
 router.get('/file/upload', ErrorController.not_found_404)
 
 router.post('/file/delete', VerifyController.verify_login, FileSectionController.file_delete_post)
