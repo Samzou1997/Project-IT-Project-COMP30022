@@ -69,7 +69,7 @@ const home_edit_get = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
-      var profilePicDir = config.fileSystem.userDataDir + userID_str + config.fileSystem.profile_pic;;
+      var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
 
       profileEditPaddingData.firstname = doc.firstName
       profileEditPaddingData.lastname = doc.lastName
