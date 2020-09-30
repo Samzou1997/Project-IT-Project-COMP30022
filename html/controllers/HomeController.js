@@ -30,8 +30,8 @@ const home_get = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
-      var profilePicDir = config.fileSystem.userDataDir + userID_str + config.fileSystem.profile_pic;
-      var documentDir = config.fileSystem.userDataDir + userID_str + config.fileSystem.dashboard_document
+      var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
+      var documentDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.dashboard_document);
 
       homePaddingData.firstname = doc.firstName
       homePaddingData.lastname = doc.lastName
