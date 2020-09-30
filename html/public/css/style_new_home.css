@@ -55,7 +55,7 @@ body{
 }
 
 .wrapper .sidebar ul li a.active{
-    color: #d789d7;
+    color: #3eff88;
 }
 
 .wrapper .sidebar ul li a .fas{
@@ -63,11 +63,11 @@ body{
 }
 
 .wrapper .sidebar ul li:hover{
-    background: #A6A6A4;
+    background: #616161;
 }
 
 .wrapper .sidebar ul li:hover a{
-    color: #A6A6A4;
+    color: #616161;
 }
 
 .wrapper .sidebar .user{
