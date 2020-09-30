@@ -10,6 +10,7 @@ const LoginRouter     = require('./routes/LoginRouter')
 const RegisetRouter   = require('./routes/RegisterRouter')
 const ResetRouter     = require('./routes/ResetRouter')
 const ErrorRouter     = require('./routes/ErrorRouter')
+const ShareRounter    = require('./routes/ShareRounter')
 
 mongoose.connect('mongodb://testacc:qpzm123456@localhost:27017/GeekDB?authSource=admin', { useNewUrlParser: true, useUnifiedTopology: true })
 var db = mongoose.connection
