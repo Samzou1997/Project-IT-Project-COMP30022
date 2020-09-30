@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uprank Portfolio</title>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="/public/css/fontawesome/css/all.css">
+
+    <!-- custom style.css -->
+    <link rel="stylesheet" href="/public/css/style_edits.css">
+
+    <!-- fontawesome -->
+    <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
+
+</head>
+<body> 
+    <div class="wrapper">
+
+        <div class="sidebar">
+            <h2>Uprank</h2>
+            <ul>
+
+                <li><a href="/personal/dashboard"><i class="fas fa-home"></i><p>Dashboard</p></a></li>
+                <li><a href="/personal/file"><i class="fas fa-file"></i><p>Manage Files</p></a></li>
+                <li><a href="/personal/education"><i class="fas fa-school"></i><p>Education</p></a></li>
+                <li><a href="/personal/employment"><i class="fas fa-briefcase"></i><p>Employment</p></a></li>
+                <li><a class="active" href="/personal/volunteer"><i class="fas fa-hands-helping"></i><p>Volunteer</p></a></li>
+                <li><a href="/personal/setting"><i class="fas fa-cog"></i><p>Settings</p></a></li>
+
+            </ul>
+
+        </div>
+
+        <div class="main-content">
+
+            <div class="navbar">
+                <div class="name">
+                    <h3>{{lastname}}</h3>
+                </div>
+                <div class="profilelogo">
+                    <i class="fas fa-user-circle fa-2x"></i>
+                </div>
+            </div>
+
+            <div class="forms_container">
+                <form class="edit-forms" method="POST" action="">
+                    <h2 class="title">Volunteer</h2>
+                    <div class="input-field">
+                        <i class="fas fa-place-of-worship"></i>
+                        <input name="place" id="place" type="text" placeholder="Volunteer Place" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-clock"></i>
+                        <input name="hours" id="hours" type="text" placeholder="Working Hours" required>
+                    </div>
+                    <input type="submit" value="Submit" class="btn solid">
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>
