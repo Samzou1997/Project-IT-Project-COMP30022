@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
+
+/* global */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+body{
+    background: #f3f5f9;
+}
+/* End global */
+
+.wrapper{
+    display: flex;
+    position: relative;
+}
+
+/* sidebar */
+.wrapper .sidebar{
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: rgb(71, 75, 81);
+    padding: 30px 0;
+}
+
+.wrapper .sidebar h2{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.wrapper .sidebar i{
+    margin-right: 10px;
+}
+
+.wrapper .sidebar i,
+.wrapper .sidebar p{
+    display: inline;
+}
+
+.wrapper .sidebar ul li{
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(225, 225, 225, 0.05);
+}
+
+.wrapper .sidebar ul li a{
+    color: #fff;
+}
+
+.wrapper .sidebar ul li a.active{
+    color: #3eff88;
+}
+
+.wrapper .sidebar ul li a .fas{
+    width: 25px;
+}
+
+.wrapper .sidebar ul li:hover{
+    background: #3a3a3a;
+}
+
+.wrapper .sidebar ul li:hover a{
+    color: #ffffff;
+}
+
+/* End sidebar */
+
+/* Main content */
+.wrapper .main-content{
+    width: 100%;
+    height: 100vh;
+    margin-left: 200px;
+    display: grid;
+    grid-template-rows: 0.4fr 3fr 0.6fr;
+    grid-template-areas: 
+    "nav"
+    "forms"
+    "buttons";
+}
+
+.wrapper .main-content .navbar{
+    height: 55px;
+    background: #e0ece4;
+    grid-template-areas: nav;
+    text-align: right;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(225, 225, 225, 0.05);
+}
+
+.wrapper .main-content .navbar .name,
+.wrapper .main-content .navbar .profilelogo{
+    display: inline-block;
+    margin: 5px;
+}
+
+.wrapper .main-content .navbar .name{
+    padding-top: 10px;
+}
+
+.wrapper .main-content .navbar .profilelogo{
+    float: right;
+}
+
+
+.wrapper .main-content .forms_container{
+    grid-area: forms;
+    text-align: center;
+    padding: 50px;
+    font-size: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(225, 225, 225, 0.05);
+    /* border: .3px solid #9d65c9; */
+    /* border-radius: 12px; */
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .main-content .forms_container .modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%,-50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    z-index: 10;
+    width: 500px;
+    max-width: 80%;
+    background: #fff;
+}
+
+.wrapper .main-content .forms_container .modal.active{
+    transform: translate(-40%,-50%) scale(1);
+}
+
+.wrapper .main-content .forms_container .modal .modal-header{
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.wrapper .main-content .forms_container .modal .modal-header .close-button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+
+}
+
+.wrapper .main-content .forms_container .form .form-body{
+    padding: 10px 10px;
+}
+
+.wrapper .main-content .buttons_container{
+    height: 80px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(225, 225, 225, 0.05);
+    grid-template-areas: buttons;
+}
+
+.wrapper .main-content .buttons_container button{
+    width: 450px;
+    height: 49px;
+    border: none;
+    outline: none;
+    border-radius: 49px;
+    cursor: pointer;
+    background-color: #5995fd;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-left: 30%;
+    margin-top: 10px;
+    transition: .5s;
+    float: left; 
+}
+
+.wrapper .main-content .buttons_container button:hover{
+    background-color: #4d84e2;
+}
+
+
+
+/* End main content */
+
+
+/* responsive design */
+
+@media (max-width: 858px){
+    .wrapper .sidebar{
+        width: 50px;
+    }
+
+    .wrapper .sidebar h2{
+        display: none;
+    }
+
+    .wrapper .sidebar p{
+        display: none;
+    }
+
+    .wrapper .main-content{
+        margin-left: 50px;
+    }
+
+    .wrapper .main-content .navbar{
+        height: 40px;
+    }
+
+    .wrapper .main-content .buttons_container button{
+        width: 180px;
+        font-weight: 300;
+        font-size: 5px;
+    }
+
+}
+/* End responsive design */
