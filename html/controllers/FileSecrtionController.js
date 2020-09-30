@@ -23,6 +23,10 @@ const file_section_get = (req, res, next) => {
       });
     }
     else {
+      var userID_str = doc._id.toHexString();
+      var userCustomizeFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.userCustomizeFileDir);
+
+      var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
       res.render('404.html');
     }
   })
