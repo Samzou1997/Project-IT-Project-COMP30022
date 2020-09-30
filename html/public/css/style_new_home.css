@@ -25,7 +25,7 @@ body{
     position: fixed;
     width: 200px;
     height: 100%;
-    background: #838383;
+    background: rgb(71, 75, 81);
     padding: 30px 0;
 }
 

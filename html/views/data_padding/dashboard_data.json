@@ -1,4 +1,5 @@
 {
-    "title": "{{title}}",
-    "content":"{{content}}"
+    "title": "tile",
+    "content":"content",
+    "lastname":"default"
 }
