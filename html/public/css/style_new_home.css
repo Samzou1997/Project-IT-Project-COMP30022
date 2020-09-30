@@ -126,16 +126,6 @@ body{
 /* End main content */
 
 
-.image-container{
-	background: white;
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
-	padding: 5px;
-	
-}
-
-
 /* responsive design */
 
 @media (max-width: 858px){
