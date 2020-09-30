@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/public/css/fontawesome/css/all.css">
 
     <!-- custom style.css -->
-    <link rel="stylesheet" href="/public/css/style_education.css">
+    <link rel="stylesheet" href="/public/css/style_edits.css">
 
     <!-- fontawesome -->
     <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
@@ -24,8 +24,8 @@
 
                 <li><a href="/personal/dashboard"><i class="fas fa-home"></i><p>Dashboard</p></a></li>
                 <li><a href="/personal/file"><i class="fas fa-file"></i><p>Manage Files</p></a></li>
-                <li><a class="active" href="/personal/education"><i class="fas fa-school"></i><p>Education</p></a></li>
-                <li><a href="/personal/employment"><i class="fas fa-briefcase"></i><p>Employment</p></a></li>
+                <li><a href="/personal/education"><i class="fas fa-school"></i><p>Education</p></a></li>
+                <li><a class="active" href="/personal/employment"><i class="fas fa-briefcase"></i><p>Employment</p></a></li>
                 <li><a href="/personal/volunteer"><i class="fas fa-hands-helping"></i><p>Volunteer</p></a></li>
                 <li><a href="/personal/setting"><i class="fas fa-cog"></i><p>Settings</p></a></li>
 
@@ -45,18 +45,26 @@
             </div>
 
             <div class="forms_container">
-                <div class="tables">
-                    test
-                </div>
-                <div class="content">
-                    <div class="header">
-                        <h2>Education</h2>
-                        <label for="click" class="fas fa-times"></label>
+                <form class="edit-forms" method="POST" action="">
+                    <h2 class="title">Employment</h2>
+                    <div class="input-field">
+                        <i class="fas fa-building"></i>
+                        <input name="Company" id="company" type="text" placeholder="Company" required>
                     </div>
-                </div>
-            </div>
-            <div class="buttons_container">
-                <a href="#"><button>Edit your education forms</button></a>
+                    <div class="input-field">
+                        <i class="fas fa-user-tie"></i>
+                        <input name="Title" id="title" type="text" placeholder="Title" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-clock"></i>
+                        <input name="Started" id="started" type="text" placeholder="Started From" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="far fa-clock"></i>
+                        <input name="End" id="end" type="text" placeholder="End at" required>
+                    </div>
+                    <input type="submit" value="Submit" class="btn solid">
+                </form>
             </div>
         </div>
     </div>
