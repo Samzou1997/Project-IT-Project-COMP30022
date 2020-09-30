@@ -6,7 +6,6 @@ const config          = require('../config/web_config.json')
 var dashboardPaddingData      = require('../views/data_padding/dashboard_data.json')
 const FileSystemController    = require('../controllers/FileSystemController')
 const path                    = require('path');
-const fs                      = require('fs');
 
 var userID_str;
 
