@@ -4,9 +4,8 @@ var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
 const path            = require('path');
-var homePaddingData   = require('../views/data_padding/home_data.json')
-var profileEditPaddingData   = require('../views/data_padding/profile_edit.json')
 const FileSystemController    = require('../controllers/FileSystemController')
+var ManageFileData            = require('../views/data_padding/manage_file_data.json')
 
 const secret_key          = config.token_setting.secret_key
 const token_expire_time   = config.token_setting.expire_time
@@ -28,7 +27,11 @@ const file_section_get = (req, res, next) => {
       var userCustomizeFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.userCustomizeFileDir);
 
       var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
-      res.render('404.html');
+
+      ManageFileData.lastname = doc.lastName
+      ManageFileData.filelist = fileList
+
+      res.render('manage_files.html', ManageFileData);
     }
   })
 }
