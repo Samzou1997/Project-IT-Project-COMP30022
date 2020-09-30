@@ -70,13 +70,6 @@ body{
     color: #ffffff;
 }
 
-.wrapper .sidebar .user{
-    width: 200px;
-    position: fixed;
-    left: 0;
-    bottom: 50px;
-    text-align: center;
-}
 /* End sidebar */
 
 /* Main content */
@@ -85,11 +78,35 @@ body{
     height: 100vh;
     margin-left: 200px;
     display: grid;
-    grid-template-rows: repeat(4,1fr);
+    grid-template-rows: 0.4fr 1fr 3fr;
     grid-template-areas: 
+    "nav"
     "title"
     "content";
 }
+
+.wrapper .main-content .navbar{
+    height: 55px;
+    background: #e0ece4;
+    grid-template-areas: nav;
+    text-align: right;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.wrapper .main-content .navbar .name,
+.wrapper .main-content .navbar .profilelogo{
+    display: inline-block;
+    margin: 5px;
+}
+
+.wrapper .main-content .navbar .name{
+    padding-top: 10px;
+}
+
+.wrapper .main-content .navbar .profilelogo{
+    float: right;
+}
+
 
 .wrapper .main-content .title_container{
     grid-area: title;
@@ -110,8 +127,6 @@ body{
     padding-top: 40px;
     text-align: center;
     font-size: 18px;
-    grid-row-start: 2;
-    grid-row-end: 5;
 }
 
 .wrapper .main-content .content_container .content{
@@ -141,16 +156,12 @@ body{
         display: none;
     }
 
-    .wrapper .sidebar .user{
-        width: 50px;
-    }
-
-    .wrapper .sidebar .user h3{
-        display: none;
-    }
-
     .wrapper .main-content{
         margin-left: 50px;
+    }
+
+    .wrapper .main-content .navbar{
+        height: 40px;
     }
 }
 /* End responsive design */
