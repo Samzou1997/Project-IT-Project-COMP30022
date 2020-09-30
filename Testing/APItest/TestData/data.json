@@ -13,7 +13,7 @@
 			}
 		},
 		"expect_response": {
-			
+			"status_code": "200"			
 		}
 	},
 	
@@ -32,7 +32,7 @@
 			}
 		},
 		"expect_response": {
-			
+			"status_code": "200"		
 		}
 	}
 ]

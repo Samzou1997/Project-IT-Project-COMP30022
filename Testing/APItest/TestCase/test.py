@@ -1,13 +1,11 @@
 import requests
 import json
+from Base.ResponseVerify import *
 
 def test_case(testcase):
 
     print("--------------------")
     print(testcase["test_name"], "start...")
-
-    result = "succeed."
-    
 
     #read data, find request
     test_req = testcase["request"]
@@ -26,10 +24,15 @@ def test_case(testcase):
         result = "failed."
         return False
     
-    #res_json = res.json()
-    #json.dumps(res_json)
+    
+    result = responseVerify(res, testcase["expect_response"])
 
     #print("response status code:",res.status_code)
-    print("response headers",res)
-    print(testcase["test_name"], result)
-    return True
+    #print("response headers",type(res.headers))
+    print(testcase["test_name"], result + ".")
+    if (result == "succeed"):
+        return True
+    elif (result == "failed"):
+        return False
+    else:
+        print("Error: Response verify error.")
