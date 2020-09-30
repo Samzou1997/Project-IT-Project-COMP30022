@@ -23,7 +23,7 @@ const file_section_get = (req, res, next) => {
       });
     }
     else {
-      res.render();
+      res.redirect('/personal/dashboard');
     }
   })
 }
