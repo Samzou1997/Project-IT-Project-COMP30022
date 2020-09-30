@@ -5,18 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
 
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="/html/public/css/fontawesome/css/all.css">
+
     <!-- custom style.css -->
     <link rel="stylesheet" href="/public/css/style_new_home.css">
 
     <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
 
 </head>
 <body> 
     <div class="wrapper">
+
         <div class="sidebar">
             <h2>Uprank</h2>
             <ul>
+
                 <li><a class="active" href="#"><i class="fas fa-home"></i>Dashboard</a></li>
                 <li><a href="#"><i class="fas fa-edit"></i>Edit aricle</a></li>
                 <li><a href="/personal/file"><i class="fas fa-file"></i>Manage Files</a></li>
@@ -24,11 +29,34 @@
                 <li><a href="/personal/employment"><i class="fas fa-briefcase"></i>Employment</a></li>
                 <li><a href="/personal/volunteer"><i class="fas fa-hands-helping"></i>Volunteer</a></li>
                 <li><a href="/personal/setting"><i class="fas fa-cog"></i>Settings</a></li>
+
             </ul>
+            <div class="user">
+                <i class="fas fa-user-circle fa-2x"></i>
+                <h3>{{lastname}}</h3>
+            </div>
         </div>
 
         <div class="main-content">
-            <h1>{{content}}</h1>
+
+            <div class="title_container">
+                <div class="title">
+                    <h1>{{title}}</h1>
+                </div>
+            </div>
+            <div class="content_container">
+                <div class="content">
+                    <h2>{{content}}</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium laboriosam amet earum ex modi illo nobis explicabo soluta molestiae commodi? Inventore, aliquid sunt eligendi praesentium repellat quisquam ab modi esse.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid reiciendis, dolor, doloremque unde hic quas error, ipsam a corrupti adipisci quaerat laborum voluptatibus omnis eum. Nesciunt quidem atque consequatur facere?
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore, mollitia beatae! Consectetur repellat exercitationem minus ullam ut dolorem quaerat sed, molestiae unde eum. Aliquid error facilis velit nisi, ex nemo.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt exercitationem quam reprehenderit doloribus quia molestiae dignissimos nam enim rem, a cumque voluptas eveniet beatae velit repellendus nostrum explicabo provident iure!
+                    </p>
+                </div>
+            </div>
+            <div class="write_btn">
+                <a href="/personal/working/edit/article"></a><i class="fas fa-edit fa-2x"></i>
+            </div>
         </div>
     </div>
     
