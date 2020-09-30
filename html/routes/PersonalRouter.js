@@ -15,6 +15,7 @@ const VolunteerController     = require('../controllers/VolunteerController')
 const ErrorController         = require('../controllers/ErrorController')
 const VerifyController        = require('../controllers/VerifyController')
 const FileSectionController   = require('../controllers/FileSecrtionController')
+const DashboardController     = require('../controllers/DashboardController')
 
 var storageConfig = multer.diskStorage({
 
@@ -47,6 +48,12 @@ router.get('/home/edit/infosubmit', ErrorController.not_found_404)
 router.post('/home/edit/picupload', upload.single('profilePic'), 
             VerifyController.verify_login, FileSystemController.userSys_upload_post, function(req, res, next){ res.redirect("/personal/home"); })
 router.get('/home/edit/picupload', ErrorController.not_found_404)
+
+// ======================================================================================================== //
+
+//router.post('/home', HomeController.home_post) // full path: /personal/home
+router.get('/dashboard', VerifyController.verify_login, DashboardController.dashboard_get)
+
 
 // ======================================================================================================== //
 
