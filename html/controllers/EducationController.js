@@ -31,7 +31,7 @@ const education_get = (req, res, next) => {
       var educationList = doc.education;
       
       webPageDate.education.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
-      webPageDate.education.educaion_list = educationList
+      //webPageDate.education.educaion_list = educationList
 
       res.render('education.html', webPageDate.education)
     }
