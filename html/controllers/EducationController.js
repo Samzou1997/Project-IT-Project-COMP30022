@@ -30,7 +30,7 @@ const education_get = (req, res, next) => {
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
       var educationList = doc.education;
       
-      webPageDate.education.profile_pic_path = profilePicDir
+      webPageDate.education.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageDate.education.educaion_list = educationList
 
       res.render('education.html', webPageDate.education)
@@ -51,7 +51,7 @@ const education_edit_get = (req, res, next) => {
     else {
       userID_str = doc._id.toHexString();
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
-      webPageDate.education.profile_pic_path = profilePicDir
+      webPageDate.education.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
 
       res.render('education_edit.html', webPageDate.education_edit)
     }

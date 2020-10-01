@@ -24,7 +24,7 @@ const dashboard_get = (req, res, next) => {
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
       var documentDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.dashboard_document);
 
-      webPageData.dashboard.profile_pic_path = profilePicDir
+      webPageData.dashboard.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageData.dashboard.content = documentDir
       //webPageData.dashboard.link = 
       webPageData.dashboard.lastname = doc.lastName

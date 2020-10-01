@@ -30,7 +30,7 @@ const volunteer_get = (req, res, next) => {
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
       var volunteerList = doc.volunteer;
 
-      webPageDate.volunteer.profile_pic_path = profilePicDir
+      webPageDate.volunteer.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageDate.volunteer.volunteer_list = volunteerList
       res.render('volunteer.html', webPageDate.volunteer)
     }
@@ -51,7 +51,7 @@ const volunteer_edit_get = (req, res, next) => {
       userID_str = doc._id.toHexString();
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
 
-      webPageDate.volunteer_edit.profile_pic_path = profilePicDir
+      webPageDate.volunteer_edit.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       
       res.render('volunteer_edit.html', webPageDate.volunteer_edit)
     }

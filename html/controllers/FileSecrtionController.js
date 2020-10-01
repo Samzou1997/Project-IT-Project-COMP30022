@@ -25,9 +25,10 @@ const file_section_get = (req, res, next) => {
     else {
       var userID_str = doc._id.toHexString();
       var userCustomizeFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.userCustomizeFileDir);
+      var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
       var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
 
-      webPageData.files.profile_pic_path = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
+      webPageData.files.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageData.files.filelist = fileList
 
       res.render('files.html', webPageData.files);
