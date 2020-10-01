@@ -87,7 +87,7 @@ body{
 
 .wrapper .main-content .navbar{
     height: 55px;
-    background: #e0ece4;
+    background: #e84a5f;
     grid-template-areas: nav;
     text-align: right;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
