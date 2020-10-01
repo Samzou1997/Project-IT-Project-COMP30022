@@ -31,7 +31,7 @@ const dashboard_get = (req, res, next) => {
       webPageData.dashboard.email = doc.email
       webPageData.dashboard.major = doc.details.major
 
-      res.render('dashboard.html', dashboardPaddingData.dashboard)
+      res.render('dashboard.html', webPageData.dashboard)
     }
   })
 }
