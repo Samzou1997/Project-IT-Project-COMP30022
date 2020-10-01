@@ -31,7 +31,7 @@ const file_section_get = (req, res, next) => {
       ManageFileData.lastname = doc.lastName
       ManageFileData.filelist = fileList
 
-      res.render('manage_files.html', ManageFileData);
+      res.render('files.html', ManageFileData);
     }
   })
 }

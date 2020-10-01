@@ -1,49 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="/public/css/fontawesome/css/all.css">
+        <!-- ===== FONTAWESOME ICONS ===== -->
+        <link href="/html/public/css/fontawesome/css/all.css" rel='stylesheet'>
 
-    <!-- custom style.css -->
-    <link rel="stylesheet" href="/public/css/style_edits.css">
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="/html/public/css/style_dash.css">
 
-    <!-- fontawesome -->
-    <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
-
-</head>
-<body> 
-    <div class="wrapper">
-
-        <div class="sidebar">
-            <h2>Uprank</h2>
-            <ul>
-
-                <li><a href="/personal/dashboard"><i class="fas fa-home"></i><p>Dashboard</p></a></li>
-                <li><a href="/personal/file"><i class="fas fa-file"></i><p>Manage Files</p></a></li>
-                <li><a href="/personal/education"><i class="fas fa-school"></i><p>Education</p></a></li>
-                <li><a class="active" href="/personal/employment"><i class="fas fa-briefcase"></i><p>Employment</p></a></li>
-                <li><a href="/personal/volunteer"><i class="fas fa-hands-helping"></i><p>Volunteer</p></a></li>
-                <li><a href="/personal/setting"><i class="fas fa-cog"></i><p>Settings</p></a></li>
-
-            </ul>
-
-        </div>
-
-        <div class="main-content">
-
-            <div class="navbar">
-                <div class="name">
-                    <h3>{{lastname}}</h3>
-                </div>
-                <div class="profilelogo">
-                    <i class="fas fa-user-circle fa-2x"></i>
-                </div>
+        <title>Uprank Portfolio</title>
+    </head>
+    <body id="body-pd">
+        <header class="header" id="header">
+            <div class="header__toggle">
+                <i class="fas fa-bars" id="header-toggle"></i>
             </div>
 
+            <div class="header__img">
+                <img src="/html/public/img/logo.png" alt="">
+            </div>
+        </header>
+
+        <div class="l-navbar" id="nav-bar">
+            <nav class="nav">
+                <div>
+                    <a href="#" class="nav__logo">
+                        <i class="fas fa-crown nav__logo-icon"></i>
+                        <span class="nav__logo-name">Uprank</span>
+                    </a>
+
+                    <div class="nav__list">
+                        <a href="#" class="nav__link">
+                        <i class='fas fa-home nav__icon' ></i>
+                            <span class="nav__name">Dashboard</span>
+                        </a>
+
+                        <a href="#" class="nav__link active">
+                            <i class='fas fa-file nav__icon' ></i>
+                            <span class="nav__name">Files</span>
+                        </a>
+                        
+                        <a href="#" class="nav__link">
+                            <i class='fas fa-school nav__icon' ></i>
+                            <span class="nav__name">Educations</span>
+                        </a>
+
+                        <a href="#" class="nav__link">
+                            <i class='fas fa-briefcase nav__icon' ></i>
+                            <span class="nav__name">Employments</span>
+                        </a>
+
+                        <a href="#" class="nav__link">
+                            <i class='fas fa-hands-helping nav__icon' ></i>
+                            <span class="nav__name">Volunteer</span>
+                        </a>
+
+                        <a href="#" class="nav__link">
+                            <i class='fas fa-cog nav__icon' ></i>
+                            <span class="nav__name">Settings</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="nav__link">
+                    <i class='fas fa-sign-out-alt nav__icon' ></i>
+                    <span class="nav__name">Log Out</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="edits-content">
             <div class="forms_container">
                 <form class="edit-forms" method="POST" action="/personal/employment/edit/submit">
                     <h2 class="title">Employment</h2>
@@ -67,8 +95,7 @@
                 </form>
             </div>
         </div>
-    </div>
-    
-
-</body>
+        <!--===== MAIN JS =====-->
+        <script src="/html/public/js/main.js"></script>
+    </body>
 </html>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/public/css/fontawesome/css/all.css">
 
     <!-- custom style.css -->
-    <link rel="stylesheet" href="/public/css/style_volunteer.css">
+    <link rel="stylesheet" href="/public/css/style_new_home.css">
 
     <!-- fontawesome -->
     <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
@@ -22,11 +22,11 @@
             <h2>Uprank</h2>
             <ul>
 
-                <li><a href="/personal/dashboard"><i class="fas fa-home"></i><p>Dashboard</p></a></li>
+                <li><a class="active" href="/personal/dashboard"><i class="fas fa-home"></i><p>Dashboard</p></a></li>
                 <li><a href="/personal/file"><i class="fas fa-file"></i><p>Manage Files</p></a></li>
                 <li><a href="/personal/education"><i class="fas fa-school"></i><p>Education</p></a></li>
                 <li><a href="/personal/employment"><i class="fas fa-briefcase"></i><p>Employment</p></a></li>
-                <li><a class="active" href="/personal/volunteer"><i class="fas fa-hands-helping"></i><p>Volunteer</p></a></li>
+                <li><a href="/personal/volunteer"><i class="fas fa-hands-helping"></i><p>Volunteer</p></a></li>
                 <li><a href="/personal/setting"><i class="fas fa-cog"></i><p>Settings</p></a></li>
 
             </ul>
@@ -45,15 +45,22 @@
                 
             </div>
 
-            <div class="forms_container">
-                test
+            <div class="title_container">
+                <div class="title">
+                    <h1>Uprank</h1>
+                </div>
             </div>
-            <div class="buttons_container">
-                <a href="/personal/volunteer/edit"><button>Edit your volunteer forms</button></a>
+            <div class="content_container">
+                <div class="content">
+                    <h2>Introduce</h2>
+                    <p>{{include content}}</p>
+                </div>
+            </div>
+            <div class="write_btn">
+                <a href="/personal/dashboard/doc/edit"><i class="fas fa-edit fa-2x"></i></a>
             </div>
         </div>
     </div>
     
-
 </body>
 </html>

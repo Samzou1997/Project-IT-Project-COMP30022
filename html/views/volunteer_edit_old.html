@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uprank</title>
+    <title>Uprank Portfolio</title>
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="/public/css/fontawesome/css/all.css">
 
     <!-- custom style.css -->
-    <link rel="stylesheet" href="/public/css/style_volunteer.css">
+    <link rel="stylesheet" href="/public/css/style_edits.css">
 
     <!-- fontawesome -->
     <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
@@ -42,14 +42,25 @@
                 <div class="profilelogo">
                     <i class="fas fa-user-circle fa-2x"></i>
                 </div>
-                
             </div>
 
             <div class="forms_container">
-                test
-            </div>
-            <div class="buttons_container">
-                <a href="/personal/volunteer/edit"><button>Edit your volunteer forms</button></a>
+                <form class="edit-forms" method="POST" action="/personal/volunteer/edit/submit">
+                    <h2 class="title">Volunteer</h2>
+                    <div class="input-field">
+                        <i class="fas fa-place-of-worship"></i>
+                        <input name="place" id="place" type="text" placeholder="Volunteer Place" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-clock"></i>
+                        <input name="hours" id="hours" type="text" placeholder="Working Hours" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-clock"></i>
+                        <input name="intro" id="intro" type="text" placeholder="Working Intro" required>
+                    </div>
+                    <input type="submit" value="Submit" class="btn solid">
+                </form>
             </div>
         </div>
     </div>
