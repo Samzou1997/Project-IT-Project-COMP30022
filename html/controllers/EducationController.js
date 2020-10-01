@@ -28,6 +28,7 @@ const education_get = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
+      var educationList = doc.education;
       
       res.render('education.html')
     }

@@ -28,14 +28,73 @@ const employment_get = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
+      var employmentList = doc.employment;
       
       res.render('employment.html')
     }
   })
 }
 
+const employment_edit_get = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      userID_str = doc._id.toHexString();
+      
+      res.render('employment_edit.html')
+    }
+  })
+}
 
+const employment_edit_submit_post = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      var employmentObj = {
+        company : req.body.Company,
+        title: req.body.Title,
+        startDate : req.body.Started,
+        endDate : req.body.end,
+      }
+
+      var employmentList = doc.employment;
+      employmentList.push(employmentObj);
+
+      var updatedData = {
+        employment : employmentList
+      }
+      
+      User.findByIdAndUpdate(doc._id, {$set: updatedData})
+      .then(response => {
+        res.redirect('/personal/employment');
+      })
+      .catch(error => {
+        res.render('error.html', {
+          title: 'System Error',
+          errorCode: 'System Error',
+          errorMessage: error
+        });
+      });
+    }
+  })
+}
 
 module.exports = {
-  employment_get
+  employment_get,
+  employment_edit_get,
+  employment_edit_submit_post
 }

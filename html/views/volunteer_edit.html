@@ -45,7 +45,7 @@
             </div>
 
             <div class="forms_container">
-                <form class="edit-forms" method="POST" action="">
+                <form class="edit-forms" method="POST" action="/personal/volunteer/edit/submit">
                     <h2 class="title">Volunteer</h2>
                     <div class="input-field">
                         <i class="fas fa-place-of-worship"></i>
@@ -54,6 +54,10 @@
                     <div class="input-field">
                         <i class="fas fa-clock"></i>
                         <input name="hours" id="hours" type="text" placeholder="Working Hours" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-clock"></i>
+                        <input name="intro" id="intro" type="text" placeholder="Working Intro" required>
                     </div>
                     <input type="submit" value="Submit" class="btn solid">
                 </form>
