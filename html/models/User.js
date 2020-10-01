@@ -42,17 +42,11 @@ const userSchema    = new Schema({
   }],
   details: {
     major: {type: String, default: 'null'},
-    school: {type: String, default: 'null'},
-    degree: {type: String, default: 'null'},
     gender: {type: String, default: 'null'},
     dateBirth: {type: Date, default: nowDate},
     phone: {type: String, default: 'null'},
     address: {type: String, default: 'null'},
     introduction: {type: String, default: 'null'},
-    company: {type: String, default: 'null'},
-    title: {type: String, default: 'null'},
-    startedfrom:{type: String, default: 'null'},  
-    place:{type: String, default: 'null'},
   },
   setting: {
     $ref: {type: String, default: 'user_settings'},

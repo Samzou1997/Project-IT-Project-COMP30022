@@ -35,50 +35,50 @@ var storageConfig = multer.diskStorage({
 var upload = multer({storage : storageConfig})
 
 //router.post('/', HomeController.home_post)
-router.get('/', VerifyController.verify_login, HomeController.home_get)
+router.get('/', VerifyController.verify_login, DashboardController.dashboard_get)
 
 // ======================================================================================================== //
 
 //router.post('/home', HomeController.home_post) // full path: /personal/home
-router.get('/home', VerifyController.verify_login, HomeController.home_get)
+// router.get('/home', VerifyController.verify_login, HomeController.home_get)
 
-//router.post('/home/edit', HomeController.home_edit_post) // full path: /personal/home/edit
-router.get('/home/edit', VerifyController.verify_login, HomeController.home_edit_get)
+// //router.post('/home/edit', HomeController.home_edit_post) // full path: /personal/home/edit
+// router.get('/home/edit', VerifyController.verify_login, HomeController.home_edit_get)
 
-router.post('/home/edit/infosubmit', VerifyController.verify_login, HomeController.home_edit_submit_post)
-router.get('/home/edit/infosubmit', ErrorController.not_found_404)
+// router.post('/home/edit/infosubmit', VerifyController.verify_login, HomeController.home_edit_submit_post)
+// router.get('/home/edit/infosubmit', ErrorController.not_found_404)
 
-router.post('/home/edit/picupload', upload.single('profilePic'), 
-            VerifyController.verify_login, FileSystemController.userSys_upload_post, function(req, res, next){ res.redirect("/personal/home"); })
-router.get('/home/edit/picupload', ErrorController.not_found_404)
+// router.post('/home/edit/picupload', upload.single('profilePic'), 
+//             VerifyController.verify_login, FileSystemController.userSys_upload_post, function(req, res, next){ res.redirect("/personal/home"); })
+// router.get('/home/edit/picupload', ErrorController.not_found_404)
 
 // ======================================================================================================== //
 
 //router.post('/learning', LearningController.learning_post) // full path: /personal/learning
-router.get('/learning', VerifyController.verify_login, LearningController.learning_get)
+// router.get('/learning', VerifyController.verify_login, LearningController.learning_get)
 
-router.post('/learning/edit/fileupload', upload.single('uploadFile'), 
-            VerifyController.verify_login, FileSystemController.alphaSection_upload_post, function(req, res, next){ res.redirect("/personal/learning"); })
-router.get('/learning/edit/fileupload', ErrorController.not_found_404)
+// router.post('/learning/edit/fileupload', upload.single('uploadFile'), 
+//             VerifyController.verify_login, FileSystemController.alphaSection_upload_post, function(req, res, next){ res.redirect("/personal/learning"); })
+// router.get('/learning/edit/fileupload', ErrorController.not_found_404)
 
-router.get('/learning/edit/article', VerifyController.verify_login, LearningController.learning_article_edit_get)
+// router.get('/learning/edit/article', VerifyController.verify_login, LearningController.learning_article_edit_get)
 
-router.post('/learning/edit/article/submit', VerifyController.verify_login, LearningController.learning_article_submit_post)
-router.get('/learning/edit/article/submit', ErrorController.not_found_404)
+// router.post('/learning/edit/article/submit', VerifyController.verify_login, LearningController.learning_article_submit_post)
+// router.get('/learning/edit/article/submit', ErrorController.not_found_404)
 
 // ======================================================================================================== //
 
 //router.post('/working', WorkingController.working_post) // full path: /personal/working
-router.get('/working', VerifyController.verify_login, WorkingController.working_get)
+// router.get('/working', VerifyController.verify_login, WorkingController.working_get)
 
-router.post('/working/edit/fileupload', upload.single('uploadFile'), 
-            VerifyController.verify_login, FileSystemController.betaSection_upload_post, function(req, res, next){ res.redirect("/personal/working"); })
-router.get('/working/edit/fileupload', ErrorController.not_found_404)
+// router.post('/working/edit/fileupload', upload.single('uploadFile'), 
+//             VerifyController.verify_login, FileSystemController.betaSection_upload_post, function(req, res, next){ res.redirect("/personal/working"); })
+// router.get('/working/edit/fileupload', ErrorController.not_found_404)
 
-router.get('/working/edit/article', VerifyController.verify_login, WorkingController.working_article_edit_get)
+// router.get('/working/edit/article', VerifyController.verify_login, WorkingController.working_article_edit_get)
 
-router.post('/working/edit/article/submit', VerifyController.verify_login, WorkingController.working_article_submit_post)
-router.get('/working/edit/article/submit', ErrorController.not_found_404)
+// router.post('/working/edit/article/submit', VerifyController.verify_login, WorkingController.working_article_submit_post)
+// router.get('/working/edit/article/submit', ErrorController.not_found_404)
 
 // ======================================================================================================== //
 
