@@ -25,7 +25,7 @@ body{
     position: fixed;
     width: 200px;
     height: 100%;
-    background: #2a363b;
+    background: rgb(71, 75, 81);
     padding: 30px 0;
 }
 
@@ -55,7 +55,7 @@ body{
 }
 
 .wrapper .sidebar ul li a.active{
-    color: #a2ff9f;
+    color: #3eff88;
 }
 
 .wrapper .sidebar ul li a .fas{
@@ -63,7 +63,7 @@ body{
 }
 
 .wrapper .sidebar ul li:hover{
-    background: #292929;
+    background: #3a3a3a;
 }
 
 .wrapper .sidebar ul li:hover a{
@@ -87,7 +87,7 @@ body{
 
 .wrapper .main-content .navbar{
     height: 55px;
-    background: #ff847c;
+    background: #e0ece4;
     grid-template-areas: nav;
     text-align: right;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
