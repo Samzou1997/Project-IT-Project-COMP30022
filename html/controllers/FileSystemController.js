@@ -347,6 +347,26 @@ const charlieSection_upload_post = (req, res, next) => {
   })
 }
 
+function profile_pic_upload(file, userID, callback) {
+  getToUserDir(userID, function () {
+    var fileName = 'profile_pic_sys_reserved.png';
+    var sourceFile = file.path;
+
+    var fileDestDir = path.join(userSysDir, fileName);
+    //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
+    //fileurl = fileurl.replace(/\\/g, "/");
+    fs.rename(sourceFile, fileDestDir, function (error) {
+      if (error) {
+        console.log('[file upload ERROR]: ' + error);
+        callback(error);
+      }
+      else {
+        callback();
+      }
+    });
+  });
+}
+
 function upload_file(file, userID, callback) {
   getToUserDir(userID, function () {
     var fileName = file.originalname;
@@ -392,5 +412,6 @@ module.exports = {
   getFileUrls,
   saveFile,
   upload_file,
-  deleteFile
+  deleteFile,
+  profile_pic_upload
 }
