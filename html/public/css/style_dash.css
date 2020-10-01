@@ -284,6 +284,47 @@ a{
   float: right;
 }
 
+/* files page */
+
+.file-content .files{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-content button,
+.file-content .btn{
+  width: 150px;
+  height: 49px;
+  border: none;
+  outline: none;
+  border-radius: 49px;
+  cursor: pointer;
+  background-color: #5995fd;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 10px;
+  transition: .5s;
+}
+
+#custom-button{
+  float: left;
+}
+
+#custom-text{
+  float: left;
+  margin-top: 25px;
+}
+
+.btn{
+  float: right;
+}
+
+/* end files page */
+
+
+
 @media only screen and (max-width: 768px){
   .main-content{
     display: flex;
