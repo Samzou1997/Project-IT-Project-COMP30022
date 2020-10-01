@@ -31,7 +31,7 @@ const login_post = (req, res, next) => {
         res.cookie('id', user_id, { maxAge: cookie_alive_time })
         res.cookie('email', user_email, { maxAge: cookie_alive_time })
         res.cookie('token', token, { maxAge: cookie_alive_time })
-        res.redirect('/personal/home')
+        res.redirect('/personal/dashboard')
         // res.render('home.html', {
         //     username: doc.lastName
         // })

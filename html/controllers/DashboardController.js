@@ -34,8 +34,57 @@ const dashboard_get = (req, res, next) => {
   })
 }
 
+const dashboard_doc_edit_get = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      userID_str = doc._id.toHexString();
+      var docDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.dashboard_document);
+      res.render('doc_edit.html', {
+        article : docDir,
+        section : 'dashboard'
+      })
+    }
+  })
+}
 
+const dashboard_doc_submit_post = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      var userID_str = doc._id.toHexString();
+      var docDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.dashboard_document);
+
+      FileSystemController.saveFile(docDir, req.body.content, function(error){
+        if (error) {
+          res.render('error.html', {
+            title: 'System Error',
+            errorCode: 'Save Error',
+            errorMessage: error
+          });
+        }
+        else {
+          res.redirect('/personal/dashboard');
+        }
+      })
+    }
+  })
+}
 
 module.exports = {
-  dashboard_get
+  dashboard_get, dashboard_doc_edit_get, dashboard_doc_submit_post
 }
