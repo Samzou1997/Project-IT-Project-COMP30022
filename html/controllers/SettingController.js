@@ -30,7 +30,7 @@ const setting_get = (req, res, next) => {
       userID_str = doc._id.toHexString();
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
 
-      webPageDate.setting.profile_pic_path = profilePicDir
+      webPageDate.setting.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       
       res.render('settings.html', webPageDate.setting)
     }

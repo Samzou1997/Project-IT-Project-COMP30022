@@ -30,7 +30,7 @@ const employment_get = (req, res, next) => {
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
       var employmentList = doc.employment;
       
-      webPageDate.employment.profile_pic_path = profilePicDir
+      webPageDate.employment.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageDate.employment.employment_list = employmentList
       res.render('employment.html', webPageDate.employment)
     }
@@ -51,7 +51,7 @@ const employment_edit_get = (req, res, next) => {
       userID_str = doc._id.toHexString();
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
 
-      webPageDate.employment_edit.profile_pic_path = profilePicDir
+      webPageDate.employment_edit.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       
       res.render('employment_edit.html', webPageDate.employment_edit)
     }
