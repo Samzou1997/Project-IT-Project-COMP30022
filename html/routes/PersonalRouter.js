@@ -114,6 +114,10 @@ router.get('/file/delete', ErrorController.not_found_404)
 //router.post('/home', HomeController.home_post) // full path: /personal/home
 router.get('/education', VerifyController.verify_login, EducationController.education_get)
 
+router.get('/education/edit', VerifyController.verify_login, EducationController.education_edit_get);
+
+router.post('/education/edit/submit', VerifyController.verify_login, EducationController.education_edit_submit_post);
+router.get('/education/edit/submit', ErrorController.not_found_404);
 // ======================================================================================================== //
 
 //router.post('/home', HomeController.home_post) // full path: /personal/home

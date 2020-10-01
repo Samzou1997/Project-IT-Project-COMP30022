@@ -27,20 +27,11 @@ const register_post = (req, res, next) => {
         })
       }
       else {
-        var eduObj = {
-          school: "test",
-          degree: "test",
-          major: "test",
-        };
-        var eduList = [];
-        eduList.push(eduObj);
-
         let user = new User({
           firstName: req.body.first_name,
           lastName: req.body.last_name,
           email: req.body.email,
-          password: req.body.password,
-          education: eduList
+          password: req.body.password
         })
 
         let userSetting = new UserSetting({
