@@ -31,7 +31,7 @@ const employment_get = (req, res, next) => {
       var employmentList = doc.employment;
       
       webPageDate.employment.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
-      webPageDate.employment.employment_list = employmentList
+      //webPageDate.employment.employment_list = employmentList
       res.render('employment.html', webPageDate.employment)
     }
   })
