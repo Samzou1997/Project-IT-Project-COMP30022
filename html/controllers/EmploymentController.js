@@ -3,8 +3,7 @@ const { response }    = require('express')
 var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
-var dashboardPaddingData      = require('../views/data_padding/dashboard_data.json')
-var profileEditPaddingData    = require('../views/data_padding/profile_edit.json')
+var webPageDate       = require('../views/data_padding/web_page_data.json')
 const FileSystemController    = require('../controllers/FileSystemController')
 const path                    = require('path');
 
@@ -28,11 +27,12 @@ const employment_get = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
+      var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
       var employmentList = doc.employment;
       
-      res.render('employment.html', {
-        lastname : doc.lastName
-      })
+      webPageDate.employment.profile_pic_path = profilePicDir
+      webPageDate.employment.employment_list = employmentList
+      res.render('employment.html', webPageDate.employment)
     }
   })
 }
@@ -49,8 +49,11 @@ const employment_edit_get = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
+      var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
+
+      webPageDate.employment_edit.profile_pic_path = profilePicDir
       
-      res.render('employment_edit.html')
+      res.render('employment_edit.html', webPageDate.employment_edit)
     }
   })
 }
