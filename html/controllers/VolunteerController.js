@@ -3,16 +3,18 @@ const { response }    = require('express')
 var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
+var dashboardPaddingData      = require('../views/data_padding/dashboard_data.json')
+var profileEditPaddingData    = require('../views/data_padding/profile_edit.json')
 const FileSystemController    = require('../controllers/FileSystemController')
+const path                    = require('path');
 
-const secret_key            = config.token_setting.secret_key
-const token_expire_time     = config.token_setting.expire_time
-const cookie_alive_time     = config.cookie_setting.alive_time
-const rootDir               = config.fileSystem.root;
+const secret_key          = config.token_setting.secret_key
+const token_expire_time   = config.token_setting.expire_time
+const cookie_alive_time   = config.cookie_setting.alive_time
+const userDataDir         = "/home/IT_Project/html/file/userData/";
 
-const volunteer_post = (req, res, next) => {
-  
-}
+var userID_str;
+
 
 const volunteer_get = (req, res, next) => {
   User.findOne({ email: req.cookies["email"] }, function (err, doc) {
@@ -25,21 +27,15 @@ const volunteer_get = (req, res, next) => {
       });
     }
     else {
-      var userID_str = doc._id.toHexString();
-      var userCustomizeFileDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/charlieSection`;
-      var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/charlieSection/reserved/doc_sys_reserved.html`;
-
-      var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
-
-      res.render('volunteer.html', {
-        filelist : fileList,
-        article : articleDir
-      })
+      userID_str = doc._id.toHexString();
+      var volunteerList = doc.volunteer;
+      
+      res.render('volunteer.html')
     }
   })
 }
 
-const volunteer_article_edit_get = (req, res, next) => {
+const volunteer_edit_get = (req, res, next) => {
   User.findOne({ email: req.cookies["email"] }, function (err, doc) {
     if (err) {
       console.log("db error")
@@ -50,18 +46,14 @@ const volunteer_article_edit_get = (req, res, next) => {
       });
     }
     else {
-      var userID_str = doc._id.toHexString();
-      var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/charlieSection/reserved/doc_sys_reserved.html`;
-
-      res.render('edit_article.html', {
-        article : articleDir,
-        section : 'volunteer'
-      })
+      userID_str = doc._id.toHexString();
+      
+      res.render('volunteer_edit.html')
     }
   })
 }
 
-const volunteer_article_submit_post = (req, res, next) => {
+const volunteer_edit_submit_post = (req, res, next) => {
   User.findOne({ email: req.cookies["email"] }, function (err, doc) {
     if (err) {
       console.log("db error")
@@ -72,25 +64,36 @@ const volunteer_article_submit_post = (req, res, next) => {
       });
     }
     else {
-      var userID_str = doc._id.toHexString();
-      var articleDir = `/home/IT_Project/html/file/userData/${userID_str}/userUpload/customizeFile/charlieSection/reserved/doc_sys_reserved.html`;
+      var volunteerObj = {
+        place : req.body.place,
+        workingHours: req.body.hours,
+        workIntro : req.body.intro,
+      }
 
-      FileSystemController.saveFile(articleDir, req.body.content, function(error){
-        if (error) {
-          res.render('error.html', {
-            title: 'System Error',
-            errorCode: 'Save Error',
-            errorMessage: error
-          });
-        }
-        else {
-          res.redirect('/personal/volunteer');
-        }
+      var volunteerList = doc.volunteer;
+      volunteerList.push(volunteerObj);
+
+      var updatedData = {
+        volunteer : volunteerList
+      }
+      
+      User.findByIdAndUpdate(doc._id, {$set: updatedData})
+      .then(response => {
+        res.redirect('/personal/volunteer');
       })
+      .catch(error => {
+        res.render('error.html', {
+          title: 'System Error',
+          errorCode: 'System Error',
+          errorMessage: error
+        });
+      });
     }
   })
 }
 
 module.exports = {
-  volunteer_post, volunteer_get, volunteer_article_edit_get, volunteer_article_submit_post
+  volunteer_get,
+  volunteer_edit_get,
+  volunteer_edit_submit_post
 }

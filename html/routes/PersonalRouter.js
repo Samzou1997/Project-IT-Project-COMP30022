@@ -82,17 +82,16 @@ router.get('/working/edit/article/submit', ErrorController.not_found_404)
 
 // ======================================================================================================== //
 
-//router.post('/volunteer', VolunteerController.volunteer_post) // full path: /personal/volunteer
-router.get('/volunteer', VerifyController.verify_login, VolunteerController.volunteer_get)
+// router.get('/volunteer', VerifyController.verify_login, VolunteerController.volunteer_get)
 
-router.post('/volunteer/edit/fileupload', upload.single('uploadFile'), 
-            VerifyController.verify_login, FileSystemController.charlieSection_upload_post, function(req, res, next){ res.redirect("/personal/volunteer"); })
-router.get('/volunteer/edit/fileupload', ErrorController.not_found_404)
+// router.post('/volunteer/edit/fileupload', upload.single('uploadFile'), 
+//             VerifyController.verify_login, FileSystemController.charlieSection_upload_post, function(req, res, next){ res.redirect("/personal/volunteer"); })
+// router.get('/volunteer/edit/fileupload', ErrorController.not_found_404)
 
-router.get('/volunteer/edit/article', VerifyController.verify_login, VolunteerController.volunteer_article_edit_get)
+// router.get('/volunteer/edit/article', VerifyController.verify_login, VolunteerController.volunteer_article_edit_get)
 
-router.post('/volunteer/edit/article/submit', VerifyController.verify_login, VolunteerController.volunteer_article_submit_post)
-router.get('/volunteer/edit/article/submit', ErrorController.not_found_404)
+// router.post('/volunteer/edit/article/submit', VerifyController.verify_login, VolunteerController.volunteer_article_submit_post)
+// router.get('/volunteer/edit/article/submit', ErrorController.not_found_404)
 
 // ======================================================================================================== //
 
@@ -122,6 +121,21 @@ router.get('/education/edit/submit', ErrorController.not_found_404);
 
 //router.post('/home', HomeController.home_post) // full path: /personal/home
 router.get('/employment', VerifyController.verify_login, EmploymentController.employment_get)
+
+router.get('/employment/edit', VerifyController.verify_login, EmploymentController.employment_edit_get);
+
+router.post('/employment/edit/submit', VerifyController.verify_login, EmploymentController.employment_edit_submit_post);
+router.get('/employment/edit/submit', ErrorController.not_found_404);
+
+// ======================================================================================================== //
+
+//router.post('/home', HomeController.home_post) // full path: /personal/home
+router.get('/volunteer', VerifyController.verify_login, VolunteerController.volunteer_get)
+
+router.get('/volunteer/edit', VerifyController.verify_login, VolunteerController.volunteer_edit_get);
+
+router.post('/volunteer/edit/submit', VerifyController.verify_login, VolunteerController.volunteer_edit_submit_post);
+router.get('/volunteer/edit/submit', ErrorController.not_found_404);
 
 // ======================================================================================================== //
 
