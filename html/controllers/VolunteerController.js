@@ -30,7 +30,9 @@ const volunteer_get = (req, res, next) => {
       userID_str = doc._id.toHexString();
       var volunteerList = doc.volunteer;
       
-      res.render('volunteer.html')
+      res.render('volunteer.html', {
+        lastname : doc.lastName
+      })
     }
   })
 }

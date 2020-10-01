@@ -98,6 +98,11 @@ router.get('/working/edit/article/submit', ErrorController.not_found_404)
 //router.post('/home', HomeController.home_post) // full path: /personal/home
 router.get('/dashboard', VerifyController.verify_login, DashboardController.dashboard_get)
 
+router.get('/dashboard/doc/edit', VerifyController.verify_login, DashboardController.dashboard_doc_edit_get)
+
+router.post('/dashboard/doc/submit', VerifyController.verify_login, DashboardController.dashboard_doc_submit_post)
+router.get('/dashboard/doc/submit', ErrorController.not_found_404)
+
 // ======================================================================================================== //
 
 router.get('/file', VerifyController.verify_login, FileSectionController.file_section_get)

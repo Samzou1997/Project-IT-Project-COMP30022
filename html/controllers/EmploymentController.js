@@ -30,7 +30,9 @@ const employment_get = (req, res, next) => {
       userID_str = doc._id.toHexString();
       var employmentList = doc.employment;
       
-      res.render('employment.html')
+      res.render('employment.html', {
+        lastname : doc.lastName
+      })
     }
   })
 }

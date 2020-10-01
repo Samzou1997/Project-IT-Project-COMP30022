@@ -30,7 +30,9 @@ const education_get = (req, res, next) => {
       userID_str = doc._id.toHexString();
       var educationList = doc.education;
       
-      res.render('education.html')
+      res.render('education.html', {
+        lastname : doc.lastName
+      })
     }
   })
 }
