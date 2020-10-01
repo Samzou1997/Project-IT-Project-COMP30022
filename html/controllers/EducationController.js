@@ -75,7 +75,7 @@ const education_edit_submit_post = (req, res, next) => {
       var educationList = doc.education;
       educationList.push(educationObj);
 
-      var updateData = {
+      var updatedData = {
         education : educationList
       }
       
