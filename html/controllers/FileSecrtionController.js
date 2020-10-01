@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const config = require('../config/web_config.json')
 const path = require('path');
 const FileSystemController = require('../controllers/FileSystemController')
-var ManageFileData = require('../views/data_padding/manage_file_data.json')
+var webPageData = require('../views/data_padding/web_page_data.json')
 
 const secret_key = config.token_setting.secret_key
 const token_expire_time = config.token_setting.expire_time
@@ -25,13 +25,12 @@ const file_section_get = (req, res, next) => {
     else {
       var userID_str = doc._id.toHexString();
       var userCustomizeFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.userCustomizeFileDir);
-
       var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
 
-      ManageFileData.lastname = doc.lastName
-      ManageFileData.filelist = fileList
+      webPageData.files.profile_pic_path = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
+      webPageData.files.filelist = fileList
 
-      res.render('files.html', ManageFileData);
+      res.render('files.html', webPageData.files);
     }
   })
 }

@@ -1,0 +1,38 @@
+{
+  "dashboard" : {
+    "profile_pic_path" : "",
+    "content" : "",
+    "link" : "",
+    "lastname" : "",
+    "email" : "",
+    "major" : ""
+  },
+  "files" : {
+    "profile_pic_path" : "",
+    "filelist" : ""
+  },
+  "education" : {
+    "profile_pic_path" : "",
+    "educaion_list" : ""
+  },
+  "education_edit" : {
+    "profile_pic_path" : ""
+  },
+  "employment" : {
+    "profile_pic_path" : "",
+    "employment_list" : ""
+  },
+  "employment_edit" : {
+    "profile_pic_path" : ""
+  },
+  "volunteer" : {
+    "profile_pic_path" : "",
+    "volunteer_list" : ""
+  },
+  "volunteer_edit" : {
+    "profile_pic_path" : ""
+  },
+  "setting" : {
+    "profile_pic_path" : ""
+  }
+}

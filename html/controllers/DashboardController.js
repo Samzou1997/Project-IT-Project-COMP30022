@@ -3,7 +3,7 @@ const { response }    = require('express')
 var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
-var dashboardPaddingData      = require('../views/data_padding/dashboard_data.json')
+var webPageData      = require('../views/data_padding/web_page_data.json')
 const FileSystemController    = require('../controllers/FileSystemController')
 const path                    = require('path');
 
@@ -24,12 +24,14 @@ const dashboard_get = (req, res, next) => {
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
       var documentDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.dashboard_document);
 
-      dashboardPaddingData.content = documentDir
-      dashboardPaddingData.lastname = doc.lastName
-      dashboardPaddingData.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
-      
+      webPageData.dashboard.profile_pic_path = profilePicDir
+      webPageData.dashboard.content = documentDir
+      //webPageData.dashboard.link = 
+      webPageData.dashboard.lastname = doc.lastName
+      webPageData.dashboard.email = doc.email
+      webPageData.dashboard.major = doc.details.major
 
-      res.render('dashboard.html', dashboardPaddingData)
+      res.render('dashboard.html', dashboardPaddingData.dashboard)
     }
   })
 }

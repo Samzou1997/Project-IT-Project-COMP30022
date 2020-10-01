@@ -3,8 +3,7 @@ const { response }    = require('express')
 var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
-var dashboardPaddingData      = require('../views/data_padding/dashboard_data.json')
-var profileEditPaddingData    = require('../views/data_padding/profile_edit.json')
+var webPageDate       = require('../views/data_padding/web_page_data.json')
 const FileSystemController    = require('../controllers/FileSystemController')
 const path                    = require('path');
 
@@ -28,11 +27,13 @@ const education_get = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
+      var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
       var educationList = doc.education;
       
-      res.render('education.html', {
-        lastname : doc.lastName
-      })
+      webPageDate.education.profile_pic_path = profilePicDir
+      webPageDate.education.educaion_list = educationList
+
+      res.render('education.html', webPageDate.education)
     }
   })
 }
@@ -49,8 +50,10 @@ const education_edit_get = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
-      
-      res.render('education_edit.html')
+      var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
+      webPageDate.education.profile_pic_path = profilePicDir
+
+      res.render('education_edit.html', webPageDate.education_edit)
     }
   })
 }

@@ -3,8 +3,7 @@ const { response }    = require('express')
 var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
 const config          = require('../config/web_config.json')
-var dashboardPaddingData      = require('../views/data_padding/dashboard_data.json')
-var profileEditPaddingData    = require('../views/data_padding/profile_edit.json')
+var webPageDate       = require('../views/data_padding/web_page_data.json')
 const FileSystemController    = require('../controllers/FileSystemController')
 const path                    = require('path');
 const fs                      = require('fs');
@@ -29,8 +28,11 @@ const setting_get = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
+      var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
+
+      webPageDate.setting.profile_pic_path = profilePicDir
       
-      res.render('404.html')
+      res.render('settings.html', webPageDate.setting)
     }
   })
 }
