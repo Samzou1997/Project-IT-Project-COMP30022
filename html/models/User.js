@@ -32,13 +32,14 @@ const userSchema    = new Schema({
   employment: [{
     company: {type: String},
     title: {type: String},
+    description: {type: String},
     startDate: {type: String},
     endDate: {type: String}
   }],
   volunteer: [{
     place: {type: String},
     workingHours: {type: String},
-    workIntro: {type: String},
+    description: {type: String},
   }],
   details: {
     major: {type: String, default: 'null'},
@@ -46,7 +47,6 @@ const userSchema    = new Schema({
     dateBirth: {type: Date, default: nowDate},
     phone: {type: String, default: 'null'},
     address: {type: String, default: 'null'},
-    introduction: {type: String, default: 'null'},
   },
   setting: {
     $ref: {type: String, default: 'user_settings'},
