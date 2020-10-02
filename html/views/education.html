@@ -4,11 +4,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
         <!-- ===== FONTAWESOME ICONS ===== -->
         <link href="/public/css/fontawesome/css/all.css" rel='stylesheet'>
 
         <!-- ===== CSS ===== -->
         <link rel="stylesheet" href="/public/css/style_dash.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 
         <title>Uprank Portfolio</title>
     </head>
@@ -41,7 +48,7 @@
                             <i class='fas fa-file nav__icon' ></i>
                             <span class="nav__name">Files</span>
                         </a>
-                        
+
                         <a href="/personal/education" class="nav__link active">
                             <i class='fas fa-school nav__icon' ></i>
                             <span class="nav__name">Educations</span>
@@ -76,8 +83,59 @@
                 {{educaion_list}}
             </div>
             <div class="buttons">
-                <a href=""><button>Edit your education info</button></a>
+                <button type="button" data-toggle="modal" data-target="#myModal">Edit your education info</button>
             </div>
+
+            <div class="forms_container">
+              <form class="edit-forms" method="POST" action="/personal/education/edit/submit">
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h4 class="modal-title">Enter your education details</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        <div class="edits-content">
+                          <div class="input-field">
+                              <i class="fas fa-school"></i>
+                              <input name="school_name" id="" type="text" placeholder="School" required>
+                          </div>
+                          <div class="input-field">
+                              <i class="fas fa-mosque"></i>
+                              <input name="Major" id="" type="text" placeholder="Major" required>
+                          </div>
+                          <div class="input-field">
+                              <i class="fab fa-dyalog"></i>
+                              <input name="Degree" id="degree" type="text" placeholder="Degree" required>
+                          </div>
+                          <div class="input-field">
+                              <i class="fas fa-clock"></i>
+                              <input name="Started" id="started" type="text" placeholder="Started From" required>
+                          </div>
+                          <div class="input-field">
+                              <i class="far fa-clock"></i>
+                              <input name="End" id="end" type="text" placeholder="End at" required>
+                          </div>
+                      </div>
+                      </div>
+
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                        <button type="submit" value="Submit" class="btn btn-danger" data-dismiss="modal">Add</button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
         </div>
         <!--===== MAIN JS =====-->
         <script src="/public/js/main.js"></script>
