@@ -10,11 +10,11 @@
   --first-color: #4723D9;
   --first-color-light: #AFA5D9;
   --white-color: #F7F6FB;
-  
+
   /*===== Font and typography =====*/
   --body-font: 'Nunito', sans-serif;
   --normal-font-size: 1rem;
-  
+
   /*===== z index =====*/
   --z-fixed: 100;
 }
@@ -179,7 +179,7 @@ a{
     left: 0;
     padding: 1rem 1rem 0 0;
   }
-  
+
   /*Show navbar desktop*/
   .show{
     width: calc(var(--nav-width) + 156px);
@@ -196,7 +196,7 @@ a{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-template-areas: 
+  grid-template-areas:
   "intro share"
   "intro profile";
 }
@@ -335,7 +335,10 @@ a{
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
-  margin: 10px 10px;
+  margin: 50px auto;
+  position: absolute;
+  left:50%;
+  margin-left: -175px;
   transition: .5s;
 }
 /* end 3 pages */
@@ -351,13 +354,13 @@ a{
   .intro{
     margin: 20px;
   }
-  
+
   .intro .content{
     min-height: 823px;
     background: #ffffff;
     align-items: center;
   }
-  
+
   .intro button{
     width: 150px;
     height: 49px;
@@ -373,17 +376,17 @@ a{
     transition: .5s;
     float: right;
   }
-  
+
   .share{
     margin-top: 20px;
     margin-left: 0px;
     margin-bottom: 23px;
   }
-  
+
   .share .link{
     min-height: 270px;
   }
-  
+
   .share button{
     width: 150px;
     height: 49px;
@@ -399,15 +402,15 @@ a{
     transition: .5s;
     float: right;
   }
-  
+
   .profile{
     min-height: 400px;
   }
-  
+
   .profile .content{
     min-height: 270px;
   }
-  
+
   .profile button{
     width: 150px;
     height: 49px;
