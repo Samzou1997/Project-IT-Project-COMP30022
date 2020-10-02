@@ -79,7 +79,11 @@
 
         <div class="pages-content">
             <div class="display">
-                {{volunteer_list}}
+                {{each volunteerlist volunteer index}}
+                      <li>Place: {{volunteer.place}}, Hours: {{volunteer.workingHours}},
+                          Description:{{volunteer.descriptiom}}
+                      </li>
+                {{/each}}
             </div>
             <div class="buttons">
                 <button type="button" data-toggle="modal" data-target="#myModal">Edit your volunteer info</button>
@@ -110,7 +114,7 @@
                               <input name="hours" id="hours" type="text" placeholder="Working Hours" required>
                           </div>
                           <div class="input-field">
-                              <i class="fas fa-clock"></i>
+                            <i class="fas fa-comment"></i>
                               <input name="description" id="description" type="text" placeholder="description" required>
                           </div>
                         </div>

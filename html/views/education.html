@@ -80,7 +80,15 @@
 
         <div class="pages-content">
             <div class="display">
-                {{educaion_list}}
+                <ul>
+                   {{each eductaionlist education index}}
+                      <li>School:{{education.school}}, Degree: {{education.degree}}, Major:{{education.major}},
+                          extraclass: {{education.extraclass}}, Start Date:{{education.startDate}}, 
+                          End Date:{{education.endDate}}
+                      </li>
+                   {{/each}} 
+                </ul>
+                
             </div>
             <div class="buttons">
                 <button type="button" data-toggle="modal" data-target="#myModal">Edit your education info</button>
