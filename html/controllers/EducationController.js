@@ -36,8 +36,6 @@ const education_get = (req, res, next) => {
       var dataCleanStr = JSON.stringify(webPageDate.education);
       var dataCleanObj = JSON.parse(dataCleanStr);
 
-      console.log(educationList.length)
-
       res.render('education.html', dataCleanObj)
     }
   })

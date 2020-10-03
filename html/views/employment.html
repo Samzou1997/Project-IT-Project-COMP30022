@@ -83,9 +83,9 @@
                 {{each employmentlist employment index}}
                       <li>Company: {{employment.company}}, Title: {{employment.title}},
                         Description:{{employment.description}}, Start Date:{{employment.startDate}},
-                        End Date:{{employment.endDate}}
+                        End Date:{{employment.endDate}} ID:{{employment._id}}
                       </li>
-                {{/each}} 
+                {{/each}}
             </div>
             <div class="buttons">
                 <button type="button" data-toggle="modal" data-target="#myModal">Edit your employments info</button>
