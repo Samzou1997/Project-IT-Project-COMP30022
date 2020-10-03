@@ -33,6 +33,8 @@ const education_get = (req, res, next) => {
       webPageDate.education.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageDate.education.eductaionlist = educationList
 
+      console.log(educationList)
+
       res.render('education.html', webPageDate.education)
     }
   })
