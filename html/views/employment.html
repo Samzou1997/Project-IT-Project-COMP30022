@@ -9,10 +9,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         <!-- ===== FONTAWESOME ICONS ===== -->
-        <link href="/public/css/fontawesome/css/all.css" rel='stylesheet'>
+        <link href="../public/css/fontawesome/css/all.css" rel='stylesheet'>
 
         <!-- ===== CSS ===== -->
-        <link rel="stylesheet" href="/public/css/style_dash.css">
+        <link rel="stylesheet" href="../public/css/style_dash.css">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -81,9 +81,13 @@
         <div class="pages-content">
             <div class="display">
                 {{each employmentlist employment index}}
-                      <li>Company: {{employment.company}}, Title: {{employment.title}},
-                        Description:{{employment.description}}, Start Date:{{employment.startDate}},
-                        End Date:{{employment.endDate}} ID:{{employment._id}}
+                      <li>
+                        <p>Company: {{employment.company}}</p>
+                        <p>Title: {{employment.title}}</p>
+                        <p>Description:{{employment.description}}</p>
+                        <p>Start Date:{{employment.startDate}}</p>
+                        <p>End Date:{{employment.endDate}}</p>
+                        <p>ID:{{employment._id}}</p>
                       </li>
                 {{/each}}
             </div>
@@ -142,6 +146,6 @@
             </div>
         </div>
         <!--===== MAIN JS =====-->
-        <script src="/public/js/main.js"></script>
+        <script src="../public/js/main.js"></script>
     </body>
 </html>
