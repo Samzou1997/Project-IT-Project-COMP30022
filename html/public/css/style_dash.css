@@ -363,15 +363,23 @@ a{
   overflow: hidden;
 }
 
-.display p{
-  display: none;
+.content-table{
+  border-collapse: collapse;
+  width: 100%;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
 }
 
-.display hr{
-  height: 2px;
-  border: 1px solid black;
+.content-table thead{
+  background-color: #f3f6fa;
 }
 
+.content-table th,
+.content-table td{
+  border: 1px solid #6fcfff;
+  padding: 5px 10px;
+}
 
 .buttons button{
   width: 350px;
@@ -513,6 +521,36 @@ a{
     margin-top: 10px;
     transition: .5s;
     float: right;
+  }
+
+  .content-table thead{
+    display: none;
+  }
+
+  .content-table tr,
+  .content-table td{
+    display: block;
+  }
+
+  .content-table tr:not(:last-child){
+    border-bottom: 4px solid #5ca0c3;
+  }
+
+  .content-table td{
+    padding-left: 54%;
+    position: relative;
+  }
+
+  .content-table td::before{
+    position: absolute;
+    padding: 5px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 45%;
+    content: attr(data-col-title);
+    font-weight: bold;
+    background-color: #f3f6fa;
   }
 
 

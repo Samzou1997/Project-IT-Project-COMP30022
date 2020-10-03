@@ -79,18 +79,28 @@
         </div>
 
         <div class="pages-content">
-            <div class="display">
-                {{each employmentlist employment index}}
-                    <hr>
-                    <h3>Company: {{employment.company}}</h3>
-                    <h5>Title: {{employment.title}}</h5>
-                    <h6>Description:{{employment.description}}</h6>
-                    <h6>Start Date:{{employment.startDate}}</h6>
-                    <h6>End Date:{{employment.endDate}}</h6>
-                    <p>ID:{{employment._id}}</p>
-                    <hr>
-                {{/each}}
-            </div>
+          <table class="content-table">
+            <thead>
+              <th>Company</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>ID</th>
+            </thead>
+            <tbody>
+              {{each employmentlist employment index}}
+              <tr>
+                <td data-col-title="Company:">{{employment.company}}</td>
+                <td data-col-title="Title:">{{employment.title}}</td>
+                <td data-col-title="Description:">{{employment.description}}</td>
+                <td data-col-title="Start Date:">{{employment.startDate}}</td>
+                <td data-col-title="End Date:">{{employment.endDate}}</td>
+                <td data-col-title="ID:">ID:{{employment._id}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
             <div class="buttons">
                 <button type="button" data-toggle="modal" data-target="#myModal">Edit your employments info</button>
             </div>

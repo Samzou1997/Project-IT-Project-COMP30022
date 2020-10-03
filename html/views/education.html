@@ -87,24 +87,23 @@
                 <th>Extra class</th>
                 <th>Start Date</th>
                 <th>End Date</th>
+                <th>ID</th>
               </thead>
               <tbody>
                 {{each eductaionlist education index}}
                 <tr>
-                  <td>School:{{education.school}}</td>
-                  <td>Degree:{{education.degree}}</td>
+                  <td data-col-title="School:">{{education.school}}</td>
+                  <td data-col-title="Degree:">{{education.degree}}</td>
+                  <td data-col-title="Major:">{{education.major}}</td>
+                  <td data-col-title="Extra classes">{{education.extraclass}}</td>
+                  <td data-col-title="Start Date:">{{education.startDate}}</td>
+                  <td data-col-title="End Date">{{education.endDate}}</td>
+                  <td data-col-title="ID">{{education._id}}</td>
                 </tr>
                 {{/each}}
               </tbody>
             </table>
-                 <!-- {{each eductaionlist education index}}
-                    <hr>
-                    <h3>School:{{education.school}}</h3>
-                    <h5>Degree: {{education.degree}} Major:{{education.major}}</h5>
-                    <p>ID:{{education._id}}</p>
-                    <h6>extraclass: {{education.extraclass}} Start Date:{{education.startDate}} End Date:{{education.endDate}}</h6>
-                    <hr>
-                 {{/each}} -->
+
             <div class="buttons">
                 <button type="button" data-toggle="modal" data-target="#myModal">Edit your education info</button>
             </div>
