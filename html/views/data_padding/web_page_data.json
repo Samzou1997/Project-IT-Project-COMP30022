@@ -12,25 +12,25 @@
   },
   "files" : {
     "profile_pic_path" : "",
-    "filelist" : ""
+    "filelist" : []
   },
   "education" : {
     "profile_pic_path" : "",
-    "eductaionlist" : ""
+    "eductaionlist" : []
   },
   "education_edit" : {
     "profile_pic_path" : ""
   },
   "employment" : {
     "profile_pic_path" : "",
-    "employmentlist" : ""
+    "employmentlist" : []
   },
   "employment_edit" : {
     "profile_pic_path" : ""
   },
   "volunteer" : {
     "profile_pic_path" : "",
-    "volunteerlist" : ""
+    "volunteerlist" : []
   },
   "volunteer_edit" : {
     "profile_pic_path" : ""
