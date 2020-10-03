@@ -353,6 +353,11 @@ a{
 /* end files page */
 
 /* 3 pages */
+.display{
+  display: flex;
+  flex-direction: row wrap;
+}
+
 .diaplay .infodisplay{
   border-radius: 12px;
   border: 1px solid #333;
