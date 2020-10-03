@@ -28,7 +28,8 @@ const education_get = (req, res, next) => {
     else {
       userID_str = doc._id.toHexString();
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
-      var educationList = doc.education;
+      var educationList = []
+      educationList = doc.education;
       
       webPageDate.education.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageDate.education.eductaionlist = educationList
