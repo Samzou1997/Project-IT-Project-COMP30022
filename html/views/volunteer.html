@@ -80,10 +80,12 @@
         <div class="pages-content">
             <div class="display">
                 {{each volunteerlist volunteer index}}
+                    <hr>
                     <h3>Place: {{volunteer.place}}</h3>
                     <h6>Hours: {{volunteer.workingHours}}</h6>
                     <h6>Description:{{volunteer.descriptiom}}</h6>
                     <p>ID:{{volunteer._id}}</p>
+                    <hr>
               {{/each}}
             </div>
             <div class="buttons">

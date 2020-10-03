@@ -360,11 +360,18 @@ a{
 .display{
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
   border-radius: 13px;
+  overflow: hidden;
 }
 
 .display p{
   display: none;
 }
+
+.display hr{
+  height: 2px;
+  border: 1px solid black;
+}
+
 
 .buttons button{
   width: 350px;
