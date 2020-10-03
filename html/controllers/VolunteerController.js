@@ -31,7 +31,7 @@ const volunteer_get = (req, res, next) => {
       var volunteerList = doc.volunteer;
 
       webPageDate.volunteer.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
-      //webPageDate.volunteer.volunteer_list = volunteerList
+      webPageDate.volunteer.volunteerlist = volunteerList
       
       res.render('volunteer.html', webPageDate.volunteer)
     }
