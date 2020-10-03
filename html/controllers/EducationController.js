@@ -33,9 +33,12 @@ const education_get = (req, res, next) => {
       webPageDate.education.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageDate.education.eductaionlist = educationList
 
+      var dataCleanStr = JSON.stringify(webPageDate.education);
+      var dataCleanObj = JSON.parse(dataCleanStr);
+
       console.log(educationList.length)
 
-      res.render('education.html', webPageDate.education)
+      res.render('education.html', dataCleanObj)
     }
   })
 }
