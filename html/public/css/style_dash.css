@@ -284,6 +284,35 @@ a{
   float: right;
 }
 
+/* dash_edits */
+.main-edit-content{
+  align-items: center;
+  text-align: center;
+}
+
+.main-edit-content .editor{
+  width: 90vw;
+  margin-top: 80px;
+}
+
+.main-edit-content #submitbtn{
+  margin-top: 12px;
+  padding: 12px;
+  background-color: rgb(104, 144, 255);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  font-size: 16px;
+  color: white;
+}
+
+.ck-editor__editable {
+  min-height: 60vh;
+}
+
+/* end dash_edits */
+
 /* files page */
 
 .file-content .files{
@@ -324,6 +353,17 @@ a{
 /* end files page */
 
 /* 3 pages */
+.diaplay .infodisplay{
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+.infodisplay p{
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+
 .pages-content{
   margin-top: 80px;
 }
@@ -381,6 +421,8 @@ a{
   color: #aaa;
   font-weight: 500;
 }
+
+
 
 /* end 3 pages */
 
