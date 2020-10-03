@@ -81,17 +81,11 @@
         <div class="pages-content">
             <div class="display">
                  {{each eductaionlist education index}}
-                      <div class="infodisplay">
-                        <div class="preview">
                           <h3>School:{{education.school}}</h3>
-                          <h5>Degree: {{education.degree}}</h5>
-                          <h5>Major:{{education.major}}</h5>
+                          <h5>Degree: {{education.degree}} Major:{{education.major}}</h5>
                           <p>ID:{{education._id}}</p>
-                        </div>
                         <div class="info">
-                          <h6>extraclass: {{education.extraclass}}</h6>
-                          <h6>Start Date:{{education.startDate}}</h6>
-                          <h6>End Date:{{education.endDate}}</h6>
+                          <h6>extraclass: {{education.extraclass}} Start Date:{{education.startDate}} End Date:{{education.endDate}}</h6>
                         </div>
                       </div>
                    {{/each}}

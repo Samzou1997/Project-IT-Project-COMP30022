@@ -372,25 +372,25 @@ a{
   width: 700px;
 }
 
-.infordisplay h3{
+.infodisplay h3{
   letter-spacing: 1px;
   text-transform: uppercase;
   margin 5px 0;
 }
 
-.infordisplay h5,
-.infordisplay h6{
+.infodisplay h5,
+.infodisplay h6{
   opacity: .7;
   letter-spacing: 1px;
 }
 
-.infordisplay .preview{
+.infodisplay .preview{
   background: #4723d9;
   color: #fff;
   padding:20px;
   width: 250px;
   position: relative;
-  text-align: center;
+  text-align:center;
 }
 
 .pages-content{
