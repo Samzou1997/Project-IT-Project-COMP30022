@@ -81,14 +81,14 @@
         <div class="pages-content">
             <div class="display">
                 {{each employmentlist employment index}}
-                      <li>
+                      <div class="infodisplay">
                         <p>Company: {{employment.company}}</p>
                         <p>Title: {{employment.title}}</p>
                         <p>Description:{{employment.description}}</p>
                         <p>Start Date:{{employment.startDate}}</p>
                         <p>End Date:{{employment.endDate}}</p>
                         <p>ID:{{employment._id}}</p>
-                      </li>
+                      </div>
                 {{/each}}
             </div>
             <div class="buttons">
