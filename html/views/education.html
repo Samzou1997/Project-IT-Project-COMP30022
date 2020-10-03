@@ -79,16 +79,32 @@
         </div>
 
         <div class="pages-content">
-            <div class="display">
-                 {{each eductaionlist education index}}
+            <table class="content-table">
+              <thead>
+                <th>School</th>
+                <th>Degree</th>
+                <th>Major</th>
+                <th>Extra class</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+              </thead>
+              <tbody>
+                {{each eductaionlist education index}}
+                <tr>
+                  <td>School:{{education.school}}</td>
+                  <td>Degree:{{education.degree}}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+                 <!-- {{each eductaionlist education index}}
                     <hr>
                     <h3>School:{{education.school}}</h3>
                     <h5>Degree: {{education.degree}} Major:{{education.major}}</h5>
                     <p>ID:{{education._id}}</p>
                     <h6>extraclass: {{education.extraclass}} Start Date:{{education.startDate}} End Date:{{education.endDate}}</h6>
                     <hr>
-                 {{/each}}
-            </div>
+                 {{/each}} -->
             <div class="buttons">
                 <button type="button" data-toggle="modal" data-target="#myModal">Edit your education info</button>
             </div>
