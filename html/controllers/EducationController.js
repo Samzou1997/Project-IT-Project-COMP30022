@@ -76,7 +76,7 @@ const education_edit_submit_post = (req, res, next) => {
         school : req.body.school_name,
         degree: req.body.Degree,
         major : req.body.Major,
-        //extraclass : req.body.extraclass,
+        extraclass : req.body.extraclass,
         startDate : req.body.Started,
         endDate : req.body.End,
       }
