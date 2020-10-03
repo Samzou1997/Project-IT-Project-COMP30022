@@ -32,7 +32,11 @@ const employment_get = (req, res, next) => {
       
       webPageDate.employment.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageDate.employment.employmentlist = employmentList
-      res.render('employment.html', webPageDate.employment)
+
+      var dataCleanStr = JSON.stringify(webPageDate.employment);
+      var dataCleanObj = JSON.parse(dataCleanStr);
+
+      res.render('employment.html', dataCleanObj)
     }
   })
 }

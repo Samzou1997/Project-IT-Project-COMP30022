@@ -32,8 +32,11 @@ const volunteer_get = (req, res, next) => {
 
       webPageDate.volunteer.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageDate.volunteer.volunteerlist = volunteerList
+
+      var dataCleanStr = JSON.stringify(webPageDate.volunteer);
+      var dataCleanObj = JSON.parse(dataCleanStr);
       
-      res.render('volunteer.html', webPageDate.volunteer)
+      res.render('volunteer.html', dataCleanObj)
     }
   })
 }
