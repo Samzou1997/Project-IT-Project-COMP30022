@@ -353,51 +353,16 @@ a{
 /* end files page */
 
 /* 3 pages */
+.pages-content{
+  margin-top: 80px;
+}
+
 .display{
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
   border-radius: 13px;
 }
 
-.diaplay .infodisplay{
-  border-radius: 12px;
-  margin: 15px;
-}
-
-.infodisplay p{
-  font-weight: 500;
-  font-size: 1.1rem;
-  display: flex;
-  max-width: 100%;
-  overflow: hidden;
-  width: 700px;
-}
-
-.infodisplay h3{
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin 5px 0;
-}
-
-.infodisplay h5,
-.infodisplay h6{
-  opacity: .7;
-  letter-spacing: 1px;
-}
-
-.infodisplay .preview{
-  background: #4723d9;
-  color: #fff;
-  padding:20px;
-  width: 250px;
-  position: relative;
-  text-align:center;
-}
-
-.pages-content{
-  margin-top: 80px;
-}
-
-.pages-content p{
+.display p{
   display: none;
 }
 
