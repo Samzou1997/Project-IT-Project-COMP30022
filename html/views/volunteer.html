@@ -80,18 +80,11 @@
         <div class="pages-content">
             <div class="display">
                 {{each volunteerlist volunteer index}}
-                      <div class="infodisplay">
-                        <div class="preview">
-                          <h3>Place: {{volunteer.place}}</h3>
-                        </div>
-                        <div class="info">
-                          <h6>Hours: {{volunteer.workingHours}}</h6>
-                          <h6>Description:{{volunteer.descriptiom}}</h6>
-                          <p>ID:{{volunteer._id}}</p>
-                        </div>
-
-                      </div>
-                {{/each}}
+                    <h3>Place: {{volunteer.place}}</h3>
+                    <h6>Hours: {{volunteer.workingHours}}</h6>
+                    <h6>Description:{{volunteer.descriptiom}}</h6>
+                    <p>ID:{{volunteer._id}}</p>
+              {{/each}}
             </div>
             <div class="buttons">
                 <button type="button" data-toggle="modal" data-target="#myModal">Edit your volunteer info</button>

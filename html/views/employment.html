@@ -81,18 +81,12 @@
         <div class="pages-content">
             <div class="display">
                 {{each employmentlist employment index}}
-                      <div class="infodisplay">
-                        <div class="preview">
-                          <h3>Company: {{employment.company}}</h3>
-                          <h5>Title: {{employment.title}}</h5>
-                        </div>
-                        <div class="info">
-                          <h6>Description:{{employment.description}}</h6>
-                          <h6>Start Date:{{employment.startDate}}</h6>
-                          <h6>End Date:{{employment.endDate}}</h6>
-                          <p>ID:{{employment._id}}</p>
-                        </div>
-                      </div>
+                    <h3>Company: {{employment.company}}</h3>
+                    <h5>Title: {{employment.title}}</h5>
+                    <h6>Description:{{employment.description}}</h6>
+                    <h6>Start Date:{{employment.startDate}}</h6>
+                    <h6>End Date:{{employment.endDate}}</h6>
+                    <p>ID:{{employment._id}}</p>
                 {{/each}}
             </div>
             <div class="buttons">
