@@ -49,7 +49,7 @@ const dashboard_doc_edit_get = (req, res, next) => {
     else {
       userID_str = doc._id.toHexString();
       var docDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.dashboard_document);
-      res.render('doc_edit.html', {
+      res.render('dashboard_edit.html', {
         article : docDir,
         section : 'dashboard'
       })
