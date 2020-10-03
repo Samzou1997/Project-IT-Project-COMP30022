@@ -82,9 +82,12 @@
             <div class="display">
                 <ul>
                    {{each eductaionlist education index}}
-                      <li>School:{{education.school}}, Degree: {{education.degree}}, Major:{{education.major}},
-                          extraclass: {{education.extraclass}}, Start Date:{{education.startDate}},
-                          End Date:{{education.endDate}}
+                      <li>
+                        <p>
+                          School:{{education.school}}, Degree: {{education.degree}}, Major:{{education.major}},
+                              extraclass: {{education.extraclass}}, Start Date:{{education.startDate}},
+                              End Date:{{education.endDate}}
+                        </p>
                       </li>
                    {{/each}}
                 </ul>
