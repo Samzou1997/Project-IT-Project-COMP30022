@@ -7,27 +7,30 @@
     "email" : "",
     "major" : ""
   },
+  "doc_edit" : {
+
+  },
   "files" : {
     "profile_pic_path" : "",
     "filelist" : ""
   },
   "education" : {
     "profile_pic_path" : "",
-    "educaion_list" : ""
+    "eductaionlist" : ""
   },
   "education_edit" : {
     "profile_pic_path" : ""
   },
   "employment" : {
     "profile_pic_path" : "",
-    "employment_list" : ""
+    "employmentlist" : ""
   },
   "employment_edit" : {
     "profile_pic_path" : ""
   },
   "volunteer" : {
     "profile_pic_path" : "",
-    "volunteer_list" : ""
+    "volunteerlist" : ""
   },
   "volunteer_edit" : {
     "profile_pic_path" : ""
