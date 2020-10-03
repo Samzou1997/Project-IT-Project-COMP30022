@@ -9,10 +9,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         <!-- ===== FONTAWESOME ICONS ===== -->
-        <link href="/public/css/fontawesome/css/all.css" rel='stylesheet'>
+        <link href="../public/css/fontawesome/css/all.css" rel='stylesheet'>
 
         <!-- ===== CSS ===== -->
-        <link rel="stylesheet" href="/public/css/style_dash.css">
+        <link rel="stylesheet" href="../public/css/style_dash.css">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -80,8 +80,11 @@
         <div class="pages-content">
             <div class="display">
                 {{each volunteerlist volunteer index}}
-                      <li>Place: {{volunteer.place}}, Hours: {{volunteer.workingHours}},
-                          Description:{{volunteer.descriptiom}} ID:{{volunteer._id}}
+                      <li>
+                        <p>Place: {{volunteer.place}}</p>
+                        <p>Hours: {{volunteer.workingHours}}</p>
+                        <p>Description:{{volunteer.descriptiom}}</p>
+                        <p>ID:{{volunteer._id}}</p>
                       </li>
                 {{/each}}
             </div>
@@ -133,6 +136,6 @@
 
         </div>
         <!--===== MAIN JS =====-->
-        <script src="/public/js/main.js"></script>
+        <script src="../public/js/main.js"></script>
     </body>
 </html>
