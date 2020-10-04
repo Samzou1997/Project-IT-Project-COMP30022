@@ -371,14 +371,19 @@ a{
   min-width: 400px;
 }
 
-.content-table thead{
-  background-color: #f3f6fa;
-}
-
 .content-table th,
 .content-table td{
   border: 1px solid #6fcfff;
   padding: 5px 10px;
+  font-size: 1.1rem;
+}
+
+.content-table tr:nth-child(odd){
+  background: #ddd;
+}
+
+.content-table th{
+  background-color: #f3f6fa;
 }
 
 .buttons button{
