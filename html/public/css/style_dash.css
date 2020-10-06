@@ -444,6 +444,45 @@ a{
 
 /* end 3 pages */
 
+/* setting page */
+
+.setting-content{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  /* margin-top: 80px; */
+}
+
+.profile-setting{
+  display: flex;
+  flex-direction: column;
+}
+
+.setting-content button{
+  width: 150px;
+  height: 49px;
+  border: none;
+  outline: none;
+  border-radius: 49px;
+  cursor: pointer;
+  background-color: #5995fd;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 10px;
+  transition: .5s;
+  float: right;
+}
+
+.photoedit{
+  position: relative;
+  bottom: 25px;
+  right: 30px;
+}
+
+
+
+/* end setting page */
 
 
 @media only screen and (max-width: 768px){
@@ -558,5 +597,9 @@ a{
     background-color: #f3f6fa;
   }
 
+  .setting-content{
+   display: flex;
+   flex-direction: column;
+  }
 
 }

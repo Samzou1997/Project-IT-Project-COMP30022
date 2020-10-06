@@ -131,11 +131,11 @@
                           </div>
                           <div class="input-field">
                               <i class="fas fa-clock"></i>
-                              <input name="Started" id="started" type="text" placeholder="Started From">
+                              <input name="Started" id="started" type="text" placeholder="Started From" data-dd-large="true" data-dd-large-default="true">
                           </div>
                           <div class="input-field">
                               <i class="far fa-clock"></i>
-                              <input name="End" id="end" type="text" placeholder="End at">
+                              <input name="End" id="end" type="text" placeholder="End at" data-dd-large="true" data-dd-large-default="true">
                           </div>
                           <div class="input-field">
                               <i class="fas fa-comment"></i>
@@ -157,5 +157,11 @@
         </div>
         <!--===== MAIN JS =====-->
         <script src="../public/js/main.js"></script>
+        <script src="../public/js/jquery.js"></script>
+        <script src="../public/js/datedropper.pro.min.js"></script>
+        <script>
+          $('#started').dateDropper()
+          $('#end').dateDropper()
+        </script>
     </body>
 </html>
