@@ -304,6 +304,7 @@ a{
 }
 
 .main-edit-content #submitbtn{
+  width: 280px;
   margin-top: 12px;
   padding: 12px;
   background-color: rgb(104, 144, 255);
@@ -313,6 +314,7 @@ a{
   transition: all 0.3s ease 0s;
   font-size: 16px;
   color: white;
+  text-align: center;
 }
 
 .ck-editor__editable {
