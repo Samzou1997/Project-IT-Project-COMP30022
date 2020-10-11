@@ -315,6 +315,7 @@ a{
   font-size: 16px;
   color: white;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .ck-editor__editable {
