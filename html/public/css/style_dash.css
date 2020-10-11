@@ -204,12 +204,18 @@ a{
 .intro{
   grid-area: intro;
   margin: 20px;
+  box-sizing: border-box;
+  /* background: linear-gradient(45deg, var(--first-color), var(--first-color-light)); */
+  text-align: start;
+  overflow: hidden;
+  /* border-radius: 20px; */
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
 }
 
 .intro .content{
   min-height: 823px;
-  background: #ffffff;
   align-items: flex-start;
+  padding: 10px;
 }
 
 .intro button{
@@ -225,15 +231,16 @@ a{
   font-weight: 600;
   margin-top: 10px;
   transition: .5s;
+  margin-left: 30px;
 }
 
 .share{
   /* width: 798px; */
   /* height: 400px; */
   grid-area: share;
-  margin-top: 20px;
-  margin-left: 30px;
+  margin: 20px;
   margin-bottom: 23px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
 }
 
 .share .link{
@@ -251,7 +258,7 @@ a{
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
-  margin-top: 10px;
+  margin: 10px;
   transition: .5s;
   float: right;
 }
@@ -261,6 +268,7 @@ a{
   /* width: 798px; */
   margin: 20px;
   grid-area: profile;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
 }
 
 .profile .content{
@@ -279,7 +287,7 @@ a{
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
-  margin-top: 10px;
+  margin: 10px;
   transition: .5s;
   float: right;
 }
@@ -453,9 +461,28 @@ a{
   /* margin-top: 80px; */
 }
 
+.head{
+  margin: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+}
+
 .profile-setting{
   display: flex;
   flex-direction: column;
+  margin: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+}
+
+.setting-content .input-field{
+  left: 0;
+  margin-left: 10px;
+  max-width: 240px;
+}
+
+.setting-content .input-field input{
+  position: relative;
+  left: 40px;
+  bottom: 40px;
 }
 
 .setting-content button{
@@ -497,7 +524,6 @@ a{
 
   .intro .content{
     min-height: 823px;
-    background: #ffffff;
     align-items: center;
   }
 
