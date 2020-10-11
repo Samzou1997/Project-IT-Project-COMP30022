@@ -276,6 +276,12 @@ a{
   min-height: 270px;
 }
 
+.content .pic{
+  position: absolute;
+  left: 50%;
+  margin-top: 10px;
+}
+
 .profile button{
   width: 300px;
   height: 49px;
