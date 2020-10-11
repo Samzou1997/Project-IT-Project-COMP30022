@@ -507,6 +507,16 @@ a{
   right: 30px;
 }
 
+.pwd-setting{
+  margin: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+}
+
+.test{
+  margin: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+}
+
 
 
 /* end setting page */
