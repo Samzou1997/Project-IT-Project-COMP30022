@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- ===== FONTAWESOME ICONS ===== -->
-        <link href="/public/css/fontawesome/css/all.css" rel='stylesheet'>
+        <link href="../public/css/fontawesome/css/all.css" rel='stylesheet'>
 
         <!-- ===== CSS ===== -->
-        <link rel="stylesheet" href="/public/css/style_dash.css">
+        <link rel="stylesheet" href="../public/css/style_dash.css">
 
         <title>Uprank Portfolio</title>
     </head>
@@ -71,41 +71,64 @@
             </nav>
         </div>
 
-        <div class="main-content">
-            <div class="intro">
-                <div class="content">
-                    {{content}}
+        <div class="setting-content">
+            <div class="head">
+                <div class="head-img">
+                    <img src="{{profile_pic_path}}" alt="">
                 </div>
                 <div class="button">
-                    <a href="/personal/dashboard/doc/edit"><button>Edit your personal doc</button></a>
+                    <a href=""><button class="photoedit">Edit Your Photo</button></a>
                 </div>
             </div> 
             
-            <div class="share">
-                <div class="link">
-                    {{link}}
+            <div class="profile-setting">
+                <div class="setting-content">
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input name="Firstname" id="firstname" type="text" placeholder="{{firstname}}">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input name="Lastname" id="lastname" type="text" placeholder="{{lastname}}">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-clock"></i>
+                        <input name="Birth" id="birth" type="text" placeholder="{{dateofbirth}}" data-dd-large="true" data-dd-large-default="true">
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fas fa-venus-mars"></i>
+                        <input name="Gender" id="Gender" type="text" placeholder="{{gender}}">
+                    </div>
                 </div>
                 <div class="button">
-                    <a href=""><button>XXX</button></a>
+                    <a href=""><button>Update</button></a>
                 </div>
             </div>
-            <div class="profile">
-                <div class="content">
-                    <div class="pic">
-                        <img src="{{profile_pic_path}}" alt="">
-                    </div>
-                    <div class="profile">
-                        <p>Last Name: {{lastname}}</p>
-                        <p>Email: {{email}}</p>
-                        <p>Major: {{major}}</p>
-                    </div>
+            <div class="pwd-setting">
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="changepwd" id="changepwd">
                 </div>
                 <div class="button">
-                    <a href=""><button>XXX</button></a>
+                    <a href=""><button>Update</button></a>
+                </div>
+            </div>
+            <div class="test">
+                <div class="test-content">
+                    Test
+                </div>
+                <div class="butt">
+                    <a href=""><button>Update</button></a>
                 </div>
             </div>
         </div>
         <!--===== MAIN JS =====-->
-        <script src="/public/js/main.js"></script>
+        <script src="../public/js/main.js"></script>
+        <script src="../public/js/jquery.js"></script>
+        <script src="../public/js/datedropper.pro.min.js"></script>
+        <script>
+            $('#birth').dateDropper();
+        </script>
     </body>
 </html>

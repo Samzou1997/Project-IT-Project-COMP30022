@@ -204,12 +204,18 @@ a{
 .intro{
   grid-area: intro;
   margin: 20px;
+  box-sizing: border-box;
+  /* background: linear-gradient(45deg, var(--first-color), var(--first-color-light)); */
+  text-align: start;
+  overflow: hidden;
+  /* border-radius: 20px; */
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
 }
 
 .intro .content{
   min-height: 823px;
-  background: #ffffff;
   align-items: flex-start;
+  padding: 10px;
 }
 
 .intro button{
@@ -225,15 +231,16 @@ a{
   font-weight: 600;
   margin-top: 10px;
   transition: .5s;
+  margin-left: 30px;
 }
 
 .share{
   /* width: 798px; */
   /* height: 400px; */
   grid-area: share;
-  margin-top: 20px;
-  margin-left: 30px;
+  margin: 20px;
   margin-bottom: 23px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
 }
 
 .share .link{
@@ -251,7 +258,7 @@ a{
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
-  margin-top: 10px;
+  margin: 10px;
   transition: .5s;
   float: right;
 }
@@ -261,6 +268,7 @@ a{
   /* width: 798px; */
   margin: 20px;
   grid-area: profile;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
 }
 
 .profile .content{
@@ -279,7 +287,7 @@ a{
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
-  margin-top: 10px;
+  margin: 10px;
   transition: .5s;
   float: right;
 }
@@ -296,6 +304,7 @@ a{
 }
 
 .main-edit-content #submitbtn{
+  width: 280px;
   margin-top: 12px;
   padding: 12px;
   background-color: rgb(104, 144, 255);
@@ -305,6 +314,8 @@ a{
   transition: all 0.3s ease 0s;
   font-size: 16px;
   color: white;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .ck-editor__editable {
@@ -353,24 +364,37 @@ a{
 /* end files page */
 
 /* 3 pages */
+.pages-content{
+  margin-top: 80px;
+}
+
 .display{
-  display: flex;
-  flex-direction: row wrap;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 13px;
+  overflow: hidden;
 }
 
-.diaplay .infodisplay{
-  border-radius: 12px;
-  border: 1px solid #333;
+.content-table{
+  border-collapse: collapse;
+  width: 100%;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
 }
 
-.infodisplay p{
-  font-weight: 500;
+.content-table th,
+.content-table td{
+  border: 1px solid #6fcfff;
+  padding: 5px 10px;
   font-size: 1.1rem;
 }
 
+.content-table tr:nth-child(odd){
+  background: #ddd;
+}
 
-.pages-content{
-  margin-top: 80px;
+.content-table th{
+  background-color: #f3f6fa;
 }
 
 .buttons button{
@@ -431,6 +455,74 @@ a{
 
 /* end 3 pages */
 
+/* setting page */
+
+.setting-content{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  /* margin-top: 80px; */
+}
+
+.head{
+  margin: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+}
+
+.profile-setting{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+}
+
+.setting-content .input-field{
+  left: 0;
+  margin-left: 10px;
+  max-width: 240px;
+}
+
+.setting-content .input-field input{
+  position: relative;
+  left: 40px;
+  bottom: 40px;
+}
+
+.setting-content button{
+  width: 150px;
+  height: 49px;
+  border: none;
+  outline: none;
+  border-radius: 49px;
+  cursor: pointer;
+  background-color: #5995fd;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 10px;
+  transition: .5s;
+  float: right;
+}
+
+.photoedit{
+  position: relative;
+  bottom: 25px;
+  right: 30px;
+}
+
+.pwd-setting{
+  margin: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+}
+
+.test{
+  margin: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+}
+
+
+
+/* end setting page */
 
 
 @media only screen and (max-width: 768px){
@@ -445,7 +537,6 @@ a{
 
   .intro .content{
     min-height: 823px;
-    background: #ffffff;
     align-items: center;
   }
 
@@ -515,5 +606,39 @@ a{
     float: right;
   }
 
+  .content-table thead{
+    display: none;
+  }
+
+  .content-table tr,
+  .content-table td{
+    display: block;
+  }
+
+  .content-table tr:not(:last-child){
+    border-bottom: 4px solid #5ca0c3;
+  }
+
+  .content-table td{
+    padding-left: 54%;
+    position: relative;
+  }
+
+  .content-table td::before{
+    position: absolute;
+    padding: 5px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 45%;
+    content: attr(data-col-title);
+    font-weight: bold;
+    background-color: #f3f6fa;
+  }
+
+  .setting-content{
+   display: flex;
+   flex-direction: column;
+  }
 
 }

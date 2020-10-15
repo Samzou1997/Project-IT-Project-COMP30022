@@ -116,6 +116,12 @@ form.sign-up-form{
     font-weight: 500;
 }
 
+.fgtpwd{
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
 a{
     display: block;
 	text-align: right;

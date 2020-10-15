@@ -78,16 +78,27 @@
         </div>
 
         <div class="pages-content">
-            <div class="display">
-                {{each volunteerlist volunteer index}}
-                      <div class="infodisplay">
-                        <p>Place: {{volunteer.place}}</p>
-                        <p>Hours: {{volunteer.workingHours}}</p>
-                        <p>Description:{{volunteer.descriptiom}}</p>
-                        <p>ID:{{volunteer._id}}</p> 
-                      </div>
-                {{/each}}
-            </div>
+          <table class="content-table">
+            <thead>
+              <th>Place</th>
+              <th>Hours</th>
+              <th>Description</th>
+              <th>ID</th>
+              <!-- <th>Action</th> -->
+            </thead>
+            <tbody>
+              {{each volunteerlist volunteer index}}
+              <tr>
+                <td data-col-title="Place:">{{volunteer.place}}</td>
+                <td data-col-title="Hours:">{{volunteer.title}}</td>
+                <td data-col-title="Description:">{{volunteer.description}}</td>
+                <td data-col-title="ID:">{{volunteer._id}}</td>
+                <td data-col-title="Action:"><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+
             <div class="buttons">
                 <button type="button" data-toggle="modal" data-target="#myModal">Edit your volunteer info</button>
             </div>

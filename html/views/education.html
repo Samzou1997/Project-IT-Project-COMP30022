@@ -79,22 +79,33 @@
         </div>
 
         <div class="pages-content">
-            <div class="display">
-                <ul>
-                   {{each eductaionlist education index}}
-                      <li>
-                        <p>School:{{education.school}}</p>
-                        <p>Degree: {{education.degree}}</p>
-                        <p>Major:{{education.major}}</p>
-                        <p>extraclass: {{education.extraclass}}</p>
-                        <p>Start Date:{{education.startDate}}</p>
-                        <p>End Date:{{education.endDate}}</p>
-                        <p>ID:{{education._id}}</p>
-                      </li>
-                   {{/each}}
-                </ul>
+            <table class="content-table">
+              <thead>
+                <th>School</th>
+                <th>Degree</th>
+                <th>Major</th>
+                <th>Extra class</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>ID</th>
+                <th>Action</th>
+              </thead>
+              <tbody>
+                {{each eductaionlist education index}}
+                <tr>
+                  <td data-col-title="School:">{{education.school}}</td>
+                  <td data-col-title="Degree:">{{education.degree}}</td>
+                  <td data-col-title="Major:">{{education.major}}</td>
+                  <td data-col-title="Extra classes">{{education.extraclass}}</td>
+                  <td data-col-title="Start Date:">{{education.startDate}}</td>
+                  <td data-col-title="End Date">{{education.endDate}}</td>
+                  <td data-col-title="ID">{{education._id}}</td>
+                  <td data-col-title="Action:"><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
 
-            </div>
             <div class="buttons">
                 <button type="button" data-toggle="modal" data-target="#myModal">Edit your education info</button>
             </div>
@@ -120,6 +131,14 @@
                               <input name="school_name" id="" type="text" placeholder="School" required>
                           </div>
                           <div class="input-field">
+                            <i class="fas fa-clock"></i>
+                            <input name="Started" id="started" type="text" placeholder="Started From" data-dd-large="true" data-dd-large-default="true">
+                        </div>
+                        <div class="input-field">
+                            <i class="far fa-clock"></i>
+                            <input name="End" id="end" type="text" placeholder="End at" data-dd-large="true" data-dd-large-default="true">
+                        </div>
+                          <div class="input-field">
                               <i class="fas fa-mosque"></i>
                               <input name="Major" id="" type="text" placeholder="Major" required>
                           </div>
@@ -130,14 +149,6 @@
                           <div class="input-field">
                               <i class="fab fa-dyalog"></i>
                               <input name="extraclass" id="extraclass" type="text" placeholder="Extra Class">
-                          </div>
-                          <div class="input-field">
-                              <i class="fas fa-clock"></i>
-                              <input name="Started" id="started" type="text" placeholder="Started From">
-                          </div>
-                          <div class="input-field">
-                              <i class="far fa-clock"></i>
-                              <input name="End" id="end" type="text" placeholder="End at">
                           </div>
                       </div>
                       </div>
@@ -156,5 +167,11 @@
         </div>
         <!--===== MAIN JS =====-->
         <script src="../public/js/main.js"></script>
+        <script src="../public/js/jquery.js"></script>
+        <script src="../public/js/datedropper.pro.min.js"></script>
+        <script>
+          $('#started').dateDropper()
+          $('#end').dateDropper()
+        </script>
     </body>
 </html>
