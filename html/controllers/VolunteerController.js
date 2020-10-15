@@ -89,7 +89,7 @@ const volunteer_edit_submit_post = (req, res, next) => {
       var volunteerObj = {
         place : req.body.place,
         workingHours: req.body.hours,
-        workIntro : req.body.intro,
+        description : req.body.description,
       }
 
       var volunteerList = doc.volunteer;
