@@ -118,16 +118,18 @@ router.get('/file/delete', ErrorController.not_found_404)
 //router.post('/home', HomeController.home_post) // full path: /personal/home
 router.get('/education', VerifyController.verify_login, EducationController.education_get)
 
-router.get('/education/edit', VerifyController.verify_login, EducationController.education_edit_get);
+//router.get('/education/edit', VerifyController.verify_login, EducationController.education_edit_get);
 
 router.post('/education/edit/submit', VerifyController.verify_login, EducationController.education_edit_submit_post);
 router.get('/education/edit/submit', ErrorController.not_found_404);
+
+router.get('/education/delete', VerifyController.verify_login, EducationController.education_delete_get);
 // ======================================================================================================== //
 
 //router.post('/home', HomeController.home_post) // full path: /personal/home
 router.get('/employment', VerifyController.verify_login, EmploymentController.employment_get)
 
-router.get('/employment/edit', VerifyController.verify_login, EmploymentController.employment_edit_get);
+//router.get('/employment/edit', VerifyController.verify_login, EmploymentController.employment_edit_get);
 
 router.post('/employment/edit/submit', VerifyController.verify_login, EmploymentController.employment_edit_submit_post);
 router.get('/employment/edit/submit', ErrorController.not_found_404);
@@ -137,7 +139,7 @@ router.get('/employment/edit/submit', ErrorController.not_found_404);
 //router.post('/home', HomeController.home_post) // full path: /personal/home
 router.get('/volunteer', VerifyController.verify_login, VolunteerController.volunteer_get)
 
-router.get('/volunteer/edit', VerifyController.verify_login, VolunteerController.volunteer_edit_get);
+//router.get('/volunteer/edit', VerifyController.verify_login, VolunteerController.volunteer_edit_get);
 
 router.post('/volunteer/edit/submit', VerifyController.verify_login, VolunteerController.volunteer_edit_submit_post);
 router.get('/volunteer/edit/submit', ErrorController.not_found_404);
