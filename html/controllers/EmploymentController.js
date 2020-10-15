@@ -14,6 +14,19 @@ const userDataDir         = "/home/IT_Project/html/file/userData/";
 
 var userID_str;
 
+Array.prototype.indexOf = function (val) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == val) return i;
+  }
+  return -1;
+};
+
+Array.prototype.remove = function (val) {
+  var index = this.indexOf(val);
+  if (index > -1) {
+    this.splice(index, 1);
+  }
+};
 
 const employment_get = (req, res, next) => {
   User.findOne({ email: req.cookies["email"] }, function (err, doc) {
@@ -102,8 +115,47 @@ const employment_edit_submit_post = (req, res, next) => {
   })
 }
 
+const employment_delete_get = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      var employmentList = doc.employment;
+
+      employmentList.forEach(element => {
+        if (element._id == req.query.id) {
+          employmentList.remove(element);
+        }
+      });
+
+      var updatedData = {
+        employment: employmentList
+      }
+
+      User.findByIdAndUpdate(doc._id, { $set: updatedData })
+        .then(response => {
+          res.redirect('/personal/employment');
+        })
+        .catch(error => {
+          res.render('error.html', {
+            title: 'System Error',
+            errorCode: 'System Error',
+            errorMessage: error
+          });
+        });
+    }
+  })
+}
+
 module.exports = {
   employment_get,
   employment_edit_get,
-  employment_edit_submit_post
+  employment_edit_submit_post,
+  employment_delete_get
 }

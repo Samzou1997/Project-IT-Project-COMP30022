@@ -134,6 +134,7 @@ router.get('/employment', VerifyController.verify_login, EmploymentController.em
 router.post('/employment/edit/submit', VerifyController.verify_login, EmploymentController.employment_edit_submit_post);
 router.get('/employment/edit/submit', ErrorController.not_found_404);
 
+router.get('/employment/delete', VerifyController.verify_login, EmploymentController.employment_delete_get);
 // ======================================================================================================== //
 
 //router.post('/home', HomeController.home_post) // full path: /personal/home
@@ -144,6 +145,7 @@ router.get('/volunteer', VerifyController.verify_login, VolunteerController.volu
 router.post('/volunteer/edit/submit', VerifyController.verify_login, VolunteerController.volunteer_edit_submit_post);
 router.get('/volunteer/edit/submit', ErrorController.not_found_404);
 
+router.get('/volunteer/delete', VerifyController.verify_login, VolunteerController.volunteer_delete_get);
 // ======================================================================================================== //
 
 //router.post('/home', HomeController.home_post) // full path: /personal/home
