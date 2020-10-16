@@ -407,6 +407,7 @@ function deleteFile(fileName, userID, callback) {
 
 function recycleFile(fileName, userID, callback) {
   getToUserDir(userID, function () {
+    console.log(fileName);
     var fileDestDir = path.join(trashDir, fileName);
     var fileSourceDir = path.join(customizeFileDir, fileName);
     fs.rename(fileSourceDir, fileDestDir, function (error) {
