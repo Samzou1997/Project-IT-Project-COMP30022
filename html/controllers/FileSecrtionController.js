@@ -25,11 +25,15 @@ const file_section_get = (req, res, next) => {
     else {
       var userID_str = doc._id.toHexString();
       var userCustomizeFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.userCustomizeFileDir);
+      var trashFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.trashFileDir);
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
+      
       var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
+      var trashFileList = FileSystemController.getFileUrls(trashFileDir);
 
-      webPageData.files.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
-      webPageData.files.filelist = fileList
+      webPageData.files.profile_pic_path = FileSystemController.getFileUrl(profilePicDir);
+      webPageData.files.filelist = fileList;
+      webPageData.files.trashfilelist = trashFileList;
 
       res.render('files.html', webPageData.files);
     }
@@ -72,6 +76,33 @@ const file_upload_post = (req, res, next) => {
   })
 }
 
+const file_recycle_post = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      FileSystemController.recycleFile(req.body.filename, doc._id, function (error) {
+        if (error) {
+          res.render('error.html', {
+            title: 'System Error',
+            errorCode: 'upload Error',
+            errorMessage: err
+          });
+        }
+        else {
+          res.redirect('/personal/file');
+        }
+      });
+    }
+  })
+}
+
 const file_delete_post = (req, res, next) => {
   User.findOne({ email: req.cookies["email"] }, function (err, doc) {
     if (err) {
@@ -100,5 +131,5 @@ const file_delete_post = (req, res, next) => {
 }
 
 module.exports = {
-  file_upload_post, file_section_get, file_delete_post
+  file_upload_post, file_section_get, file_delete_post, file_recycle_post
 }

@@ -12,7 +12,8 @@
   },
   "files" : {
     "profile_pic_path" : "",
-    "filelist" : []
+    "filelist" : [],
+    "trashfilelist" : []
   },
   "education" : {
     "profile_pic_path" : "",

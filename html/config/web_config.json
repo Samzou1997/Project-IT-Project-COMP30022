@@ -20,6 +20,7 @@
     
     "dashboard_document": "/userSys/doc_sys_reserved.html",
     "profile_pic": "/userSys/profile_pic_sys_reserved.png",
-    "userCustomizeFileDir": "/userUpload/customizeFile"
+    "userCustomizeFileDir": "/userUpload/customizeFile",
+    "trashFileDir" : "/trash"
   }
 }
