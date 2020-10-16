@@ -70,6 +70,7 @@ function mkUserDir(userID, callback) {
   userDir = path.join(rootDir, "/file/userData", userID.toHexString()); // full path in server
   userSysDir = path.join(userDir, '/userSys');
   userUploadDir = path.join(userDir, '/userUpload');
+  trashDir = path.join(userDir, '/trash');
   docInsertDir = path.join(userUploadDir, '/docInsert');
   customizeFileDir = path.join(userUploadDir, '/customizeFile');
 
@@ -105,6 +106,7 @@ function mkUserDir(userID, callback) {
             fs.copyFile(defaultProfilePic_dir, profilePicDestDir, function (error) { });
             fs.copyFile(defaultDoc_dir, docFileDestDir, function (error) { });
           });
+          fs.mkdir(trashDir, 0777, function (error) {});
           fs.mkdir(userUploadDir, 0777, function (error) {
             fs.mkdir(docInsertDir, 0777, function (error) { });
             fs.mkdir(customizeFileDir, 0777, function (error) {
@@ -389,7 +391,7 @@ function upload_file(file, userID, callback) {
 
 function deleteFile(fileName, userID, callback) {
   getToUserDir(userID, function () {
-    var fileDestDir = path.join(customizeFileDir, fileName);
+    var fileDestDir = path.join(trashDir, fileName);
     fs.unlink(fileDestDir, function (error) {
       if (error) {
         console.log('[file delete ERROR]: ' + error);
@@ -402,6 +404,24 @@ function deleteFile(fileName, userID, callback) {
   });
 }
 
+function recycleFile(fileName, userID, callback) {
+  getToUserDir(userID, function () {
+    var fileDestDir = path.join(trashDir, fileName);
+    var fileSourceDir = path.join(customizeFileDir, fileName);
+    fs.rename(fileSourceDir, fileDestDir, function (error) {
+      if (error) {
+        console.log('[file recycle ERROR]: ' + error);
+        callback(error);
+      }
+      else {
+        callback();
+      }
+    });
+  });
+}
+
+
+
 module.exports = {
   userSys_upload_post,
   alphaSection_upload_post,
@@ -413,5 +433,6 @@ module.exports = {
   saveFile,
   upload_file,
   deleteFile,
-  profile_pic_upload
+  profile_pic_upload,
+  recycleFile
 }
