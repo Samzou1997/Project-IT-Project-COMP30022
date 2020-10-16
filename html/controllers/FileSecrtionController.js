@@ -27,7 +27,7 @@ const file_section_get = (req, res, next) => {
       var userCustomizeFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.userCustomizeFileDir);
       var trashFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.trashFileDir);
       var profilePicDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.profile_pic);
-      
+
       var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
       var trashFileList = FileSystemController.getFileUrls(trashFileDir);
 
@@ -76,7 +76,7 @@ const file_upload_post = (req, res, next) => {
   })
 }
 
-const file_recycle_post = (req, res, next) => {
+const file_recycle_get = (req, res, next) => {
   User.findOne({ email: req.cookies["email"] }, function (err, doc) {
     if (err) {
       console.log("db error")
@@ -87,7 +87,7 @@ const file_recycle_post = (req, res, next) => {
       });
     }
     else {
-      FileSystemController.recycleFile(req.body.filename, doc._id, function (error) {
+      FileSystemController.recycleFile(req.query.filename, doc._id, function (error) {
         if (error) {
           res.render('error.html', {
             title: 'System Error',
@@ -103,7 +103,7 @@ const file_recycle_post = (req, res, next) => {
   })
 }
 
-const file_delete_post = (req, res, next) => {
+const file_delete_get = (req, res, next) => {
   User.findOne({ email: req.cookies["email"] }, function (err, doc) {
     if (err) {
       console.log("db error")
@@ -114,7 +114,7 @@ const file_delete_post = (req, res, next) => {
       });
     }
     else {
-      FileSystemController.deleteFile(req.body.filename, doc._id, function (error) {
+      FileSystemController.deleteFile(req.query.filename, doc._id, function (error) {
         if (error) {
           res.render('error.html', {
             title: 'System Error',
@@ -131,5 +131,5 @@ const file_delete_post = (req, res, next) => {
 }
 
 module.exports = {
-  file_upload_post, file_section_get, file_delete_post, file_recycle_post
+  file_upload_post, file_section_get, file_delete_get, file_recycle_get
 }
