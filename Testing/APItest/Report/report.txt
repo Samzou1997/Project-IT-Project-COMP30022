@@ -1,0 +1,3 @@
+Total test case: 25
+Succeed test case: 25
+Failed test case: 0

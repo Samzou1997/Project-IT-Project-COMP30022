@@ -1,33 +1,31 @@
 import json
 import os
 import traceback
-from TestCase.test import *
+from Function.test import *
+from Function.summary import *
         
 print("API test start...")
+
+#case counting
+total_case = []
+succeed_case = []
+failed_case = []
 
 #find path for test case data
 path = os.getcwd()
 path = os.path.join(path,"TestData/data.json")
 
-#case counting
-total_case = 0
-succeed_case = 0
-failed_case = 0
-
 try:
     with open(path,'r',encoding = 'utf-8') as load_f:
         load_dict = json.load(load_f)
         for testcase in load_dict:
-            total_case += 1
+            total_case.append(testcase)
             result = test_case(testcase)
             if result:
-                succeed_case += 1
+                succeed_case.append(testcase)
             else:
-                failed_case += 1
+                failed_case.append(testcase)
 except Exception:
     traceback.print_exc()
 
-print("--------------------")
-print("Total test case:", total_case)
-print("Succeed test case:", succeed_case)
-print("Failed test case:", failed_case)
+summary(total_case, succeed_case, failed_case)

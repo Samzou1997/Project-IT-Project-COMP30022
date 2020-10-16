@@ -37,3 +37,4 @@ def test_case(testcase):
         return False
     else:
         print("Error: Response verify error.")
+        return False
