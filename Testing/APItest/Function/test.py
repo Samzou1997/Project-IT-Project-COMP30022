@@ -5,7 +5,8 @@ from Base.ResponseVerify import *
 def test_case(testcase):
 
     print("--------------------")
-    print(testcase["test_name"], "start...")
+    print("Test",testcase["index"], "start...")
+    print(testcase["information"])
 
     #read data, find request
     test_req = testcase["request"]
@@ -20,7 +21,7 @@ def test_case(testcase):
     elif (method == "get"):
         res = requests.get(url = url,params = data, headers = headers)
     else:
-        print("Error:", testcase["test_name"], "request_method error.")
+        print("Error: Test", testcase["index"], "request_method error.")
         result = "failed."
         return False
     
@@ -29,10 +30,11 @@ def test_case(testcase):
 
     #print("response status code:",res.status_code)
     #print("response headers",type(res.headers))
-    print(testcase["test_name"], result + ".")
+    print("Result:", result + ".")
     if (result == "succeed"):
         return True
     elif (result == "failed"):
         return False
     else:
         print("Error: Response verify error.")
+        return False
