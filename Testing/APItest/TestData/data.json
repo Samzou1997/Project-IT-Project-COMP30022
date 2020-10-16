@@ -1,6 +1,7 @@
 [
 	{
-		"test_name": "Test1",
+		"index": "1",
+		"information": "Test login function.",
 		"request":{
 			"request_method": "post",
 			"url": "http://54.206.15.44/Login",
@@ -18,463 +19,8 @@
 	},
 	
 	{
-		"test_name": "Test2",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/home",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test3",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/home/edit",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test4",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/home/edit/infosubmit",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test5",
-		"request":{
-			"request_method": "post",
-			"url": "http://54.206.15.44/personal/home/edit/infosubmit",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test6",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/home/edit/picupload",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test7",
-		"request":{
-			"request_method": "post",
-			"url": "http://54.206.15.44/personal/home/edit/picupload",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test8",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/learning",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test9",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/learning/edit/fileupload",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test10",
-		"request":{
-			"request_method": "post",
-			"url": "http://54.206.15.44/personal/learning/edit/fileupload",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test11",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/learning/edit/article",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test12",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/learning/edit/article/submit",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test13",
-		"request":{
-			"request_method": "post",
-			"url": "http://54.206.15.44/personal/learning/edit/article/submit",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test14",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/working",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test15",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/working/edit/fileupload",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test16",
-		"request":{
-			"request_method": "post",
-			"url": "http://54.206.15.44/personal/working/edit/fileupload",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test17",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/working/edit/article",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test18",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/working/edit/article/submit",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test19",
-		"request":{
-			"request_method": "post",
-			"url": "http://54.206.15.44/personal/working/edit/article/submit",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test20",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/volunteer",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test21",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/volunteer/edit/fileupload",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test22",
-		"request":{
-			"request_method": "post",
-			"url": "http://54.206.15.44/personal/volunteer/edit/fileupload",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test23",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/volunteer/edit/article",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test24",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/volunteer/edit/article/submit",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test25",
-		"request":{
-			"request_method": "post",
-			"url": "http://54.206.15.44/personal/volunteer/edit/article/submit",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test26",
+		"index": "2",
+		"information": "Test dashboard button in personal home page.",
 		"request":{
 			"request_method": "get",
 			"url": "http://54.206.15.44/personal/dashboard",
@@ -493,7 +39,68 @@
 	},
 
 	{
-		"test_name": "Test27",
+		"index": "3",
+		"information": "Test doc edit button in dashboard page.",
+		"request":{
+			"request_method": "get",
+			"url": "http://54.206.15.44/personal/dashboard/doc/edit",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "4",
+		"information": "Test submit button in doc edit page.",
+		"request":{
+			"request_method": "get",
+			"url": "http://54.206.15.44/personal/dashboard/doc/submit",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "5",
+		"information": "Test submit button in doc edit page.",
+		"request":{
+			"request_method": "post",
+			"url": "http://54.206.15.44/personal/dashboard/doc/submit",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "6",
+		"information": "Test file button in personal home page.",
 		"request":{
 			"request_method": "get",
 			"url": "http://54.206.15.44/personal/file",
@@ -512,26 +119,8 @@
 	},
 
 	{
-		"test_name": "Test28",
-		"request":{
-			"request_method": "get",
-			"url": "http://54.206.15.44/personal/file/upload",
-			"data": {
-				
-			},
-			"headers": {
-				"Upgrade-Insecure-Requests": "1",
-				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-				"Referer": "http://54.206.15.44/"
-			}
-		},
-		"expect_response": {
-			"status_code": "200"		
-		}
-	},
-
-	{
-		"test_name": "Test29",
+		"index": "7",
+		"information": "Test upload button in file page.",
 		"request":{
 			"request_method": "post",
 			"url": "http://54.206.15.44/personal/file/upload",
@@ -550,7 +139,28 @@
 	},
 
 	{
-		"test_name": "Test30",
+		"index": "8",
+		"information": "Test upload button in file page.",
+		"request":{
+			"request_method": "get",
+			"url": "http://54.206.15.44/personal/file/upload",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "9",
+		"information": "Test delete button in file page.",
 		"request":{
 			"request_method": "get",
 			"url": "http://54.206.15.44/personal/file/delete",
@@ -569,7 +179,8 @@
 	},
 
 	{
-		"test_name": "Test31",
+		"index": "10",
+		"information": "Test delete button in file page.",
 		"request":{
 			"request_method": "post",
 			"url": "http://54.206.15.44/personal/file/delete",
@@ -588,7 +199,8 @@
 	},
 
 	{
-		"test_name": "Test32",
+		"index": "11",
+		"information": "Test education button in personal home page.",
 		"request":{
 			"request_method": "get",
 			"url": "http://54.206.15.44/personal/education",
@@ -607,7 +219,68 @@
 	},
 
 	{
-		"test_name": "Test33",
+		"index": "12",
+		"information": "Test submit button in education page.",
+		"request":{
+			"request_method": "get",
+			"url": "http://54.206.15.44/personal/education/edit/submit",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "13",
+		"information": "Test submit button in education page.",
+		"request":{
+			"request_method": "post",
+			"url": "http://54.206.15.44/personal/education/edit/submit",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "14",
+		"information": "Test delete button in education page.",
+		"request":{
+			"request_method": "get",
+			"url": "http://54.206.15.44/personal/education/delete",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "15",
+		"information": "Test employment button in personal home page.",
 		"request":{
 			"request_method": "get",
 			"url": "http://54.206.15.44/personal/employment",
@@ -626,7 +299,148 @@
 	},
 
 	{
-		"test_name": "Test34",
+		"index": "16",
+		"information": "Test submit button in employment page.",
+		"request":{
+			"request_method": "post",
+			"url": "http://54.206.15.44/personal/employment/edit/submit",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "17",
+		"information": "Test submit button in employment page.",
+		"request":{
+			"request_method": "get",
+			"url": "http://54.206.15.44/personal/employment/edit/submit",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "18",
+		"information": "Test delete button in employment page.",
+		"request":{
+			"request_method": "get",
+			"url": "http://54.206.15.44/personal/employment/delete",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "19",
+		"information": "Test volunteer button in personal home page.",
+		"request":{
+			"request_method": "get",
+			"url": "http://54.206.15.44/personal/volunteer",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "20",
+		"information": "Test submit button in volunteer page.",
+		"request":{
+			"request_method": "get",
+			"url": "http://54.206.15.44/personal/volunteer/edit/submit",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "21",
+		"information": "Test submit button in volunteer page.",
+		"request":{
+			"request_method": "post",
+			"url": "http://54.206.15.44/personal/volunteer/edit/submit",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "22",
+		"information": "Test delete button in volunteer page.",
+		"request":{
+			"request_method": "get",
+			"url": "http://54.206.15.44/personal/volunteer/delete",
+			"data": {
+				
+			},
+			"headers": {
+				"Upgrade-Insecure-Requests": "1",
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+				"Referer": "http://54.206.15.44/"
+			}
+		},
+		"expect_response": {
+			"status_code": "200"		
+		}
+	},
+
+	{
+		"index": "23",
+		"information": "Test setting button in personal home page.",
 		"request":{
 			"request_method": "get",
 			"url": "http://54.206.15.44/personal/setting",
@@ -645,7 +459,8 @@
 	},
 
 	{
-		"test_name": "Test35",
+		"index": "24",
+		"information": "Test contact button in personal home page.",
 		"request":{
 			"request_method": "get",
 			"url": "http://54.206.15.44/personal/contact",
@@ -664,7 +479,8 @@
 	},
 
 	{
-		"test_name": "Test36",
+		"index": "25",
+		"information": "Test logout button in personal home page.",
 		"request":{
 			"request_method": "get",
 			"url": "http://54.206.15.44/personal/logout",
@@ -680,5 +496,5 @@
 		"expect_response": {
 			"status_code": "200"		
 		}
-	}	
+	}		
 ]
