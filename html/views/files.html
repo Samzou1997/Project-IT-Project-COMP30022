@@ -75,13 +75,19 @@
             <div class="files">
                 <h2>File List</h2>
                 {{each filelist file index}}
-                    <i class="fas fa-file"></i><a href="{{file.url}}"><li>{{file.fileName}}</li></a><a href="/personal/file/recycle?filename={{file.fileName}}"><i class="fas fa-trash"></i></a></br>
+                    <i class="fas fa-file"></i>
+                    <a href="{{file.url}}"><li>{{file.fileName}}</li></a>
+                    <a href="/personal/file/recycle?filename={{file.fileName}}"><i class="fas fa-trash"></i></a>
+                </br>
                 {{/each}}
             </div>
             <div class="deleted_files">
                 <h2>Trash Bin</h2>
-                {{each deletedfilelist deletedfile index}}
-                  <i class="fas fa-file"></i><a href="{{deletedfile.url}}"><li>{{deletedfile.fileName}}</li></a><a href="/personal/file/delete?filename={{file.fileName}}"><i class="fas fa-trash"></i></a></br>
+                {{each trashfilelist trashfile index}}
+                  <i class="fas fa-file"></i>
+                  <a href="{{trashfile.url}}"><li>{{trashfile.fileName}}</li></a>
+                  <a href="/personal/file/delete?filename={{trashfile.fileName}}"><i class="fas fa-trash"></i></a>
+                </br>
                 {{/each}}
             </div>
             <div class="uploadbtn">
