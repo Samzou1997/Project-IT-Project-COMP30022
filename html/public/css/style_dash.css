@@ -330,6 +330,16 @@ a{
   text-align: center;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+  margin: 12px;
+}
+
+.file-content .deleted_files{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+  margin: 12px;
 }
 
 .file-content button,

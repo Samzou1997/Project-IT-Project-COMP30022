@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- ===== FONTAWESOME ICONS ===== -->
-        <link href="/public/css/fontawesome/css/all.css" rel='stylesheet'>
+        <link href="../public/css/fontawesome/css/all.css" rel='stylesheet'>
 
         <!-- ===== CSS ===== -->
-        <link rel="stylesheet" href="/public/css/style_dash.css">
+        <link rel="stylesheet" href="../public/css/style_dash.css">
 
         <title>Uprank Portfolio</title>
     </head>
@@ -41,7 +41,7 @@
                             <i class='fas fa-file nav__icon' ></i>
                             <span class="nav__name">Files</span>
                         </a>
-                        
+
                         <a href="/personal/education" class="nav__link">
                             <i class='fas fa-school nav__icon' ></i>
                             <span class="nav__name">Educations</span>
@@ -74,8 +74,13 @@
         <div class="file-content">
             <div class="files">
                 {{each filelist file index}}
-                    <a href="{{file.url}}"><li>{{file.fileName}}</li></a></br>
-                    {{/each}}
+                    <i class="fas fa-file"></i><a href="{{file.url}}"><li>{{file.fileName}}</li></a><a href=""><i class="fas fa-trash"></i></a></br>
+                {{/each}}
+            </div>
+            <div class="deleted_files">
+                {{each deletedfilelist deletedfile index}}
+                  <i class="fas fa-file"></i><a href="{{deletedfile.url}}"><li>{{deletedfile.fileName}}</li></a><a href=""><i class="fas fa-trash"></i></a></br>
+                {{/each}}
             </div>
             <div class="uploadbtn">
                 <form action="/personal/file/upload" enctype="multipart/form-data" method="post">
@@ -87,25 +92,25 @@
             </div>
         </div>
         <!--===== MAIN JS =====-->
-        <script src="/public/js/main.js"></script>
+        <script src="../public/js/main.js"></script>
         <script type="text/javascript">
             const realFileBtn = document.getElementById("real-file");
             const customBtn = document.getElementById("custom-button");
             const customTxt = document.getElementById("custom-text");
-    
+
             customBtn.addEventListener("click",function(){
                 realFileBtn.click();
             })
-    
+
             realFileBtn.addEventListener("change",function(){
                 if(realFileBtn.value){
                 customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
                 } else{
                 customTxt.innerHTML = "No file chosen";
             }
-          
+
             });
-    
+
         </script>
     </body>
 </html>
