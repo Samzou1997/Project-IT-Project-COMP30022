@@ -110,8 +110,9 @@ router.get('/file', VerifyController.verify_login, FileSectionController.file_se
 router.post('/file/upload', upload.single('uploadFile'), VerifyController.verify_login, FileSectionController.file_upload_post)
 router.get('/file/upload', ErrorController.not_found_404)
 
-router.post('/file/delete', VerifyController.verify_login, FileSectionController.file_delete_post)
-router.get('/file/delete', ErrorController.not_found_404)
+router.get('/file/recycle', VerifyController.verify_login, FileSectionController.file_recycle_get)
+
+router.get('/file/delete', VerifyController.verify_login, FileSectionController.file_delete_get)
 
 // ======================================================================================================== //
 
