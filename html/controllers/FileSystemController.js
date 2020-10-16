@@ -21,6 +21,7 @@ const sysReservedDoc_fileName             = 'doc_sys_reserved.html';
 var userDir; // full path in server
 var userSysDir;
 var userUploadDir;
+var trashDir;
 var docInsertDir;
 var customizeFileDir;
 var alphaSectionDir;
