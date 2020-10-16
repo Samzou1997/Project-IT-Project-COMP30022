@@ -143,6 +143,7 @@ function getToUserDir(userID, callback) {
   userDir = path.join(rootDir, "/file/userData", userID.toHexString()); // full path in server
   userSysDir = path.join(userDir, '/userSys');
   userUploadDir = path.join(userDir, '/userUpload');
+  trashDir = path.join(userDir, '/trash');
   docInsertDir = path.join(userUploadDir, '/docInsert');
   customizeFileDir = path.join(userUploadDir, '/customizeFile');
   alphaSectionDir = path.join(customizeFileDir, '/alphagSection');
@@ -407,7 +408,6 @@ function deleteFile(fileName, userID, callback) {
 
 function recycleFile(fileName, userID, callback) {
   getToUserDir(userID, function () {
-    console.log(fileName);
     var fileDestDir = path.join(trashDir, fileName);
     var fileSourceDir = path.join(customizeFileDir, fileName);
     fs.rename(fileSourceDir, fileDestDir, function (error) {

@@ -87,7 +87,6 @@ const file_recycle_get = (req, res, next) => {
       });
     }
     else {
-      console.log(req.query.filename);
       FileSystemController.recycleFile(req.query.filename, doc._id, function (error) {
         if (error) {
           res.render('error.html', {
