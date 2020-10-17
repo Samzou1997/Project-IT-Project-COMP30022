@@ -49,7 +49,7 @@ const setting_get = (req, res, next) => {
       webPageDate.setting.address = doc.details.address;
       webPageDate.setting.major = doc.details.major;
 
-      console.log(webPageDate.setting);
+      //console.log(webPageDate.setting);
       
       res.render('settings.html', webPageDate.setting);
     }
@@ -68,7 +68,7 @@ const setting_info_update_post = (req, res, next) => {
     }
     else {
       userID_str = doc._id.toHexString();
-      console.log(req.body.Birth);
+      //console.log(req.body.Birth);
       var updatedData = {
         firstName : req.body.Firstname,
         lastName : req.body.Lastname,
