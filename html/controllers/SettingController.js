@@ -36,7 +36,7 @@ const setting_get = (req, res, next) => {
 
       var date = new Date(doc.details.dateBirth);
       var time = date.getTime();
-      webPageDate.setting.dateofbirth = time;
+      webPageDate.setting.dateofbirth = doc.details.dateBirth;
       webPageDate.setting.gender = doc.details.gender;
       webPageDate.setting.phone = doc.details.phone;
       webPageDate.setting.address = doc.details.address;
