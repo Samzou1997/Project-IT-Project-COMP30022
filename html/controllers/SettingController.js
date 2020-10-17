@@ -91,9 +91,7 @@ const resetpwd = (req, res, next) => {
           }
           User.findByIdAndUpdate(userid, { $set: updatedData })
             .then(response => {
-              res.render('SendEmailComfirmation.html', {
-                message: `password changed`
-              });
+              res.redirect("/personal/setting")
             })
             .catch(error => {
               console.log(error)
