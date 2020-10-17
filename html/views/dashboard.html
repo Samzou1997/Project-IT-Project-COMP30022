@@ -105,6 +105,7 @@
         <script type="text/javascript">
             var clipboard = new ClipboardJS('.btn');
             clipboard.on('success', function(e) {
+                alert("复制成功！");
                 console.log(e);
             });
             clipboard.on('error', function(e) {
