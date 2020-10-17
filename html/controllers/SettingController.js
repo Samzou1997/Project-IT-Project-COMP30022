@@ -43,6 +43,8 @@ const setting_get = (req, res, next) => {
       webPageDate.setting.phone = doc.details.phone;
       webPageDate.setting.address = doc.details.address;
       webPageDate.setting.major = doc.details.major;
+
+      console.log(webPageDate.setting);
       
       res.render('settings.html', webPageDate.setting);
     }
