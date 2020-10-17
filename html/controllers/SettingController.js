@@ -34,13 +34,13 @@ const setting_get = (req, res, next) => {
       webPageDate.setting.profile_pic_path = FileSystemController.getFileUrl(profilePicDir);
       webPageDate.setting.firstname = doc.firstName;
       webPageDate.setting.lastname = doc.lastName;
-      console.log(doc.lastName);
 
       var date = doc.details.dateBirth;
       var dataCleanStr = JSON.stringify(date);
+      dataCleanStr = dataCleanStr.replace(/^(\s|")+|(\s|")+$/g, '');
       console.log(dataCleanStr);
       //date = moment(date, "MM-DD-YYYY");
-      webPageDate.setting.dateofbirth = dataCleanStr.toString();
+      webPageDate.setting.dateofbirth = dataCleanStr;
       webPageDate.setting.gender = doc.details.gender;
       webPageDate.setting.phone = doc.details.phone;
       webPageDate.setting.address = doc.details.address;
