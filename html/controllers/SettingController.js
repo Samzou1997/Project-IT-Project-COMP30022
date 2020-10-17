@@ -33,7 +33,7 @@ const setting_get = (req, res, next) => {
       webPageDate.setting.profile_pic_path = FileSystemController.getFileUrl(profilePicDir);
       webPageDate.setting.firstname = doc.firstName;
       webPageDate.setting.lastname = doc.lastName;
-      webPageDate.setting.dateofbirth = doc.details.dateBirth;
+      webPageDate.setting.dateofbirth = new Date(doc.details.dateBirth);
       webPageDate.setting.gender = doc.details.gender;
       webPageDate.setting.phone = doc.details.phone;
       webPageDate.setting.address = doc.details.address;
