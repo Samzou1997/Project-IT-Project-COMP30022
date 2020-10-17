@@ -147,7 +147,10 @@ router.get('/volunteer/delete', VerifyController.verify_login, VolunteerControll
 
 //router.post('/home', HomeController.home_post) // full path: /personal/home
 router.get('/setting', VerifyController.verify_login, SettingController.setting_get)
+
 router.post('/setting/PwdReset', VerifyController.verify_login, SettingController.resetpwd)
+
+router.post('/setting/infoupdate', VerifyController.verify_login, SettingController.setting_info_update_post)
 // ======================================================================================================== //
 
 //router.post('/logout', LogoutController.logout_post) // full path: /personal/logout
