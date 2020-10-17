@@ -114,6 +114,7 @@ router.get('/file/recycle', VerifyController.verify_login, FileSectionController
 
 router.get('/file/delete', VerifyController.verify_login, FileSectionController.file_delete_get)
 
+router.get('/file/recover', VerifyController.verify_login, FileSectionController.file_recover_get)
 // ======================================================================================================== //
 
 //router.post('/home', HomeController.home_post) // full path: /personal/home
