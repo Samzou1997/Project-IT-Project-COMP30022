@@ -34,7 +34,7 @@ const setting_get = (req, res, next) => {
       webPageDate.setting.profile_pic_path = FileSystemController.getFileUrl(profilePicDir);
       webPageDate.setting.firstname = doc.firstName;
       webPageDate.setting.lastname = doc.lastName;
-      console.log(typeof doc.lastName);
+      console.log(doc.lastName);
 
       var date = doc.details.dateBirth;
       var dataCleanStr = JSON.stringify(date);
