@@ -82,7 +82,6 @@
             </div>
 
             <div class="share">
-                new ClipboardJS('.btn')
                 <input id="foo" value="https://sharepage">
                 <button class="btn" data-clipboard-target="#foo">Copy to clipboard</button>
             </div>
@@ -104,5 +103,11 @@
         </div>
         <!--===== MAIN JS =====-->
         <script src="../public/js/main.js"></script>
+        <script>
+            var clipboard = new Clipboard('.btn');
+            clipboard.on('success', function(e) {
+                console.log(e);
+            });
+        </script>
     </body>
 </html>
