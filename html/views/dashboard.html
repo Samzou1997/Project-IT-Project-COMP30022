@@ -9,7 +9,7 @@
 
         <!-- ===== CSS ===== -->
         <link rel="stylesheet" href="../public/css/style_dash.css">
-        <script src="dist/clipboard.min.js"></script>
+        <script src="/node_modules/clipboard/dist/clipboard.min.js"></script>
         <title>Uprank Portfolio</title>
     </head>
     <body id="body-pd">
@@ -106,6 +106,9 @@
         <script>
             var clipboard = new Clipboard('.btn');
             clipboard.on('success', function(e) {
+                console.log(e);
+            });
+            clipboard.on('error', function(e) {
                 console.log(e);
             });
         </script>
