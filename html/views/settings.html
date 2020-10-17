@@ -82,6 +82,7 @@
             </div>
 
             <div class="profile-setting">
+              <form class="edit-forms" method="POST" action="/personal/setting/infoupdate">
                 <div class="setting-content">
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -95,15 +96,23 @@
                         <i class="fas fa-clock"></i>
                         <input name="Birth" id="birth" type="text" placeholder="{{dateofbirth}}" data-dd-large="true" data-dd-large-default="true">
                     </div>
-
                     <div class="input-field">
                         <i class="fas fa-venus-mars"></i>
                         <input name="Gender" id="Gender" type="text" placeholder="{{gender}}">
                     </div>
+                    <div class="input-field">
+                        <i class="fas fa-venus-mars"></i>
+                        <input name="Phone" id="Phone" type="text" placeholder="{{phone}}">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-venus-mars"></i>
+                        <input name="Address" id="Address" type="text" placeholder="{{address}}">
+                    </div>
                 </div>
                 <div class="button">
-                    <a href=""><button>Update</button></a>
+                    <button type="submit" value="Submit">Update</button>
                 </div>
+              </form>
             </div>
             <div class="pwd-setting">
                 <h2>Change your password<h2>
@@ -126,12 +135,18 @@
                 </form>
             </div>
             <div class="test">
+              <form class="edit-forms" method="POST" action="/personal/setting/infoupdate">
+              </form>
                 <div class="test-content">
-                    Test
+                  <div class="input-field">
+                      <i class="fas fa-user"></i>
+                      <input name="Major" id="Major" type="text" placeholder="{{major}}">
+                  </div>
                 </div>
                 <div class="butt">
-                    <a href=""><button>Update</button></a>
+                    <button type="submit" value="Submit">Update</button>
                 </div>
+              </form>
             </div>
         </div>
         <!--===== MAIN JS =====-->
