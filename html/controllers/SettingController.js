@@ -72,8 +72,39 @@ const setting_info_update_post = (req, res, next) => {
   })
 }
 
-
+const resetpwd = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    if (doc) {
+      let userid = doc._id;
+      if (req.body.cPWD == doc.password) {
+        if (req.body.NewPwd == req.body.comfirmPwd) {
+          let updatedData = {
+            password: req.body.NewPwd
+          }
+          User.findByIdAndUpdate(userid, { $set: updatedData })
+            .then(response => {
+              res.render('SendEmailComfirmation.html', {
+                message: `password changed`
+              });
+            })
+            .catch(error => {
+              console.log(error)
+            })
+        }
+      }
+    } 
+  })
+} 
 
 module.exports = {
-  setting_get
+  setting_get,
+  resetpwd
 }
