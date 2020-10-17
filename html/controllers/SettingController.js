@@ -40,7 +40,7 @@ const setting_get = (req, res, next) => {
       var dataCleanStr = JSON.stringify(date);
       console.log(dataCleanStr);
       //date = moment(date, "MM-DD-YYYY");
-      webPageDate.setting.dateofbirth = date;
+      webPageDate.setting.dateofbirth = dataCleanStr;
       webPageDate.setting.gender = doc.details.gender;
       webPageDate.setting.phone = doc.details.phone;
       webPageDate.setting.address = doc.details.address;
