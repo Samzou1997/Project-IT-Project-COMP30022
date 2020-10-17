@@ -130,6 +130,33 @@ const file_delete_get = (req, res, next) => {
   })
 }
 
+const file_recover_get = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      FileSystemController.recoverFile(req.query.filename, doc._id, function (error) {
+        if (error) {
+          res.render('error.html', {
+            title: 'System Error',
+            errorCode: 'upload Error',
+            errorMessage: err
+          });
+        }
+        else {
+          res.redirect('/personal/file');
+        }
+      });
+    }
+  })
+}
+
 module.exports = {
-  file_upload_post, file_section_get, file_delete_get, file_recycle_get
+  file_upload_post, file_section_get, file_delete_get, file_recycle_get, file_recover_get
 }

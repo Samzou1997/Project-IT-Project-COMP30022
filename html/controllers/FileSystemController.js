@@ -210,146 +210,146 @@ const userSys_upload_post = (req, res, next) => {
   })
 }
 
-// Learning section file upload
-const alphaSection_upload_post = (req, res, next) => {
-  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
-    if (err) {
-      console.log("db error");
-      res.render('error.html', {
-        title: 'System Error',
-        errorCode: 'System Error',
-        errorMessage: err
-      });
-    }
-    else {
+// // Learning section file upload
+// const alphaSection_upload_post = (req, res, next) => {
+//   User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+//     if (err) {
+//       console.log("db error");
+//       res.render('error.html', {
+//         title: 'System Error',
+//         errorCode: 'System Error',
+//         errorMessage: err
+//       });
+//     }
+//     else {
 
-      if (req.file != null) {
-        getToUserDir(doc._id, function () {
-          var fileName = req.file.originalname;
-          var sourceFile = req.file.path;
+//       if (req.file != null) {
+//         getToUserDir(doc._id, function () {
+//           var fileName = req.file.originalname;
+//           var sourceFile = req.file.path;
 
-          var fileDestDir = path.join(alphaSectionDir, fileName);
-          //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
-          //fileurl = fileurl.replace(/\\/g, "/");
-          fs.rename(sourceFile, fileDestDir, function (error) {
-            if (error) {
-              console.log('[file rename ERROR]: ' + error);
-              res.render('error.html', {
-                title: 'System Error',
-                errorCode: 'System Error',
-                errorMessage: '[file rename ERROR]: ' + error
-              });
-            }
-            else {
-              next();
-            }
-          });
-        });
-      }
-      else {
-        res.render('error.html', {
-          title: 'System Error',
-          errorCode: 'System Error',
-          errorMessage: 'Upload file not found.'
-        });
-      }
-    }
-  })
-}
+//           var fileDestDir = path.join(alphaSectionDir, fileName);
+//           //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
+//           //fileurl = fileurl.replace(/\\/g, "/");
+//           fs.rename(sourceFile, fileDestDir, function (error) {
+//             if (error) {
+//               console.log('[file rename ERROR]: ' + error);
+//               res.render('error.html', {
+//                 title: 'System Error',
+//                 errorCode: 'System Error',
+//                 errorMessage: '[file rename ERROR]: ' + error
+//               });
+//             }
+//             else {
+//               next();
+//             }
+//           });
+//         });
+//       }
+//       else {
+//         res.render('error.html', {
+//           title: 'System Error',
+//           errorCode: 'System Error',
+//           errorMessage: 'Upload file not found.'
+//         });
+//       }
+//     }
+//   })
+// }
 
-// Working section file upload
-const betaSection_upload_post = (req, res, next) => {
-  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
-    if (err) {
-      console.log("db error");
-      res.render('error.html', {
-        title: 'System Error',
-        errorCode: 'System Error',
-        errorMessage: err
-      });
-    }
-    else {
+// // Working section file upload
+// const betaSection_upload_post = (req, res, next) => {
+//   User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+//     if (err) {
+//       console.log("db error");
+//       res.render('error.html', {
+//         title: 'System Error',
+//         errorCode: 'System Error',
+//         errorMessage: err
+//       });
+//     }
+//     else {
 
-      if (req.file != null) {
-        getToUserDir(doc._id, function () {
-          var fileName = req.file.originalname;
-          var sourceFile = req.file.path;
+//       if (req.file != null) {
+//         getToUserDir(doc._id, function () {
+//           var fileName = req.file.originalname;
+//           var sourceFile = req.file.path;
 
-          var fileDestDir = path.join(betaSectionDir, fileName);
-          //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
-          //fileurl = fileurl.replace(/\\/g, "/");
-          fs.rename(sourceFile, fileDestDir, function (error) {
-            if (error) {
-              console.log('[file rename ERROR]: ' + error);
-              res.render('error.html', {
-                title: 'System Error',
-                errorCode: 'System Error',
-                errorMessage: '[file rename ERROR]: ' + error
-              });
-            }
-            else {
-              next();
-            }
-          });
-        });
-      }
-      else {
-        res.render('error.html', {
-          title: 'System Error',
-          errorCode: 'System Error',
-          errorMessage: 'Upload file not found.'
-        });
-      }
-    }
-  })
-}
+//           var fileDestDir = path.join(betaSectionDir, fileName);
+//           //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
+//           //fileurl = fileurl.replace(/\\/g, "/");
+//           fs.rename(sourceFile, fileDestDir, function (error) {
+//             if (error) {
+//               console.log('[file rename ERROR]: ' + error);
+//               res.render('error.html', {
+//                 title: 'System Error',
+//                 errorCode: 'System Error',
+//                 errorMessage: '[file rename ERROR]: ' + error
+//               });
+//             }
+//             else {
+//               next();
+//             }
+//           });
+//         });
+//       }
+//       else {
+//         res.render('error.html', {
+//           title: 'System Error',
+//           errorCode: 'System Error',
+//           errorMessage: 'Upload file not found.'
+//         });
+//       }
+//     }
+//   })
+// }
 
-// Volunteer section file upload
-const charlieSection_upload_post = (req, res, next) => {
-  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
-    if (err) {
-      console.log("db error");
-      res.render('error.html', {
-        title: 'System Error',
-        errorCode: 'System Error',
-        errorMessage: err
-      });
-    }
-    else {
+// // Volunteer section file upload
+// const charlieSection_upload_post = (req, res, next) => {
+//   User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+//     if (err) {
+//       console.log("db error");
+//       res.render('error.html', {
+//         title: 'System Error',
+//         errorCode: 'System Error',
+//         errorMessage: err
+//       });
+//     }
+//     else {
 
-      if (req.file != null) {
-        getToUserDir(doc._id, function () {
-          var fileName = req.file.originalname;
-          var sourceFile = req.file.path;
+//       if (req.file != null) {
+//         getToUserDir(doc._id, function () {
+//           var fileName = req.file.originalname;
+//           var sourceFile = req.file.path;
 
-          var fileDestDir = path.join(charlieSectionDir, fileName);
-          //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
-          //fileurl = fileurl.replace(/\\/g, "/");
-          fs.rename(sourceFile, fileDestDir, function (error) {
-            if (error) {
-              console.log('[file rename ERROR]: ' + error);
-              res.render('error.html', {
-                title: 'System Error',
-                errorCode: 'System Error',
-                errorMessage: '[file rename ERROR]: ' + error
-              });
-            }
-            else {
-              next();
-            }
-          });
-        });
-      }
-      else {
-        res.render('error.html', {
-          title: 'System Error',
-          errorCode: 'System Error',
-          errorMessage: 'Upload file not found.'
-        });
-      }
-    }
-  })
-}
+//           var fileDestDir = path.join(charlieSectionDir, fileName);
+//           //var fileurl = uploadFileDomin + destPath.substr(destPath.indexOf("uploads"));
+//           //fileurl = fileurl.replace(/\\/g, "/");
+//           fs.rename(sourceFile, fileDestDir, function (error) {
+//             if (error) {
+//               console.log('[file rename ERROR]: ' + error);
+//               res.render('error.html', {
+//                 title: 'System Error',
+//                 errorCode: 'System Error',
+//                 errorMessage: '[file rename ERROR]: ' + error
+//               });
+//             }
+//             else {
+//               next();
+//             }
+//           });
+//         });
+//       }
+//       else {
+//         res.render('error.html', {
+//           title: 'System Error',
+//           errorCode: 'System Error',
+//           errorMessage: 'Upload file not found.'
+//         });
+//       }
+//     }
+//   })
+// }
 
 function profile_pic_upload(file, userID, callback) {
   getToUserDir(userID, function () {
@@ -422,6 +422,21 @@ function recycleFile(fileName, userID, callback) {
   });
 }
 
+function recoverFile(fileName, userID, callback) {
+  getToUserDir(userID, function () {
+    var fileSourceDir = path.join(trashDir, fileName);
+    var fileDestDir = path.join(customizeFileDir, fileName);
+    fs.rename(fileSourceDir, fileDestDir, function (error) {
+      if (error) {
+        console.log('[file recycle ERROR]: ' + error);
+        callback(error);
+      }
+      else {
+        callback();
+      }
+    });
+  });
+}
 
 
 module.exports = {
@@ -436,5 +451,6 @@ module.exports = {
   upload_file,
   deleteFile,
   profile_pic_upload,
-  recycleFile
+  recycleFile,
+  recoverFile
 }
