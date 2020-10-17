@@ -115,13 +115,24 @@
               </form>
             </div>
             <div class="pwd-setting">
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" name="changepwd" id="changepwd">
-                </div>
-                <div class="button">
-                    <a href=""><button>Update</button></a>
-                </div>
+                <h2>Change your password<h2>
+                <form class="sign-in-form" method="POST" action="/personal/setting/PwdReset">
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                          <input type="password" name="cPWD" id="cPWD" placeholder="Current Password" required>
+                    </div>
+                    <div class="input-field">
+                          <i class="fas fa-lock"></i>
+                          <input type="password" name="NewPwd" id="NewPwd" placeholder="Input new password" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="comfirmPwd" id="comfirmPwd" placeholder="Comfirm new password" required>
+                    </div>
+                    <div class = "button">
+                        <button class="button" type="submit">Reset</button>
+                    </div>
+                </form>
             </div>
             <div class="test">
               <form class="edit-forms" method="POST" action="/personal/setting/infoupdate">
