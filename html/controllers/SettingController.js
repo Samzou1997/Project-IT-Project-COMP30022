@@ -7,6 +7,7 @@ var webPageDate       = require('../views/data_padding/web_page_data.json');
 const FileSystemController    = require('../controllers/FileSystemController');
 const path                    = require('path');
 const fs                      = require('fs');
+const moment                  = require('moment');
 
 const secret_key          = config.token_setting.secret_key;
 const token_expire_time   = config.token_setting.expire_time;
@@ -34,9 +35,8 @@ const setting_get = (req, res, next) => {
       webPageDate.setting.firstname = doc.firstName;
       webPageDate.setting.lastname = doc.lastName;
 
-      var date = new Date(doc.details.dateBirth);
-      var time = date.getTime();
-      webPageDate.setting.dateofbirth = doc.details.dateBirth;
+      var date = moment(doc.details.dateBirth, "MM-DD-YYYY");
+      webPageDate.setting.dateofbirth = date;
       webPageDate.setting.gender = doc.details.gender;
       webPageDate.setting.phone = doc.details.phone;
       webPageDate.setting.address = doc.details.address;
