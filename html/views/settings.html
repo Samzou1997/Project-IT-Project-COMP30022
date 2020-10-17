@@ -9,6 +9,7 @@
 
         <!-- ===== CSS ===== -->
         <link rel="stylesheet" href="../public/css/style_dash.css">
+        <script type="text/ecmascript" src="/public/js/md5.js"></script>
 
         <title>Uprank Portfolio</title>
     </head>
@@ -130,7 +131,7 @@
                         <input type="password" name="comfirmPwd" id="comfirmPwd" placeholder="Comfirm new password" required>
                     </div>
                     <div class = "button">
-                        <button class="button" type="submit">Reset</button>
+                        <button class="button" type="submit" onclick="md5_login()">Reset</button>
                     </div>
                 </form>
             </div>
@@ -155,6 +156,25 @@
         <script src="../public/js/datedropper.pro.min.js"></script>
         <script>
             $('#birth').dateDropper();
+        </script>
+        <script type="text/javascript">
+            function md5_login() {
+                var pwd = document.getElementById('cPWD').value
+                if (pwd != null && pwd != '' && pwd != undefined) {
+                    var hash_pwd = hex_md5(pwd)
+                    document.getElementById('cPWD').value = hash_pwd
+                }
+                pwd = document.getElementById('NewPwd').value
+                if (pwd != null && pwd != '' && pwd != undefined) {
+                    var hash_pwd = hex_md5(pwd)
+                    document.getElementById('NewPwd').value = hash_pwd
+                }
+                pwd = document.getElementById('comfirmPwd').value
+                if (pwd != null && pwd != '' && pwd != undefined) {
+                    var hash_pwd = hex_md5(pwd)
+                    document.getElementById('comfirmPwd').value = hash_pwd
+                }
+            }
         </script>
     </body>
 </html>

@@ -19,23 +19,23 @@ const resetpage = (req, res, next) => {
 const emailTo = (req, res, next) => {
     UserData.findOne({ email: req.body.email }, function (err, doc) {
         if (err) {
-          console.log("db error")
+            console.log("db error")
         }
         if (doc) {
-            var email  = req.body.email;
+            var email = req.body.email;
             let userid = doc._id
-            let token = jwt.sign({email}, secret_key, { expiresIn: token_expire_time });
+            let token = jwt.sign({ email }, secret_key, { expiresIn: token_expire_time });
             let updatedData = {
                 email: doc.email,
                 shareLabel: doc.shareLabel,
                 passwordRestToken: token
             }
-            UserData.findByIdAndUpdate(userid, {$set: updatedData})
-            .then(response => {
-            })
-            .catch(error => {
-                console.log(error)
-            })
+            UserData.findByIdAndUpdate(userid, { $set: updatedData })
+                .then(response => {
+                })
+                .catch(error => {
+                    console.log(error)
+                })
             //reset email layout
             var subject = "Reset your password for your account"
             var text = undefined;
@@ -44,7 +44,7 @@ const emailTo = (req, res, next) => {
                 host: smtp,
                 auth: {
                     user: mailForm,
-                    pass: mailKey, 
+                    pass: mailKey,
                 }
             });
             //parameter for sending email
@@ -53,17 +53,15 @@ const emailTo = (req, res, next) => {
                 to: email,
                 subject: subject,
             };
-        
+
             // read text contant 
-            if(text != undefined)
-            {
-                mailOptions.text =text;
+            if (text != undefined) {
+                mailOptions.text = text;
             }
-            if(html != undefined)
-            {
-                mailOptions.html =html;
+            if (html != undefined) {
+                mailOptions.html = html;
             }
-        
+
             //start sending
             try {
                 transporter.sendMail(mailOptions, function (err, info) {
@@ -71,14 +69,14 @@ const emailTo = (req, res, next) => {
                         res.render('SendEmailComfirmation.html', {
                             message: `send fail to ${email}`
                         });
-                        console.log("send fail to %s",email);
+                        console.log("send fail to %s", email);
                         return;
                     }
                     res.render('SendEmailComfirmation.html', {
                         message: `send sucess to ${email}`
                     });
                 });
-            }catch (err) {
+            } catch (err) {
                 res.render('SendEmailComfirmation.html', {
                     message: `send fail to ${email}`
                 });
@@ -106,30 +104,30 @@ const Resetpd = (req, res, next) => {
         }
         else {
             const newLocal = decoded.email;
-            UserData.findOne({ email: newLocal}, function (err, doc) {
-            if (err) {
-                console.log("email error");
-                res.render('SendEmailComfirmation.html', {
-                    message: `Link error`
-                });
-            }
-            else {
-                if(doc.passwordRestToken ==  req.params.token){
-                    //return reset page with token
-                    res.render("Resetting_pd.html",{
-                        token: req.params.token
-                    })
-                }
-                else{
+            UserData.findOne({ email: newLocal }, function (err, doc) {
+                if (err) {
+                    console.log("email error");
                     res.render('SendEmailComfirmation.html', {
-                        message: `token is unvalid!!`
+                        message: `Link error`
                     });
-                    console.log("token error");
                 }
-            }
-          })
+                else {
+                    if (doc.passwordRestToken == req.params.token) {
+                        //return reset page with token
+                        res.render("Resetting_pd.html", {
+                            token: req.params.token
+                        })
+                    }
+                    else {
+                        res.render('SendEmailComfirmation.html', {
+                            message: `token is unvalid!!`
+                        });
+                        console.log("token error");
+                    }
+                }
+            })
         }
-      })
+    })
 }
 
 //verify again and update password also delete token if update sucess
@@ -142,7 +140,7 @@ const ResettingPD = (req, res, next) => {
             });
         }
         else {
-            UserData.findOne({ email: decoded.email}, function (err, doc) {
+            UserData.findOne({ email: decoded.email }, function (err, doc) {
                 let dataid = doc._id;
                 if (err) {
                     console.log("email error");
@@ -151,33 +149,33 @@ const ResettingPD = (req, res, next) => {
                     });
                 }
                 else {
-                    if(doc.passwordRestToken ==  req.body.token){
-                        User.findOne({ email: decoded.email}, function (err, doc){
+                    if (doc.passwordRestToken == req.body.token) {
+                        User.findOne({ email: decoded.email }, function (err, doc) {
                             let userid = doc._id;
                             let updatedData = {
                                 password: req.body.password
                             }
-                            User.findByIdAndUpdate(userid, {$set: updatedData})
-                            .then(response => {
-                                res.render('SendEmailComfirmation.html', {
-                                    message: `password changed`
-                                });
-                                let updateduData = {
-                                    passwordRestToken: ""
-                                }
-                                UserData.findByIdAndUpdate(dataid, {$set: updateduData})
+                            User.findByIdAndUpdate(userid, { $set: updatedData })
                                 .then(response => {
+                                    res.render('SendEmailComfirmation.html', {
+                                        message: `password changed`
+                                    });
+                                    let updateduData = {
+                                        passwordRestToken: ""
+                                    }
+                                    UserData.findByIdAndUpdate(dataid, { $set: updateduData })
+                                        .then(response => {
+                                        })
+                                        .catch(error => {
+                                            console.log(error)
+                                        })
                                 })
                                 .catch(error => {
                                     console.log(error)
                                 })
-                            })
-                            .catch(error => {
-                                console.log(error)
-                            })
                         })
-                    } 
-                    else{
+                    }
+                    else {
                         res.render('SendEmailComfirmation.html', {
                             message: `token is unvalid!!`
                         });
@@ -187,11 +185,11 @@ const ResettingPD = (req, res, next) => {
 
             })
         }
-      })
+    })
 }
 
 
 
 module.exports = {
-    emailTo,resetpage,Resetpd,ResettingPD
+    emailTo, resetpage, Resetpd, ResettingPD
 }
