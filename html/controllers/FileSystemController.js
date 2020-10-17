@@ -441,9 +441,6 @@ function recoverFile(fileName, userID, callback) {
 
 module.exports = {
   userSys_upload_post,
-  alphaSection_upload_post,
-  betaSection_upload_post,
-  charlieSection_upload_post,
   mkUserDir,
   getFileUrl,
   getFileUrls,
