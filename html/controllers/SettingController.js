@@ -35,7 +35,8 @@ const setting_get = (req, res, next) => {
       webPageDate.setting.firstname = doc.firstName;
       webPageDate.setting.lastname = doc.lastName;
 
-      var date = new Date(doc.details.dateBirth);
+      var date = doc.details.dateBirth;
+      date = date.replace(/^(\s|")+|(\s|")+$/g, '');
       //date = moment(date, "MM-DD-YYYY");
       webPageDate.setting.dateofbirth = date;
       webPageDate.setting.gender = doc.details.gender;
