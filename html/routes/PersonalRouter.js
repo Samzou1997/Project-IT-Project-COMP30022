@@ -151,6 +151,7 @@ router.get('/setting', VerifyController.verify_login, SettingController.setting_
 router.post('/setting/PwdReset', VerifyController.verify_login, SettingController.resetpwd)
 
 router.post('/setting/infoupdate', VerifyController.verify_login, SettingController.setting_info_update_post)
+router.post('/setting/majorupdate', VerifyController.verify_login, SettingController.setting_major_update_post)
 // ======================================================================================================== //
 
 //router.post('/logout', LogoutController.logout_post) // full path: /personal/logout
