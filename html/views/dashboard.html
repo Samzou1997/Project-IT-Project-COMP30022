@@ -6,10 +6,10 @@
 
         <!-- ===== FONTAWESOME ICONS ===== -->
         <link href="../public/css/fontawesome/css/all.css" rel='stylesheet'>
-
+        <script src="../public/js/main.js"></script>
+        <script src="../node_modules/clipboard/dist/clipboard.min.js"></script>
         <!-- ===== CSS ===== -->
         <link rel="stylesheet" href="../public/css/style_dash.css">
-
         <title>Uprank Portfolio</title>
     </head>
     <body id="body-pd">
@@ -82,12 +82,8 @@
             </div>
 
             <div class="share">
-                <div class="link">
-                    {{link}}
-                </div>
-                <div class="button">
-                    <a href=""><button>Copy the link</button></a>
-                </div>
+                <input id="foo" type="text" value="hello">
+                <button class="btn" data-clipboard-action="copy" data-clipboard-target="#foo">Copy to Clipboard</button>
             </div>
             <div class="profile">
                 <div class="content">
@@ -106,6 +102,15 @@
             </div>
         </div>
         <!--===== MAIN JS =====-->
-        <script src="../public/js/main.js"></script>
+        <script type="text/javascript">
+            var clipboard = new ClipboardJS('.btn');
+            clipboard.on('success', function(e) {
+                alert("The ShareLink copied to your clipboard.");
+                console.log(e);
+            });
+            clipboard.on('error', function(e) {
+                console.log(e);
+            });
+        </script>
     </body>
 </html>

@@ -32,10 +32,12 @@ const register_post = (req, res, next) => {
           lastName: req.body.last_name,
           email: req.body.email,
           password: req.body.password
+
         })
 
         let userSetting = new UserSetting({
           email: req.body.email,
+          shareLabel: req.body.email_md5
         })
 
         let userData = new UserData({
