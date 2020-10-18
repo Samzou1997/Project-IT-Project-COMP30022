@@ -74,15 +74,17 @@
 
         <div class="setting-content">
             <div class="head">
+              <h2>Update your profile picture<h2>
                 <div class="head-img">
                     <img src="{{profile_pic_path}}" alt="">
                 </div>
                 <div class="button">
-                    <a href=""><button class="photoedit">Edit Your Photo</button></a>
+                    <a href=""><button class="photoedit">submit</button></a>
                 </div>
             </div>
 
             <div class="profile-setting">
+              <h2>Update your information<h2>
               <form class="edit-forms" method="POST" action="/personal/setting/infoupdate">
                 <div class="setting-content">
                     <div class="input-field">
@@ -131,11 +133,12 @@
                         <input type="password" name="comfirmPwd" id="comfirmPwd" placeholder="Comfirm new password" required>
                     </div>
                     <div class = "button">
-                        <button class="button" type="submit" onclick="md5_login()">Reset</button>
+                        <button class="button" type="submit" onclick="md5_login()">Update</button>
                     </div>
                 </form>
             </div>
             <div class="test">
+              <h2>Update your major<h2>
               <form class="edit-forms" method="POST" action="/personal/setting/majorupdate">
                 <div class="test-content">
                   <div class="input-field">
