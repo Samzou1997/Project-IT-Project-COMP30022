@@ -37,11 +37,11 @@ const register_post = (req, res, next) => {
 
         let userSetting = new UserSetting({
           email: req.body.email,
-          shareLabel: req.body.email_md5
         })
 
         let userData = new UserData({
           email: req.body.email,
+          shareLabel: req.body.email_md5
         })
 
         userSettingSaveFunc = function (callback) {
