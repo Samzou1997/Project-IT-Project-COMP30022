@@ -77,6 +77,7 @@ const setting_info_update_post = (req, res, next) => {
           gender : req.body.Gender,
           phone : req.body.Phone,
           address : req.body.Address,
+          major : doc.details.major
         }
       };
 
@@ -110,6 +111,10 @@ const setting_major_update_post = (req, res, next) => {
       //console.log(req.body.Birth);
       var updatedData = {
         details : {
+          dateBirth : doc.details.dateBirth,
+          gender : doc.details.gender,
+          phone : doc.details.phone,
+          address : doc.details.address,
           major: req.body.Major
         }
       };
