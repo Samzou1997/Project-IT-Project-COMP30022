@@ -95,6 +95,40 @@ const setting_info_update_post = (req, res, next) => {
   })
 }
 
+const setting_major_update_post = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error");
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      userID_str = doc._id.toHexString();
+      //console.log(req.body.Birth);
+      var updatedData = {
+        details : {
+          major: req.body.Major
+        }
+      };
+
+      User.findByIdAndUpdate(doc._id, {$set: updatedData})
+      .then(response => {
+        res.redirect('/personal/setting');
+      })
+      .catch(error => {
+        res.render('error.html', {
+          title: 'System Error',
+          errorCode: 'System Error',
+          errorMessage: error
+        });
+      });
+    }
+  })
+}
+
 const resetpwd = (req, res, next) => {
   User.findOne({ email: req.cookies["email"] }, function (err, doc) {
     if (err) {
@@ -128,5 +162,6 @@ const resetpwd = (req, res, next) => {
 module.exports = {
   setting_get,
   resetpwd,
-  setting_info_update_post
+  setting_info_update_post,
+  setting_major_update_post
 }
