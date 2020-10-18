@@ -41,7 +41,10 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input name="email" id="" type="text" placeholder="Email" required>
+                        <input name="email" id="email" type="text" placeholder="Email" required>
+                    </div>
+                    <div class="input-field">
+                        <input name="email_md5" id="email_md5" type="hidden">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -84,7 +87,7 @@
     </script>
 
     <script type="text/javascript">
-        
+
         function md5_login() {
             //alert("test")
             var pwd = document.getElementById('pwd-input-login').value
@@ -100,6 +103,11 @@
             if (pwd != null && pwd != '' && pwd != undefined) {
                 var hash_pwd = hex_md5(pwd)
                 document.getElementById('pwd-input-register').value = hash_pwd
+            }
+            var e_md5 = document.getElementById('email').value
+            if (e_md5 != null && e_md5 != '' && e_md5 != undefined) {
+                var hash_email = hex_md5(e_md5)
+                document.getElementById('email_md5').value = hash_email
             }
         }
     </script>
