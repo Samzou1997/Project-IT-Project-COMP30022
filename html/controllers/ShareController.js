@@ -34,6 +34,7 @@ const SharePage = (req, res, next) => {
                     var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
                     webPageData.sharepage.content = documentDir
                     webPageData.sharepage.educationlist = doc1.education
+                    console.log(doc1.education)
                     webPageData.sharepage.employmentlist = doc1.employment
                     webPageData.sharepage.volunteerlist = doc1.volunteer
                     webPageData.sharepage.filelist = fileList;
