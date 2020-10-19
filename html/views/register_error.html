@@ -18,9 +18,9 @@
 			<form method="POST" action="/Register">
 				<img src="/public/img/avatar.svg">
 				<h2 class="title">Sign up</h2>
-           		
+
                 <div class="input-div first">
-                    <div class="i"> 
+                    <div class="i">
                          <i class="fas fa-user"></i>
                     </div>
                     <div class="div">
@@ -30,7 +30,7 @@
                </div>
 
                <div class="input-div last">
-                 <div class="i"> 
+                 <div class="i">
                      <i class="fas fa-user"></i>
                  </div>
                  <div class="div">
@@ -50,7 +50,7 @@
                 </div>
                 <input name="email_md5" id="email_md5" type="hidden">
            		<div class="input-div pass">
-           		   <div class="i"> 
+           		   <div class="i">
            		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">
@@ -58,14 +58,14 @@
            		    	<input name="password" id="pwd-input-register" type="password" class="input" required>
             	   </div>
                 </div>
-                
+
                 <div class="input-div pass">
-                    <div class="i"> 
+                    <div class="i">
                          <i class="fas fa-lock"></i>
                     </div>
                     <div class="div">
                          <h5>Ensured Password</h5>
-                         <input name="password" id="pwd-input-register" type="password" class="input" required>
+                         <input name="password_ensured" id="pwd-ensured-input-register" type="password" class="input" required>
                     </div>
                 </div>
                 <input type="submit" class="btn" value="Register" onclick="md5_register()">
@@ -76,7 +76,7 @@
     <script type="text/javascript" src="/public/js/login_error.js"></script>
 
     <script type="text/javascript">
-        
+
         function md5_register() {
             //alert("test")
             var pwd = document.getElementById('pwd-input-register').value

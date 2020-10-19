@@ -5,12 +5,7 @@ const moment      = require('moment')
 const config      = require('../config/web_config.json')
 const path        = require('path')
 
-const HomeController          = require('../controllers/HomeController')
-const ContactController       = require('../controllers/ContactController')
 const LogoutController        = require('../controllers/LogoutController')
-const FileSystemController    = require('../controllers/FileSystemController')
-const LearningController      = require('../controllers/LearningController')
-const WorkingController       = require('../controllers/WorkingController')
 const VolunteerController     = require('../controllers/VolunteerController')
 const ErrorController         = require('../controllers/ErrorController')
 const VerifyController        = require('../controllers/VerifyController')
@@ -152,13 +147,11 @@ router.get('/volunteer/delete', VerifyController.verify_login, VolunteerControll
 
 //router.post('/home', HomeController.home_post) // full path: /personal/home
 router.get('/setting', VerifyController.verify_login, SettingController.setting_get)
+
 router.post('/setting/PwdReset', VerifyController.verify_login, SettingController.resetpwd)
 
-// ======================================================================================================== //
-
-//router.post('/contact', ContactController.contact_post) // full path: /personal/contact
-router.get('/contact', VerifyController.verify_login, ContactController.contact_get)
-
+router.post('/setting/infoupdate', VerifyController.verify_login, SettingController.setting_info_update_post)
+router.post('/setting/majorupdate', VerifyController.verify_login, SettingController.setting_major_update_post)
 // ======================================================================================================== //
 
 //router.post('/logout', LogoutController.logout_post) // full path: /personal/logout
