@@ -37,9 +37,15 @@
     "profile_pic_path" : ""
   },
   "setting" : {
-    "profile_pic_path" : ""
+    "profile_pic_path" : "",
+    "firstname" : "",
+    "lastname" : "",
+    "dateofbirth" : "",
+    "gender" : "",
+    "phone" : "",
+    "address" : "",
+    "major" : ""
   },
-
   "sharepage" : {
     "content" : "",
     "educationlist" : [],
