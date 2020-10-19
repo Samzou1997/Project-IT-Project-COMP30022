@@ -30,8 +30,8 @@ const dashboard_get = (req, res, next) => {
       webPageData.dashboard.lastname = doc.lastName
       webPageData.dashboard.email = doc.email
       webPageData.dashboard.major = doc.details.major
-      UserData.findOne({ email: req.cookies["email"] }, function (err, doc) {
-        webPageData.dashboard.link = "http://54.206.15.44/Share/" + doc.shareLabel
+      UserData.findOne({ email: req.cookies["email"] }, function (err, doc1) {
+        webPageData.dashboard.link = "http://54.206.15.44/Share/" + doc1.shareLabel
       })
       res.render('dashboard.html', webPageData.dashboard)
     }
