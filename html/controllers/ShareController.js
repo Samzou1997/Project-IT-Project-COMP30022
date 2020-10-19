@@ -6,6 +6,7 @@ const config = require('../config/web_config.json')
 
 const SharePage = (req, res, next) => {
     var email_md5 = req.params.email_md5
+    console.log("pass2")
     console.log(email_md5)
     UserData.findOne({ shareLabel: email_md5}, function (err, doc) {
         if (err) {
