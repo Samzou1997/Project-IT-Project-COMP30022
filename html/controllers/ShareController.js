@@ -3,6 +3,8 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 var webPageData = require('../views/data_padding/web_page_data.json')
 const config = require('../config/web_config.json')
+const FileSystemController    = require('../controllers/FileSystemController')
+const path                    = require('path');
 
 const SharePage = (req, res, next) => {
     var email_md5 = req.params.email_md5
