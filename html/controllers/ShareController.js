@@ -32,13 +32,12 @@ const SharePage = (req, res, next) => {
                     var userCustomizeFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.userCustomizeFileDir);
                     var documentDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.dashboard_document);
                     var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
-                    console.log(documentDir)
                     webPageData.sharepage.content = documentDir
                     webPageData.sharepage.educationlist = doc1.education
                     webPageData.sharepage.employmentlist = doc1.employment
                     webPageData.sharepage.volunteerlist = doc1.volunteer
                     webPageData.sharepage.filelist = fileList;
-                    res.render('share.html', webPageData.files);
+                    res.render('share.html', webPageData.sharepage);
                 }
             })
         }
