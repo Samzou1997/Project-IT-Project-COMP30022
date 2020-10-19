@@ -26,11 +26,12 @@ const dashboard_get = (req, res, next) => {
 
       webPageData.dashboard.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageData.dashboard.content = documentDir
-      //webPageData.dashboard.link = 
       webPageData.dashboard.lastname = doc.lastName
       webPageData.dashboard.email = doc.email
       webPageData.dashboard.major = doc.details.major
-
+      UserData.findOne({ email: req.cookies["email"] }, function (err, doc) {
+        webPageData.dashboard.link = "http://54.206.15.44/share/" + doc.shareLabel
+      })
       res.render('dashboard.html', webPageData.dashboard)
     }
   })
