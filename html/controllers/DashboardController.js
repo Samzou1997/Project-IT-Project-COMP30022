@@ -1,4 +1,5 @@
 const User            = require('../models/User')
+const UserData            = require('../models/UserData')
 const { response }    = require('express')
 var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
