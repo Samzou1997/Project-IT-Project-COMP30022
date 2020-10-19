@@ -38,5 +38,13 @@
   },
   "setting" : {
     "profile_pic_path" : ""
+  },
+
+  "sharepage" : {
+    "content" : "",
+    "educationlist" : [],
+    "employmentlist" : [],
+    "volunteerlist" : [],
+    "filelist": []
   }
 }
