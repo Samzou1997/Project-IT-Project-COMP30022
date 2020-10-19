@@ -34,8 +34,8 @@ const dashboard_get = (req, res, next) => {
         console.log(doc.email)
         console.log(webPageData.dashboard.link)
         webPageData.dashboard.link = "http://54.206.15.44/Share/" + doc1.shareLabel
+        res.render('dashboard.html', webPageData.dashboard)
       })
-      res.render('dashboard.html', webPageData.dashboard)
     }
   })
 }
