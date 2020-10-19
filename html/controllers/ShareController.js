@@ -20,7 +20,7 @@ const SharePage = (req, res, next) => {
         else {
             var shareaccount = doc.email
             console.log(shareaccount)
-            User.findOne({ email: shareaccount}, function (err, doc) {
+            User.findOne({ email: shareaccount}, function (err, doc1) {
                 if (err) {
                     console.log("email error");
                     res.render('SendEmailComfirmation.html', {
@@ -28,15 +28,16 @@ const SharePage = (req, res, next) => {
                     });
                 }
                 else{
-                    var userID_str = doc._id.toHexString();
+                    var userID_str = doc1._id.toHexString();
                     var userCustomizeFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.userCustomizeFileDir);
                     var documentDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.dashboard_document);
                     var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
                     console.log(userID_str)
+                    console.log(userID_str)
                     webPageData.sharepage.content = documentDir
-                    webPageData.sharepage.educationlist = doc.education
-                    webPageData.sharepage.employmentlist = doc.employment
-                    webPageData.sharepage.volunteerlist = doc.volunteer
+                    webPageData.sharepage.educationlist = doc1.education
+                    webPageData.sharepage.employmentlist = doc1.employment
+                    webPageData.sharepage.volunteerlist = doc1.volunteer
                     webPageData.sharepage.filelist = fileList;
                     res.render('share.html', webPageData.files);
                 }
