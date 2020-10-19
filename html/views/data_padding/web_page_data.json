@@ -45,5 +45,12 @@
     "phone" : "",
     "address" : "",
     "major" : ""
+  },
+  "sharepage" : {
+    "content" : "",
+    "educationlist" : [],
+    "employmentlist" : [],
+    "volunteerlist" : [],
+    "filelist": []
   }
 }

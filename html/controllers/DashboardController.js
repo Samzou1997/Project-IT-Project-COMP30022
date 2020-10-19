@@ -31,7 +31,7 @@ const dashboard_get = (req, res, next) => {
       webPageData.dashboard.email = doc.email
       webPageData.dashboard.major = doc.details.major
       UserData.findOne({ email: req.cookies["email"] }, function (err, doc) {
-        webPageData.dashboard.link = "http://54.206.15.44/share/" + doc.shareLabel
+        webPageData.dashboard.link = config.domain + "/share/" + doc.shareLabel
       })
       res.render('dashboard.html', webPageData.dashboard)
     }
