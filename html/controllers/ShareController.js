@@ -41,7 +41,7 @@ const SharePage = (req, res, next) => {
 
                     var dataCleanStr = JSON.stringify(webPageData.sharepage);
                     var dataCleanObj = JSON.parse(dataCleanStr);
-
+                    console.log(dataCleanStr)
                     res.render('share.html', dataCleanObj);
                 }
             })
