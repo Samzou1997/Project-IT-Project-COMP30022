@@ -37,7 +37,11 @@ const SharePage = (req, res, next) => {
                     webPageData.sharepage.employmentlist = doc1.employment
                     webPageData.sharepage.volunteerlist = doc1.volunteer
                     webPageData.sharepage.filelist = fileList;
-                    res.render('share.html', webPageData.sharepage);
+
+                    var dataCleanStr = JSON.stringify(webPageData.sharepage);
+                    var dataCleanObj = JSON.parse(dataCleanStr);
+
+                    res.render('share.html', dataCleanObj);
                 }
             })
         }
