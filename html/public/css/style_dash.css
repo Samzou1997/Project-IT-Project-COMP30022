@@ -243,8 +243,14 @@ a{
   box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
 }
 
-.share .link{
-  min-height: 270px;
+.share #foo{
+  margin-left: 10%;
+  margin-top: 8px;
+  width: 80%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  outline: none;
+  padding: 8px;
 }
 
 .share button{
