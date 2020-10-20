@@ -32,10 +32,16 @@ const SharePage = (req, res, next) => {
                     var userCustomizeFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.userCustomizeFileDir);
                     var documentDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.dashboard_document);
                     var fileList = FileSystemController.getFileUrls(userCustomizeFileDir);
-                    webPageData.sharepage.content = documentDir
-                    webPageData.sharepage.educationlist = doc1.education
-                    webPageData.sharepage.employmentlist = doc1.employment
-                    webPageData.sharepage.volunteerlist = doc1.volunteer
+                    webPageData.sharepage.firstname = doc1.firstName;
+                    webPageData.sharepage.lastname = doc1.lastName;
+                    webPageData.sharepage.dateofbirth = doc1.details.dateBirth;
+                    webPageData.sharepage.gender = doc1.details.gender;
+                    webPageData.sharepage.email = doc1.email;
+                    webPageData.sharepage.phone = doc1.details.phone;
+                    webPageData.sharepage.content = documentDir;
+                    webPageData.sharepage.educationlist = doc1.education;
+                    webPageData.sharepage.employmentlist = doc1.employment;
+                    webPageData.sharepage.volunteerlist = doc1.volunteer;
                     webPageData.sharepage.filelist = fileList;
 
                     var dataCleanStr = JSON.stringify(webPageData.sharepage);
