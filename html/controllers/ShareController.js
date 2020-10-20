@@ -3,14 +3,14 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 var webPageData = require('../views/data_padding/web_page_data.json')
 const config = require('../config/web_config.json')
-const FileSystemController    = require('../controllers/FileSystemController')
-const path                    = require('path');
-
+const FileSystemController = require('../controllers/FileSystemController')
+const path = require('path');
+const moment = require('moment');
 const SharePage = (req, res, next) => {
     var email_md5 = req.params.email_md5
     console.log("pass2")
     console.log(email_md5)
-    UserData.findOne({ shareLabel: email_md5}, function (err, doc) {
+    UserData.findOne({ shareLabel: email_md5 }, function (err, doc) {
         if (err) {
             console.log("email error");
             res.render('SendEmailComfirmation.html', {
@@ -20,14 +20,14 @@ const SharePage = (req, res, next) => {
         else {
             var shareaccount = doc.email
             console.log(shareaccount)
-            User.findOne({ email: shareaccount}, function (err, doc1) {
+            User.findOne({ email: shareaccount }, function (err, doc1) {
                 if (err) {
                     console.log("email error");
                     res.render('SendEmailComfirmation.html', {
                         message: `Link error`
                     });
                 }
-                else{
+                else {
                     var userID_str = doc1._id.toHexString();
                     var userCustomizeFileDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.userCustomizeFileDir);
                     var documentDir = path.join(config.fileSystem.userDataDir, userID_str, config.fileSystem.dashboard_document);
