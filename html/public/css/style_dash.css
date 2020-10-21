@@ -485,6 +485,19 @@ a{
   box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
 }
 
+.head .head-img{
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.head .head-img img{
+  width: 75px;
+}
+
 .head .btn{
   width: 150px;
   height: 49px;
