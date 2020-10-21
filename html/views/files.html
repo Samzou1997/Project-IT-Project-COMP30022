@@ -77,7 +77,7 @@
                 {{each filelist file index}}
                     <i class="fas fa-file"></i>
                     <a href="{{file.url}}"><li>{{file.fileName}}</li></a>
-                    <a href="/personal/file/recycle?filename={{file.fileName}}"><i class="fas fa-trash"></i></a>
+                    <a href="/personal/file/recycle?filename={{file.fileName}}"></a><i class="fas fa-trash"></i>
                 </br>
                 {{/each}}
             </div>
@@ -86,7 +86,7 @@
                 {{each trashfilelist trashfile index}}
                   <i class="fas fa-file"></i>
                   <a href="{{trashfile.url}}"><li>{{trashfile.fileName}}</li></a>
-                  <a href="/personal/file/delete?filename={{trashfile.fileName}}"><i class="fas fa-trash"></i></a>
+                  <a href="/personal/file/delete?filename={{trashfile.fileName}}"></a><a href="#"><i class="fas fa-trash"></i></a><a href="#"><i class="fas fa-redo-alt"></i></a>
                 </br>
                 {{/each}}
             </div>

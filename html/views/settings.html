@@ -78,8 +78,13 @@
                 <div class="head-img">
                     <img src="{{profile_pic_path}}" alt="">
                 </div>
-                <div class="button">
-                    <a href=""><button class="photoedit">submit</button></a>
+                <div class="uploadbtn">
+                    <form action="/personal/file/upload" enctype="multipart/form-data" method="post">
+                        <input type="file" id="real-file" name="uploadFile" hidden="hidden" accept="image/*">
+                        <button type="button" id="custom-button">Choose a Pic</button>
+                        <span id="custom-text">No File Chosen</span>
+                        <input type="submit" value="Upload" class="btn">
+                      </form>
                 </div>
             </div>
 
@@ -104,11 +109,11 @@
                         <input name="Gender" id="Gender" type="text" placeholder="Gender" value="{{gender}}">
                     </div>
                     <div class="input-field">
-                        <i class="fas fa-venus-mars"></i>
+                        <i class="fas fa-phone"></i>
                         <input name="Phone" id="Phone" type="text" placeholder="Phone" value="{{phone}}">
                     </div>
                     <div class="input-field">
-                        <i class="fas fa-venus-mars"></i>
+                        <i class="fas fa-map-marker-alt"></i>
                         <input name="Address" id="Address" type="text" placeholder="Address" value="{{address}}">
                     </div>
                 </div>
@@ -142,7 +147,7 @@
               <form class="edit-forms" method="POST" action="/personal/setting/majorupdate">
                 <div class="test-content">
                   <div class="input-field">
-                      <i class="fas fa-user"></i>
+                      <i class="fas fa-mosque"></i>
                       <input name="Major" id="Major" type="text" placeholder="Major" value="{{major}}">
                   </div>
                 </div>
@@ -177,6 +182,26 @@
                     document.getElementById('comfirmPwd').value = hash_pwd
                 }
             }
+        </script>
+
+        <script type="text/javascript">
+            const realFileBtn = document.getElementById("real-file");
+            const customBtn = document.getElementById("custom-button");
+            const customTxt = document.getElementById("custom-text");
+
+            customBtn.addEventListener("click",function(){
+                realFileBtn.click();
+            })
+
+            realFileBtn.addEventListener("change",function(){
+                if(realFileBtn.value){
+                customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+                } else{
+                customTxt.innerHTML = "No file chosen";
+            }
+
+            });
+
         </script>
     </body>
 </html>

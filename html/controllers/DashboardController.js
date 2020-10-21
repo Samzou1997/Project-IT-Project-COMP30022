@@ -1,4 +1,5 @@
 const User            = require('../models/User')
+const UserData            = require('../models/UserData')
 const { response }    = require('express')
 var cookieParser      = require('cookie-parser')
 const jwt             = require('jsonwebtoken')
@@ -26,12 +27,15 @@ const dashboard_get = (req, res, next) => {
 
       webPageData.dashboard.profile_pic_path = FileSystemController.getFileUrl(profilePicDir)
       webPageData.dashboard.content = documentDir
-      //webPageData.dashboard.link = 
       webPageData.dashboard.lastname = doc.lastName
       webPageData.dashboard.email = doc.email
       webPageData.dashboard.major = doc.details.major
-
-      res.render('dashboard.html', webPageData.dashboard)
+      UserData.findOne({ email: doc.email }, function (err, doc1) {
+        console.log(doc.email)
+        console.log(webPageData.dashboard.link)
+        webPageData.dashboard.link = "http://54.206.15.44/Share/" + doc1.shareLabel
+        res.render('dashboard.html', webPageData.dashboard)
+      })
     }
   })
 }

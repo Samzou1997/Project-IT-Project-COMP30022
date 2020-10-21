@@ -90,7 +90,8 @@ const employment_edit_submit_post = (req, res, next) => {
         company : req.body.Company,
         title: req.body.Title,
         startDate : req.body.Started,
-        endDate : req.body.end,
+        endDate : req.body.End,
+        description: req.body.description
       }
 
       var employmentList = doc.employment;

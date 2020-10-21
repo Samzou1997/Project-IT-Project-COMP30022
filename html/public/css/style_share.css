@@ -65,6 +65,17 @@ a:hover{
     display: none;
 }
 
+.personal-info{
+  text-align: center;
+  align-items: center;
+  margin: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+}
+
+.personal-info h3{
+  margin: 12px;
+}
+
 .intro{
     text-align: center;
     align-items: center;
@@ -88,18 +99,18 @@ a:hover{
     font-size: 0.9em;
     min-width: 400px;
 }
-  
+
 .content-table th,
 .content-table td{
     border: 1px solid #6fcfff;
     padding: 5px 10px;
     font-size: 1.1rem;
 }
-  
+
 .content-table tr:nth-child(odd){
     background: #ddd;
 }
-  
+
 .content-table th{
     background-color: #f3f6fa;
 }
@@ -131,7 +142,7 @@ a:hover{
     .checkbtn{
         display: block;
     }
-    
+
     ul{
         z-index: 1;
         position: fixed;
@@ -166,21 +177,21 @@ a:hover{
     .content-table thead{
         display: none;
       }
-    
+
     .content-table tr,
     .content-table td{
         display: block;
     }
-    
+
     .content-table tr:not(:last-child){
         border-bottom: 4px solid #5ca0c3;
     }
-    
+
     .content-table td{
         padding-left: 54%;
         position: relative;
     }
-    
+
     .content-table td::before{
         position: absolute;
         padding: 5px;

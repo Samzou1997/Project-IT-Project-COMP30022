@@ -243,8 +243,14 @@ a{
   box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
 }
 
-.share .link{
-  min-height: 270px;
+.share #foo{
+  margin-left: 10%;
+  margin-top: 8px;
+  width: 80%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  outline: none;
+  padding: 8px;
 }
 
 .share button{
@@ -477,6 +483,26 @@ a{
 .head{
   margin: 20px;
   box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
+}
+
+.head .btn{
+  width: 150px;
+  height: 49px;
+  border: none;
+  outline: none;
+  border-radius: 49px;
+  cursor: pointer;
+  background-color: #5995fd;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 10px;
+  transition: .5s;
+}
+
+.head #custom-text{
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .profile-setting{
