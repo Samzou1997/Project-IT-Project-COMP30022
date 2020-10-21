@@ -47,11 +47,11 @@ app.use('/Login', LoginRouter)
 app.use('/Register', RegisetRouter)
 app.use('/Forgot', ResetRouter)
 app.use('/Share', ShareRounter)
-app.use('/Error', ErrorRouter)
+crypto.use('/Error', ErrorRouter)
 
 var httpsServer = https.createServer(credentials, app);
 var SSLPORT = 3000;
 
-httpsServer.listen(SSLPORT, function () {
+app.listen(SSLPORT, function () {
   console.log("port: 3000, running....");
 })
