@@ -2,7 +2,9 @@ var express       = require("express");
 var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var morgan        = require('morgan');
+var fs            = require('fs');
 var cookieParser  = require('cookie-parser');
+var https         = require('https');
 //var ejs           = require('ejs');
 
 const PersonalRouter  = require('./routes/PersonalRouter')
@@ -11,6 +13,10 @@ const RegisetRouter   = require('./routes/RegisterRouter')
 const ResetRouter     = require('./routes/ResetRouter')
 const ErrorRouter     = require('./routes/ErrorRouter')
 const ShareRounter    = require('./routes/ShareRounter')
+
+var privateKey        = fs.readFileSync('/home/IT_Project/html/certification/private.pem', 'utf8'),
+var certificate       = fs.readFileSync('/home/IT_Project/html/certification/cert.crt', 'utf8');
+var credentials       = {key: privateKey, cert: certificate};
 
 mongoose.connect('mongodb://testacc:qpzm123456@localhost:27017/GeekDB?authSource=admin', { useNewUrlParser: true, useUnifiedTopology: true })
 var db = mongoose.connection
@@ -43,6 +49,9 @@ app.use('/Forgot', ResetRouter)
 app.use('/Share', ShareRounter)
 app.use('/Error', ErrorRouter)
 
-app.listen(3000, function () {
+var httpsServer = https.createServer(credentials, app);
+var SSLPORT = 3000;
+
+httpsServer.listen(SSLPORT, function () {
   console.log("port: 3000, running....");
 })
