@@ -47,7 +47,7 @@ app.use('/Login', LoginRouter)
 app.use('/Register', RegisetRouter)
 app.use('/Forgot', ResetRouter)
 app.use('/Share', ShareRounter)
-crypto.use('/Error', ErrorRouter)
+app.use('/Error', ErrorRouter)
 
 var httpsServer = https.createServer(credentials, app);
 var SSLPORT = 3000;
