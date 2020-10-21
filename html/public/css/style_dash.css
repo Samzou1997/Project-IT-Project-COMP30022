@@ -282,6 +282,19 @@ a{
   min-height: 270px;
 }
 
+.profile .content .pic{
+  width: 90px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile .content .pic img{
+  width: 95px;
+}
+
 .profile button{
   width: 300px;
   height: 49px;
@@ -486,16 +499,17 @@ a{
 }
 
 .head .head-img{
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   display: flex;
   justify-content: center;
   border-radius: 50%;
   overflow: hidden;
+  margin-left: 30%;
 }
 
 .head .head-img img{
-  width: 75px;
+  width: 95px;
 }
 
 .head .btn{
