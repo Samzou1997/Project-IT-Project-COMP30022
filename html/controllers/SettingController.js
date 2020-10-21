@@ -164,9 +164,46 @@ const resetpwd = (req, res, next) => {
   })
 } 
 
+const setting_profile_pic_post = (req, res, next) => {
+  User.findOne({ email: req.cookies["email"] }, function (err, doc) {
+    if (err) {
+      console.log("db error")
+      res.render('error.html', {
+        title: 'System Error',
+        errorCode: 'System Error',
+        errorMessage: err
+      });
+    }
+    else {
+      if (req.file != null) {
+        FileSystemController.profile_pic_upload(req.file, doc._id, function (error) {
+          if (error) {
+            res.render('error.html', {
+              title: 'System Error',
+              errorCode: 'upload Error',
+              errorMessage: err
+            });
+          }
+          else {
+            res.redirect('/personal/setting');
+          }
+        });
+      }
+      else {
+        res.render('error.html', {
+          title: 'System Error',
+          errorCode: 'System Error',
+          errorMessage: 'Upload file empty.'
+        });
+      }
+    }
+  })
+}
+
 module.exports = {
   setting_get,
   resetpwd,
   setting_info_update_post,
-  setting_major_update_post
+  setting_major_update_post,
+  setting_profile_pic_post
 }
