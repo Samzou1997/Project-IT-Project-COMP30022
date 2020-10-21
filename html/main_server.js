@@ -14,7 +14,7 @@ const ResetRouter     = require('./routes/ResetRouter')
 const ErrorRouter     = require('./routes/ErrorRouter')
 const ShareRounter    = require('./routes/ShareRounter')
 
-var privateKey        = fs.readFileSync('/home/IT_Project/html/certification/private.pem', 'utf8'),
+var privateKey        = fs.readFileSync('/home/IT_Project/html/certification/private.pem', 'utf8');
 var certificate       = fs.readFileSync('/home/IT_Project/html/certification/cert.crt', 'utf8');
 var credentials       = {key: privateKey, cert: certificate};
 
