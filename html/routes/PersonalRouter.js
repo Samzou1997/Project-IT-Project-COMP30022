@@ -152,6 +152,7 @@ router.post('/setting/PwdReset', VerifyController.verify_login, SettingControlle
 
 router.post('/setting/infoupdate', VerifyController.verify_login, SettingController.setting_info_update_post)
 router.post('/setting/majorupdate', VerifyController.verify_login, SettingController.setting_major_update_post)
+router.post('/setting/profilepicupdate', upload.single('uploadFile'), VerifyController.verify_login, SettingController.setting_major_update_post)
 // ======================================================================================================== //
 
 //router.post('/logout', LogoutController.logout_post) // full path: /personal/logout
