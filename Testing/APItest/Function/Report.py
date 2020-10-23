@@ -1,7 +1,7 @@
 import os
 import traceback
 
-def summary(total_case, succeed_case, failed_case):
+def Report(total_case, succeed_case, failed_case):
     print("--------------------")
     print("Total test case:", len(total_case))
     print("Succeed test case:", len(succeed_case))

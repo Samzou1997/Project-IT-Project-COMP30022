@@ -1,8 +1,8 @@
 import json
 import os
 import traceback
-from Function.test import *
-from Function.summary import *
+from Function.TestCase import *
+from Function.Report import *
         
 print("API test start...")
 
@@ -28,4 +28,4 @@ try:
 except Exception:
     traceback.print_exc()
 
-summary(total_case, succeed_case, failed_case)
+Report(total_case, succeed_case, failed_case)

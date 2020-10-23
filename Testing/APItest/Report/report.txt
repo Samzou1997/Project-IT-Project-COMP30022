@@ -1,3 +1,4 @@
 Total test case: 25
-Succeed test case: 25
-Failed test case: 0
+Succeed test case: 23
+Failed test case: 2
+Failed case (index): 10 24 
