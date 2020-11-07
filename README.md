@@ -2,11 +2,11 @@
 Welcome to our E-Portfolio website. This is a website that stores your personal information and generates a summary of your information that can be shared.
 
 ## 1.Installation
-This is an app that runs on a web page and does not have steps to install. Just have a browser on your PC or phone.
+This is an app that runs on a web page and does not have steps to install. Just have a browser on your PC or phone. Enter the URL https://54.206.15.44 on your browser and use the app.
 
 ## 2.Changelog
 
-**Sprint 1**
+### Sprint1
 - Be able to access the website such that viewing, scrolling, and clicking on bottoms.
 - Be able to register a new user account independently.
 - Be able to send a warning message to users when he entered an existing email address or username.
@@ -15,7 +15,7 @@ This is an app that runs on a web page and does not have steps to install. Just 
 - Be able to send an error page when users directly add ‘/Login' in URL, including the situation in which the owner refreshes the page.
 - Including personal information that represents the website is after login.
 
-**Sprint 2**
+### Sprint2
 - Beautify the index.html page, the page should include more elements such as a mountain.
 - Complete all the required pages in the home.html(Profile, Learning, etc.)
 - Add the “Forget password” button on the sign-in page, and add confirmation of the password in the sign-up stage.
@@ -25,7 +25,7 @@ This is an app that runs on a web page and does not have steps to install. Just 
 - Implement article editing functions in frontend.
 - Implement the “education, employment, and volunteer” records adding.
 
-**Sprint 3**
+### Sprint3
 - Complete front end pages: Settings and responsive pages of all frontend.
 - File management should work. The frontend should contain a clickable item that gives operations such as delete/recovery.
 - The backend should contain the corresponding functions that support file management.
