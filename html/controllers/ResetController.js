@@ -39,7 +39,7 @@ const emailTo = (req, res, next) => {
             //reset email layout
             var subject = "Reset your password for your account"
             var text = undefined;
-            var html = `<p>To reset password</p><p>click the link below：</p><p><a href='http://54.206.15.44/Forgot/Resetting/${token}'>reset your password</a></p><p>The link will exprie in one hour!</p>`;
+            var html = `<p>To reset password</p><p>click the link below：</p><p><a href='http://18.166.75.135/Forgot/Resetting/${token}'>reset your password</a></p><p>The link will exprie in one hour!</p>`;
             var transporter = nodemailer.createTransport({
                 host: smtp,
                 auth: {
